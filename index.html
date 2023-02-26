@@ -25,7 +25,9 @@
     <br/>
 
     <button class="connect">Connect</button>
-    <button class="sendHello">Send Hello</button>
+    <button class="sendHello">get Address</button>
+    <button class="fund">fundAccount</button>
+    <button class="getAccount">get Account info</button>
   </body>
 
   <script>
@@ -33,29 +35,64 @@
 
     const connectButton = document.querySelector('button.connect')
     const sendButton = document.querySelector('button.sendHello')
+    const fundButton = document.querySelector('button.fund')
+    const getAccountButton = document.querySelector('button.getAccount')
 
     connectButton.addEventListener('click', connect)
     sendButton.addEventListener('click', send)
+    getAccountButton.addEventListener('click', getAccount)
+    fundButton.addEventListener('click', fund)
 
     // here we get permissions to interact with and install the snap
     async function connect () {
-      await ethereum.request({
-        method: 'wallet_enable',
-        params: [{
-          wallet_snap: { [snapId]: {} },
-        }]
-      })
+      const result = await ethereum.request({
+        method: 'wallet_requestSnaps',
+        params: {
+          [snapId]: {}
+        },
+      });
     }
 
     // here we call the snap's "hello" method
     async function send () {
       try {
-        await ethereum.request({
+        const addr = await ethereum.request({
           method: 'wallet_invokeSnap',
-          params: [snapId, {
-            method: 'hello'
-          }]
+          params: {snapId:snapId, request:{
+            method: 'getAddress'
+          }}
         })
+        alert(addr)
+      } catch (err) {
+        console.error(err)
+        alert('Problem happened: ' + err.message || err)
+      }
+    }
+    async function fund () {
+      try {
+        const addr = await ethereum.request({
+          method: 'wallet_invokeSnap',
+          params: {snapId:snapId, request:{
+            method: 'fund'
+          }}
+        })
+        console.log(addr)
+        alert(addr)
+      } catch (err) {
+        console.error(err)
+        alert('Problem happened: ' + err.message || err)
+      }
+    }
+    async function getAccount() {
+      try {
+        const addr = await ethereum.request({
+          method: 'wallet_invokeSnap',
+          params: {snapId:snapId, request:{
+            method: 'getAccountInfo'
+          }}
+        })
+        console.log(addr)
+        alert(addr)
       } catch (err) {
         console.error(err)
         alert('Problem happened: ' + err.message || err)

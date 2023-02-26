@@ -1,20 +1,17 @@
 import { OnRpcRequestHandler } from '@metamask/snap-types';
 
-export const onRpcRequest: OnRpcRequestHandler = ({ origin, request }) => {
+import { getWallet } from './accounts';
+import { fund, Client } from './Client';
+export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => {
+  const wallet = await getWallet();
+  const client = new Client(wallet)
   switch (request.method) {
-    case 'hello':
-      return wallet.request({
-        method: 'snap_confirm',
-        params: [
-          {
-            prompt: `Hello, ${origin}!`,
-            description:
-              'This custom confirmation is just for display purposes.',
-            textAreaContent:
-              'But you can edit the snap source code to make it do something, if you want to!',
-          },
-        ],
-      });
+    case 'getAddress':
+      return wallet.address
+    case 'fund':
+      return await fund(wallet);
+    case 'getAccountInfo':
+      return await client.getAccount()
     default:
       throw new Error('Method not found.');
   }
