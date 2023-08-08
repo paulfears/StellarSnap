@@ -1,6 +1,6 @@
 {
-  "name": "template-typescript-snap",
-  "version": "1.0.0",
+  "name": "stellar-snap",
+  "version": "0.0.1",
   "private": true,
   "description": "The 'Hello, world!' of MetaMask Snaps, now written in TypeScript.",
   "repository": {
