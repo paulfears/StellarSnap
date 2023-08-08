@@ -7,7 +7,7 @@
     "url": "https://github.com/MetaMask/template-typescript-snap.git"
   },
   "source": {
-    "shasum": "IhJrd87EMkGB+wQV+HaOHS0YEKHUuWWnsq3jeep17lA=",
+    "shasum": "8CMHGlXmEPOyc3pAOVHiv7APPGNWxWk+BipyVg6MlTA=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
@@ -18,11 +18,15 @@
     }
   },
   "initialPermissions": {
+    "snap_dialog": {},
+    "snap_notify": {},
+    "snap_manageState": {},
     "endowment:rpc": {
       "dapps": true,
       "snaps": true
     },
-    "snap_getEntropy": {}
+    "snap_getEntropy": {},
+    "endowment:network-access": {}
   },
   "manifestVersion": "0.1"
 }

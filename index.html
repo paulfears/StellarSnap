@@ -6,7 +6,7 @@
   </head>
 
   <body>
-    <h1>Hello, Snaps!</h1>
+    <h1>Stellar On Metamask!</h1>
     <details>
       <summary>Instructions</summary>
       <ul>
@@ -28,6 +28,10 @@
     <button class="sendHello">get Address</button>
     <button class="fund">fundAccount</button>
     <button class="getAccount">get Account info</button>
+    <br>
+    <input value="GC4FIQFSE66E4HR7D4QCSHKMS6M7LKKYPP72ICY5WYLCEJVHGBZAKQJK" id="recepient"/>
+    <input type="number" id="amount"/>
+    <button id="send">send</button>
   </body>
 
   <script>
@@ -37,11 +41,13 @@
     const sendButton = document.querySelector('button.sendHello')
     const fundButton = document.querySelector('button.fund')
     const getAccountButton = document.querySelector('button.getAccount')
+    const sendTxnButton = document.getElementById('send');
 
     connectButton.addEventListener('click', connect)
     sendButton.addEventListener('click', send)
     getAccountButton.addEventListener('click', getAccount)
     fundButton.addEventListener('click', fund)
+    sendTxnButton.addEventListener('click', sendTxn)
 
     // here we get permissions to interact with and install the snap
     async function connect () {
@@ -68,6 +74,23 @@
         alert('Problem happened: ' + err.message || err)
       }
     }
+
+    async function sendTxn(){
+      console.log("send transaction called");
+      const recepient = document.getElementById("recepient").value;
+      const amount = document.getElementById("amount").value;
+      const response = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {snapId:snapId, request:{
+          method: 'transfer',
+          params:{
+            to: recepient,
+            amount: amount
+          }
+        }}
+      })
+      console.log(response);
+    }
     async function fund () {
       try {
         const addr = await ethereum.request({
@@ -92,11 +115,13 @@
           }}
         })
         console.log(addr)
+        console.log(addr.balances[0])
         alert(addr)
       } catch (err) {
         console.error(err)
         alert('Problem happened: ' + err.message || err)
       }
     }
+    
   </script>
 </html>
