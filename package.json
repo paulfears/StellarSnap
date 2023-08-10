@@ -2,10 +2,10 @@
   "name": "stellar-snap",
   "version": "0.0.1",
   "private": true,
-  "description": "The 'Hello, world!' of MetaMask Snaps, now written in TypeScript.",
+  "description": "A non custodial Stellar Wallet built for metamask",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetaMask/template-typescript-snap.git"
+    "url": "https://github.com/paulfears/StellarSnap.git"
   },
   "license": "MIT",
   "main": "src/index.ts",

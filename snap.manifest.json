@@ -4,10 +4,10 @@
   "proposedName": "Stellar",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetaMask/template-typescript-snap.git"
+    "url": "https://github.com/paulfears/StellarSnap.git"
   },
   "source": {
-    "shasum": "gijTe/y+q0X1iYJ8rXfNbqEW3hUdwOsKPucj0WPw4E0=",
+    "shasum": "mQnmqePnCQvcdwVe2nc9Cs2jXJXyf03okFnnFIhJ0zE=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
