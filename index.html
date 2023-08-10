@@ -15,9 +15,9 @@
       color:white;
     }
     .fill { 
-        min-height: 100%;
-        height: 90vh;
-        position: static;
+        
+        height: 100%;
+       
     }
     h1{
       font-family: 'Poppins', sans-serif;
@@ -30,30 +30,44 @@
     .active{
       color: black !important;
     }
+    .page{
+      height: 90vh;
+      max-height: 90vh;
+    }
     input{
       background-color: #0000 !important;
       color: white !important;
+      
     }
     </style>
   </head>
 
   <body>
+    <div class="page">
     <div id="main" class="fill">
       <div class="mt-5">
       </div>
       <div id="content" style="background-color: black; width:35vw; height:100%;" class="ml-5 mt-5">
-        <div style ="margin-left: 35px;"class="container">
+        <div style ="padding-left: 35px;"class="container">
           <img style="filter:invert(100%);" src="https://assets-global.website-files.com/5deac75ecad2173c2ccccbc7/5dec8960504967fd31147f62_Stellar_lockup_black_RGB.svg" height="35" alt="" class="stellar-logo">
           <h1>On Metamask!</h1>
+          <hr/>
+          <p>Stellar on Metamask is a non-custodal Wallet, that is securly installed into Metamask, whenever a user attemps to interact with a Stellar Dapp.
+            This will grant 30 Million Metamask-Users access to the Stellar ecosystem.
+          </p>
+          <div id="flask_warning" style="color: #ffc107; padding: 20px; display:none; width: fit-content; border-radius: 0.375rem; border: 1px solid #ffc107;" >
+            This Demo Requires <a href="https://metamask.io/flask/">Metamask Flask</a>
+            <br/>
+            Install it, then Refresh the page
+          </div>
           <br/>
-          <button class="connect btn btn-outline-warning"><img width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/800px-MetaMask_Fox.svg.png"/>Connect</button>
+          <button id="connectButton" class="connect btn btn-outline-warning"><img width="30" height="30" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/MetaMask_Fox.svg/800px-MetaMask_Fox.svg.png"/>Connect</button>
           <br>
           <br>
           <p style="display: none;" id="info">We are funding your testnet account please wait.</p>
         </div>
     <div id="inputs" style="opacity: 0;">
-      <div class="container mt-5">
-      <br/>
+      <div style="padding-left: 35px;" class="container mt-4">
       <br/>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -70,9 +84,9 @@
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <br/>
           <br/>
-          <button class="sendHello btn btn-outline-light">Wallet Address</button>
-          <button id="getBalance" class="btn btn-outline-light">Wallet Balance</button>
-          <button class="getAccount btn btn-outline-light">Account info</button>
+          <button class="sendHello btn btn-outline-light">Display Wallet Address</button>
+          <button id="getBalance" class="btn btn-outline-light">Display Wallet Balance</button>
+          <button class="getAccount btn btn-outline-light">Request Account info</button>
           <br>
           <br>
           <h6 style="color:white" id="query_output"></h6>
@@ -97,6 +111,7 @@
     </div>
   </div>
   </div>
+</div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.waves.min.js"></script>
@@ -119,6 +134,24 @@ VANTA.RINGS({
   </body>
 
   <script>
+    function showWarning(){
+      document.getElementById("connectButton").style.display = "none";
+      document.getElementById("flask_warning").style.display = "block";
+    }
+    (async ()=>{
+      if(!window.ethereum){
+        return showWarning()
+      }
+    const isFlask = (
+      await window.ethereum.request({ method: 'web3_clientVersion' })
+    )?.includes('flask');
+    console.log(isFlask);
+    if(!isFlask){
+      return showWarning();
+    }
+    })()
+
+
     const snapId = `local:${window.location.href}`;
 
     const connectButton = document.querySelector('button.connect')
@@ -176,7 +209,7 @@ VANTA.RINGS({
           }}
         })
         console.log(addr)
-        query_output.innerText = addr;
+        query_output.innerText = `${addr} testnet XLM`;
       } catch (err) {
         console.error(err)
         alert('Problem happened: ' + err.message || err)
