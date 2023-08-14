@@ -18,8 +18,8 @@ export class Wallet{
         console.log(this.publicKey);
     }
     
-    async getBaseAccount(): Promise<Account>{
-        const client = new Client();
+    async getBaseAccount(client: Client): Promise<Account>{
+        console.log(client);
         const sequence = await client.getSequence(this.address)    
         return new Account(this.address, sequence);
     }

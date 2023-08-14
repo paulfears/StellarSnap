@@ -10,19 +10,28 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
   const params = request.params;
   let wallet_funded = false;
   let baseAccount;
+
+  const keyPair = wallet.keyPair;
+  const client = new Client();
+  console.log("request.params.testnet");
+  console.log(params?.testnet);
+  if(params?.testnet){
+    console.log("testnet is true");
+    client.setTestnet(params.testnet);
+  }
   try{
-    baseAccount = await wallet.getBaseAccount();
+    console.log("attempting to fund wallet");
+    baseAccount = await wallet.getBaseAccount(client);
     wallet_funded = true;
   }
   catch(e){
     console.log("Account not funded yet")
   }
-  const keyPair = wallet.keyPair;
-  const client = new Client();
   let txnBuilder: TxnBuilder;
   let operations: WalletFuncs;
   if(wallet_funded){
-    txnBuilder = new TxnBuilder((await wallet.getBaseAccount()));
+    console.log("wallet funded");
+    txnBuilder = new TxnBuilder(baseAccount);
     operations = new WalletFuncs(baseAccount, keyPair, txnBuilder, client);
   }
   
@@ -35,7 +44,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     // -------------------------------- Methods That Require a funded Account ------------------------------------------
     case 'getAccountInfo':
       if(!wallet_funded){
-        Screens.RequiresFundedWallet(request.method, wallet.address);
+        await Screens.RequiresFundedWallet(request.method, wallet.address);
         throw new Error('Method Requires Account to be funded');
       }
       return await client.getAccount(wallet.address)
@@ -46,7 +55,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       return await client.getBalance(wallet.address)
     case 'transfer':
       if(!wallet_funded){
-        Screens.RequiresFundedWallet(request.method, wallet.address);
+        await Screens.RequiresFundedWallet(request.method, wallet.address);
         throw new Error('Method Requires Account to be funded');
       }
       return await operations.transfer(params.to, params.amount);

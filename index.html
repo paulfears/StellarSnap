@@ -39,6 +39,12 @@
       color: white !important;
       
     }
+    .form-check-input:checked {
+      background-color: #0d6efd !important;
+    }
+    .form-check-input{
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e") !important;
+    }
     </style>
   </head>
 
@@ -67,7 +73,12 @@
           <p style="display: none;" id="info">We are funding your testnet account please wait.</p>
         </div>
     <div id="inputs" style="opacity: 0;">
+
       <div style="padding-left: 35px;" class="container mt-4">
+        <div class="form-check form-switch">
+          <input id="networkButton" style="background-color: #0d6efd;" class="form-check-input" type="checkbox" role="switch" checked/>
+          <label id="networkDisp" class="form-check-label" for="flexSwitchCheckDefault">Testnet</label>
+        </div>
       <br/>
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -160,12 +171,15 @@ VANTA.RINGS({
     const sendTxnButton = document.getElementById('send');
     const balanceButton = document.getElementById('getBalance');
     const query_output = document.getElementById('query_output');
-
+    const networkButton = document.getElementById('networkButton');
+    const networkDisp = document.getElementById('networkDisp')
+    let testnet = true;
     connectButton.addEventListener('click', connect)
     sendButton.addEventListener('click', send)
     getAccountButton.addEventListener('click', getAccount)
     sendTxnButton.addEventListener('click', sendTxn)
     balanceButton.addEventListener('click', getBalance)
+    networkButton.addEventListener('click', toggleTestnet)
 
     // here we get permissions to interact with and install the snap
     async function connect () {
@@ -182,13 +196,28 @@ VANTA.RINGS({
       $("#inputs").delay(1000).animate({opacity: "100%"});
     }
 
+    async function toggleTestnet(){
+      if(testnet){
+        testnet = false
+        networkDisp.innerText = "mainnet"
+      }
+      else{
+        testnet = true
+        networkDisp.innerText = "testnet"
+      }
+
+    }
+
     // here we call the snap's "hello" method
     async function send () {
       try {
         const addr = await ethereum.request({
           method: 'wallet_invokeSnap',
           params: {snapId:snapId, request:{
-            method: 'getAddress'
+            method: 'getAddress',
+            params:{
+              testnet: testnet
+            }
           }}
         })
         console.log(addr)
@@ -205,7 +234,10 @@ VANTA.RINGS({
         const addr = await ethereum.request({
           method: 'wallet_invokeSnap',
           params: {snapId:snapId, request:{
-            method: 'getBalance'
+            method: 'getBalance',
+            params:{
+              testnet: testnet
+            }
           }}
         })
         console.log(addr)
@@ -226,7 +258,8 @@ VANTA.RINGS({
           method: 'transfer',
           params:{
             to: recepient,
-            amount: amount
+            amount: amount,
+            testnet: testnet
           }
         }}
       })
@@ -254,7 +287,10 @@ VANTA.RINGS({
         const addr = await ethereum.request({
           method: 'wallet_invokeSnap',
           params: {snapId:snapId, request:{
-            method: 'getAccountInfo'
+            method: 'getAccountInfo',
+            params:{
+              testnet: testnet
+            }
           }}
         })
         console.log(addr)

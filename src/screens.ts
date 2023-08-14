@@ -13,4 +13,16 @@ export class Screens{
         await Utils.displayPanel(disp, "alert");
         return true;
     }
+
+    static async paymentConfirmation(to:string, amount:string): Promise<boolean>{
+        const disp = panel([
+            heading("Confirm XLM Payment"),
+            divider(),
+            text(`Amount: ${amount} XLM`),
+            text(`Recipient: `),
+            copyable(to),
+            
+        ])
+        return await Utils.displayPanel(disp)
+    }
 }

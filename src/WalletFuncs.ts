@@ -4,6 +4,7 @@ import { TxnBuilder } from "./TxnBuilder";
 import { Wallet } from "./Wallet";
 import Utils from "./Utils";
 import { panel, text, heading, divider, copyable, Panel } from '@metamask/snaps-ui';
+import { Screens } from "./screens";
 
 export class WalletFuncs{
     account: Account
@@ -19,15 +20,7 @@ export class WalletFuncs{
 
     async transfer(to:string, amount:string){
         const txn = this.builder.buildPaymentTxn(to, amount);
-        const disp = panel([
-            heading("Confirm Spend"),
-            divider(),
-            text('Amount: '),
-            text(`${amount}`),
-            text('Recepient: '),
-            copyable(to)
-        ])
-        const confirmed = await Utils.displayPanel(disp);
+        const confirmed = await Screens.paymentConfirmation(to, amount);
         if(!confirmed){
             throw Error("User rejected Request");
             return;

@@ -1,32 +1,45 @@
 import { Transaction } from "stellar-base";
 
+const testNetURL = "https://horizon-testnet.stellar.org"
+const mainNetURL = "https://horizon.stellar.org/"
+
 export async function fund(wallet){
     const response = await fetch(
         `https://friendbot.stellar.org?addr=${encodeURIComponent(
           wallet.address,
         )}`,
       );
+      console.log(response);
       const responseJSON = await response.json();
+      console.log(responseJSON);
       return responseJSON;
 }
 
 
+
 export class Client{
-    testNetURL:string
-    enpoint:string
-    constructor(){
-        this.testNetURL = "https://horizon-testnet.stellar.org"
-        this.enpoint = this.testNetURL;
+    endPoint:string
+    testNet: boolean
+    testNetURL: string
+    mainNetURL: string
+    constructor(testnet:boolean=false){
+        if(testnet){
+            this.endPoint = testNetURL;
+        }
+        else if(!testnet){
+            this.endPoint = mainNetURL;
+        }
     }
     async get(path){
         console.log("here")
-        const response = await fetch(this.enpoint+'/'+path)
+        console.log(this.endPoint)
+        const response = await fetch(this.endPoint+'/'+path)
         const json = await response.json()
         return json
     }
     async post(path){
         console.log("here")
-        const response = await fetch(this.enpoint+'/'+path, {
+        const response = await fetch(this.endPoint+'/'+path, {
             method: "POST",
             headers: { 
                 'Accept': 'application/json'
@@ -34,6 +47,18 @@ export class Client{
         })
         const json = await response.json()
         return json
+    }
+    setTestnet(testnet:boolean){
+        if(testnet){
+            console.log("setting endpoint to Testnet")
+            this.endPoint = testNetURL
+            console.log(this.endPoint);
+        }
+        else{
+            console.log("setting endpoint to Testnet")
+            this.endPoint = mainNetURL
+            console.log(this.endPoint);
+        }
     }
     async getAccount(address: string){
         const data = await this.get(`accounts/${address}`);
