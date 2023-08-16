@@ -1610,6 +1610,14 @@
     "@metamask/utils" "^5.0.0"
     superstruct "^1.0.3"
 
+"@metamask/snaps-ui@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@metamask/snaps-ui/-/snaps-ui-1.0.1.tgz#ba46fbb8525ab9cc81445a00d9dde244e3c1ae17"
+  integrity sha512-Wix1RWKa1l0T5Lo7KHsZf+SGbxpkV2pskaAms89APNFLyTofgZoKZg+HxsHMQTdWkNv/++9FBkim1jYMxzEgOQ==
+  dependencies:
+    "@metamask/utils" "^6.0.1"
+    superstruct "^1.0.3"
+
 "@metamask/snaps-utils@^0.32.2":
   version "0.32.2"
   resolved "https://registry.yarnpkg.com/@metamask/snaps-utils/-/snaps-utils-0.32.2.tgz#56760dd28e9f605ee0501f03bf6ec0d041b3d6de"
@@ -1660,7 +1668,7 @@
     semver "^7.3.8"
     superstruct "^1.0.3"
 
-"@metamask/utils@^6.0.0":
+"@metamask/utils@^6.0.0", "@metamask/utils@^6.0.1":
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/@metamask/utils/-/utils-6.2.0.tgz#7e63ad2db33117df6fef89449db3a86dcd6b42b5"
   integrity sha512-nM5CujDd4STfwx4ic/gim9G1W9oZcWUGKN4WbAT4waEkqNSIluVmZeHgxUKvdajZ7iCFDnjDLajkD4sP7c/ClQ==

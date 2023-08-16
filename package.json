@@ -56,7 +56,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@metamask/snaps-ui": "^0.32.2",
+    "@metamask/snaps-ui": "^1.0.1",
     "buffer": "^6.0.3",
     "crc": "^4.3.2",
     "nacl": "^0.1.3",
