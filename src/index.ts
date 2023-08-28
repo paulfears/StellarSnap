@@ -59,6 +59,13 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
         throw new Error('Method Requires Account to be funded');
       }
       return await operations.transfer(params.to, params.amount);
+    case 'signTransaction':
+      if(!wallet_funded){
+        await Screens.RequiresFundedWallet(request.method, wallet.address);
+        throw new Error('Method Requires Account to be funded');
+      }
+      const txn = await operations.signArbitaryTxn(params.transaction);
+      return txn.toXDR();
     default:
       throw new Error('Method not found.');
   }

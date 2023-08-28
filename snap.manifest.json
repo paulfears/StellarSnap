@@ -1,5 +1,5 @@
 {
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Stellar on metamask",
   "proposedName": "Stellar",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/paulfears/StellarSnap.git"
   },
   "source": {
-    "shasum": "SabOqKp44LkCbvXLuqnCsah1jGNjGYvhnFD/EuNeKnY=",
+    "shasum": "L6fIDHpmCirS+aoxUNwr4Pvj6qBoLiXbjp/wJ1bxUt0=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",

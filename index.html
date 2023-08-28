@@ -46,6 +46,7 @@
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e") !important;
     }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/stellar-sdk@10.4.1/dist/stellar-sdk.min.js"></script>
   </head>
 
   <body>
@@ -112,6 +113,8 @@
           <input class="form-control" style="width:30%" type="number" id="amount"/>
           <br/>
           <button class="btn btn-outline-light" id="send">send</button>
+          <br/>
+          <button class="btn btn-outline-light" id="signTransaction">sign transaction</button>
         </div>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
       </div>
@@ -172,7 +175,8 @@ VANTA.RINGS({
     const balanceButton = document.getElementById('getBalance');
     const query_output = document.getElementById('query_output');
     const networkButton = document.getElementById('networkButton');
-    const networkDisp = document.getElementById('networkDisp')
+    const networkDisp = document.getElementById('networkDisp');
+    const signTransactionButton = document.getElementById('signTransaction');
     let testnet = true;
     connectButton.addEventListener('click', connect)
     sendButton.addEventListener('click', send)
@@ -180,6 +184,7 @@ VANTA.RINGS({
     sendTxnButton.addEventListener('click', sendTxn)
     balanceButton.addEventListener('click', getBalance)
     networkButton.addEventListener('click', toggleTestnet)
+    signTransactionButton.addEventListener('click', signTransaction)
 
     // here we get permissions to interact with and install the snap
     async function connect () {
@@ -259,6 +264,64 @@ VANTA.RINGS({
           params:{
             to: recepient,
             amount: amount,
+            testnet: testnet
+          }
+        }}
+      })
+      console.log(response);
+    }
+
+    async function signTransaction(){
+      const server = new StellarSdk.Server('https://horizon-testnet.stellar.org');
+
+      // Uncomment the following line to build transactions for the live network. Be
+      // sure to also change the horizon hostname.
+      // StellarSdk.Network.usePublicNetwork();
+      const sourcePublicKey = await ethereum.request({
+          method: 'wallet_invokeSnap',
+          params: {snapId:snapId, request:{
+            method: 'getAddress',
+          }}
+      })
+      const account = await server.loadAccount(sourcePublicKey);
+      const fee = await server.fetchBaseFee();
+      console.log("base fee is");
+      console.log(fee);
+      const receiverPublicKey = 'GAIRISXKPLOWZBMFRPU5XRGUUX3VMA3ZEWKBM5MSNRU3CHV6P4PYZ74D';
+      console.log("metamask public key: ");
+      console.log(sourcePublicKey);
+      console.log("account is");
+      console.log(account);
+      console.log("building Transaction");
+      
+      
+      const transaction = new StellarSdk.TransactionBuilder(account, { fee, networkPassphrase: "Test SDF Network ; September 2015" });
+      // Add a payment operation to the transaction
+      console.log("transaction builder initilazed");
+      await transaction.addOperation(StellarSdk.Operation.payment({
+        destination: receiverPublicKey,
+        // The term native asset refers to lumens
+        asset: StellarSdk.Asset.native(),
+        // Specify 350.1234567 lumens. Lumens are divisible to seven digits past
+        // the decimal. They are represented in JS Stellar SDK in string format
+        // to avoid errors from the use of the JavaScript Number data structure.
+        amount: '350.1234567',
+      }));
+      console.log("operations added")
+      // Make this transaction valid for the next 30 seconds only
+      await transaction.setTimeout(30);
+      console.log("timeout set");
+      // Uncomment to add a memo (https://www.stellar.org/developers/learn/concepts/transactions.html)
+      // .addMemo(StellarSdk.Memo.text('Hello world!'))
+      const endTransaction = await transaction.build();
+      const xdrTransaction = endTransaction.toXDR();
+      console.log(xdrTransaction);
+      const response = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params:{snapId:snapId, request:{
+          method: 'signTransaction',
+          params:{
+            transaction: xdrTransaction,
             testnet: testnet
           }
         }}

@@ -1,21 +1,23 @@
-import { Account, Transaction, Keypair} from "stellar-base";
+import { Account, Transaction, Keypair, xdr, Memo, MemoType, FeeBumpTransaction, Operation} from "stellar-base";
 import { Client } from "./Client";
 import { TxnBuilder } from "./TxnBuilder";
 import { Wallet } from "./Wallet";
 import Utils from "./Utils";
 import { panel, text, heading, divider, copyable, Panel } from '@metamask/snaps-ui';
 import { Screens } from "./screens";
-
+import { TransactionAnalizer } from "./TransactionAnalizer";
 export class WalletFuncs{
     account: Account
     keyPair: Keypair
     builder: TxnBuilder
     client: Client
+    analizer: TransactionAnalizer
     constructor(account:Account, keyPair: Keypair, builder: TxnBuilder, client: Client){
         this.account = account
         this.builder = builder
         this.keyPair = keyPair
         this.client = client
+        this.analizer = new TransactionAnalizer(this.client);
     }
 
     async transfer(to:string, amount:string){
@@ -41,8 +43,14 @@ export class WalletFuncs{
 
     }
 
-    async TxnAnalizer(txn:Transaction){
-        //to do
+    async signArbitaryTxn(xdrTransaction: xdr.Transaction | string): Promise<Transaction<Memo<MemoType>, Operation[]> | FeeBumpTransaction>{
+        const txn = this.analizer.decodeXDRTransaction(xdrTransaction);
+        const confirm = await this.analizer.analizeTransaction(txn);
+        if(!confirm){
+            throw new Error("user rejected request");
+        }
+        txn.sign(this.keyPair);
+        return txn;
     }
     
 }

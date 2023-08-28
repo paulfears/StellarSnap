@@ -22,11 +22,17 @@ export class Client{
     testNet: boolean
     testNetURL: string
     mainNetURL: string
+    MainnetPassphrase = 'Public Global Stellar Network ; September 2015'
+    TestnetPassphrase = 'Test SDF Network ; September 2015'
+    currentPassphrase: string
+
     constructor(testnet:boolean=false){
         if(testnet){
+            this.currentPassphrase = this.TestnetPassphrase
             this.endPoint = testNetURL;
         }
         else if(!testnet){
+            this.currentPassphrase = this.MainnetPassphrase
             this.endPoint = mainNetURL;
         }
     }
@@ -47,6 +53,9 @@ export class Client{
         })
         const json = await response.json()
         return json
+    }
+    setNetworkPassphrase(networkPasspharse: string){
+        this.currentPassphrase = networkPasspharse;
     }
     setTestnet(testnet:boolean){
         if(testnet){
