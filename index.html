@@ -39,23 +39,27 @@
 
     // here we get permissions to interact with and install the snap
     async function connect () {
-      await ethereum.request({
-        method: 'wallet_enable',
-        params: [{
-          wallet_snap: { [snapId]: {} },
-        }]
-      })
+      const result = await window.ethereum.request({
+          method: 'wallet_requestSnaps',
+          params: {
+            [snapId]: {},
+          },
+        });
+        console.log(result);
     }
 
     // here we call the snap's "hello" method
     async function send () {
       try {
-        await ethereum.request({
+        const result = await ethereum.request({
           method: 'wallet_invokeSnap',
-          params: [snapId, {
-            method: 'hello'
-          }]
-        })
+          params: {
+            snapId: snapId,
+            request: {
+              method: 'hello',
+            },
+          },
+        });
       } catch (err) {
         console.error(err)
         alert('Problem happened: ' + err.message || err)
