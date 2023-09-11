@@ -24,7 +24,8 @@
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' --ignore-path .gitignore",
     "serve": "mm-snap serve",
-    "test": "echo 'TODO'"
+    "test": "echo 'TODO'",
+    "start": "mm-snap build && concurrently \"(mm-snap serve)\"  \"yarn --cwd ./site/ dev\""
   },
   "devDependencies": {
     "@lavamoat/allow-scripts": "^2.0.3",
@@ -37,6 +38,7 @@
     "@metamask/snaps-cli": "^1.0.2",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
+    "concurrently": "^8.2.1",
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
