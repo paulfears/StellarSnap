@@ -1,11 +1,11 @@
 {
-  "name": "template-typescript-snap",
-  "version": "1.0.0",
+  "name":"stellar-snap",
+  "version": "0.0.5",
   "private": true,
-  "description": "The 'Hello, world!' of MetaMask Snaps, now written in TypeScript.",
+  "description": "A non custodial Stellar Wallet built for metamask",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MetaMask/template-typescript-snap.git"
+    "url": "https://github.com/paulfears/StellarSnap.git"
   },
   "license": "MIT",
   "main": "src/index.ts",
@@ -15,7 +15,7 @@
     "snap.manifest.json"
   ],
   "scripts": {
-    "build": "mm-snap build",
+    "build": "cd site && yarn && yarn build . --outDir ../site_dist",
     "build:clean": "yarn clean && yarn build",
     "build:website": "node ./scripts/build-website.js",
     "clean": "rimraf 'dist/*'",
@@ -60,6 +60,11 @@
   "dependencies": {
     "@metamask/snaps-types": "^1.0.2",
     "@metamask/snaps-ui": "^1.0.2",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "buffer": "^6.0.3",
+    "crc": "^4.3.2",
+    "nacl": "^0.1.3",
+    "stellar-base": "10.0.0-soroban.7",
+    "tweetnacl": "^1.0.3"
   }
 }
