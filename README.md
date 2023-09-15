@@ -1,84 +1,267 @@
-# @metamask/template-typescript-snap
+# Stellar Snap
+adds stellar to metamask, by creating a non-custodial wallet built directly into metamask
 
-This repository demonstrates how to develop a Snap with TypeScript.
+## Standard Useage
 
-The "Hello, world!" of MetaMask Snaps, and also a GitHub template repository.
-For instructions, see [the MetaMask documentation](https://docs.metamask.io/guide/snaps.html#serving-a-snap-to-your-local-environment).
+### connecting
 
-## How To Use This Template
+calling this method will connect to metamask and automatically install the snap if it isn't already installed.
+As well as generate the users wallet.
+Calling this method or any subsequent methods does not requiring installing anything to a webpage, provided the the user
+has metamask (flask) installed.
 
-This repository contains the files you need to start your snap project. First, log into GitHub, then click the "Use this template" button to clone this repository into a new project. Once your new repository is created, you can modify the source code to make it your own. For a step by step guide, read [The 5-Minute Snap Tutorial](https://github.com/Montoya/gas-fee-snap#readme).
+```javascript
+const result = await ethereum.request({
+        method: 'wallet_requestSnaps',
+        params: {
+          [`npm:stellar-snap`]: {}
+        },
+      });
+```
+### calling methods
 
-## Cloning
-
-If you clone or create this repository outside the MetaMask GitHub organization, you probably want to run `./scripts/cleanup.sh` to remove some files that will not work properly outside the MetaMask GitHub organization.
-
-This repository contains other GitHub Actions that you may find useful, see `.github/workflows` and [Releasing & Publishing](#releasing-publishing) below for more information.
-
-Note that the `action-publish-relase.yml` workflow contains a step that publishes the frontend of this snap (contained in the `public/` directory) to GitHub pages.
-If you do not want to publish the frontend to GitHub pages, simply remove the step named "Publish to GitHub Pages" in that workflow.
-
-If you don't wish to use any of the existing GitHub actions in this repository, simply delete the `.github/workflows` directory.
-
-## Contributing
-
-### Setup
-
-```shell
-yarn install
+example method call
+```javascript 
+    const result = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {`npm:stellar-snap`, request:{
+            method: `${methodName}`,
+            params:{
+              paramName: `${paramValue}`
+            }
+        }}
+    })
 ```
 
-### Testing and Linting
+### specifying network
+by default all methods are treated as mainnet, but any method can be issued to the testnet
+by using the testnet param.
 
-Run `yarn test` to run the tests once.
+example:
+```javascript
+    const result = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {snapId:`npm:stellar-snap`, request:{
+            method: `getBalance`,
+            params:{
+              testnet: true
+            }
+        }}
+    })
+```
 
-Run `yarn lint` to run the linter, or run `yarn lint:fix` to run the linter and fix any automatically fixable issues.
+### current Methods
 
-### Releasing & Publishing
+####
 
-The project follows the same release process as the other libraries in the MetaMask organization. The GitHub Actions [`action-create-release-pr`](https://github.com/MetaMask/action-create-release-pr) and [`action-publish-release`](https://github.com/MetaMask/action-publish-release) are used to automate the release process; see those repositories for more information about how they work.
+#### 'getAddress'
+returns the accounts address as a string
+```javascript
+    const address = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {snapId:`npm:stellar-snap`, request:{
+            method: `getAddress`,
+        }}
+    })
+```
 
-1. Choose a release version.
+#### 'getAccountInfo'
+grabs infomation related to the account
+requires account to be funded
+```typescript
+    const info = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {snapId:`npm:stellar-snap`, request:{
+            method: `getAccountInfo`,
+            params:{
+                testnet?: true | false
+            }
+        }}
+    })
+```
 
-- The release version should be chosen according to SemVer. Analyze the changes to see whether they include any breaking changes, new features, or deprecations, then choose the appropriate SemVer version. See [the SemVer specification](https://semver.org/) for more information.
+#### 'getBalance'
+gets the XLM balance of a wallet, returns 0 in unfunded wallets
 
-2. If this release is backporting changes onto a previous release, then ensure there is a major version branch for that version (e.g. `1.x` for a `v1` backport release).
+```typescript
+    const balance = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {snapId:`npm:stellar-snap`, request:{
+            method: `getBalance`,
+            params:{
+                testnet?: true | false
+            }
+        }}
+    })
+```
 
-- The major version branch should be set to the most recent release with that major version. For example, when backporting a `v1.0.2` release, you'd want to ensure there was a `1.x` branch that was set to the `v1.0.1` tag.
+### 'transfer'
+this method is used to transfer xlm and requires a funded account.
+after being called the wallet will generate a transaction, then prompt a user to accept
+if the user accepts the transaction it will be signed and broadcast to the network.
+will return transaction infomation. And send a notification stating whether the transaction was
+successful.
+```typescript
+const transactionInfomation = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {snapId:`npm:stellar-snap`, request:{
+            method: `getBalance`,
+            params:{
+                to: 'stellarAddress' //string
+                amount: '1000.45' //string represention of amount xlm to send
+                testnet?: true | false
+            }
+        }}
+    })
 
-3. Trigger the [`workflow_dispatch`](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#workflow_dispatch) event [manually](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow) for the `Create Release Pull Request` action to create the release PR.
+```
 
-- For a backport release, the base branch should be the major version branch that you ensured existed in step 2. For a normal release, the base branch should be the main branch for that repository (which should be the default value).
-- This should trigger the [`action-create-release-pr`](https://github.com/MetaMask/action-create-release-pr) workflow to create the release PR.
+### 'fund'
+this method funds the users wallet on the testnet
+```javascript
+const success = await ethereum.request({
+    method: 'wallet_invokeSnap',
+    params: {snapId:`npm:stellar-snap`, 
+        request:{
+            method: 'fund'
+        }
+    }
+    })
+```
+### 'signTransaction'
+This method signs an Arbitary Transaction
+```javascript
+    async function signTransaction(){
+      const transaction = new StellarSdk.TransactionBuilder(account, { fee, networkPassphrase: "Test SDF Network ; September 2015" });
+      // Add a payment operation to the transaction
+      console.log("transaction builder initilazed");
+      await transaction.addOperation(StellarSdk.Operation.payment({
+        destination: receiverPublicKey,
+        // The term native asset refers to lumens
+        asset: StellarSdk.Asset.native(),
+        // Specify 350.1234567 lumens. Lumens are divisible to seven digits past
+        // the decimal. They are represented in JS Stellar SDK in string format
+        // to avoid errors from the use of the JavaScript Number data structure.
+        amount: '350.1234567',
+      }));
+      console.log("operations added")
+      // Make this transaction valid for the next 30 seconds only
+      await transaction.setTimeout(30);
+      console.log("timeout set");
+      // Uncomment to add a memo (https://www.stellar.org/developers/learn/concepts/transactions.html)
+      // .addMemo(StellarSdk.Memo.text('Hello world!'))
+      const endTransaction = await transaction.build();
+      const xdrTransaction = endTransaction.toXDR();
+      console.log(xdrTransaction);
+      const response = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params:{snapId:snapId, request:{
+          method: 'signTransaction',
+          params:{
+            transaction: xdrTransaction,
+            testnet: testnet
+          }
+        }}
+      })
+      console.log(response);
+    }
+```
+### 'Soroban'
+The Wallet also supports sorroban, To sign a SorobanCall
+futurenet must be set to true on the params object.
+```javascript
+    async function callContract() {
+      console.log("here in callContract");
+  const sourcePublicKey = await ethereum.request({
+          method: 'wallet_invokeSnap',
+          params: {snapId:snapId, request:{
+            method: 'getAddress',
+          }}
+      })
+  const server = new SorobanClient.Server('https://rpc-futurenet.stellar.org');
 
-4. Update the changelog to move each change entry into the appropriate change category ([See here](https://keepachangelog.com/en/1.0.0/#types) for the full list of change categories, and the correct ordering), and edit them to be more easily understood by users of the package.
+  console.log("getting account")
+  const account = await server.getAccount(sourcePublicKey);
+  console.log("account is: ")
+  console.log(account);
 
-- Generally any changes that don't affect consumers of the package (e.g. lockfile changes or development environment changes) are omitted. Exceptions may be made for changes that might be of interest despite not having an effect upon the published package (e.g. major test improvements, security improvements, improved documentation, etc.).
-- Try to explain each change in terms that users of the package would understand (e.g. avoid referencing internal variables/concepts).
-- Consolidate related changes into one change entry if it makes it easier to explain.
-- Run `yarn auto-changelog validate --rc` to check that the changelog is correctly formatted.
+  console.log(SorobanClient);
 
-5. Review and QA the release.
+  const contract = new SorobanClient.Contract("CCNLUNUY66TU4MB6JK4Y4EHVQTAO6KDWXDUSASQD2BBURMQT22H2CQU7")
+  console.log(contract)
+  const arg = SorobanClient.nativeToScVal("world")
+  console.log("arg is: ")
+  console.log(arg)
+  let call_operation = contract.call('hello', arg);
+  console.log(call_operation)
 
-- If changes are made to the base branch, the release branch will need to be updated with these changes and review/QA will need to restart again. As such, it's probably best to avoid merging other PRs into the base branch while review is underway.
+  let transaction = new SorobanClient.TransactionBuilder(account, { fee: "150", networkPassphrase: SorobanClient.Networks.FUTURENET })
+    .addOperation(call_operation) // <- funds and creates destinationA
+    .setTimeout(30)
+    .build();
 
-6. Squash & Merge the release.
+  console.log(transaction)
 
-- This should trigger the [`action-publish-release`](https://github.com/MetaMask/action-publish-release) workflow to tag the final release commit and publish the release on GitHub.
 
-7. Publish the release on npm.
-
-- Be very careful to use a clean local environment to publish the release, and follow exactly the same steps used during CI.
-- Use `npm publish --dry-run` to examine the release contents to ensure the correct files are included. Compare to previous releases if necessary (e.g. using `https://unpkg.com/browse/[package name]@[package version]/`).
-- Once you are confident the release contents are correct, publish the release using `npm publish`.
-
-## Notes
-
-- Babel is used for transpiling TypeScript to JavaScript, so when building with the CLI,
-  `transpilationMode` must be set to `localOnly` (default) or `localAndDeps`.
-- For the global `wallet` type to work, you have to add the following to your `tsconfig.json`:
-  ```json
-  {
-    "files": ["./node_modules/@metamask/snap-types/global.d.ts"]
+    const preparedTransaction = await server.prepareTransaction(transaction, SorobanClient.Networks.FUTURENET);
+    console.log("prepairedTxn: ");
+    console.log(preparedTransaction);
+    const tx_XDR = preparedTransaction.toXDR();
+    const signedXDR = await ethereum.request(
+      {method: 'wallet_invokeSnap',
+          params: {
+            snapId:snapId, 
+            request:{
+              method: 'signTransaction',
+              params:{
+                transaction: tx_XDR,
+                futurenet: true
+              }
+            }
+          }
+      }
+    )
+  console.log(signedXDR)
+  try{
+    
+    const transactionResult = await server.sendTransaction(signedXDR);
+    console.log(JSON.stringify(transactionResult, null, 2));
+    console.log('\nSuccess! View the transaction at: ');
+    console.log(transactionResult)
+  } catch (e) {
+    console.log('An error has occured:');
+    console.log(e);
   }
-  ```
+}
+
+```
+## building from Source
+
+```shell
+foo@bar:~$ yarn
+...
+
+foo@bar:~$ npx mm-snap build
+
+...
+Build success: 'src\index.ts' bundled as 'dist\bundle.js'!
+Eval Success: evaluated 'dist\bundle.js' in SES!
+
+foo@bar:npx mm-snap serve
+
+Starting server...
+Server listening on: http://localhost:8080
+```
+and just like that you should be good to go.
+
+## Key Generation and Storeage
+keys are generated on the fly, anytime a method is invoked.
+This works by requesting private entropy from the metamask wallet inside
+of the snaps secure execution enviroment, and using that entropy to generate
+a users keys. This entropy is static, and based on the users ethereum account.
+This means that we at no point store keys, and the fissile material is handled
+by metamask.
+
+## Account Recovery
+Because keys are handled in this way, when a user recovers their metamask account, they will also recover their stellar
+account, which means that there isn't another mnemonic to save. 
