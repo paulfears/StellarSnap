@@ -2152,7 +2152,7 @@ big-integer@^1.6.44:
   resolved "https://registry.yarnpkg.com/big-integer/-/big-integer-1.6.51.tgz#0df92a5d9880560d3ff2d5fd20245c889d130686"
   integrity sha512-GPEid2Y9QU1Exl1rpO9B2IPJGHPSupF5GnVIP0blYvNOMer2bTvSWs1jGOUg04hTmu67nmLsQ9TBo1puaotBHg==
 
-bignumber.js@^9.1.1:
+bignumber.js@^9.1.2:
   version "9.1.2"
   resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-9.1.2.tgz#b7c4242259c008903b13707983b5f4bbd31eda0c"
   integrity sha512-2/mKyZH9K85bzOEfhXDBFZTGd1CTs+5IHpeFQo9luiBG7hghdC851Pj2WAhb6E3R6b9tZj/XKhbg4fum+Kepug==
@@ -5399,13 +5399,13 @@ ssri@^10.0.0:
   dependencies:
     minipass "^7.0.3"
 
-stellar-base@10.0.0-soroban.7:
-  version "10.0.0-soroban.7"
-  resolved "https://registry.yarnpkg.com/stellar-base/-/stellar-base-10.0.0-soroban.7.tgz#ccc642f61516ace4af25cebdd6d11066a3ce8c8b"
-  integrity sha512-5+qqGsFXagtbG0L/oIiTDEIUsnerE7Vwvv/Hp2ugG0sKulcnfxgYjNqeon3Zv13uoJ4dtjslQpVOzLxPlklViQ==
+stellar-base@10.0.0-beta.1:
+  version "10.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/stellar-base/-/stellar-base-10.0.0-beta.1.tgz#5b4209fbc44b8af82dd3ee8b7f6f4397126d8c3b"
+  integrity sha512-zXC5AsbUsLi57JruyeIMv23s3iUxq/P2ZFrSJ+FerLIZjSAjY8EDs4zwY4LCuu7swUu46Lm8GK6sqxUZCPekHw==
   dependencies:
     base32.js "^0.1.0"
-    bignumber.js "^9.1.1"
+    bignumber.js "^9.1.2"
     buffer "^6.0.3"
     js-xdr "^3.0.0"
     sha.js "^2.3.6"
