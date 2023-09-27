@@ -60,6 +60,7 @@
   "dependencies": {
     "@metamask/snaps-types": "^1.0.2",
     "@metamask/snaps-ui": "^2.0.0",
+    "@stellarguard/txrep": "^2.0.0",
     "buffer": "^6.0.3",
     "crc": "^4.3.2",
     "nacl": "^0.1.3",

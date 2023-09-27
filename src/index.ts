@@ -77,6 +77,17 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       console.log("xdr is: ");
       console.log(txn.toXDR());
       return txn.toXDR();
+    case 'signAndSubmitTransaction':
+      if(!wallet_funded){
+        await Screens.RequiresFundedWallet(request.method, wallet.address);
+      }
+      
+      //to do
+      return "null"
+    case 'callContract':
+      //to do
+      return "null"
+    
     default:
       throw new Error('Method not found.');
   }

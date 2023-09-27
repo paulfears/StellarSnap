@@ -2,10 +2,11 @@
 import Utils from "./Utils";
 import { panel, text, heading, divider, copyable, Panel } from '@metamask/snaps-ui';
 
-import { TransactionBuilder, Transaction, FeeBumpTransaction, xdr} from "stellar-base";
+import { TransactionBuilder, Transaction, FeeBumpTransaction, xdr, Operation} from "stellar-base";
 import { Client } from "./Client";
 import { isSorobanTransaction, assembleTransaction } from "./sorobanTxn";
 import { TxnBuilder } from "./TxnBuilder";
+//import { toTxrep } from '@stellarguard/txrep';
 /**
  * 
  * Operation.createAccount
@@ -39,109 +40,87 @@ Operation.setTrustLineFlags
 Operation.liquidityPoolDeposit
 Operation.liquidityPoolWithdraw
  */
+
+async function resolveAsset(){
+
+}
+
+async function resolveName(){
+
+}
+
 export class TransactionAnalizer{
     client;
     constructor(client: Client){
         this.client = client;
     }
 
+    _buildOperationUI(operation:Operation): Array<any>{
+        let infoList = [];
+        infoList.push(text(operation.type));
+        infoList.push(divider());
+        for(let key in operation){
+            let value = operation[key];
+            if(key === 'type'){
+                continue;
+            }
+            else if(key === 'asset'){
+                console.log('typeof asset is: '+typeof(key))
+                infoList.push(text(`asset: ${value.code}`));
+            }
+            else if(key === 'path'){ 
+                value = Array.from(value.map((asset)=>asset.code)).join('->')
+                infoList.push(text("path"))
+                infoList.push(text(value))
+            }
+            else if(key === 'destination'){
+                infoList.push(text('destination'));
+                infoList.push(copyable(value));
+            }
+            else{
+                infoList.push(key);
+                if(typeof value === 'string'){
+                    infoList.push(text(value))
+                }
+                else if(typeof value === "object"){
+                    let objectParamList = [];
+                    for(let param in value){
+                        let subValue = value[param];
+                        objectParamList.push(text(param));
+                        objectParamList.push(text(String(subValue)))
+                    }
+                    infoList.push(panel(objectParamList));
+                }
+                else{
+                    infoList.push(String(value));
+                }
+            }
+            
+        }
+        return infoList
+    }
+
     _parseOperation(operation, currentValue): {uiList:Array<any>, currentValue:object}{
-        console.log(operation);
-        const uiList = [];
-        if(operation.type === 'payment'){
-            uiList.push(text('payment'))
-        }
-        else if(operation.type === 'createAccount'){
-            uiList.push(text('createAccount'))
-        }
-        else if(operation.type === 'pathPaymentStrictReceive'){
-
-        }
-        else if(operation.type === 'pathPaymentStrictSend'){
-
-        }
-        else if(operation.type === 'manageSellOffer'){
-
-        }
-        else if(operation.type === 'createPassiveSellOffer'){
-
-        }
-        else if(operation.type === 'setOptions'){
-
-        }
-        else if(operation.type === 'changeTrust'){
-
-        }
-        else if(operation.type === 'allowTrust'){
-
-        }
-        else if(operation.type === 'accountMerge'){
-
-        }
-        else if(operation.type === 'inflation'){
-
-        }
-        else if(operation.type === 'manageData'){
-
-        }
-        else if(operation.type === 'bumpSequence'){
-
-        }
-        else if(operation.type === 'createClaimableBalance'){
-
-        }
-        else if(operation.type === 'claimClaimableBalance'){
-
-        }
-        else if(operation.type === 'beginSponsoringFutureReserves'){
-
-        }
-        else if(operation.type === 'endSponsoringFutureReserves'){
-
-        }
-        else if(operation.type === 'revokeAccountSponsorship'){
-
-        }
-        else if(operation.type === 'revokeTrustlineSponsorship'){
-
-        }
-        else if(operation.type === 'revokeOfferSponsorship'){
-
-        }
-        else if(operation.type === 'revokeDataSponsorship'){
-
-        }
-        else if(operation.type === 'revokeClaimableBalanceSponsorship'){
-
-        }
-        else if(operation.type === 'revokeLiquidityPoolSponsorship'){
-
-        }
-        else if(operation.type === 'revokeSignerSponsorship'){
-
-        }
-        else if(operation.type === 'clawback'){
-
-        }
-        else if(operation.type === 'clawbackClaimableBalance'){
-
-        }
-        else if(operation.type === 'setTrustLineFlags'){
-
-        }
-        else if(operation.type === 'liquidityPoolDeposit'){
-
-        }
-        else if(operation.type === 'liquidityPoolWithdraw'){
-
-        }
-        else if(operation.type === 'invokeHostFunction'){
-
-        }
-        else if(operation.type === ''){
-
-        }
-        return {uiList, currentValue}
+        
+            console.log(operation);
+            const uiList = [];
+            if(operation.type === 'payment'){
+                uiList.push(text('payment'))
+                uiList.push(divider())
+                uiList.push(text(`${operation.amount} ${operation.asset.code}`))
+                uiList.push(copyable(operation.destination))
+            }
+            else if(operation.type === 'createAccount'){
+                uiList.push(text('createAccount'))
+                uiList.push()
+            }
+            else if(operation.type === 'invokeHostFunction'){
+                uiList.push(text('smartcontract call'));
+            }
+            else{
+                uiList.push(this._buildOperationUI(operation));
+            }
+        return {uiList:[panel(uiList)], currentValue}
     }
 
     async decodeXDRTransaction(xdrTransaction): Promise<Transaction>{
@@ -159,28 +138,39 @@ export class TransactionAnalizer{
         return txn;
     }
 
-    
-
     async analizeTransaction(decodedTransaction){
-        const dispArray = [heading('Sign Transaction?'), divider()];
-        const network = this.client.network;
-        let value = {};
-        dispArray.push(text(`network: ${network}`));
-        let fee = decodedTransaction._fee
-        dispArray.push(text(`fee: ${fee}`));
-        dispArray.push(text('operations'));
-        dispArray.push(divider());
-        let operations = decodedTransaction._operations
-        console.log(operations);
-        for(const operation of operations){
-            let output = this._parseOperation(operation, value);
-            console.log(output);
-            dispArray.push(...output.uiList);
-            value = output.currentValue;
+        try{
+            const dispArray = [heading('Sign Transaction?'), divider()];
+            const network = this.client.network;
+            let value = {};
+            dispArray.push(text(`network: ${network}`));
+            let fee = decodedTransaction._fee
+            dispArray.push(text(`fee: ${fee}`));
+            dispArray.push(text('operations'));
+            dispArray.push(divider());
+            let operations = decodedTransaction._operations
+            console.log(operations);
+            for(const operation of operations){
+                let output = this._parseOperation(operation, value);
+                console.log(output);
+                dispArray.push(...output.uiList);
+                value = output.currentValue;
+            }
+
+            const confirmation = await Utils.displayPanel(panel(dispArray), "confirmation");
+
+            return confirmation;
         }
-
-        const confirmation = await Utils.displayPanel(panel(dispArray), "confirmation");
-
-        return confirmation;
+        catch(e){
+            console.log(e);
+            //fallback to transaction stringify json
+            const dispArray = [
+                heading('Sign Transaction?'), 
+                divider(), 
+                panel([text(JSON.stringify((decodedTransaction)) as string)])
+            ];
+            const confirmation = await Utils.displayPanel(panel(dispArray));
+            return confirmation;
+        }
     }
 }
