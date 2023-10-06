@@ -112,7 +112,7 @@ export class TransactionAnalizer{
             }
             else if(operation.type === 'createAccount'){
                 uiList.push(text('createAccount'))
-                uiList.push()
+                uiList.push(divider())
             }
             else if(operation.type === 'invokeHostFunction'){
                 uiList.push(text('smartcontract call'));
@@ -131,8 +131,8 @@ export class TransactionAnalizer{
             txn = txn.innerTransaction;
         }
         if(isSorobanTransaction(txn)){
-            if(this.client.network !== 'futurenet'){
-                throw new Error("Soroban Transactions are currently only supported on futurenet");
+            if(this.client.network !== 'futurenet' && this.client.network !== 'testnet'){
+                throw new Error("Soroban Transactions are currently only supported on futurenet and testnet");
             }
         }
         return txn;

@@ -4,8 +4,8 @@ import { SorobanRpc } from "./soroban_rpc";
 const testNetURL = "https://horizon-testnet.stellar.org"
 const mainNetURL = "https://horizon.stellar.org"
 const futureNetURL =  "https://horizon-futurenet.stellar.org"
-const sorobanRPC = "https://rpc-futurenet.stellar.org:443"
-
+const soroban_future_RPC = "https://rpc-futurenet.stellar.org:443"
+const soroban_test_RPC = "https://soroban-testnet.stellar.org:443"
 export async function fund(wallet){
     console.log("wallet Address is: ");
     console.log(wallet.address);
@@ -122,6 +122,13 @@ export class Client{
     }
 
     async simulateSoroBanTransaction(transaction: Transaction): Promise<SorobanRpc.SimulateTransactionResponse>{
+        let sorobanRPC;
+        if(this.network === 'testnet'){
+            sorobanRPC = soroban_test_RPC
+        }
+        if(this.network === 'futurenet'){
+            sorobanRPC = soroban_future_RPC
+        }
         const result = await fetch(sorobanRPC, {
             method: 'POST',
             headers: {

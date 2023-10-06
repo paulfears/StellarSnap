@@ -24,7 +24,7 @@ async function callContract(address, method, args) {
       })
   console.log("get address result");
   console.log(sourcePublicKey);
-  const server = new SorobanClient.Server('https://rpc-futurenet.stellar.org');
+  const server = new SorobanClient.Server('https://soroban-testnet.stellar.org:443');
 
   console.log("getting account")
   const account = await server.getAccount(sourcePublicKey);
@@ -40,7 +40,7 @@ async function callContract(address, method, args) {
   let call_operation = contract.call(methodName, ..._args);
   console.log(call_operation)
 
-  let transaction = new SorobanClient.TransactionBuilder(account, { fee: "150", networkPassphrase: SorobanClient.Networks.FUTURENET })
+  let transaction = new SorobanClient.TransactionBuilder(account, { fee: "150", networkPassphrase: SorobanClient.Networks.TESTNET })
     .addOperation(call_operation) // <- funds and creates destinationA
     .setTimeout(30)
     .build();
@@ -48,7 +48,7 @@ async function callContract(address, method, args) {
   console.log(transaction)
 
     console.log("about to prepair transaction")
-    const preparedTransaction = await server.prepareTransaction(transaction, SorobanClient.Networks.FUTURENET);
+    const preparedTransaction = await server.prepareTransaction(transaction, SorobanClient.Networks.TESTNET);
     console.log("prepairedTxn: ");
     console.log(preparedTransaction);
     const tx_XDR = preparedTransaction.toXDR();
@@ -62,7 +62,7 @@ async function callContract(address, method, args) {
               method: 'signTransaction',
               params:{
                 transaction: tx_XDR,
-                futurenet: true
+                testnet: true
               }
             }
           }
@@ -71,7 +71,7 @@ async function callContract(address, method, args) {
   console.log("signed xdr is: ");
   console.log(signedXDR);
   
-    const signedTxn = new SorobanClient.TransactionBuilder.fromXDR(signedXDR, "Test SDF Future Network ; October 2022")
+    const signedTxn = new SorobanClient.TransactionBuilder.fromXDR(signedXDR, "Test SDF Network ; September 2015")
     const transactionResult = await server.sendTransaction(signedTxn);
     console.log(transactionResult.hash);
     async function getTransactionResult(hash, counter){
@@ -108,7 +108,7 @@ async function callContract(address, method, args) {
 `
 let bottom_code = `
 async function main(){
-    const result = await callContract("CCXUXE3K2ZYPFLBMKODJ5ARB4XVEHLB76XJ3TQK5NANETEI3ORBX3Y5K", "hello", "world");
+    const result = await callContract("CBR6NOFQEFCBGH63EUGTQ4356MROIBBP6EEITGPMJ23MIDX5RZNFUJPH", "hello", "world");
     alert(result);
 }
 main();
