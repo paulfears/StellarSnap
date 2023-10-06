@@ -1,5 +1,5 @@
 {
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Stellar Metamask integration",
   "proposedName": "Stellar",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/paulfears/StellarSnap.git"
   },
   "source": {
-    "shasum": "Az6x3zd4bGcQOBz+lPh4Lxhd25yoZ5p/jEMoLAj7ucg=",
+    "shasum": "yzFyP6ERckWz7ZE8nac48aoogDpj0relPpNrdGEoDdI=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",

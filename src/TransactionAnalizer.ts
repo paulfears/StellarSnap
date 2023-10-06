@@ -2,7 +2,7 @@
 import Utils from "./Utils";
 import { panel, text, heading, divider, copyable, Panel } from '@metamask/snaps-ui';
 
-import { TransactionBuilder, Transaction, FeeBumpTransaction, xdr, Operation} from "stellar-base";
+import { TransactionBuilder, Transaction, FeeBumpTransaction, xdr, Operation, Address, scValToNative} from "stellar-base";
 import { Client } from "./Client";
 import { isSorobanTransaction, assembleTransaction } from "./sorobanTxn";
 import { TxnBuilder } from "./TxnBuilder";
@@ -115,7 +115,40 @@ export class TransactionAnalizer{
                 uiList.push(divider())
             }
             else if(operation.type === 'invokeHostFunction'){
-                uiList.push(text('smartcontract call'));
+                uiList.push(heading('smartcontract call'));
+                console.log("funcVal is: ");
+                const funcVal = scValToNative(operation.func);
+                console.log(funcVal);
+                console.log("contract method name is: ");
+                const contractAddress = Address.fromScAddress(funcVal._attributes.contractAddress).toString();
+                console.log(contractAddress);
+                
+                uiList.push(
+                    text("Contract Address"),
+                    copyable(contractAddress),
+                )
+                //const xdrConverter = new xdr.XDRString(4294967295);
+                const methodName = Array.from(funcVal._attributes.functionName);
+                let methodString = '';
+                for(let i = 0; i<methodName.length; i++){
+                    methodString += String.fromCharCode(Number(methodName[i]));
+                }
+                console.log(methodString);
+                uiList.push(text('Method Name'));
+                uiList.push(text(methodString));
+                const args = Array.from(Array.from(funcVal._attributes.args).map(scValToNative));
+                uiList.push(text("Arguments"));
+                for(let i = 0; i<funcVal._attributes.args.length; i++){
+                    try{
+                        uiList.push(text(scValToNative(funcVal._attributes.args[i]).toString()));
+                    }
+                    catch(e){
+                        uiList.push(text("non native arg"));
+                    }
+                }
+                console.log(args);
+
+                console.log(operation);
             }
             else{
                 uiList.push(this._buildOperationUI(operation));
@@ -150,6 +183,7 @@ export class TransactionAnalizer{
             dispArray.push(divider());
             let operations = decodedTransaction._operations
             console.log(operations);
+
             for(const operation of operations){
                 let output = this._parseOperation(operation, value);
                 console.log(output);
