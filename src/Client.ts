@@ -1,4 +1,4 @@
-import { Transaction } from "stellar-base";
+import { FeeBumpTransaction, Transaction } from "stellar-base";
 import { SorobanRpc } from "./soroban_rpc";
 
 const testNetURL = "https://horizon-testnet.stellar.org"
@@ -114,7 +114,7 @@ export class Client{
         const info = await this.getAccount(address)
         return info.sequence
     }
-    async submitTransaction(transaction: Transaction){
+    async submitTransaction(transaction: Transaction | FeeBumpTransaction){
         const tx = encodeURIComponent(transaction.toEnvelope().toXDR().toString("base64"));
         const path = `transactions?tx=${tx}`;
         const response = await this.post(path);

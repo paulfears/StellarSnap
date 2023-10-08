@@ -6,6 +6,7 @@ import { TransactionBuilder, Transaction, FeeBumpTransaction, xdr, Operation, Ad
 import { Client } from "./Client";
 import { isSorobanTransaction, assembleTransaction } from "./sorobanTxn";
 import { TxnBuilder } from "./TxnBuilder";
+import { Asset } from "stellar-base";
 //import { toTxrep } from '@stellarguard/txrep';
 /**
  * 
@@ -49,24 +50,69 @@ async function resolveName(){
 
 }
 
+async function getAssetRating(client, asset){
+    let network;
+    try{
+        if(asset.issuer === '0'){
+            return `stellarexpert rating: 10`;
+        }
+        if(client.network === 'mainnet'){
+            network = 'public';
+        }
+        else{
+            network = client.network;
+        }
+        if(network === "futurenet"){
+            return 'futurenet asset';
+        }
+        const res = await fetch(`https://api.stellar.expert/explorer/${network}/asset/${asset.code+"-"+asset.issuer}/rating`)
+        let output = await res.json();
+        return `stellarexpert rating: ${output.rating.average}`;
+    }
+    catch(e){
+        console.log(e);
+        return 'rating not found'
+    }
+}
+
 export class TransactionAnalizer{
     client;
     constructor(client: Client){
         this.client = client;
     }
 
-    _buildOperationUI(operation:Operation): Array<any>{
+    async _buildOperationUI(operation:Operation): Promise<Array<any>>{
         let infoList = [];
-        infoList.push(text(operation.type));
+        infoList.push(heading(operation.type));
         infoList.push(divider());
+        console.log("build operation UI")
         for(let key in operation){
+            console.log("key");
+            console.log(key);
+            console.log(operation[key]);
             let value = operation[key];
             if(key === 'type'){
                 continue;
             }
-            else if(key === 'asset'){
-                console.log('typeof asset is: '+typeof(key))
-                infoList.push(text(`asset: ${value.code}`));
+            else if(value instanceof Asset){
+                if(!value.issuer){
+                    value.issuer = '0';
+                }
+                infoList.push(text('**'+key+'**'));
+                infoList.push(text(`${value.code}`));
+                infoList.push(copyable(value.issuer));
+                infoList.push(text(await getAssetRating(this.client, value)))
+                infoList.push(text("ㅤ"));
+            }
+            else if(value instanceof Uint8Array){
+                let outputString = "";
+                let outputBits = [];
+                infoList.push(text('**'+key+'**'));
+                for(let i = 0; i<value.byteLength; i++){
+                    outputString += (String.fromCharCode(value[i]));
+                    outputBits.push(value[i]);
+                }
+                infoList.push(text(outputString));
             }
             else if(key === 'path'){ 
                 value = Array.from(value.map((asset)=>asset.code)).join('->')
@@ -78,40 +124,43 @@ export class TransactionAnalizer{
                 infoList.push(copyable(value));
             }
             else{
-                infoList.push(key);
+                infoList.push(text('**'+key+'**'));
                 if(typeof value === 'string'){
                     infoList.push(text(value))
                 }
                 else if(typeof value === "object"){
-                    let objectParamList = [];
                     for(let param in value){
                         let subValue = value[param];
-                        objectParamList.push(text(param));
-                        objectParamList.push(text(String(subValue)))
+                        infoList.push(text("ㅤ"+param));
+                        infoList.push(text("ㅤ"+String(subValue)))
                     }
-                    infoList.push(panel(objectParamList));
+                    
                 }
                 else{
-                    infoList.push(String(value));
+                    infoList.push(text(String(value)));
                 }
             }
             
         }
+        console.log("final InfoList is");
+        for(let item of infoList){
+            console.log(item);
+        }
         return infoList
     }
 
-    _parseOperation(operation, currentValue): {uiList:Array<any>, currentValue:object}{
-        
+    async _parseOperation(operation, currentValue): {uiList:Array<any>, currentValue:object}{
+            console.log("operation is: ");
             console.log(operation);
             const uiList = [];
             if(operation.type === 'payment'){
-                uiList.push(text('payment'))
+                uiList.push(heading('payment'))
                 uiList.push(divider())
                 uiList.push(text(`${operation.amount} ${operation.asset.code}`))
                 uiList.push(copyable(operation.destination))
             }
             else if(operation.type === 'createAccount'){
-                uiList.push(text('createAccount'))
+                uiList.push(heading('createAccount'))
                 uiList.push(divider())
             }
             else if(operation.type === 'invokeHostFunction'){
@@ -151,7 +200,7 @@ export class TransactionAnalizer{
                 console.log(operation);
             }
             else{
-                uiList.push(this._buildOperationUI(operation));
+                uiList.push(... await this._buildOperationUI(operation));
             }
         return {uiList:[panel(uiList)], currentValue}
     }
@@ -185,10 +234,15 @@ export class TransactionAnalizer{
             console.log(operations);
 
             for(const operation of operations){
-                let output = this._parseOperation(operation, value);
+                let output = await this._parseOperation(operation, value);
                 console.log(output);
+                console.log("made it past parseOperation");
                 dispArray.push(...output.uiList);
+                dispArray.push(text("ㅤ"));
                 value = output.currentValue;
+            }
+            for(let item of dispArray){
+                console.log(item);
             }
 
             const confirmation = await Utils.displayPanel(panel(dispArray), "confirmation");

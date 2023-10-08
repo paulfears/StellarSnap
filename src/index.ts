@@ -81,9 +81,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       if(!wallet_funded){
         await Screens.RequiresFundedWallet(request.method, wallet.address);
       }
-      
-      //to do
-      return "null"
+      return await operations.signAndSubmitTransaction(params.transaction);
     case 'callContract':
       //to do
       return "null"

@@ -1,7 +1,7 @@
 <script lang="ts">
     import {snapId} from '../constants'
     import {Button} from 'flowbite-svelte'
-    import {connected} from '../store'
+    import {connected, address} from '../store'
     import {Modal} from 'flowbite-svelte'
     export let callback = async ()=>{}
     let flaskNotDetected:boolean;
@@ -32,6 +32,16 @@
         }
         await callback()
         connected.set(true);
+        const metamask_address = await window.ethereum.request({
+            method: 'wallet_invokeSnap',
+            params: {
+            snapId: snapId,
+            request: {
+                method: 'getAddress',
+            },
+            },
+        });
+        address.set(metamask_address);
         
     }
 </script>

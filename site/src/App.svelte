@@ -5,15 +5,18 @@
   import FunctionButton from './lib/functionButton.svelte';
   import FunctionContainer from './lib/functionContainer.svelte';
   import {ButtonGroup} from 'flowbite-svelte';
-  import {connected} from './store';
+  import {connected, network, address} from './store';
   import {snapId} from './constants';
   import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, TabItem, Tabs, Toggle} from 'flowbite-svelte';
   import CodeBucket from './lib/CodeBucket.svelte';
   import SorobanPage from './lib/SorobanPage.svelte';
   import { Chasing } from 'svelte-loading-spinners';
   import {fade} from 'svelte/transition'
+  import OperationForm from './TransactionBuilder/operationForm.svelte';
+  import TransactionMaker from './TransactionBuilder/transactionMaker.svelte';
+  import Wallet from './lib/Wallet.svelte';
   let funding = false;
-  let testnet = true;
+  let testnet = $network === "testnet"? true: false;
 
   function genreateCode(method, params){
     return `
@@ -51,7 +54,41 @@
       }
     funding = false;
     }
-    
+
+    function switchNetwork(){
+      console.log("here")
+      console.log($network)
+      if($network === 'mainnet'){
+        console.log("in side network === 'mainnet'")
+        network.set('testnet')
+        testnet = true;
+      }
+      else if($network === 'testnet'){
+        console.log("in side network === 'testnet'")
+        network.set('mainnet');
+        testnet = false;
+      }
+      console.log("network after swap is:");
+      console.log($network);
+      
+    }
+    async function signTxn(txnXDR){
+      console.log("here in sign transaction");
+      const signTransactionResult = await window.ethereum.request({
+            method: 'wallet_invokeSnap',
+            params: {
+            snapId: snapId,
+            request: {
+                method: 'signAndSubmitTransaction',
+                params:{
+                  transaction:txnXDR,
+                  testnet:testnet
+                }
+            },
+            },
+      });
+      console.log(signTransactionResult);
+    }
 </script>
 
 <style>
@@ -93,7 +130,8 @@
   <br>
   {#if $connected}
   <div transition:fade={{ delay: 0, duration: 300 }}>
-  <Toggle bind:checked={testnet}>Testnet</Toggle>
+    <Wallet/>
+  <Toggle checked on:change={switchNetwork}>Testnet</Toggle>
   <br/>
   <Tabs defaultClass="flex">
     <TabItem open>
@@ -202,6 +240,11 @@ async function signTransaction(){
     <TabItem >
       <span slot="title">Project Info</span>
       This project Utilizes Metamask snaps, This is code that runs inside of metamask secure execution enviroment, but is seemless from a user experence.
+    </TabItem>
+    <TabItem>
+      <span slot="title">Transaction Maker</span>
+      <OperationForm/>
+      <TransactionMaker callback={signTxn} address={$address} network={$network}/>
     </TabItem>
   </Tabs>
 </div>

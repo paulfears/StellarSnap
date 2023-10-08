@@ -56,5 +56,20 @@ export class WalletFuncs{
         console.log(txn.toEnvelope().toXDR());
         return txn;
     }
+
+    async signAndSubmitTransaction(xdrTransaction: xdr.Transaction){
+        console.log("inHere")
+        const signedTxn = await this.signArbitaryTxn(xdrTransaction);
+        console.log("next");
+        const response = await this.client.submitTransaction(signedTxn);
+        console.log("response got");
+        if(response.successful){
+            await Utils.notify("Transaction Successful")
+        }
+        else{
+            await Utils.notify("Transaction Failed");
+        }
+        return response;
+    }
     
 }
