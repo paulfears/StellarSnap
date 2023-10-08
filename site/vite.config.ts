@@ -5,7 +5,7 @@ import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfil
 import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill'
 import rollupNodePolyFill from 'rollup-plugin-node-polyfills'
 import { resolve } from "path";
-
+rollupNodePolyFill()
 export default defineConfig({
     plugins: [svelte()],
     optimizeDeps: {
