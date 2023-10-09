@@ -106,7 +106,11 @@ export class Client{
     }
     async getBalance(address: string){
         const info = await this.getAccount(address)
-        return info.balances[0].balance
+        return info.balances[info.balances.length-1].balance
+    }
+    async getAssets(address: string){
+        const info = await this.getAccount(address);
+        return info.balances;
     }
     async getSequence(address: string){
         console.log("getSequence");

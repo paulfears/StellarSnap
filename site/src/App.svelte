@@ -146,9 +146,9 @@
         <FunctionContainer code={genreateCode("getAccountInfo", {testnet})} params={{"testnet":testnet}} method="getAccountInfo">
           <p slot="title">Get Account Info</p>
         </FunctionContainer>
-        
-
-        
+        <FunctionContainer code={genreateCode("getAssets", {testnet})} params={{"testnet":testnet}} method="getAssets">
+          <p slot="title">Get Account Assets</p>
+        </FunctionContainer>
     </div>
       
     </TabItem>

@@ -15,7 +15,7 @@
     "snap.manifest.json"
   ],
   "scripts": {
-    "build": "cd site && yarn && yarn build . --outDir ../site_dist",
+    "build": "cd site && yarn && yarn build . --outDir ../site_dist --emptyOutDir true && cd .. && node postBuild.js",
     "build:clean": "yarn clean && yarn build",
     "build:website": "node ./scripts/build-website.js",
     "clean": "rimraf 'dist/*'",

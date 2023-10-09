@@ -60,6 +60,8 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
         return '0';
       }
       return await client.getBalance(wallet.address)
+    case 'getAssets':
+      return await client.getAssets(wallet.address);
     case 'transfer':
       if(!wallet_funded){
         await Screens.RequiresFundedWallet(request.method, wallet.address);
