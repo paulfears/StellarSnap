@@ -5,6 +5,9 @@ import { fund, Client } from './Client';
 import { TxnBuilder } from './TxnBuilder';
 import { WalletFuncs } from './WalletFuncs';
 import { Screens } from './screens';
+import {createFederationAccount} from './federation'
+
+
 export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => {
   const wallet = await getWallet();
   const params = request.params;
@@ -22,9 +25,13 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     console.log("testnet is true");
     client.setNetwork('testnet');
   }
-  if(params?.futurenet){
+  else if(params?.futurenet){
     console.log("futurenet is true");
     client.setNetwork('futurenet');
+  }
+  else{
+    console.log("network is mainnet");
+    client.setNetwork('mainnet');
   }
   try{
     console.log("attempting to fund wallet");
@@ -74,10 +81,6 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
         throw new Error('Method Requires Account to be funded');
       }
       const txn = await operations.signArbitaryTxn(params.transaction);
-      console.log("txn is: ");
-      console.log(txn);
-      console.log("xdr is: ");
-      console.log(txn.toXDR());
       return txn.toXDR();
     case 'signAndSubmitTransaction':
       if(!wallet_funded){
@@ -87,7 +90,9 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     case 'callContract':
       //to do
       return "null"
-    
+    case 'createFederationAccount':
+      return await createFederationAccount(wallet.keyPair, params.username);
+
     default:
       throw new Error('Method not found.');
   }

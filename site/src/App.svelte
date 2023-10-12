@@ -5,7 +5,7 @@
   import FunctionButton from './lib/functionButton.svelte';
   import FunctionContainer from './lib/functionContainer.svelte';
   import {ButtonGroup} from 'flowbite-svelte';
-  import {connected, network, address} from './store';
+  import {connected, network, address, testnet} from './store';
   import {snapId} from './constants';
   import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, TabItem, Tabs, Toggle} from 'flowbite-svelte';
   import CodeBucket from './lib/CodeBucket.svelte';
@@ -16,7 +16,6 @@
   import TransactionMaker from './TransactionBuilder/transactionMaker.svelte';
   import Wallet from './lib/Wallet.svelte';
   let funding = false;
-  let testnet = $network === "testnet"? true: false;
 
   function genreateCode(method, params){
     return `
@@ -61,12 +60,12 @@
       if($network === 'mainnet'){
         console.log("in side network === 'mainnet'")
         network.set('testnet')
-        testnet = true;
+        testnet.set(true);
       }
       else if($network === 'testnet'){
         console.log("in side network === 'testnet'")
         network.set('mainnet');
-        testnet = false;
+        testnet.set(false);
       }
       console.log("network after swap is:");
       console.log($network);
@@ -82,7 +81,7 @@
                 method: 'signAndSubmitTransaction',
                 params:{
                   transaction:txnXDR,
-                  testnet:testnet
+                  testnet:$testnet
                 }
             },
             },
@@ -137,17 +136,20 @@
     <TabItem open>
       <span slot="title">Query Stellar</span>
       <div  class="grid-container">
-        <FunctionContainer code={genreateCode("getAddress", {testnet})} params={{"testnet":testnet}} method="getAddress">
+        <FunctionContainer code={genreateCode("getAddress", {testnet:$testnet})} testnet={$testnet} method="getAddress">
           <p slot="title">Get Address of Wallet</p>
         </FunctionContainer>
-        <FunctionContainer code={genreateCode("getBalance", {testnet})} params={{"testnet":testnet}} method="getBalance">
+        <FunctionContainer code={genreateCode("getBalance", {testnet:$testnet})} testnet={$testnet} method="getBalance">
           <p slot="title">Get Balance of Wallet</p>
         </FunctionContainer>
-        <FunctionContainer code={genreateCode("getAccountInfo", {testnet})} params={{"testnet":testnet}} method="getAccountInfo">
+        <FunctionContainer code={genreateCode("getAccountInfo", {testnet:$testnet})} testnet={$testnet} method="getAccountInfo">
           <p slot="title">Get Account Info</p>
         </FunctionContainer>
-        <FunctionContainer code={genreateCode("getAssets", {testnet})} params={{"testnet":testnet}} method="getAssets">
+        <FunctionContainer code={genreateCode("getAssets", {testnet:$testnet})} testnet={$testnet} method="getAssets">
           <p slot="title">Get Account Assets</p>
+        </FunctionContainer>
+        <FunctionContainer method="createFederationAccount" code={genreateCode("createFederationAccount", {"username":"string"})} params={{"username":"string:myaccount"}}>
+          <p slot="title">create federation Account</p>
         </FunctionContainer>
     </div>
       
@@ -157,9 +159,10 @@
       <div class="flex">
       <div class="grow">
       <FunctionContainer 
-      code={genreateCode("transfer", {to:"GDPZOWVRHQV2SQ3N47CILKNU4NZQOXYDVXGKKJI32TVWIF7V7364G2QM", "amount":"1", testnet})}
+      code={genreateCode("transfer", {to:"GDPZOWVRHQV2SQ3N47CILKNU4NZQOXYDVXGKKJI32TVWIF7V7364G2QM", "amount":"1"})}
       
-      params={{"to":"string:GDPZOWVRHQV2SQ3N47CILKNU4NZQOXYDVXGKKJI32TVWIF7V7364G2QM", "amount":"number:0", testnet}} 
+      params={{"to":"string:GDPZOWVRHQV2SQ3N47CILKNU4NZQOXYDVXGKKJI32TVWIF7V7364G2QM", "amount":"number:0"}}
+      testnet={$testnet} 
       method="transfer">
         <p slot="title">TRANSFER XLM</p>
       </FunctionContainer>
@@ -216,7 +219,7 @@ async function signTransaction(){
       method: 'signTransaction',
       params:{
         transaction: xdrTransaction,
-        testnet: ${testnet}
+        testnet: ${$testnet}
       }
     }}
   });
@@ -226,7 +229,7 @@ async function signTransaction(){
 `}
         codeView={true}
         lockView={true}
-      params={{testnet}}>
+        testnet={$testnet}>
         <p slot="title">Sign Transaction</p>
         <br/>
       </FunctionContainer>
@@ -267,6 +270,4 @@ async function signTransaction(){
 
 
   {/if}
-
-
 

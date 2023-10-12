@@ -21,12 +21,9 @@ export class WalletFuncs{
     }
 
     async transfer(to:string, amount:string){
-        const txn = this.builder.buildPaymentTxn(to, amount);
-        const confirmed = await Screens.paymentConfirmation(to, amount);
-        if(!confirmed){
-            throw Error("User rejected Request");
-            return;
-        }
+        const txn:Transaction = this.builder.buildPaymentTxn(to, amount);
+        return this.signAndSubmitTransaction(txn.toXDR() as unknown as xdr.Transaction);
+        /*
         txn.sign(this.keyPair);
         const response = await this.client.submitTransaction(txn);
         console.log(response);
@@ -37,6 +34,7 @@ export class WalletFuncs{
             await Utils.notify("Transaction Failed")
         }
         return response;
+        */
     }
     
     transferAsset(){

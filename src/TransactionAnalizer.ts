@@ -42,16 +42,70 @@ Operation.liquidityPoolDeposit
 Operation.liquidityPoolWithdraw
  */
 
-async function resolveAsset(){
-
+async function getAddressInfo(addresses:string[]){
+    const possibleTags = [
+        "exchange",
+        "anchor",
+        "issuer",
+        "wallet",
+        "custodian",
+        "malicious",
+        "unsafe",
+        "personal",
+        "sdf",
+        "memo-required",
+        "airdrop",
+        "obsolete-inflation-pool"
+      ]
+    const url = `https://api.stellar.expert/explorer/directory?`;
+    let query=""
+    for(let address of addresses){
+        query+=`address[]=${address}&`
+    }
+    const response = await fetch(url+query);
+    const output = await response.json();
+    console.log(output);
+    return output._embedded.records;
 }
 
-async function resolveName(){
 
-}
-
-async function getAssetRating(client, asset){
+async function getAssetInfo(client:Client, asset:Asset){
     let network;
+    try{
+        if(asset.issuer === '0'){
+            return `stellarexpert rating: 10`;
+        }
+        if(client.network === 'mainnet'){
+            network = 'public';
+        }
+        else{
+            network = client.network;
+        }
+        if(network === "futurenet"){
+            return 'futurenet asset';
+        }
+        const res = await fetch(`https://api.stellar.expert/explorer/${network}/asset/?search=${asset.code+"-"+asset.issuer}/&limit=1`)
+        let output = await res.json();
+        console.log("getAssetInfo is: ");
+        console.log(output);
+        console.log("getAddressInfo");
+        const issuerInfo = await getAddressInfo([asset.issuer]);
+        console.log(issuerInfo);
+        console.log(output._embedded.records);
+        return output;
+    }
+    catch(e){
+        console.log(e);
+        return 'asset not found'
+    }
+}
+
+async function getAssetRating(client:Client, asset:Asset){
+    let network;
+    //reme,ber this is here
+    console.log("client is: ");
+    console.log(client);
+    console.log(await getAssetInfo(client, asset));
     try{
         if(asset.issuer === '0'){
             return `stellarexpert rating: 10`;
@@ -77,8 +131,72 @@ async function getAssetRating(client, asset){
 
 export class TransactionAnalizer{
     client;
+    requiresMemo:boolean;
+    dangerous:boolean;
     constructor(client: Client){
         this.client = client;
+    }
+
+    async buildAddressBlock(address:string):Promise<Panel>{
+        try{
+            const addressInfo = (await getAddressInfo([address]))[0];
+
+            const outputUI = []
+            let tagsString = ""
+            let okay = true;
+            if(addressInfo === undefined){
+                outputUI.push(copyable(address));
+                return panel(outputUI);
+            }
+            if(addressInfo.tags){
+                const tags = Array.from(addressInfo.tags);
+                if(tags.includes('malicious')){
+                    this.dangerous = true;
+                    okay = false;
+                    outputUI.push(heading("⚠️Malicious Address⚠️"))
+                }
+                if(tags.includes('unsafe')){
+                    outputUI.push(heading("⚠️Unsafe Address⚠️"))
+                    okay = false;
+                    this.dangerous = true;
+                }
+                if(tags.includes('memo-required')){
+                    this.requiresMemo = true;
+                    outputUI.push(text("requires memo"));
+                }
+                tagsString = "["+tags.join(",")+"]"
+            }
+            if(addressInfo.name && addressInfo.domain){
+                outputUI.push(text(`${addressInfo.name} - ${addressInfo.domain} ${okay?"✅":"⚠️"}`))
+            }
+            else if(addressInfo.name && !addressInfo.domain){
+                outputUI.push(text(`${addressInfo.name} ${okay?"✅":"⚠️"}`))
+            }
+            else if(addressInfo.domain && !addressInfo.name){
+                outputUI.push(text(`${addressInfo.domain} ${okay?"✅":"⚠️"}`))
+            }
+            outputUI.push(copyable(address));
+            outputUI.push(text("tags:"));
+            outputUI.push(text(tagsString));
+
+            return panel(outputUI);
+        }
+        catch(e){
+            console.log(e);
+            return panel([copyable(address)]);
+        }
+    }
+
+    async buildAssetBlock(asset:Asset): Promise<Panel>{
+        if(!asset.issuer){
+            asset.issuer = '0';
+        }
+        const infoList = [];
+        infoList.push(text(`${asset.code}`));
+        infoList.push(copyable(asset.issuer));
+        infoList.push(text(await getAssetRating(this.client, asset)))
+        infoList.push(text("ㅤ"));
+        return panel(infoList);
     }
 
     async _buildOperationUI(operation:Operation): Promise<Array<any>>{
@@ -121,7 +239,7 @@ export class TransactionAnalizer{
             }
             else if(key === 'destination'){
                 infoList.push(text('destination'));
-                infoList.push(copyable(value));
+                infoList.push(await this.buildAddressBlock(value));
             }
             else{
                 infoList.push(text('**'+key+'**'));
@@ -149,15 +267,16 @@ export class TransactionAnalizer{
         return infoList
     }
 
-    async _parseOperation(operation, currentValue): {uiList:Array<any>, currentValue:object}{
+    async _parseOperation(operation, currentValue): Promise<{uiList:Array<any>, currentValue:object}>{
             console.log("operation is: ");
             console.log(operation);
             const uiList = [];
             if(operation.type === 'payment'){
                 uiList.push(heading('payment'))
                 uiList.push(divider())
-                uiList.push(text(`${operation.amount} ${operation.asset.code}`))
-                uiList.push(copyable(operation.destination))
+                uiList.push(text(`${operation.amount} ${operation.asset.code}`));
+                currentValue[operation.asset.code] += Number(operation.amount);
+                uiList.push(await this.buildAddressBlock(operation.destination))
             }
             else if(operation.type === 'createAccount'){
                 uiList.push(heading('createAccount'))

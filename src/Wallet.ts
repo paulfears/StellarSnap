@@ -17,6 +17,10 @@ export class Wallet{
         this.publicKey = this.keyPair.rawPublicKey();
         console.log(this.publicKey);
     }
+
+    async getKeyPair(): Promise<Keypair>{
+        return this.keyPair;
+    }
     
     async getBaseAccount(client: Client): Promise<Account>{
         console.log(client);

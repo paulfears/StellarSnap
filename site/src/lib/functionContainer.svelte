@@ -6,6 +6,7 @@
   import CodeBucket from './CodeBucket.svelte';
     export let method:string;
     export let params = {};
+    export let testnet:boolean = false;
     export let output_style: string | object = "";
     export let card_style: string | object = "";
     export let button_style: string | object = "";
@@ -67,6 +68,7 @@
     let results:any = "";
     async function callSnap(){
         loading = true;
+        newParams['testnet'] = testnet;
         try{
         results = JSON.stringify(await window.ethereum.request({
             method: 'wallet_invokeSnap',
@@ -92,6 +94,7 @@
         word-break:break-all
     }
 </style>
+<key params>
 <Card size='lg'>
     <div style="position:relative;">
     <slot name="title"/>
@@ -140,3 +143,4 @@
     <CodeBucket code={code}/>
     {/if}
 </Card>
+</key>
