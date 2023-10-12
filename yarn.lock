@@ -1183,11 +1183,11 @@
     yargs "^16.2.0"
 
 "@metamask/approval-controller@^3.5.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@metamask/approval-controller/-/approval-controller-3.5.1.tgz#8d5099b7f0989d56b815a1423f395a15bf6bf056"
-  integrity sha512-9E57KyuhHkb4REt7j0XULXwXeKJC//sJkFFweddAH3Ak3Ec0YLFrkQoieWTDiaOthA4b5w9eL+B3gw5J4lAr5A==
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@metamask/approval-controller/-/approval-controller-3.5.2.tgz#c8ca4578f053d719bff82b0c9fa1939d21978d46"
+  integrity sha512-5jYMtPexeeNL8m+5Mzhayr1l367MbbBs0Wf+FBeL/xLv6nSNqvvNs/CXfvkqxLDZJKIgBCBPKg7eIu1U6MJ6ag==
   dependencies:
-    "@metamask/base-controller" "^3.2.1"
+    "@metamask/base-controller" "^3.2.2"
     "@metamask/utils" "^6.2.0"
     eth-rpc-errors "^4.0.2"
     immer "^9.0.6"
@@ -1207,6 +1207,14 @@
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/@metamask/base-controller/-/base-controller-3.2.1.tgz#9bed5764e786280eccb16a6d1f6582c0f9200871"
   integrity sha512-KGMh2c9Lt/wHw+lHx7Mk/2uEqf1PKET+lc4R5UHmZ8HuasilhvVqvv/eoiUDBahoIRnK60zCbbclnc3VdnsScw==
+  dependencies:
+    "@metamask/utils" "^6.2.0"
+    immer "^9.0.6"
+
+"@metamask/base-controller@^3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@metamask/base-controller/-/base-controller-3.2.2.tgz#c050055b6a235039aeda99375b66e162c4cee809"
+  integrity sha512-5aUI+q+CkrifITDg2r+vYkWGZ0dmBM842sZWxrADRuRPliAl2GCW2Sh4dYIJRWTy4YiGLvLA8FeACRcchQ3onQ==
   dependencies:
     "@metamask/utils" "^6.2.0"
     immer "^9.0.6"
