@@ -7,7 +7,7 @@
     "url": "https://github.com/paulfears/StellarSnap.git"
   },
   "source": {
-    "shasum": "PCw4K29u8hsTmBpzvaNzqP88mg/YWjWEHCqP8bAvixo=",
+    "shasum": "NhWhvlP/ygR2FZ39/GYFBJRla+RPsv7ZdKe9J/7kYcc=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
@@ -26,7 +26,17 @@
       "snaps": true
     },
     "snap_getEntropy": {},
-    "endowment:network-access": {}
+    "endowment:network-access": {},
+    "endowment:cronjob": {
+      "jobs": [
+        {
+          "expression": "* * * * *",
+          "request": {
+            "method": "NotificationEngine"
+          }
+        }
+      ]
+    }
   },
   "manifestVersion": "0.1"
 }

@@ -6,7 +6,36 @@ import { TxnBuilder } from './TxnBuilder';
 import { WalletFuncs } from './WalletFuncs';
 import { Screens } from './screens';
 import {createFederationAccount} from './federation'
+import { NotificationEngine } from './notificationEngine';
 
+import { OnCronjobHandler } from '@metamask/snaps-types';
+
+export const onCronjob: OnCronjobHandler = async ({ request }) => {
+  const wallet = await getWallet();
+  const keyPair = wallet.keyPair;
+  const mainnet_client = new Client("mainnet");
+  const engine = new NotificationEngine(mainnet_client, wallet);
+  switch (request.method) {
+    case 'NotificationEngine':{
+      console.log("notification check");
+      await engine.checkForNotifications();
+      return null;
+      /*
+      return snap.request({
+        method: 'snap_notify',
+        params: {
+          type: 'native',
+          message: `Hello, world!`,
+        },
+      });
+      */
+    }
+
+
+    default:
+      throw new Error('Method not found.');
+  }
+};
 
 export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => {
   const wallet = await getWallet();

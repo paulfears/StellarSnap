@@ -40,19 +40,7 @@ export class Client{
     network: string;
 
     constructor(network?:'mainnet'|'testnet'|'futurenet'){
-        this.network = network;
-        if(network === 'testnet'){
-            this.currentPassphrase = this.TestnetPassphrase
-            this.endPoint = testNetURL;
-        }
-        else if(network === 'futurenet'){
-            this.currentPassphrase = this.FuturenetPassphrase
-            this.endPoint = futureNetURL
-        }
-        else{
-            this.currentPassphrase = this.MainnetPassphrase
-            this.endPoint = mainNetURL;
-        }
+        this.setNetwork(network);
     }
 
     setNetworkPassphrase(networkPasspharse: string){
@@ -108,8 +96,11 @@ export class Client{
         const info = await this.getAccount(address)
         return info.balances[info.balances.length-1].balance
     }
+    
     async getAssets(address: string){
-        const info = await this.getAccount(address);
+        let info = await this.getAccount(address);
+        info.balances[info.balances.length-1].asset_code = "XLM";
+        info.balances[info.balances.length-1].issuer = "native";
         return info.balances;
     }
     async getSequence(address: string){

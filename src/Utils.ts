@@ -21,13 +21,6 @@ export default class Utils {
 
     static async notify(message: string): Promise<boolean>{
         try{
-            await snap.request({
-                method: 'snap_notify',
-                params: {
-                  type: 'inApp',
-                  message: message,
-                },
-            });
             
             const result = await snap.request({
                 method: 'snap_notify',
@@ -39,11 +32,17 @@ export default class Utils {
             return true;
         }
         catch(e){
-            console.log("error - ")
             console.log(e);
-            await Utils.sendConfirmation("alert", "notifcation", message);
-            return false;
+            await snap.request({
+                method: 'snap_notify',
+                params: {
+                  type: 'inApp',
+                  message: message,
+                },
+              });
+            return true;
         }
+
 
         
     }
