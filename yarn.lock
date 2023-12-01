@@ -1354,9 +1354,11 @@
     immer "^9.0.6"
 
 "@metamask/browser-passworder@^4.0.2":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@metamask/browser-passworder/-/browser-passworder-4.1.0.tgz#d515db2ffd69ecab813a688e2b7553f2766c5e79"
-  integrity sha512-FBvah1mPte5HudQdkgqAh2+Zc75T9kYxey+dCtHIj9gKohkHDcIA1bTOPLk0bBH+6PnOzYNPG8devvH04GOmPA==
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@metamask/browser-passworder/-/browser-passworder-4.3.0.tgz#62c200750efcea864bd31d685120331859e1ab1e"
+  integrity sha512-RU1TVVV5DkbZRr6zPYg0NkexZ0/T2LCKNvF3A50jvUweyxDFuoNbSTN6z8K3Fy8O6/X2JQ1yyAbVzxZLq0qrGg==
+  dependencies:
+    "@metamask/utils" "^8.2.0"
 
 "@metamask/controller-utils@^4.3.2":
   version "4.3.2"
