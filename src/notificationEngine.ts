@@ -13,7 +13,7 @@ export class NotificationEngine{
     }
 
     async checkForNotifications(){
-        const mainNetBalances = await this.client.get(this.wallet.address);
+        const mainNetBalances = await this.client.getAssets(this.wallet.address);
         this.client.setNetwork("testnet")
         const testNetBalances = await this.client.getAssets(this.wallet.address);
         console.log(mainNetBalances);
@@ -24,6 +24,7 @@ export class NotificationEngine{
         console.log("new assets");
         console.log(testNetBalances);
         await this.handleAssetNotifications(currentState.assets.testnet, testNetBalances, currentState, "testnet");
+        await this.handleAssetNotifications(currentState.assets.mainnet, mainNetBalances, currentState, "mainnet");
         
     }
 

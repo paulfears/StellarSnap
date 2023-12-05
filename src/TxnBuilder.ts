@@ -39,6 +39,35 @@ export class TxnBuilder{
     return transaction;
   }
 
+  buildCreateTxn(destination: string, amount: string, fee?:string): Transaction{
+    if(!fee){
+      console.log("no Fee provided");
+      fee = "1000"
+    }
+    const transactionBuilder = new TransactionBuilder(this.account, {fee, networkPassphrase: Networks.TESTNET })
+    console.log("transaction initialized");
+    console.log(transactionBuilder);
+    transactionBuilder
+    /*
+    .addOperation(Operation.createAccount({
+        destination: destinationA,
+        startingBalance: "20"
+    })) // <- funds and creates destinationA
+    */
+    .addOperation(
+      Operation.createAccount({
+        destination: destination,
+        startingBalance: amount,
+      }),
+    ) // <- sends 100 XLM to destinationB
+    .setTimeout(30)
+    console.log(transactionBuilder);
+    const transaction = transactionBuilder.build();
+    console.log(transaction);
+    console.log(transaction.toXDR());
+    return transaction;
+  }
+
   buildPaymentTxn(destination: string, amount: string, fee?:string): Transaction{
     if(!fee){
       console.log("no fee provided")
