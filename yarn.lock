@@ -1513,7 +1513,7 @@
     pump "^3.0.0"
     webextension-polyfill-ts "^0.25.0"
 
-"@metamask/providers@^14.0.1":
+"@metamask/providers@^14.0.2":
   version "14.0.2"
   resolved "https://registry.yarnpkg.com/@metamask/providers/-/providers-14.0.2.tgz#683c43ed1f58075b8238b85e7c585ecefe484f0b"
   integrity sha512-6KuCLQVzE/8IA1r8LkTo0FbG4fgm7ryjzleda0lMsz5XMxinNGuXAoh7Y08bX5OHVpDEjkHREPhuLw4dFK9wIQ==
@@ -1694,12 +1694,12 @@
     superstruct "^1.0.3"
 
 "@metamask/snaps-sdk@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@metamask/snaps-sdk/-/snaps-sdk-1.2.0.tgz#1cd7547cd3c4f5c830776d8091c4873b7763acce"
-  integrity sha512-fAN/t2X9ernX7zA6QPMgsZhDbNitSVThU5jkmZz8hbLdqrix6vzFS2UybynXTiZlUteXGdpVykZpw5w9YnfYUg==
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@metamask/snaps-sdk/-/snaps-sdk-1.3.0.tgz#15be6a41df99a93818173d84cd6d6e8e92256b5f"
+  integrity sha512-uDAz4FBKUN8WiRERKnGQ7JWzQ4a3VwQ5Q7x6kEhPNZ948AQDAOGvXyo21qCOUOU9zvBBiUl7HyaYUtDzBeLnQA==
   dependencies:
     "@metamask/key-tree" "^9.0.0"
-    "@metamask/providers" "^14.0.1"
+    "@metamask/providers" "^14.0.2"
     "@metamask/rpc-errors" "^6.1.0"
     "@metamask/utils" "^8.2.1"
     is-svg "^4.4.0"
