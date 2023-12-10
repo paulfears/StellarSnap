@@ -21,7 +21,14 @@ export class WalletFuncs{
     }
 
     async transfer(to:string, amount:string){
-        const txn:Transaction = this.builder.buildPaymentTxn(to, amount);
+        const account_exists = await this.client.checkAccountExists(to);
+        let txn:Transaction;
+        if(account_exists){
+        txn = this.builder.buildPaymentTxn(to, amount);
+        }
+        else{
+            txn = this.builder.createAccountTxn(to, amount);
+        }
         return this.signAndSubmitTransaction(txn.toXDR() as unknown as xdr.Transaction);
         /*
         txn.sign(this.keyPair);

@@ -89,8 +89,23 @@ export class Client{
         console.log("getAccount");
         console.log(address);
         const data = await this.get(`accounts/${address}`);
-        console.log(data);
         return data
+    }
+
+    async checkAccountExists(address: string):Promise<boolean>{
+        const data = await this.getAccount(address);
+        if(data.status){
+            console.log("data has status property");
+            if(data.status === 404){
+                return false;
+            }
+            else{
+                
+                throw new Error(data);
+            }
+        }
+        console.log("data does NOT have status property");
+        return true
     }
     async getBalance(address: string){
         const info = await this.getAccount(address)

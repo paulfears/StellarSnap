@@ -279,8 +279,19 @@ export class TransactionAnalizer{
                 uiList.push(await this.buildAddressBlock(operation.destination))
             }
             else if(operation.type === 'createAccount'){
+                //check account has not already been created
+                //check valid address
                 uiList.push(heading('createAccount'))
                 uiList.push(divider())
+                uiList.push(text(`destination:`))
+                uiList.push(await this.buildAddressBlock(operation.destination));
+                uiList.push(text(`balance: ${operation.startingBalance}`));
+                console.log("operation value is: ");
+
+                for(let key in operation){
+                    console.log(key);
+                    console.log(operation[key]);
+                }
             }
             else if(operation.type === 'invokeHostFunction'){
                 uiList.push(heading('smartcontract call'));
