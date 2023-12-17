@@ -151,6 +151,12 @@
         <FunctionContainer method="createFederationAccount" code={genreateCode("createFederationAccount", {"username":"string"})} params={{"username":"string:myaccount"}}>
           <p slot="title">create federation Account</p>
         </FunctionContainer>
+        <FunctionContainer method="lookUpFedAddress" code={genreateCode("lookUpFedAddress", {"address":"string"})} params={{"address":"string:"}}>
+          <p slot="title">look up federation address</p>
+        </FunctionContainer>
+        <FunctionContainer method="getWalletName" code={genreateCode("getWalletName", {})} params={{}}>
+          <p slot="title">get the federation name of the wallet</p>
+        </FunctionContainer>
     </div>
       
     </TabItem>

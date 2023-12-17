@@ -109,11 +109,17 @@ export class Client{
     }
     async getBalance(address: string){
         const info = await this.getAccount(address)
+        if(info.status){
+            return [];
+        }
         return info.balances[info.balances.length-1].balance
     }
     
     async getAssets(address: string){
         let info = await this.getAccount(address);
+        if(info.status){
+            return [];
+        }
         info.balances[info.balances.length-1].asset_code = "XLM";
         info.balances[info.balances.length-1].issuer = "native";
         return info.balances;

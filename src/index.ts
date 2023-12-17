@@ -5,10 +5,12 @@ import { fund, Client } from './Client';
 import { TxnBuilder } from './TxnBuilder';
 import { WalletFuncs } from './WalletFuncs';
 import { Screens } from './screens';
-import {createFederationAccount} from './federation'
+import {createFederationAccount, lookupAddress, lookupFedAccount} from './federation'
 import { NotificationEngine } from './notificationEngine';
 
 import { OnCronjobHandler } from '@metamask/snaps-types';
+import { parseRawSimulation } from './sorobanTxn';
+
 
 export const onCronjob: OnCronjobHandler = async ({ request }) => {
   const wallet = await getWallet();
@@ -84,6 +86,13 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       return wallet.address
     case 'fund':
       return await fund(wallet);
+    case 'getWalletName':
+      const res = await lookupAddress(wallet.address);
+      return res.stellar_address;
+    case 'lookUpFedAddress':
+        return await lookupAddress(params.address);
+    case 'lookUpFedName':
+        return await lookupFedAccount(params.url);
     // -------------------------------- Methods That Require a funded Account ------------------------------------------
     case 'getAccountInfo':
       if(!wallet_funded){

@@ -162,7 +162,7 @@ export class TransactionAnalizer{
                 }
                 if(tags.includes('memo-required')){
                     this.requiresMemo = true;
-                    outputUI.push(text("requires memo"));
+                    outputUI.push(text("⚠️requires memo"));
                 }
                 tagsString = "["+tags.join(",")+"]"
             }
@@ -176,6 +176,9 @@ export class TransactionAnalizer{
                 outputUI.push(text(`${addressInfo.domain} ${okay?"✅":"⚠️"}`))
             }
             outputUI.push(copyable(address));
+            if(! await this.client.checkAccountExists()){
+                outputUI.push(text("⚠️Account does not exist yet"));
+            }
             outputUI.push(text("tags:"));
             outputUI.push(text(tagsString));
 
