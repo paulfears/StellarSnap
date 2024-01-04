@@ -31,6 +31,9 @@ export const onCronjob: OnCronjobHandler = async ({ request }) => {
 };
 
 export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => {
+  if(request.method === "clearState"){
+    await StateManager.clearState()
+  }
   const wallet = await Wallet.getCurrentWallet();
   console.log("wallet is");
   console.log(wallet);
@@ -39,7 +42,9 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
   let baseAccount;
 
   const keyPair = wallet.keyPair;
+  console.log("about to init client");
   const client = new Client();
+  console.log("client init");
   console.log(request);
   console.log(params);
   if(params?.testnet && params?.futurenet){

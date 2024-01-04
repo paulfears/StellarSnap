@@ -14,12 +14,16 @@ export class Wallet{
         this.currentState = currentState;
         if(account.type === "generated"){
             //this.keyPair = nacl.sign.keyPair.fromSeed(seed);
+            console.log("seeding");
             const seed = account.seed;
+            console.log(seed);
             let bufferSeed = new Uint8Array(32);
             for(let i = 0; i<32; i++){
                 bufferSeed[i] = seed[i];
             }
+            console.log("about to make keyPair");
             this.keyPair = Keypair.fromRawEd25519Seed(bufferSeed as Buffer);
+            console.log(this.keyPair);
             //this.address = StrKey.encodeEd25519PublicKey(this.keyPair.publicKey.buffer);
             this.address = this.keyPair.publicKey();
             //this.publicKey = this.keyPair.publicKey
@@ -151,12 +155,15 @@ export class Wallet{
         const seed = await this.getSeedFromSalt(salt);
         let keyPair = Keypair.fromRawEd25519Seed(seed as Buffer);
         //this.address = StrKey.encodeEd25519PublicKey(this.keyPair.publicKey.buffer);
+        console.log("seed is");
+        console.log(seed);
         const address = keyPair.publicKey();
         const account:walletAccount = {
             address:address,
             name:"temp",
             type:'generated',
             salt:salt,
+            seed:seed,
             assets:{
                 'mainnet':[],
                 'testnet':[]
