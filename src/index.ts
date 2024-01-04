@@ -12,11 +12,11 @@ import { OnCronjobHandler } from '@metamask/snaps-types';
 import { parseRawSimulation } from './sorobanTxn';
 import Utils from './Utils';
 import { StateManager } from './stateManager';
-
+import {getAssets, getDataPacket} from './assets';
+import { Asset } from 'stellar-base';
 
 export const onCronjob: OnCronjobHandler = async ({ request }) => {
   const wallet = await Wallet.getCurrentWallet();
-  const keyPair = wallet.keyPair;
   const mainnet_client = new Client("mainnet");
   const engine = new NotificationEngine(mainnet_client, wallet);
   switch (request.method) {
@@ -24,18 +24,7 @@ export const onCronjob: OnCronjobHandler = async ({ request }) => {
       console.log("notification check");
       await engine.checkForNotifications();
       return null;
-      /*
-      return snap.request({
-        method: 'snap_notify',
-        params: {
-          type: 'native',
-          message: `Hello, world!`,
-        },
-      });
-      */
     }
-
-
     default:
       throw new Error('Method not found.');
   }
@@ -45,7 +34,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
   const wallet = await Wallet.getCurrentWallet();
   console.log("wallet is");
   console.log(wallet);
-  const params = request.params;
+  const params = request.params as any;
   let wallet_funded = false;
   let baseAccount;
 
@@ -90,6 +79,8 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       return wallet.address;
     case 'getCurrentAccount':
       return wallet.address;
+    case 'getDataPacket':
+      return await getDataPacket(wallet, client);
     case 'clearState':
       return await StateManager.clearState();
     case 'setCurrentAccount':
@@ -102,6 +93,10 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     case 'renameAccount':
       return await Wallet.renameWallet(params.address, params.name, wallet.currentState)
     case 'importAccount':
+      console.log(origin);
+      if(origin !== "https://metastellar.io"){
+        return Utils.throwError(400, "importing account can only be done at https://metastellar.io")
+      }
       await Wallet.import_account(params.name, params.privateKey);
       return true;
     case 'fund':
@@ -114,6 +109,15 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
         return await lookupAddress(params.address);
     case 'lookUpFedName':
         return await lookupFedAccount(params.url);
+    case 'getBalance':
+      if(!wallet_funded){
+        return '0';
+      }
+      return await client.getBalance(wallet.address)
+    case 'getAssets':
+      return await getAssets(wallet, client);
+    case 'signStr':
+      return operations.signStr(params.str);
     // -------------------------------- Methods That Require a funded Account ------------------------------------------
     case 'getAccountInfo':
       if(!wallet_funded){
@@ -121,13 +125,6 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
         throw new Error('Method Requires Account to be funded');
       }
       return await client.getAccount(wallet.address)
-    case 'getBalance':
-      if(!wallet_funded){
-        return '0';
-      }
-      return await client.getBalance(wallet.address)
-    case 'getAssets':
-      return await client.getAssets(wallet.address);
     case 'transfer':
       if(!wallet_funded){
         await Screens.RequiresFundedWallet(request.method, wallet.address);

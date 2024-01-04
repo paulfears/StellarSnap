@@ -1,6 +1,4 @@
 globalThis.Buffer = require('buffer/').Buffer
-const nacl = require('tweetnacl');
-import {StrKey} from './strKey';
 import { Account, Keypair } from 'stellar-base';
 import { Client } from './Client';
 import { StateManager, walletAccount, State} from './stateManager';

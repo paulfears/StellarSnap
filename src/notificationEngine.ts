@@ -16,13 +16,7 @@ export class NotificationEngine{
         const mainNetBalances = await this.client.getAssets(this.wallet.address);
         this.client.setNetwork("testnet")
         const testNetBalances = await this.client.getAssets(this.wallet.address);
-        console.log(mainNetBalances);
-        console.log(testNetBalances);
         let currentState:State = await StateManager.getState();
-        console.log("current assets");
-        console.log(currentState.assets.testnet);
-        console.log("new assets");
-        console.log(testNetBalances);
         const currentAccountAddr = currentState.currentAccount;
         let currentBalances = currentState.accounts[currentAccountAddr].assets;
         await this.handleAssetNotifications(currentBalances.testnet, testNetBalances, currentState, "testnet");
@@ -34,7 +28,6 @@ export class NotificationEngine{
       let outputItems = {}
       function findIncreasedBalanceOrNewObjects(prevAssets, currentAssets) {
         // Create a map of issuer to balance from the first array
-        console.log("here");
         const balanceMap = new Map();
         prevAssets.forEach((item) => {
           console.log(item);
@@ -54,23 +47,18 @@ export class NotificationEngine{
           if(item.asset_type === "native"){
             item.issuer = "native";
           }
-          console.log("inside filter function");
           const balanceInArray1 = balanceMap.get(item.issuer);
           if (balanceInArray1 === undefined) {
             // If the issuer is not in the first array, it's a new object
             outputItems[item.issuer] = {asset: item, "diff":item.balance}
             return true;
           }
-          console.log("about to return bool");
           outputItems[item.issuer] = {asset:item, "diff":item.balance - balanceInArray1}
           return item.balance > balanceInArray1;
         });
-        
-        console.log("--------------------------------------------- asset diff ------------------------------------------");
-        console.log(result);
         return Array.from(result);
       }
-      const diffAssets = findIncreasedBalanceOrNewObjects(prevAssets, currentAssets);
+      const diffAssets:any = findIncreasedBalanceOrNewObjects(prevAssets, currentAssets);
       console.log(diffAssets);
       if(diffAssets.length === 0){
         return true;
@@ -81,13 +69,16 @@ export class NotificationEngine{
       if(diffAssets.length < 4){
         for(let i = 0; i<diffAssets.length; i++){
           let itemInfo = outputItems[diffAssets[i].issuer]
-          console.log(itemInfo.asset);
-          console.log(itemInfo.asset.asset_code);
-          await Utils.notify(`recived ${itemInfo.diff} ${network} ${itemInfo.asset.asset_code}`)
+          if(itemInfo.diff < 0){
+            await Utils.notify(`spent ${itemInfo.diff} ${network} ${itemInfo.asset.asset_code}`)
+          }
+          else{
+            await Utils.notify(`recived ${itemInfo.diff} ${network} ${itemInfo.asset.asset_code}`)
+          }
         }
       }
       else{
-        await Utils.notify(`received ${diffAssets.length} ${network} assets`);
+        await Utils.notify(`${diffAssets.length} ${network} assets updated`);
       }
     }
 

@@ -50,6 +50,15 @@ export class WalletFuncs{
 
     }
 
+    signStr(str:string){
+        const proof = this.keyPair.sign(Buffer.from('createaccount')).toString()
+        return {
+            pk: this.keyPair.publicKey(),
+            sig: proof,
+            msg: str
+        }
+    }
+
     async signArbitaryTxn(xdrTransaction): Promise<Transaction<Memo<MemoType>, Operation[]> | FeeBumpTransaction>{
         
         let txn = TransactionBuilder.fromXDR(xdrTransaction, this.client.currentPassphrase);
