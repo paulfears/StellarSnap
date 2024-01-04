@@ -1,12 +1,14 @@
 import { FeeBumpTransaction, Transaction } from "stellar-base";
 import { SorobanRpc } from "./soroban_rpc";
+import { Wallet } from "./Wallet";
 
 const testNetURL = "https://horizon-testnet.stellar.org"
 const mainNetURL = "https://horizon.stellar.org"
 const futureNetURL =  "https://horizon-futurenet.stellar.org"
 const soroban_future_RPC = "https://rpc-futurenet.stellar.org:443"
 const soroban_test_RPC = "https://soroban-testnet.stellar.org:443"
-export async function fund(wallet){
+export async function fund(wallet:Wallet){
+    console.log("funding account");
     console.log("wallet Address is: ");
     console.log(wallet.address);
     const response = await fetch(
@@ -37,7 +39,7 @@ export class Client{
     TestnetPassphrase = 'Test SDF Network ; September 2015'
     FuturenetPassphrase = 'Test SDF Future Network ; October 2022'
     currentPassphrase: string;
-    network: string;
+    network: 'mainnet' | 'testnet' | 'futurenet'
 
     constructor(network?:'mainnet'|'testnet'|'futurenet'){
         this.setNetwork(network);

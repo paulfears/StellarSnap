@@ -5,7 +5,7 @@
     import { Select, Label } from 'flowbite-svelte';
     import {OperationParams} from './operations';
     import OperationForm from './operationForm.svelte';
-    import {TransactionBuilder, Operation, BASE_FEE, Server, Networks, Asset} from 'stellar-sdk';
+    import {TransactionBuilder, Operation, BASE_FEE, Horizon, Networks, Asset} from 'stellar-sdk';
   import AssetSelect from "./AssetSelect.svelte";
     export let network: "mainnet" | "testnet" = "mainnet";
     export let address:string;
@@ -34,10 +34,13 @@
         console.log(operations)
         const passpharase = network === 'testnet'?Networks.TESTNET : 'Public Global Stellar Network ; September 2015'
         
-        const server = new Server(network === 'testnet'?'https://horizon-testnet.stellar.org':'https://horizon.stellar.org');
+        const server = new Horizon.Server(network === 'testnet'?'https://horizon-testnet.stellar.org':'https://horizon.stellar.org');
         const account = await server.loadAccount(address);
         const txnBuilder = new TransactionBuilder(account, {fee:BASE_FEE, networkPassphrase: passpharase});
         for(let operation of operations){
+            console.log(operation);
+            console.log(operation.type);
+            console.log(operation.params);
             txnBuilder.addOperation(Operation[operation.type](operation.params))
         }
         console.log(txnBuilder);

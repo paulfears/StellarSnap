@@ -5,7 +5,6 @@
     import {snapId} from '../constants';
     import "brace/mode/javascript";
     import "brace/theme/chrome";
-    
     async function executeCode(){
         const total_code = (code+bottom_code);
         await eval(total_code)
@@ -24,23 +23,25 @@ async function callContract(address, method, args) {
       })
   console.log("get address result");
   console.log(sourcePublicKey);
-  const server = new SorobanClient.Server('https://soroban-testnet.stellar.org:443');
-
+  console.log("stellar sdk is");
+  console.log(StellarSdk);
+  const SorobanServer = new StellarSdk.SorobanRpc.Server('https://soroban-testnet.stellar.org:443');
+  const HorizonServer = new StellarSdk.Horizon.Server('https://horizon-testnet.stellar.org/');
   console.log("getting account")
-  const account = await server.getAccount(sourcePublicKey);
+  const account = await HorizonServer.loadAccount(sourcePublicKey);
   console.log("account is: ")
   console.log(account);
 
-  console.log(SorobanClient);
+  console.log(StellarSdk);
 
-  const contract = new SorobanClient.Contract(contractAddress)
+  const contract = new StellarSdk.Contract(contractAddress)
   console.log(contract)
-  _args = Array.from(_args.map(SorobanClient.nativeToScVal));
+  _args = Array.from(_args.map(StellarSdk.nativeToScVal));
 
   let call_operation = contract.call(methodName, ..._args);
   console.log(call_operation)
 
-  let transaction = new SorobanClient.TransactionBuilder(account, { fee: "150", networkPassphrase: SorobanClient.Networks.TESTNET })
+  let transaction = new StellarSdk.TransactionBuilder(account, { fee: "150", networkPassphrase: StellarSdk.Networks.TESTNET })
     .addOperation(call_operation) // <- funds and creates destinationA
     .setTimeout(30)
     .build();
@@ -48,7 +49,7 @@ async function callContract(address, method, args) {
   console.log(transaction)
 
     console.log("about to prepair transaction")
-    const preparedTransaction = await server.prepareTransaction(transaction, SorobanClient.Networks.TESTNET);
+    const preparedTransaction = await SorobanServer.prepareTransaction(transaction);
     console.log("prepairedTxn: ");
     console.log(preparedTransaction);
     const tx_XDR = preparedTransaction.toXDR();
@@ -71,11 +72,11 @@ async function callContract(address, method, args) {
   console.log("signed xdr is: ");
   console.log(signedXDR);
   
-    const signedTxn = new SorobanClient.TransactionBuilder.fromXDR(signedXDR, "Test SDF Network ; September 2015")
-    const transactionResult = await server.sendTransaction(signedTxn);
-    console.log(transactionResult.hash);
+    const signedTxn = new StellarSdk.TransactionBuilder.fromXDR(signedXDR, "Test SDF Network ; September 2015")
+    const transactionResult = await HorizonServer.submitTransaction(signedTxn);
+    console.log(transactionResult);
     async function getTransactionResult(hash, counter){
-      let output = await server.getTransaction(hash);
+      let output = await SorobanServer.getTransaction(hash);
       console.log("output is");
       console.log(output);
       if(output.status === 'SUCCESS'){
@@ -100,7 +101,7 @@ async function callContract(address, method, args) {
     const result = await getTransactionResult(transactionResult.hash, 0);
     console.log("final result is");
     console.log(result);
-    return SorobanClient.scValToNative(result.returnValue);
+    return StellarSdk.scValToNative(result.returnValue);
    
     
 }
@@ -108,7 +109,7 @@ async function callContract(address, method, args) {
 `
 let bottom_code = `
 async function main(){
-    const result = await callContract("CBR6NOFQEFCBGH63EUGTQ4356MROIBBP6EEITGPMJ23MIDX5RZNFUJPH", "hello", "world");
+    const result = await callContract("CCSQUO6HDFIQ2CBRUQLFYQNFILWB4VDJXVUW4YSXEJDNVUYJVKIGPJZW", "hello", "world");
     alert(result);
 }
 main();

@@ -1,4 +1,4 @@
-import { Account, Transaction, Keypair, xdr, Memo, MemoType, FeeBumpTransaction, Operation} from "stellar-base";
+import { Account, Transaction, Keypair, xdr, Memo, MemoType, FeeBumpTransaction, Operation, TransactionBuilder} from "stellar-base";
 import { Client } from "./Client";
 import { TxnBuilder } from "./TxnBuilder";
 import { Wallet } from "./Wallet";
@@ -44,14 +44,23 @@ export class WalletFuncs{
         */
     }
     
-    transferAsset(){
+    transferAsset(to, amount, asset){
+        const txn = this.builder.buildAssetTxn(to, amount, asset);
+        return this.signAndSubmitTransaction(txn.toXDR() as unknown as xdr.Transaction);
 
     }
 
-    async signArbitaryTxn(xdrTransaction: xdr.Transaction | string): Promise<Transaction<Memo<MemoType>, Operation[]> | FeeBumpTransaction>{
-        const txn = await this.analizer.decodeXDRTransaction(xdrTransaction);
-        console.log(txn);
-        const confirm = await this.analizer.analizeTransaction(txn);
+    async signArbitaryTxn(xdrTransaction): Promise<Transaction<Memo<MemoType>, Operation[]> | FeeBumpTransaction>{
+        
+        let txn = TransactionBuilder.fromXDR(xdrTransaction, this.client.currentPassphrase);
+        let analizerTxn_ref:Transaction;
+        if('innerTransaction' in txn){
+            analizerTxn_ref = txn.innerTransaction;
+        }
+        else{
+            analizerTxn_ref = txn;
+        }
+        const confirm = await this.analizer.analizeTransaction(analizerTxn_ref);
         if(!confirm){
             throw new Error("user rejected request");
         }

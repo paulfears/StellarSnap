@@ -15,6 +15,7 @@
   import OperationForm from './TransactionBuilder/operationForm.svelte';
   import TransactionMaker from './TransactionBuilder/transactionMaker.svelte';
   import Wallet from './lib/Wallet.svelte';
+  import WalletPage from './lib/WalletPage.svelte';
   let funding = false;
 
   function genreateCode(method, params){
@@ -159,6 +160,10 @@
         </FunctionContainer>
     </div>
       
+    </TabItem>
+    <TabItem >
+      <span slot="title">Wallet Functions</span>
+      <WalletPage/>
     </TabItem>
     <TabItem >
       <span slot="title">Signing Functions</span>

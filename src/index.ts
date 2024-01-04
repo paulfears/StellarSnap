@@ -1,6 +1,6 @@
 import { OnRpcRequestHandler } from '@metamask/snap-types';
 
-import { getWallet } from './Wallet';
+import { Wallet } from './Wallet';
 import { fund, Client } from './Client';
 import { TxnBuilder } from './TxnBuilder';
 import { WalletFuncs } from './WalletFuncs';
@@ -10,10 +10,12 @@ import { NotificationEngine } from './notificationEngine';
 
 import { OnCronjobHandler } from '@metamask/snaps-types';
 import { parseRawSimulation } from './sorobanTxn';
+import Utils from './Utils';
+import { StateManager } from './stateManager';
 
 
 export const onCronjob: OnCronjobHandler = async ({ request }) => {
-  const wallet = await getWallet();
+  const wallet = await Wallet.getCurrentWallet();
   const keyPair = wallet.keyPair;
   const mainnet_client = new Client("mainnet");
   const engine = new NotificationEngine(mainnet_client, wallet);
@@ -40,7 +42,9 @@ export const onCronjob: OnCronjobHandler = async ({ request }) => {
 };
 
 export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => {
-  const wallet = await getWallet();
+  const wallet = await Wallet.getCurrentWallet();
+  console.log("wallet is");
+  console.log(wallet);
   const params = request.params;
   let wallet_funded = false;
   let baseAccount;
@@ -65,7 +69,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     client.setNetwork('mainnet');
   }
   try{
-    console.log("attempting to fund wallet");
+    console.log("attempting to get base account");
     baseAccount = await wallet.getBaseAccount(client);
     wallet_funded = true;
   }
@@ -76,15 +80,32 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
   let operations: WalletFuncs;
   if(wallet_funded){
     console.log("wallet funded");
-    txnBuilder = new TxnBuilder(baseAccount);
+    txnBuilder = new TxnBuilder(baseAccount, client);
     operations = new WalletFuncs(baseAccount, keyPair, txnBuilder, client);
   }
   
   switch (request.method) {
     // ------------------------------- Methods That Do not Require A funded Account ---------------------------------
     case 'getAddress':
-      return wallet.address
+      return wallet.address;
+    case 'getCurrentAccount':
+      return wallet.address;
+    case 'clearState':
+      return await StateManager.clearState();
+    case 'setCurrentAccount':
+      return await Wallet.setCurrentWallet(params.address, wallet.currentState, true);
+    case 'createAccount':
+      await Wallet.createNewAccount(params.name, wallet.currentState);
+      return true;
+    case 'listAccounts':
+      return await Wallet.listAccounts();
+    case 'renameAccount':
+      return await Wallet.renameWallet(params.address, params.name, wallet.currentState)
+    case 'importAccount':
+      await Wallet.import_account(params.name, params.privateKey);
+      return true;
     case 'fund':
+      console.log("fund called");
       return await fund(wallet);
     case 'getWalletName':
       const res = await lookupAddress(wallet.address);
@@ -113,6 +134,12 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
         throw new Error('Method Requires Account to be funded');
       }
       return await operations.transfer(params.to, params.amount);
+    case 'sendAsset':
+      if(!wallet_funded){
+        await Screens.RequiresFundedWallet(request.method, wallet.address);
+        throw new Error('Method Requires Account to be funded');
+      }
+      return await operations.transferAsset(params.to, params.amount, params.asset);
     case 'signTransaction':
       if(!wallet_funded){
         await Screens.RequiresFundedWallet(request.method, wallet.address);

@@ -32,6 +32,8 @@
         }
         await callback()
         connected.set(true);
+
+        
         const metamask_address = await window.ethereum.request({
             method: 'wallet_invokeSnap',
             params: {

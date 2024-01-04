@@ -345,11 +345,6 @@ export class TransactionAnalizer{
         if('innerTransaction' in txn){
             txn = txn.innerTransaction;
         }
-        if(isSorobanTransaction(txn)){
-            if(this.client.network !== 'futurenet' && this.client.network !== 'testnet'){
-                throw new Error("Soroban Transactions are currently only supported on futurenet and testnet");
-            }
-        }
         return txn;
     }
 

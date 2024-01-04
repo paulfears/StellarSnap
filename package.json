@@ -1,6 +1,6 @@
 {
   "name": "stellar-snap",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "private": false,
   "description": "A non custodial Stellar Wallet built for metamask",
   "repository": {
@@ -25,7 +25,7 @@
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' --ignore-path .gitignore",
     "serve": "mm-snap serve",
     "test": "echo 'TODO'",
-    "start": "mm-snap build && concurrently \"(mm-snap serve)\"  \"yarn --cwd ./site/ dev\""
+    "start": "mm-snap build && concurrently \"(mm-snap serve)\"  \"yarn --cwd ./site/ && yarn --cwd ./site/ dev\""
   },
   "devDependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",

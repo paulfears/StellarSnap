@@ -23,8 +23,10 @@ export class NotificationEngine{
         console.log(currentState.assets.testnet);
         console.log("new assets");
         console.log(testNetBalances);
-        await this.handleAssetNotifications(currentState.assets.testnet, testNetBalances, currentState, "testnet");
-        await this.handleAssetNotifications(currentState.assets.mainnet, mainNetBalances, currentState, "mainnet");
+        const currentAccountAddr = currentState.currentAccount;
+        let currentBalances = currentState.accounts[currentAccountAddr].assets;
+        await this.handleAssetNotifications(currentBalances.testnet, testNetBalances, currentState, "testnet");
+        await this.handleAssetNotifications(currentBalances.mainnet, mainNetBalances, currentState, "mainnet");
         
     }
 
@@ -73,7 +75,7 @@ export class NotificationEngine{
       if(diffAssets.length === 0){
         return true;
       }
-      currentState.assets[network] = currentAssets;
+      currentState.accounts[currentState.currentAccount].assets[network] = currentAssets;
       await StateManager.setState(currentState)
 
       if(diffAssets.length < 4){

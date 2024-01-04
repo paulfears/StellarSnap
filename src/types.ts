@@ -9,7 +9,8 @@ export interface NativeBalance{
     is_authorized: boolean,
     is_authorized_to_maintain_liabilites: boolean,
     is_clawback_enabled: boolean,
-    asset_type: "native"
+    asset_type: "native",
+    asset_issuer: "native"
 }
 
 export interface AssetBalance{
@@ -26,5 +27,10 @@ export interface AssetBalance{
     asset_type: "credit_alphanum4"|"credit_alphanum12"
     asset_code: string,
     asset_issuer: string, //address
+}
 
+export type walletAsset = AssetBalance | NativeBalance
+export type json_Asset = {
+    issuer: string
+    code: string
 }
