@@ -74,7 +74,7 @@ export async function getDataPacket(wallet:Wallet, client:Client):Promise<DataPa
     const startingNetwork = client.network;
     client.setNetwork('mainnet');
     const mainnetAssets = await getAssets(wallet, client);
-    client.setNetwork('mainnet');
+    client.setNetwork('testnet');
     const testnetAssets = await getAssets(wallet, client);
     const mainnetXLMBalance = mainnetAssets[mainnetAssets.length-1].balance; //xlm is always the last asset
     const testnetXLMBalance = testnetAssets[testnetAssets.length-1].balance;
