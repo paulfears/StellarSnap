@@ -30,7 +30,7 @@
 <FunctionContainer method="getCurrentAccount" code={genreateCode("getCurrentAccount", {})}>
     <p slot="title">get the current Account</p>
 </FunctionContainer>
-<FunctionContainer method="importAccount" code={genreateCode("getCurrentAccount", {})} params={{"name":"string","privateKey":"string"}}>
+<FunctionContainer method="importAccount" code={genreateCode("getCurrentAccount", {})}>
     <p slot="title">import An Account</p>
 </FunctionContainer>
 <FunctionContainer method="createAccount" code={genreateCode("getCurrentAccount", {})} params={{"name":"string"}}>
@@ -38,5 +38,8 @@
 </FunctionContainer>
 <FunctionContainer method="renameAccount" code={genreateCode("getCurrentAccount", {})} params={{"address":"string","name":"string"}}>
     <p slot="title">rename an Account</p>
+</FunctionContainer>
+<FunctionContainer method="dispPrivateKey" code={genreateCode("dispPrivateKey", {})}>
+    <p slot="title">import An Account</p>
 </FunctionContainer>
 <FunctionButton method="clearState">Clear All Accounts</FunctionButton>

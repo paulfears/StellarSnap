@@ -7,6 +7,9 @@ const mainNetURL = "https://horizon.stellar.org"
 const futureNetURL =  "https://horizon-futurenet.stellar.org"
 const soroban_future_RPC = "https://rpc-futurenet.stellar.org:443"
 const soroban_test_RPC = "https://soroban-testnet.stellar.org:443"
+const soroban_main_rpc = ""; //to be filled in on launch or just later
+
+
 export async function fund(wallet:Wallet){
     console.log("funding account");
     console.log("wallet Address is: ");
@@ -147,6 +150,9 @@ export class Client{
         if(this.network === 'futurenet'){
             sorobanRPC = soroban_future_RPC
         }
+        if(this.network === 'mainnet'){
+            sorobanRPC = soroban_main_rpc;
+        }
         const result = await fetch(sorobanRPC, {
             method: 'POST',
             headers: {
@@ -155,7 +161,7 @@ export class Client{
             },
             body: JSON.stringify({
                 "jsonrpc": "2.0",
-                "id": 1102,
+                "id": "1334", //use a uuid in the future
                 "method": "simulateTransaction",
                 "params": {
                   "transaction": transaction.toXDR()

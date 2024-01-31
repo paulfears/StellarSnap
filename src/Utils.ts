@@ -19,13 +19,16 @@ export default class Utils {
         throw new Error(`${code}\n${msg}`);
     }
 
-    static async notify(message: string): Promise<boolean>{
+    static async notify(message: string, type?:"native"|"inApp"): Promise<boolean>{
+        if(!type){
+            type = 'native';
+        }
         try{
             
             const result = await snap.request({
                 method: 'snap_notify',
                 params: {
-                  type: 'native',
+                  type: type,
                   message: message,
                 },
               });
@@ -65,7 +68,7 @@ export default class Utils {
         },
         });
         
-        return confirm;
+        return confirm as boolean;
     }
 
     static async sendAlert(title: string, info: string): Promise<boolean>{
@@ -83,7 +86,7 @@ export default class Utils {
         return true;
     }
 
-    static async displayPanel(panel: Panel, type:"confirmation" | "alert" | "prompt" = "confirmation"): Promise<any>{
+    static async displayPanel(panel: Panel, type:"confirmation" | "alert" | "prompt" = "confirmation"): Promise<string | boolean | null>{
         const disp = await snap.request({
             method: 'snap_dialog',
             params:{

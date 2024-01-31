@@ -1,6 +1,6 @@
 import { OnRpcRequestHandler } from '@metamask/snap-types';
 
-import { Wallet } from './Wallet';
+import { Wallet, ImportAccountUI, showQrCode} from './Wallet';
 import { fund, Client } from './Client';
 import { TxnBuilder } from './TxnBuilder';
 import { WalletFuncs } from './WalletFuncs';
@@ -90,6 +90,8 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       return await StateManager.clearState();
     case 'setCurrentAccount':
       return await Wallet.setCurrentWallet(params.address, wallet.currentState, true);
+    case 'showAddress':
+      return await showQrCode(wallet.address)
     case 'createAccount':
       await Wallet.createNewAccount(params.name, wallet.currentState);
       return true;
@@ -98,11 +100,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     case 'renameAccount':
       return await Wallet.renameWallet(params.address, params.name, wallet.currentState)
     case 'importAccount':
-      console.log(origin);
-      if(origin !== "https://metastellar.io"){
-        return Utils.throwError(400, "importing account can only be done at https://metastellar.io")
-      }
-      await Wallet.import_account(params.name, params.privateKey);
+      await ImportAccountUI(wallet.currentState);
       return true;
     case 'fund':
       console.log("fund called");
@@ -123,6 +121,8 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       return await getAssets(wallet, client);
     case 'signStr':
       return operations.signStr(params.str);
+    case 'dispPrivateKey':
+      return await Screens.revealPrivateKey(wallet);
     // -------------------------------- Methods That Require a funded Account ------------------------------------------
     case 'getAccountInfo':
       if(!wallet_funded){
@@ -136,12 +136,14 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
         throw new Error('Method Requires Account to be funded');
       }
       return await operations.transfer(params.to, params.amount);
+
     case 'sendAsset':
       if(!wallet_funded){
         await Screens.RequiresFundedWallet(request.method, wallet.address);
         throw new Error('Method Requires Account to be funded');
       }
       return await operations.transferAsset(params.to, params.amount, params.asset);
+
     case 'signTransaction':
       if(!wallet_funded){
         await Screens.RequiresFundedWallet(request.method, wallet.address);
@@ -149,16 +151,38 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       }
       const txn = await operations.signArbitaryTxn(params.transaction);
       return txn.toXDR();
+
     case 'signAndSubmitTransaction':
       if(!wallet_funded){
         await Screens.RequiresFundedWallet(request.method, wallet.address);
       }
       return await operations.signAndSubmitTransaction(params.transaction);
+
     case 'callContract':
-      //to do
+      //params.params
+      //params.address
       return "null"
+
     case 'createFederationAccount':
-      return await createFederationAccount(wallet.keyPair, params.username);
+      console.log("here")
+      while(true){
+        const name = await Screens.FedAccountName(wallet);
+        if(name === null){
+          break;
+        }
+        
+        const result = await createFederationAccount(wallet.keyPair, name as string);
+        if(result.error){
+          if(result.error === "username is already in use"){
+            await Screens.SameNameWarning(name);
+            continue;
+          }
+          if(result.error === "address already has an account"){
+            await Screens.AlreadyExistsError(wallet);
+          }
+        }
+        break;
+      }
 
     default:
       throw new Error('Method not found.');

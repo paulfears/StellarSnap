@@ -82,10 +82,10 @@ export class NotificationEngine{
           console.log("itemInfo");
           console.log(itemInfo);
           if(itemInfo.diff < 0){
-            await Utils.notify(`spent ${itemInfo.diff} ${network} ${itemInfo.asset.asset_code}`)
+            await Utils.notify(`spent ${itemInfo.diff} ${network} ${itemInfo.asset.asset_code}`, "inApp")
           }
           else{
-            await Utils.notify(`recived ${itemInfo.diff} ${network} ${itemInfo.asset.asset_code}`)
+            await Utils.notify(`recived ${itemInfo.diff} ${network} ${itemInfo.asset.asset_code}`, "inApp")
           }
         }
       }

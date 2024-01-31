@@ -1723,12 +1723,13 @@
     "@metamask/utils" "^6.0.1"
     superstruct "^1.0.3"
 
-"@metamask/snaps-ui@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@metamask/snaps-ui/-/snaps-ui-2.0.0.tgz#29fa7a52cb53053ca1a68e17d01834299d407506"
-  integrity sha512-xnbTGJvlHDWWKVIBz7WkYFClheJZI+0p+VTQbd5CYHHyPKuCwsJoB5Sx00UAy1wl4FImFswbOKLb6GVMDerd4A==
+"@metamask/snaps-ui@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@metamask/snaps-ui/-/snaps-ui-3.1.0.tgz#3011240f9a91c2113ac1a67b972ede6ab7910364"
+  integrity sha512-31+GstgOMIuXRc8L5xhTEl4o4ZmdSmssepKmbs3NZED4tCjce9d99ZvN/iHReqSGWulkAX26SJsoonT3+EnMiQ==
   dependencies:
     "@metamask/utils" "^8.1.0"
+    is-svg "^4.4.0"
     superstruct "^1.0.3"
 
 "@metamask/snaps-utils@^1.0.2":
@@ -5992,6 +5993,11 @@ punycode@^2.3.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.3.1.tgz#027422e2faec0b25e1549c3e1bd8309b9133b6e5"
   integrity sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==
+
+qrcode-svg@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/qrcode-svg/-/qrcode-svg-1.1.0.tgz#2087549843dc5d0a3f8e8aa046cd9bcf23708cc3"
+  integrity sha512-XyQCIXux1zEIA3NPb0AeR8UMYvXZzWEhgdBgBjH9gO7M48H9uoHzviNz8pXw3UzrAcxRRRn9gxHewAVK7bn9qw==
 
 qs@^6.11.2:
   version "6.11.2"

@@ -1,6 +1,6 @@
 import { Client } from "./Client";
 import { Wallet } from "./Wallet";
-
+import { lookupAddress } from "./federation";
 export interface NativeBalance{
     balance:string,
     liquidity_pool_id?:string,
@@ -57,6 +57,7 @@ export interface DataPacket{
     accounts: Array<{name:String, address:String}>
     mainnetXLMBalance: string,
     testnetXLMBalance: string,
+    fedName: string | null
 }
 
 export async function getAssets(wallet:Wallet, client:Client):Promise<Array<AssetBalance | NativeBalance>>{
@@ -78,6 +79,7 @@ export async function getDataPacket(wallet:Wallet, client:Client):Promise<DataPa
     const testnetAssets = await getAssets(wallet, client);
     const mainnetXLMBalance = mainnetAssets[mainnetAssets.length-1].balance; //xlm is always the last asset
     const testnetXLMBalance = testnetAssets[testnetAssets.length-1].balance;
+    const fedName = await lookupAddress(currentAddress);
     client.setNetwork(startingNetwork);
     return {
         name,
@@ -86,6 +88,7 @@ export async function getDataPacket(wallet:Wallet, client:Client):Promise<DataPa
         mainnetAssets,
         testnetAssets,
         mainnetXLMBalance,
-        testnetXLMBalance
+        testnetXLMBalance,
+        fedName
     }
 }

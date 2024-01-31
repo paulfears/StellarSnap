@@ -1,13 +1,13 @@
 {
-  "version": "0.0.17",
-  "description": "Stellar Metamask integration",
+  "version": "0.0.18",
+  "description": "Stellar and Soroban Wallet",
   "proposedName": "Stellar",
   "repository": {
     "type": "git",
     "url": "https://github.com/paulfears/StellarSnap.git"
   },
   "source": {
-    "shasum": "lvHKuYFBpOv5f2cBPX9BN22m5b6G+zOeTM3ebC25SHo=",
+    "shasum": "vfIWjlF+FSnyZcghNYr2F2GmWhS7WTHi6XtWWT6anF4=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",

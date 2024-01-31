@@ -6,7 +6,8 @@ import {
   TransactionBuilder,
   xdr,
   Networks,
-  Asset
+  Asset,
+  nativeToScVal
 } from "stellar-base";
 import { Client } from "./Client";
 import type { json_Asset } from "./types";
@@ -106,6 +107,17 @@ export class TxnBuilder{
     console.log(transaction);
     console.log(transaction.toXDR());
     return transaction;
+  }
+
+  buildSorobanCall(address, method, params:Array<any>){
+    /* To DO
+    let scParams = [];
+    for(let param of params){
+      scParams.push(nativeToScVal(param))
+    }	
+    let opts = {contract:address, function:method, params:scParams}
+    Operation.invokeContractFunction(opts)
+    */
   }
 
   buildAssetTxn(destination: string, amount: string, asset:json_Asset, fee?:string): Transaction{

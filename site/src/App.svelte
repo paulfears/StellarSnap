@@ -140,6 +140,9 @@
         <FunctionContainer code={genreateCode("getAddress", {testnet:$testnet})} testnet={$testnet} method="getAddress">
           <p slot="title">Get Address of Wallet</p>
         </FunctionContainer>
+        <FunctionContainer code={genreateCode("showAddress", {testnet:$testnet})} testnet={$testnet} method="showAddress">
+          <p slot="title">display the address of the Wallet</p>
+        </FunctionContainer>
         <FunctionContainer code={genreateCode("getBalance", {testnet:$testnet})} testnet={$testnet} method="getBalance">
           <p slot="title">Get Balance of Wallet</p>
         </FunctionContainer>
@@ -149,7 +152,7 @@
         <FunctionContainer code={genreateCode("getAssets", {testnet:$testnet})} testnet={$testnet} method="getAssets">
           <p slot="title">Get Account Assets</p>
         </FunctionContainer>
-        <FunctionContainer method="createFederationAccount" code={genreateCode("createFederationAccount", {"username":"string"})} params={{"username":"string:myaccount"}}>
+        <FunctionContainer method="createFederationAccount" code={genreateCode("createFederationAccount", {})} params={{}}>
           <p slot="title">create federation Account</p>
         </FunctionContainer>
         <FunctionContainer method="lookUpFedAddress" code={genreateCode("lookUpFedAddress", {"address":"string"})} params={{"address":"string:"}}>

@@ -1,11 +1,9 @@
 import { Account, Transaction, Keypair, xdr, Memo, MemoType, FeeBumpTransaction, Operation, TransactionBuilder} from "stellar-base";
 import { Client } from "./Client";
 import { TxnBuilder } from "./TxnBuilder";
-import { Wallet } from "./Wallet";
 import Utils from "./Utils";
-import { panel, text, heading, divider, copyable, Panel } from '@metamask/snaps-ui';
-import { Screens } from "./screens";
 import { TransactionAnalizer } from "./TransactionAnalizer";
+
 export class WalletFuncs{
     account: Account
     keyPair: Keypair

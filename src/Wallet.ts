@@ -2,7 +2,10 @@ globalThis.Buffer = require('buffer/').Buffer
 import { Account, Keypair } from 'stellar-base';
 import { Client } from './Client';
 import { StateManager, walletAccount, State} from './stateManager';
+import {Screens } from './screens';
 import Utils from './Utils';
+import { panel, text, heading, image, copyable} from '@metamask/snaps-ui';
+import QRcode from "qrcode-svg";
 
 export class Wallet{
     keyPair: Keypair;
@@ -10,8 +13,12 @@ export class Wallet{
     publicKey: Buffer;
     seed?: Uint8Array;
     currentState: State;
+    walletName: string;
+    walletAccount: walletAccount;
     constructor(account:walletAccount, currentState:State){
         this.currentState = currentState;
+        this.walletAccount = account;
+        this.walletName = account.name;
         if(account.type === "generated"){
             //this.keyPair = nacl.sign.keyPair.fromSeed(seed);
             console.log("seeding");
@@ -225,10 +232,33 @@ export class Wallet{
 
 
 
+export async function showQrCode(address:string){
+    const qrcode = new QRcode(address);
+    let svg = qrcode.svg();
+    let img = image(svg);
+    let output = panel([img, copyable(address)]);
+    return await Utils.displayPanel(output);
+}
 
 
+export async function ImportAccountUI(currentState?:State):Promise<State|void>{
+    if(!currentState){
+        StateManager.getState();
+    }
+    const privateKey = await Screens.importAccountPrivateKey() as string;
+    let keypair:Keypair;
+    try{
+        keypair = Keypair.fromSecret(privateKey);
+    }
+    catch(e){
+        await Utils.displayPanel(panel([text("invalid private key")]), "alert");
+        return Utils.throwError(400, "invalid private key");
+    }
+    
+    const AccountName = await Screens.importAccountName(keypair.publicKey()) as string;
+    return await Wallet.import_account(AccountName, privateKey, currentState, true);
 
-
+}
 
 
 

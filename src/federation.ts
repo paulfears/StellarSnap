@@ -4,12 +4,22 @@ import { Account, Address, Keypair } from "stellar-base"
 
 export async function createFederationAccount(account:Keypair, username:string){
     const preflightRun = await lookupAddress(account.publicKey());
+    const preflightRun2 = await lookupFedAccount(username+"*metastellar.io");
+    console.log(preflightRun2);
+    console.log(preflightRun2.error);
     if(preflightRun.error === "not found"){
-        console.log("good to go")
+        console.log("good to go");
     }
     else{
         return {"error": "address already has an account"}
     }
+    if(preflightRun2.error == "not found"){
+        console.log("good to go");
+    }
+    else{
+        return {"error": "username is already in use"}
+    }
+
     const url = "https://regal-sfogliatella-fe7d58.netlify.app/.netlify/functions/createaccount"
     const address = account.publicKey()
     console.log("here")
