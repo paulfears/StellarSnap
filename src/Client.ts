@@ -48,10 +48,10 @@ export class Client{
         this.setNetwork(network);
     }
 
-    setNetworkPassphrase(networkPasspharse: string){
+    setNetworkPassphrase(networkPasspharse: string):void{
         this.currentPassphrase = networkPasspharse;
     }
-    setNetwork(network:'mainnet' | 'testnet' | 'futurenet'){
+    setNetwork(network:'mainnet' | 'testnet' | 'futurenet'):void{
         this.network = network;
         if(network === 'testnet'){
             this.endPoint = testNetURL

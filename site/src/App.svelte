@@ -155,8 +155,11 @@
         <FunctionContainer method="createFederationAccount" code={genreateCode("createFederationAccount", {})} params={{}}>
           <p slot="title">create federation Account</p>
         </FunctionContainer>
-        <FunctionContainer method="lookUpFedAddress" code={genreateCode("lookUpFedAddress", {"address":"string"})} params={{"address":"string:"}}>
-          <p slot="title">look up federation address</p>
+        <FunctionContainer method="lookUpFedAccountByAddress" code={genreateCode("lookUpFedAccountByAddress", {"address":"string"})} params={{"address":"string:"}}>
+          <p slot="title">look up federation address (0xdfnsklf....)</p>
+        </FunctionContainer>
+        <FunctionContainer method="lookUpFedAccountByName" code={genreateCode("lookUpFedAccountByName", {"url":"string"})} params={{"url":"string:"}}>
+          <p slot="title">look up federation address (example*metastellar.io)</p>
         </FunctionContainer>
         <FunctionContainer method="getWalletName" code={genreateCode("getWalletName", {})} params={{}}>
           <p slot="title">get the federation name of the wallet</p>

@@ -1,5 +1,5 @@
 import { OnRpcRequestHandler } from '@metamask/snap-types';
-
+import type { OnInstallHandler } from '@metamask/snaps-sdk';
 import { Wallet, ImportAccountUI, showQrCode} from './Wallet';
 import { fund, Client } from './Client';
 import { TxnBuilder } from './TxnBuilder';
@@ -14,6 +14,7 @@ import Utils from './Utils';
 import { StateManager } from './stateManager';
 import {getAssets, getDataPacket} from './assets';
 import { Asset } from 'stellar-base';
+import { Auth } from './Auth';
 
 export const onCronjob: OnCronjobHandler = async ({ request }) => {
   const wallet = await Wallet.getCurrentWallet();
@@ -30,13 +31,17 @@ export const onCronjob: OnCronjobHandler = async ({ request }) => {
   }
 };
 
+export const onInstall: OnInstallHandler = async () => {
+  const wallet = await Wallet.getCurrentWallet(false);
+  await Screens.installedScreen(wallet);
+};
+
 export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => {
   if(request.method === "clearState"){
+    console.log("clearing state");
     await StateManager.clearState()
   }
   const wallet = await Wallet.getCurrentWallet();
-  console.log("wallet is");
-  console.log(wallet);
   const params = request.params as any;
   let wallet_funded = false;
   let baseAccount;
@@ -86,12 +91,10 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       return wallet.address;
     case 'getDataPacket':
       return await getDataPacket(wallet, client);
-    case 'clearState':
-      return await StateManager.clearState();
     case 'setCurrentAccount':
       return await Wallet.setCurrentWallet(params.address, wallet.currentState, true);
     case 'showAddress':
-      return await showQrCode(wallet.address)
+      return await showQrCode(wallet);
     case 'createAccount':
       await Wallet.createNewAccount(params.name, wallet.currentState);
       return true;
@@ -108,9 +111,9 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     case 'getWalletName':
       const res = await lookupAddress(wallet.address);
       return res.stellar_address;
-    case 'lookUpFedAddress':
+    case 'lookUpFedAccountByAddress':
         return await lookupAddress(params.address);
-    case 'lookUpFedName':
+    case 'lookUpFedAccountByName':
         return await lookupFedAccount(params.url);
     case 'getBalance':
       if(!wallet_funded){
@@ -119,8 +122,12 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       return await client.getBalance(wallet.address)
     case 'getAssets':
       return await getAssets(wallet, client);
+    case 'sendAuthRequest':
+      const auth_client = new Auth(wallet.keyPair);
+      return await auth_client.signOnPost(params.url, params.data, params.challenge)
     case 'signStr':
-      return operations.signStr(params.str);
+      const auth = new Auth(wallet.keyPair);
+      return auth.signData(params.challenge);
     case 'dispPrivateKey':
       return await Screens.revealPrivateKey(wallet);
     // -------------------------------- Methods That Require a funded Account ------------------------------------------
@@ -164,25 +171,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       return "null"
 
     case 'createFederationAccount':
-      console.log("here")
-      while(true){
-        const name = await Screens.FedAccountName(wallet);
-        if(name === null){
-          break;
-        }
-        
-        const result = await createFederationAccount(wallet.keyPair, name as string);
-        if(result.error){
-          if(result.error === "username is already in use"){
-            await Screens.SameNameWarning(name);
-            continue;
-          }
-          if(result.error === "address already has an account"){
-            await Screens.AlreadyExistsError(wallet);
-          }
-        }
-        break;
-      }
+      return await Screens.setUpFedAccount(wallet);
 
     default:
       throw new Error('Method not found.');

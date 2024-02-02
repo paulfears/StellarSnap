@@ -79,7 +79,7 @@ export async function getDataPacket(wallet:Wallet, client:Client):Promise<DataPa
     const testnetAssets = await getAssets(wallet, client);
     const mainnetXLMBalance = mainnetAssets[mainnetAssets.length-1].balance; //xlm is always the last asset
     const testnetXLMBalance = testnetAssets[testnetAssets.length-1].balance;
-    const fedName = await lookupAddress(currentAddress);
+    const fedName = (await lookupAddress(currentAddress)).stellar_address;
     client.setNetwork(startingNetwork);
     return {
         name,

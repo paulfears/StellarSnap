@@ -1,7 +1,9 @@
 
 import { panel, text, heading, divider, copyable, Panel } from '@metamask/snaps-ui';
 import Utils from './Utils';
-import type { Wallet } from './Wallet';
+import { Wallet } from './Wallet';
+import { createFederationAccount, lookupFedAccount, lookupAddress } from './federation';
+import { StateManager } from './stateManager';
 export class Screens{
 
     static async RequiresFundedWallet(method:string, address:string):Promise<boolean>{
@@ -50,11 +52,11 @@ export class Screens{
 
     static async FedAccountName(wallet:Wallet){
         const disp = panel([
-            heading('Create a Federation Name'),
+            heading('EnterS a Federation Name For'),
+            heading(wallet.walletName),
+            copyable(wallet.address),
             divider(),
-            text('for account'),
-            copyable(wallet.walletName),
-            copyable(wallet.address)
+            text("desired account name")
         ])
         return await Utils.displayPanel(disp, 'prompt');
     }
@@ -99,5 +101,67 @@ export class Screens{
             await Utils.displayPanel(disp2, 'alert');
         }
         
+    }
+
+    static async setUpFedAccount(wallet:Wallet){
+        let result;
+        while(true){
+            const name = await Screens.FedAccountName(wallet);
+            if(name === null){
+              break;
+            }
+            
+            result = await createFederationAccount(wallet.keyPair, name as string);
+            if(result.error){
+              if(result.error === "username is already in use"){
+                await Screens.SameNameWarning(name);
+                continue;
+              }
+              if(result.error === "address already has an account"){
+                await Screens.AlreadyExistsError(wallet);
+              }
+            }
+            break;
+        }
+        return result;
+    }
+
+    static async installedScreen(wallet:Wallet){
+        
+        if(!wallet.currentState.blank){
+            console.log("about to clear");
+            return null;
+        }
+        const greeting = panel([
+            heading("WELCOME TO STELLAR 🪐"),
+            text("a metamask implementation of stellar"),
+            divider(),
+            text("What Would you like to name your account?")
+        ])
+        const walletName = await Utils.displayPanel(greeting, 'prompt');
+        if(walletName === null){
+            //if the user presses cancel on the name just keep the default name
+            return;
+        }
+        await Wallet.renameWallet(wallet.address, walletName);
+        wallet.walletName = walletName as string;
+        if((await lookupAddress(wallet.address)).account_id === null){
+            const setUpAccount = panel([
+                heading("Would you like to set up a MetaStellar Account"),
+                text("you can always do this later"),
+                text("learn more at"),
+                copyable("metastellar.io")
+                ]
+            );
+            const setUpNow = await Utils.displayPanel(setUpAccount, "confirmation");
+            
+            if(setUpNow){
+                await Screens.setUpFedAccount(wallet);
+            }
+        }
+    }
+
+    static async homeScreen(wallet){
+
     }
 }

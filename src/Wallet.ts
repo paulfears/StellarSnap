@@ -4,8 +4,10 @@ import { Client } from './Client';
 import { StateManager, walletAccount, State} from './stateManager';
 import {Screens } from './screens';
 import Utils from './Utils';
-import { panel, text, heading, image, copyable} from '@metamask/snaps-ui';
+import { panel, text, heading, image, copyable, divider} from '@metamask/snaps-ui';
 import QRcode from "qrcode-svg";
+import { lookupAddress } from './federation';
+
 
 export class Wallet{
     keyPair: Keypair;
@@ -58,14 +60,14 @@ export class Wallet{
         return Uint8Array.from(hexString.match(/.{1,2}/g).map((byte) => parseInt(byte, 16)))
     }
 
-    static async createNewAccount(name, currentState?:State):Promise<Wallet>{
-        console.log("creating new account");
+    static async createNewAccount(name, currentState?:State, setState?:boolean):Promise<Wallet>{
         if(currentState === undefined){
             currentState = await StateManager.getState();
         }
+        if(setState === undefined){
+            setState = true;
+        }
         const numAccounts = Object.keys(currentState.accounts).length;
-        console.log("number of accounts is");
-        console.log(numAccounts);
         let salt;
         if(numAccounts === 0){
             salt = "foo" //legacy salt before multible accounts
@@ -75,19 +77,15 @@ export class Wallet{
         }
         console.log("salt is: "+salt);
         let tempAccount = await Wallet.getTempAccountFromSalt(salt);
-        console.log("temp account is: ");
-        console.log(tempAccount);
         tempAccount.name = name;
         currentState.accounts[tempAccount.address] = tempAccount;
-        console.log("updated account");
-        console.log(currentState);
-        console.log("setting state");
         if(currentState.currentAccount === null || numAccounts === 0){
             currentState.currentAccount = tempAccount.address;
         }
-        const result = await StateManager.setState(currentState);
+        if(setState){
+            await StateManager.setState(currentState);
+        }
         
-        console.log(result);
         return new Wallet(tempAccount, currentState);
     }
 
@@ -106,22 +104,21 @@ export class Wallet{
         return true;
     }
 
-    static async getCurrentWallet():Promise<Wallet>{
-        console.log("in get Current Wallet");
+    static async getCurrentWallet(setState?:boolean):Promise<Wallet>{
+        if(setState === undefined){
+            setState = true;
+        }
         let currentState = await StateManager.getState();
         console.log("got current state");
         console.log(currentState);
         let walletAccount:walletAccount;
         if(currentState.currentAccount === null){
             console.log("current State is null");
-            return await Wallet.createNewAccount('Account 1', currentState);
-            
+            return await Wallet.createNewAccount('Account 1', currentState, setState);
         }
         else{
             console.log("wallet Account found")
             walletAccount = currentState.accounts[currentState.currentAccount]
-            console.log("wallet account is");
-            console.log(walletAccount);
         }
         return new Wallet(walletAccount, currentState);
         
@@ -232,12 +229,22 @@ export class Wallet{
 
 
 
-export async function showQrCode(address:string){
-    const qrcode = new QRcode(address);
+export async function showQrCode(wallet:Wallet){
+
+    const qrcode = new QRcode(wallet.address);
     let svg = qrcode.svg();
     let img = image(svg);
-    let output = panel([img, copyable(address)]);
-    return await Utils.displayPanel(output);
+    let fedAddress = (await lookupAddress(wallet.address)).stellar_address
+    if(fedAddress === null){
+        fedAddress = "no metastellar account";
+    }
+    let output = panel([
+        heading(wallet.walletName),
+        text(fedAddress),
+        divider(),
+        img, 
+        copyable(wallet.address)]);
+    return await Utils.displayPanel(output, "alert");
 }
 
 

@@ -1,6 +1,6 @@
 {
   "name": "stellar-snap",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "private": false,
   "description": "A non custodial Stellar Wallet built for metamask",
   "repository": {
@@ -61,7 +61,8 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@metamask/snaps-cli": "^3.0.5",
+    "@metamask/snaps-cli": "^4.0.1",
+    "@metamask/snaps-sdk": "^1.4.0",
     "@metamask/snaps-types": "^1.0.2",
     "@metamask/snaps-ui": "^3.1.0",
     "@stellarguard/txrep": "^2.0.0",
