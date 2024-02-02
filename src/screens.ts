@@ -4,6 +4,7 @@ import Utils from './Utils';
 import { Wallet } from './Wallet';
 import { createFederationAccount, lookupFedAccount, lookupAddress } from './federation';
 import { StateManager } from './stateManager';
+import IMG from './SVG';
 export class Screens{
 
     static async RequiresFundedWallet(method:string, address:string):Promise<boolean>{
@@ -126,6 +127,10 @@ export class Screens{
         return result;
     }
 
+    static async getCoolSVG(){
+        
+    }
+
     static async installedScreen(wallet:Wallet){
         
         if(!wallet.currentState.blank){
@@ -134,9 +139,7 @@ export class Screens{
         }
         const greeting = panel([
             heading("WELCOME TO STELLAR 🪐"),
-            text("a metamask implementation of stellar"),
-            divider(),
-            text("What Would you like to name your account?")
+            IMG
         ])
         const walletName = await Utils.displayPanel(greeting, 'prompt');
         if(walletName === null){
