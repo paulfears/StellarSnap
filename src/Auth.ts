@@ -1,6 +1,7 @@
 import { Keypair } from "stellar-base";
 import { Wallet } from "./Wallet";
-
+import {panel, text, heading, divider} from '@metamask/snaps-ui';
+import Utils from "./Utils";
 const proof = {};
 interface AuthRequest{
     [key: number]:any,
@@ -32,19 +33,26 @@ export class Auth{
         console.log(prepaired);
         return prepaired;
     }
-    signData(data: string):string{
-
-        
+    async signData(data: string):string{
+        let displayPanel = panel([
+            heading('Sign Text?'),
+            divider(),
+            text(data)
+        ])
+        const confirmation = await Utils.displayPanel(displayPanel);
+        if(!confirmation){
+            return "not signed"
+        }
         const prepairedData = this.prepairTest(data);
         console.log("prepaired data is");
         console.log(prepairedData)
         const proof = this.keypair.sign(prepairedData).toString('hex');
         return proof;
     }
-    getAuthObject(testKey:string){
+    async getAuthObject(testKey:string){
         const pk = this.keypair.rawPublicKey().toString('hex');
         const addr = this.keypair.publicKey();
-        const proof = this.signData(testKey);
+        const proof = await this.signData(testKey);
         console.log("auth object -----------------------------")
         console.log('pk')
         console.log(pk);
@@ -60,7 +68,7 @@ export class Auth{
     }
 
     async signOnGet(url, testKey){
-        const auth = this.getAuthObject(testKey);
+        const auth = await this.getAuthObject(testKey);
         const outAuth = JSON.stringify({auth:auth})
         const response = await fetch(url, 
             {   
@@ -75,7 +83,7 @@ export class Auth{
     }
 
     async signOnPost(url, jsonData, testKey){
-        const auth = this.getAuthObject(testKey);
+        const auth = await this.getAuthObject(testKey);
         console.log("sign on post");
         jsonData.auth = auth;
         console.log("auth is");

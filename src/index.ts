@@ -127,7 +127,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       return await auth_client.signOnPost(params.url, params.data, params.challenge)
     case 'signStr':
       const auth = new Auth(wallet.keyPair);
-      return auth.signData(params.challenge);
+      return await auth.signData(params.challenge);
     case 'dispPrivateKey':
       return await Screens.revealPrivateKey(wallet);
     // -------------------------------- Methods That Require a funded Account ------------------------------------------

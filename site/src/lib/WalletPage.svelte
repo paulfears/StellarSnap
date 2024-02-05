@@ -42,4 +42,7 @@
 <FunctionContainer method="dispPrivateKey" code={genreateCode("dispPrivateKey", {})}>
     <p slot="title">import An Account</p>
 </FunctionContainer>
+<FunctionContainer method="signStr" code={genreateCode("signStr", {'challenge':'string'})} params={{'challenge':'string'}}>
+    <p slot="title">list the wallet Accounts</p>
+</FunctionContainer>
 <FunctionButton method="clearState">Clear All Accounts</FunctionButton>

@@ -1,5 +1,5 @@
 {
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Stellar and Soroban Wallet",
   "proposedName": "Stellar",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/paulfears/StellarSnap.git"
   },
   "source": {
-    "shasum": "mXvAfAc2BXI9jmapvCCGLtIyGX1dqSBtMsGHJ9R/3m4=",
+    "shasum": "ztGM62HijB93RzPCYXCuexDiFGTe3zczSQWN5BonQOI=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
