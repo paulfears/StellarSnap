@@ -164,6 +164,19 @@ export class Screens{
         }
     }
 
+    static async confirmAccountChange(origin, accountName, accountAddress):Promise<boolean>{
+        const disp = panel([
+            heading('Switch Account?'),
+            divider(),
+            text(`${origin} would like to switch the current account to`),
+            panel([
+                text(accountName),
+                copyable(accountAddress)
+            ]),
+        ]);
+        return (await Utils.displayPanel(disp, 'confirmation')) as boolean;
+    }
+
     static async homeScreen(wallet){
 
     }

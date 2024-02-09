@@ -124,23 +124,26 @@ export class Wallet{
         
     }
 
-    static async setCurrentWallet(address:string, currentState?:State, setState?:Boolean){
+    static async setCurrentWallet(address:string, origin:string, currentState?:State){
         if(currentState === undefined){
             currentState = await StateManager.getState();
         }
-        if(setState === undefined){
-            setState = true;
-        }
+        const name = currentState.accounts[address].name
         if(currentState.accounts[address]){
-            currentState.currentAccount = address;
-            if(setState){
+            const confirm = await Screens.confirmAccountChange(origin, name, address);
+            if(confirm){
+                currentState.currentAccount = address;
                 await StateManager.setState(currentState);
             }
+            else{
+                Utils.throwError('4001', 'user rejected request');
+            }
+            
         }
         else{
             Utils.throwError("404", "account not found");
         }
-        return currentState;
+        return {address, name};
     }
 
     static async getSeedFromSalt(salt){

@@ -92,7 +92,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     case 'getDataPacket':
       return await getDataPacket(wallet, client);
     case 'setCurrentAccount':
-      return await Wallet.setCurrentWallet(params.address, wallet.currentState, true);
+      return await Wallet.setCurrentWallet(params.address, origin, wallet.currentState);
     case 'showAddress':
       return await showQrCode(wallet);
     case 'createAccount':
