@@ -181,7 +181,7 @@ async function callContract(address, method, args) {
   console.log(sourcePublicKey);
   console.log("stellar sdk is");
   console.log(StellarSdk);
-  const SorobanServer = new StellarSdk.SorobanRpc.Server('https://autumn-proportionate-breeze.stellar-mainnet.quiknode.pro/92ffe86ef03da649d43803d22581b7c0c9ae0100/');
+  const SorobanServer = new StellarSdk.SorobanRpc.Server('https://rpc.eu-central-1.gateway.fm/v4/soroban/non-archival/mainnet');
   const HorizonServer = new StellarSdk.Horizon.Server('https://horizon.stellar.org/');
   console.log("getting account")
   const account = await SorobanServer.getAccount(sourcePublicKey);
