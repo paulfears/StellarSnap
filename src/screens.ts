@@ -180,4 +180,14 @@ export class Screens{
     static async homeScreen(wallet){
 
     }
+
+    static async clearStateConfirmation():Promise<boolean>{
+        const disp = panel([
+            heading("Would you like to clear all state?"),
+            divider(),
+            text("⚠️This will permenatly delete all imported accounts⚠️"),
+            text("⚠️This will delete all generated accounts⚠️"),
+        ])
+        return (await Utils.displayPanel(disp, 'confirmation')) as boolean
+    }
 }

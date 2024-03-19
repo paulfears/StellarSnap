@@ -282,8 +282,6 @@ export class TransactionAnalizer{
                 uiList.push(await this.buildAddressBlock(operation.destination))
             }
             else if(operation.type === 'createAccount'){
-                //check account has not already been created
-                //check valid address
                 uiList.push(heading('createAccount'))
                 uiList.push(divider())
                 uiList.push(text(`destination:`))

@@ -7,7 +7,7 @@ const mainNetURL = "https://horizon.stellar.org"
 const futureNetURL =  "https://horizon-futurenet.stellar.org"
 const soroban_future_RPC = "https://rpc-futurenet.stellar.org:443"
 const soroban_test_RPC = "https://soroban-testnet.stellar.org:443"
-const soroban_main_rpc = ""; //to be filled in on launch or just later
+const soroban_main_rpc = "https://autumn-proportionate-breeze.stellar-mainnet.quiknode.pro/92ffe86ef03da649d43803d22581b7c0c9ae0100/"; //to be filled in on launch or just later
 
 
 export async function fund(wallet:Wallet){

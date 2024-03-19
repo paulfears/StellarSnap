@@ -1,6 +1,6 @@
 import { Keypair } from "stellar-base";
 import { Wallet } from "./Wallet";
-import {panel, text, heading, divider} from '@metamask/snaps-ui';
+import {panel, text, heading, divider, copyable} from '@metamask/snaps-ui';
 import Utils from "./Utils";
 const proof = {};
 interface AuthRequest{
@@ -37,7 +37,7 @@ export class Auth{
         let displayPanel = panel([
             heading('Sign Text?'),
             divider(),
-            text(data)
+            copyable(data)
         ])
         const confirmation = await Utils.displayPanel(displayPanel);
         if(!confirmation){

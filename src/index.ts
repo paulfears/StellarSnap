@@ -39,7 +39,13 @@ export const onInstall: OnInstallHandler = async () => {
 export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => {
   if(request.method === "clearState"){
     console.log("clearing state");
-    await StateManager.clearState()
+    let confirm = await Screens.clearStateConfirmation();
+    if(confirm){
+      await StateManager.clearState();
+    }
+    else{
+      return false;
+    }
   }
   const wallet = await Wallet.getCurrentWallet();
   const params = request.params as any;

@@ -24,7 +24,6 @@ export class NotificationEngine{
         console.log(currentBalances);
         console.log("testnetBalances is ----------------------------------------");
         console.log(testNetBalances);
-        await this.handleAssetNotifications(currentBalances.testnet, testNetBalances, currentState, "testnet");
         await this.handleAssetNotifications(currentBalances.mainnet, mainNetBalances, currentState, "mainnet");
         
     }
