@@ -198,13 +198,12 @@ async function callContract(address, method, args) {
   let call_operation = contract.call(methodName, ..._args);
   console.log(call_operation)
 
-  let transaction = new StellarSdk.TransactionBuilder(account, { fee: StellarSdk.BASEFEE, networkPassphrase: StellarSdk.Networks.PUBLIC })
+  let transaction = new StellarSdk.TransactionBuilder(account, { fee: "150", networkPassphrase: StellarSdk.Networks.PUBLIC })
     .addOperation(call_operation) // <- funds and creates destinationA
-    .setTimeout(30)
+    .setTimeout(500)
     .build()
-    .toXDR();
 
-  console.log(transaction.toXDR())
+  console.log(transaction)
 
     console.log("about to prepair transaction")
     const preparedTransaction = await SorobanServer.prepareTransaction(transaction);
@@ -230,8 +229,8 @@ async function callContract(address, method, args) {
   console.log("signed xdr is: ");
   console.log(signedXDR);
   
-    const signedTxn = new StellarSdk.TransactionBuilder.fromXDR(signedXDR, "Test SDF Network ; September 2015")
-    const transactionResult = await HorizonServer.submitTransaction(signedTxn);
+    const signedTxn = new StellarSdk.TransactionBuilder.fromXDR(signedXDR, StellarSdk.Networks.PUBLIC)
+    const transactionResult = await SorobanServer.sendTransaction(signedTxn);
     console.log(transactionResult);
     async function getTransactionResult(hash, counter){
       let output = await SorobanServer.getTransaction(hash);
