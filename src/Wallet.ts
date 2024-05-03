@@ -1,5 +1,5 @@
 globalThis.Buffer = require('buffer/').Buffer
-import { Account, Keypair } from 'stellar-base';
+import { Account, Keypair, StrKey} from 'stellar-base';
 import { Client } from './Client';
 import { StateManager, walletAccount, State} from './stateManager';
 import {Screens } from './screens';
@@ -52,7 +52,6 @@ export class Wallet{
     }
     
     async getBaseAccount(client: Client): Promise<Account>{
-        console.log(client);
         const sequence = await client.getSequence(this.address)    
         return new Account(this.address, sequence);
     }
@@ -125,6 +124,10 @@ export class Wallet{
     }
 
     static async setCurrentWallet(address:string, origin:string, currentState?:State){
+        let valid = StrKey.isValidEd25519PublicKey(address);
+        if(!valid){
+            Utils.throwError("404", "invalid address");
+        }
         if(currentState === undefined){
             currentState = await StateManager.getState();
         }

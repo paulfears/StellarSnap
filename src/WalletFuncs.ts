@@ -84,6 +84,7 @@ export class WalletFuncs{
         console.log("next");
         const response = await this.client.submitTransaction(signedTxn);
         console.log("response got");
+        console.log(response);
         if(response.successful){
             await Utils.notify("Transaction Successful")
         }
