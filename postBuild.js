@@ -19,6 +19,11 @@ for = "/.well-known/*"
 Access-Control-Allow-Origin = "*"
     `;
     await fs.writeFile('./site_dist/netlify.toml', netlifyContent);
+    await fs.cp('./docs', './site_dist/docs', { recursive: true }, (err) => {
+        if (err) {
+          console.error(err);
+        }
+    });
     console.log("post processing complete");
 }
 
