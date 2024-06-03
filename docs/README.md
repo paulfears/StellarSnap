@@ -1,11 +1,197 @@
-# Stellar Snap
-adds stellar to metamask, by creating a non-custodial wallet built directly into metamask
+# Stellar Snap Documentation
+adds Stellar to Metamask, by creating a Stellar wallet that lives in Metamask
+<span class="spacer"></span>
+<hr>
 
-## Standard Useage
 
-### connecting
+# Quick Start
+<span class="spacer"></span>
+  <ol>
+  <li>There is <b>NO npm package required!</b></li>
+  <li>The only thing required is that the users computer has metamask flask<br/>(just normal metamask after launch)</li>
+  <li><a href="https://docs.metamask.io/snaps/get-started/install-flask/">install flask</a></li>
+  </ol>
+<span class="spacer"></span>
 
-calling this method will connect to metamask and automatically install the snap if it isn't already installed.
+  ## ✨Connect and install: 
+  The <b>wallet_requestSnaps</b> method is used to <b>connect</b> to MetaMask <b>and installs</b> the Stellar Wallet if it's not already installed. This also generates the user's wallet.
+  ```javascript
+  
+  /* //request connection */
+  async function connect(){
+    const connected = await ethereum.request({
+      method: 'wallet_requestSnaps',
+      params: {
+        [`npm:stellar-snap`]: {}
+      },
+    });
+  }
+  
+  ```
+<button id="connectButton">exec connect()</button>
+
+<br>
+
+<span class="spacer"></span>
+
+  ## 🦑Calling Stellar Methods:
+  After the snap is connected the <b>wallet_invokeSnap</b> method is used to call Stellar Methods
+```javascript 
+  
+      //evoke a stellar method
+      
+      const request = {
+          method: 'wallet_invokeSnap',
+          params: {snapId:`npm:stellar-snap`, 
+            request:{
+              method: `${'Stellar-Method-Name'}`
+            }
+          }
+      }
+      let address = await ethereum.request(request)
+  
+  
+      // gets the stellar address
+      address = await ethereum.request({
+          method: 'wallet_invokeSnap',
+          params: {snapId:`npm:stellar-snap`, request:{
+              method: `getAddress`,
+          }}
+      })
+    
+  ```
+  <span class="spacer"></span>
+  <button id="execAddressButton">get the users Address!</button>
+  <script>
+  
+  </script>
+ 
+
+  ## 📟Calling Stellar Methods With Parameters
+    
+  <b>Parameters are nested,</b> parameters inside parameters
+  
+  ```javascript 
+      //evoke a stellar method with arguments
+      let stellarTransactionXDR = endTransaction.build().toXDR(); //transaction from the stellar-js-sdk
+      const args = {
+        transaction: String(stellarTransactionXDR),
+        network:'testnet'
+      }
+      const request = { 
+          method: 'wallet_invokeSnap', //constant across all method calls
+          params:{snapId:'npm:stellar-snap', request:{  //this too
+            method:`${'signTransaction'}`,
+            params:args
+          }
+          }
+      }
+      let SignedTransactionXDR = await ethereum.request(request)
+      
+      // example method call with parameters
+      SignedTransactionXDR = await ethereum.request({
+          method: 'wallet_invokeSnap',
+          params: {snapId:`npm:stellar-snap`, request:{
+              method: `signTransaction`,
+              params:{
+                transaction: stellarTransactionXDR
+                testnet:true
+              }
+
+          }}
+      })
+  ```
+
+<span class="spacer"></span>
+
+<script>
+  let connectButton = document.getElementById("connectButton");
+  console.log(connectButton)
+  connectButton.addEventListener('click', async ()=>{
+    try{
+      console.log("here")
+      const connected = await ethereum.request({
+        method: 'wallet_requestSnaps',
+        params: {
+          ['npm:stellar-snap']: {}
+        },
+      });
+      console.log(connected)
+      alert("connected")
+    }catch(e){
+      if (e.toString() === "ReferenceError: ethereum is not defined"){
+         alert("Install metamask flask")
+      }
+      alert(e);
+    }
+  });
+  const getAddress = async function(){
+    console.log("here2")
+    try{
+        console.log("about to run request");
+        const request = {
+            method: 'wallet_invokeSnap',
+            params: 
+            
+              {
+                snapId:'npm:stellar-snap', 
+                request:{
+                  method: `${'getAddress'}`
+                }
+              }
+            
+        }
+        console.log("request in memory")
+        let address = await ethereum.request(request);
+        console.log("request complete");
+        console.log(address)
+        // gets the stellar address
+        address = await ethereum.request({
+            method: 'wallet_invokeSnap',
+            params: 
+              {
+                snapId:'npm:stellar-snap', 
+                request:{
+                    method: 'getAddress',
+                }
+              }
+            
+        });
+        alert(address);
+    }
+    catch(e){
+      console.log("error");
+      console.log(e);
+      alert(e);
+    }
+  }
+  let execButton = window.document.getElementById("execAddressButton");
+  console.log(execButton);
+  execButton.addEventListener('click', getAddress);
+  
+</script>
+
+Specifying Network: By default, all methods are treated as mainnet (the main network where actual transactions take place). However, you can specify the testnet (a network used for testing) by passing testnet: true in the parameters.
+
+Current Methods: The README then provides examples of how to use various methods provided by the stellar-snap plugin. These methods include getAddress (returns the account's address), getAccountInfo (returns information related to the account), getBalance (returns the XLM balance of a wallet), transfer (transfers XLM from one account to another), fund (funds the user's wallet on the testnet), and signTransaction (signs an arbitrary transaction).
+
+Soroban: The README also provides an example of how to use the Soroban feature, which allows you to sign a SorobanCall. This involves creating a SorobanClient, getting the account, creating a contract, preparing a transaction, and then signing the transaction.
+
+# Stellar Metamask Methods
+
+<span class="spacer"></span>
+
+## ⚠️ The Docs past this point are incomplete ⚠️
+you can always ask a question in the
+[discord](https://discord.gg/ETQk4UcYyc)
+
+<span class="spacer"></span>
+<span class="spacer"></span>
+
+## connecting
+
+### calling this method will connect to metamask and automatically install the snap if it isn't already installed.
+
 As well as generate the users wallet.
 Calling this method or any subsequent methods does not requiring installing anything to a webpage, provided the the user
 has metamask (flask) installed.

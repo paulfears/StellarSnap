@@ -1,6 +1,7 @@
-<script>
-    import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, Avatar, Dropdown, DropdownItem, DropdownHeader, DropdownDivider } from 'flowbite-svelte';
+<script lang='ts'>
+    import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, Avatar, Dropdown, DropdownItem, DropdownHeader, DropdownDivider, Button } from 'flowbite-svelte';
     export let loading = false;
+    export let currentActive = 'Demo';
     import {snapId} from './constants';
     import ConnectButton from './lib/connectButton.svelte';
     async function fundWallet(){
@@ -23,6 +24,9 @@
         }
         loading = false;
     }
+    const setPage = (page:string) => {
+        currentActive = page;
+    }
 </script>
   
 
@@ -35,10 +39,10 @@
         </NavBrand>
         <NavHamburger/>
         <NavUl>
-            <NavLi active={true}>Demo</NavLi>
-            <NavLi>Docs</NavLi>
-            <NavLi>FAQ</NavLi>
-            <NavLi>Wallet</NavLi>
+            <Button active={true}>Demo</Button>
+            <NavLi href="/docs">Docs</NavLi>
+            <NavLi on:click={()=>setPage('something-here-soon')}>FAQ</NavLi>
+            <NavLi  on:click={()=>setPage('something-here-soon')}>Wallet</NavLi>
           </NavUl>
         <NavUl>
           <NavLi><ConnectButton callback={fundWallet}/></NavLi>
