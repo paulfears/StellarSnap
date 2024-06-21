@@ -1,8 +1,24 @@
 # Stellar Snap Documentation
-adds Stellar to Metamask, by creating a Stellar wallet that lives in Metamask
+
+## Stellar on Metamask
+The metastellar.io team manages and maintains the stellar wallet plugin for metamask. If implemented correctly, <b>the end user should be aware they are using the stellar chain, but the experence should never
+feel like they are using a 'plug-in'</b> hince the term <b>snap</b>.
+
+The <b>metastellar snap</b> is a piece of code that lives inside the metamask wallet, and is automatically installed when requested by a web app.
+Connecting to the Stellar network using the snap is covered in <a href="https://metastellar.io/docs/#/?id=%e2%9c%a8connect-and-install">✨connect and install</a> portion of the docs.
+
+After the user installs the snap, a stellar wallet automatically created for them.
+This wallet can be accessed, using the standard metamask rpc api. This means that if you have experence developing with metamask in ethereum this shouldn't be too different. (sadly, no ~~web3.js~~ stellar3.js yet 🤞).
+
+As a developer basic idea, is you shouldn't have to focus on OUR wallet, you should focus on YOUR app.
+Ideally the flow would be.
+
+[connect Metamask] -> [<a href="https://github.com/stellar/js-stellar-sdk">create Stellar TXN</a>] -> [call <a href="https://metastellar.io/docs/#/?id=_39signtransaction39">signTxn</a>] -> [<a href="https://github.com/stellar/js-stellar-sdk">submit signed txn</a>] ✅ 
+
+#### happy hacking
+
 <span class="spacer"></span>
 <hr>
-
 
 # Quick Start
 <span class="spacer"></span>
