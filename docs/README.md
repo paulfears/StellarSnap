@@ -13,9 +13,9 @@ adds Stellar to Metamask, by creating a Stellar wallet that lives in Metamask
   </ol>
 <span class="spacer"></span>
 
-  ## ✨Connect and install: 
+  ## ✨ Connect and install
   The <b>wallet_requestSnaps</b> method is used to <b>connect</b> to MetaMask <b>and installs</b> the Stellar Wallet if it's not already installed. This also generates the user's wallet.
-  ```javascript
+  ```typescript
   
   /* //request connection */
   async function connect(){
@@ -34,9 +34,11 @@ adds Stellar to Metamask, by creating a Stellar wallet that lives in Metamask
 
 <span class="spacer"></span>
 
-  ## 🦑Calling Stellar Methods:
+  ## ✨ Calling Stellar Methods
   After the snap is connected the <b>wallet_invokeSnap</b> method is used to call Stellar Methods
-```javascript 
+
+  ### 🟠 get wallet address
+```typescript 
   
       //evoke a stellar method
       
@@ -60,18 +62,34 @@ adds Stellar to Metamask, by creating a Stellar wallet that lives in Metamask
       })
     
   ```
-  <span class="spacer"></span>
-  <button id="execAddressButton">get the users Address!</button>
-  <script>
   
-  </script>
- 
+  <button id="execAddressButton">get the users Address!</button>
+  <span class="spacer"></span>
 
-  ## 📟Calling Stellar Methods With Parameters
+  ### 🌐 Specify a Network
+
+  by default all methods are treated as mainnet, but any method can be issued to the testnet
+  by using the testnet param. The testnet parameter can be used with all methods. If it dosn't make
+  since for a certain method it is simply ignored silently.
+
+  example:
+  ```typescript
+      const result = await ethereum.request({
+          method: 'wallet_invokeSnap',
+          params: {snapId:`npm:stellar-snap`, request:{
+              method: `getBalance`,
+              params:{
+                testnet: true
+              }
+          }}
+      })
+  ```
+
+  ### 🔏 Sign a Transaction
     
   <b>Parameters are nested,</b> parameters inside parameters
   
-  ```javascript 
+  ```typescript 
       //evoke a stellar method with arguments
       let stellarTransactionXDR = endTransaction.build().toXDR(); //transaction from the stellar-js-sdk
       const args = {
@@ -107,7 +125,8 @@ adds Stellar to Metamask, by creating a Stellar wallet that lives in Metamask
 <script>
   let connectButton = document.getElementById("connectButton");
   console.log(connectButton)
-  connectButton.addEventListener('click', async ()=>{
+
+  async function connectSnap(){
     try{
       console.log("here")
       const connected = await ethereum.request({
@@ -124,7 +143,9 @@ adds Stellar to Metamask, by creating a Stellar wallet that lives in Metamask
       }
       alert(e);
     }
-  });
+  }
+  connectButton.addEventListener('click', async ()=> await connectSnap());
+
   const getAddress = async function(){
     console.log("here2")
     try{
@@ -171,43 +192,10 @@ adds Stellar to Metamask, by creating a Stellar wallet that lives in Metamask
   
 </script>
 
-Specifying Network: By default, all methods are treated as mainnet (the main network where actual transactions take place). However, you can specify the testnet (a network used for testing) by passing testnet: true in the parameters.
+# Stellar RPC Methods
 
-Current Methods: The README then provides examples of how to use various methods provided by the stellar-snap plugin. These methods include getAddress (returns the account's address), getAccountInfo (returns information related to the account), getBalance (returns the XLM balance of a wallet), transfer (transfers XLM from one account to another), fund (funds the user's wallet on the testnet), and signTransaction (signs an arbitrary transaction).
-
-Soroban: The README also provides an example of how to use the Soroban feature, which allows you to sign a SorobanCall. This involves creating a SorobanClient, getting the account, creating a contract, preparing a transaction, and then signing the transaction.
-
-# Stellar Metamask Methods
-
-<span class="spacer"></span>
-
-## ⚠️ The Docs past this point are incomplete ⚠️
-you can always ask a question in the
-[discord](https://discord.gg/ETQk4UcYyc)
-
-<span class="spacer"></span>
-<span class="spacer"></span>
-
-## connecting
-
-### calling this method will connect to metamask and automatically install the snap if it isn't already installed.
-
-As well as generate the users wallet.
-Calling this method or any subsequent methods does not requiring installing anything to a webpage, provided the the user
-has metamask (flask) installed.
-
-```javascript
-const result = await ethereum.request({
-        method: 'wallet_requestSnaps',
-        params: {
-          [`npm:stellar-snap`]: {}
-        },
-      });
-```
-### calling methods
-
-example method call
-```javascript 
+## 📎  example method call
+```typescript 
     const result = await ethereum.request({
         method: 'wallet_invokeSnap',
         params: {`npm:stellar-snap`, request:{
@@ -219,30 +207,10 @@ example method call
     })
 ```
 
-### specifying network
-by default all methods are treated as mainnet, but any method can be issued to the testnet
-by using the testnet param.
 
-example:
-```javascript
-    const result = await ethereum.request({
-        method: 'wallet_invokeSnap',
-        params: {snapId:`npm:stellar-snap`, request:{
-            method: `getBalance`,
-            params:{
-              testnet: true
-            }
-        }}
-    })
-```
-
-### current Methods
-
-####
-
-#### 'getAddress'
+## 'getAddress'
 returns the accounts address as a string
-```javascript
+```typescript
     const address = await ethereum.request({
         method: 'wallet_invokeSnap',
         params: {snapId:`npm:stellar-snap`, request:{
@@ -251,7 +219,7 @@ returns the accounts address as a string
     })
 ```
 
-#### 'getAccountInfo'
+## 'getAccountInfo'
 grabs infomation related to the account
 requires account to be funded
 ```typescript
@@ -266,7 +234,7 @@ requires account to be funded
     })
 ```
 
-#### 'getBalance'
+## 'getBalance'
 gets the XLM balance of a wallet, returns 0 in unfunded wallets
 
 ```typescript
@@ -281,7 +249,7 @@ gets the XLM balance of a wallet, returns 0 in unfunded wallets
     })
 ```
 
-### 'transfer'
+## 'transfer'
 this method is used to transfer xlm and requires a funded account.
 after being called the wallet will generate a transaction, then prompt a user to accept
 if the user accepts the transaction it will be signed and broadcast to the network.
@@ -302,9 +270,9 @@ const transactionInfomation = await ethereum.request({
 
 ```
 
-### 'fund'
+## 'fund'
 this method funds the users wallet on the testnet
-```javascript
+```typescript
 const success = await ethereum.request({
     method: 'wallet_invokeSnap',
     params: {snapId:`npm:stellar-snap`, 
@@ -314,9 +282,9 @@ const success = await ethereum.request({
     }
     })
 ```
-### 'signTransaction'
+## 'signTransaction'
 This method signs an Arbitary Transaction
-```javascript
+```typescript
     async function signTransaction(){
       const transaction = new StellarSdk.TransactionBuilder(account, { fee, networkPassphrase: "Test SDF Network ; September 2015" });
       // Add a payment operation to the transaction
@@ -352,7 +320,244 @@ This method signs an Arbitary Transaction
       console.log(response);
     }
 ```
-### 'Soroban'
+## getDataPacket
+
+retreves wallet info about the user, including names, addressess, and balances
+
+returns <a href="/#/?id=datapacket">DataPacket</a>
+
+```typescript
+    const walletInfo: DataPacket = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {`npm:stellar-snap`, request:{
+            method: `getDataPacket`,
+        }}
+    })
+```
+
+## setCurrentAccount
+
+changes the connected account
+
+```typescript
+  const result = await ethereum.request({
+    method: 'wallet_invokeSnap',
+    params: {`npm:stellar-snap`, 
+      request:{
+        method: `setCurrentAccount`,
+        params:{
+          address: `${WalletAddress}`
+        }
+      }
+    }
+  })
+```
+
+## showAddress
+
+displays the stellar address and a qr code in the extension
+
+returns: boolean
+```typescript
+    const result = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {`npm:stellar-snap`, 
+          request:{
+              method: `showAddress`,
+          }
+        }
+    })
+```
+
+## createAccount
+
+creates a new Account on the wallet
+
+```typescript
+    const result = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {`npm:stellar-snap`, 
+        request: {
+            method: `createAccount`,
+            params: {
+              name: `${"Account-name"}`
+            }
+        }}
+    })
+    
+```
+## listAccounts
+
+  returns a list of all stellar accounts in the wallet
+
+  ```typescript
+    const accountList = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {`npm:stellar-snap`, 
+        request: {
+            method: `listAccounts`,
+        }}
+    })
+  ```
+## renameAccount
+
+  selects an account by address and changes its name
+
+  ```typescript
+
+    const result = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {`npm:stellar-snap`, 
+        request:{
+            method: `renameAccount`,
+            params:{
+              address: `${accountAddress}`,
+              name: `${"New-Account-Name"}`
+            }
+        }}
+    })
+  ```
+
+## importAccount
+
+  opens a dialog where the user is prompted to import their private key, if they choose
+
+  throws on error
+
+  ```typescript
+    const success:boolean = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {
+        snapId:`npm:stellar-snap`, 
+        request:{
+            method: "importAccount",
+        }}
+    })
+  ```
+
+## fund
+
+  funds the current account with testnet stellar
+
+  ```typescript
+  const success:boolean = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {
+          snapId:`npm:stellar-snap`, 
+          request:{
+              method: `fund`
+          }
+        }
+    })
+  ```
+
+## getBalance
+
+returns the XLM balance of the current Account
+
+```typescript
+const balanceXLM: number = await ethereum.request({
+    method: 'wallet_invokeSnap',
+    params: {
+    snapId:`npm:stellar-snap`, 
+    request:{
+        method: `getBalance`,
+        params:{
+          testnet: true
+        }
+    }}
+})
+```
+
+
+## getAssets
+
+gets all assets for the current Wallet
+
+returns <a href="#/?id=wallet-asset">walletAsset[]</a>
+
+```typescript
+  const assets: walletAsset[] = await ethereum.request({
+    method: 'wallet_invokeSnap',
+    params: {
+    snapId:`npm:stellar-snap`, 
+    request:{
+        method: `getAssets`,
+        params:{
+          testnet: true
+        }
+    }}
+})
+```
+
+## sendAuthRequest
+
+sendAuthRequest is used to sign-in with 
+
+```typescript
+    const result = await ethereum.request({
+        method: 'wallet_invokeSnap',
+        params: {`npm:stellar-snap`, request:{
+            method: `sendAuthRequest`,
+            params:{
+              url: `${endpoint}`,
+              data: 
+            }
+        }}
+    })
+```
+
+    case 'sendAuthRequest':
+      const auth_client = new Auth(wallet.keyPair);
+      return await auth_client.signOnPost(params.url, params.data, params.challenge)
+
+## signStr
+      const auth = new Auth(wallet.keyPair);
+      return await auth.signData(params.challenge);
+
+## dispPrivateKey
+      return await Screens.revealPrivateKey(wallet);
+    // -------------------------------- Methods That Require a funded Account ------------------------------------------
+
+## getAccountInfo
+      if(!wallet_funded){
+        await Screens.RequiresFundedWallet(request.method, wallet.address);
+        throw new Error('Method Requires Account to be funded');
+      }
+      return await client.getAccount(wallet.address)
+## transfer
+      if(!wallet_funded){
+        await Screens.RequiresFundedWallet(request.method, wallet.address);
+        throw new Error('Method Requires Account to be funded');
+      }
+      return await operations.transfer(params.to, params.amount);
+
+## sendAsset
+      if(!wallet_funded){
+        await Screens.RequiresFundedWallet(request.method, wallet.address);
+        throw new Error('Method Requires Account to be funded');
+      }
+      return await operations.transferAsset(params.to, params.amount, params.asset);
+
+## signTransaction
+      if(!wallet_funded){
+        await Screens.RequiresFundedWallet(request.method, wallet.address);
+        throw new Error('Method Requires Account to be funded');
+      }
+      const txn = await operations.signArbitaryTxn(params.transaction);
+      return txn.toXDR();
+
+## signAndSubmitTransaction
+      if(!wallet_funded){
+        await Screens.RequiresFundedWallet(request.method, wallet.address);
+      }
+      return await operations.signAndSubmitTransaction(params.transaction);
+
+## createFederationAccount
+      return await Screens.setUpFedAccount(wallet);
+
+
+## 'Soroban'
 The Wallet also supports sorroban, To sign a SorobanCall
 futurenet must be set to true on the params object.
 ```javascript
@@ -420,7 +625,80 @@ futurenet must be set to true on the params object.
   }
 }
 
+
+
 ```
+
+# types
+
+## DataPacket
+An interface that contains infomation about the wallet
+```typescript
+
+export interface DataPacket{
+    name: string, //comment
+    currentAddress: string,
+    mainnetAssets?: walletAsset[],
+    testnetAssets?: walletAsset[],
+    accounts: Array<{name:String, address:String}>
+    mainnetXLMBalance: string,
+    testnetXLMBalance: string,
+    fedName: string | null
+}
+
+```
+
+## Wallet Asset
+
+a type that represents a the balance of asset held by a wallet
+```typescript
+
+export type walletAsset = AssetBalance | NativeBalance
+
+```
+
+## NativeBalance
+
+```typescript
+export interface NativeBalance {
+    balance:string,
+    liquidity_pool_id?:string,
+    limit: string,
+    buying_liabilites: string,
+    selling_liabilites: string,
+    sponser?: string,
+    last_modified_ledger: number,
+    is_authorized: boolean,
+    is_authorized_to_maintain_liabilites: boolean,
+    is_clawback_enabled: boolean,
+    asset_type: "native",
+    asset_issuer: "native"
+    asset_code: "XLM"
+}
+```
+
+## AssetBalance
+
+```typescript
+export interface AssetBalance {
+    balance: string, //number
+    liquidity_pool_id?: string, //number
+    limit: string, //number
+    buying_liabilites: string, //number
+    selling_liabilites: string, //number
+    sponser?: string, //address
+    last_modified_ledger: number,
+    is_authorized: boolean,
+    is_authorized_to_maintain_liabilites: boolean,
+    is_clawback_enabled: boolean,
+    asset_type: "credit_alphanum4"|"credit_alphanum12"
+    asset_code: string,
+    asset_issuer: string, //address
+}
+
+```
+
+
 ## building from Source
 
 ```shell

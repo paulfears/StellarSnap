@@ -14,14 +14,43 @@
     window.$docsify = {
       name: '',
       repo: '',
-      executeScript: true
+      executeScript: true,
+      
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="./typescriptHighlight.js"></script>
+  <!-- docsify-plugin-runkit (latest v1.x.x) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-plugin-runkit@1"></script>
   <style>
 
+    .comment{
+      color: rgb(255, 251, 2);
+    }
 
+    .builtin{
+      color: #83C5DB;
+    }
+
+    .keywords{
+      color:  #006D77;
+    }
+
+    .interpolation{
+      color: #F4A261;
+    }
+
+    .function{
+      color: #83C5DB;
+    }
+    .class-name{
+      color: #CDB4DB;
+    }
+    .internalType{
+      color: #CDB4DB;
+      cursor:pointer;
+    }
 
     .spacer{
       display: flex;
@@ -49,5 +78,6 @@
       }
                 
   </style>
+  
 </body>
 </html>
