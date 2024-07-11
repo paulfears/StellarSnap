@@ -140,19 +140,21 @@ Ideally the flow would be.
 
 <script>
   let connectButton = document.getElementById("connectButton");
+  let connected = false;
+  let testnet = true;
+  let testnetFunded = true;
   console.log(connectButton)
 
   async function connectSnap(){
     try{
       console.log("here")
-      const connected = await ethereum.request({
-        method: 'wallet_requestSnaps',
-        params: {
-          ['npm:stellar-snap']: {}
-        },
-      });
+      connected = await callMetaStellar('connect');
+      
+      
+      await fund();
+      await alert("💸testnet account funded💸");
       console.log(connected)
-      alert("connected")
+      
     }catch(e){
       if (e.toString() === "ReferenceError: ethereum is not defined"){
          alert("Install metamask flask")
@@ -160,7 +162,53 @@ Ideally the flow would be.
       alert(e);
     }
   }
-  connectButton.addEventListener('click', async ()=> await connectSnap());
+  connectButton.addEventListener('click', async ()=>await connectSnap());
+
+  async function callMetaStellar(method, params){
+    if(method === 'connect'){
+        return await ethereum.request({
+          method: 'wallet_requestSnaps',
+          params: {
+            ['npm:stellar-snap']: {}
+          },
+        });
+    }
+    if(params === undefined){
+      params = {}
+    }
+    const rpcPacket = {
+      method: 'wallet_invokeSnap',
+      params:{
+        snapId:'npm:stellar-snap',
+        request: {'method':method, params:params}
+      }
+    }
+    console.log("in call Metastellar here");
+    return await ethereum.request(rpcPacket);
+  }
+
+  function alertObject(obj){
+    console.log(obj);
+    function stringObj(obj){
+      let outputString = '{';
+      let keys = Object.keys(obj);
+      for(let i = 0; i<keys.length; i++){
+        if(typeof obj[keys[i]] === 'object'){
+          obj[keys[i]] = JSON.stringify(obj[keys[i]]);
+        }
+        outputString+=`${keys[i]} : ${obj[keys[i]]},\n`
+      }
+      outputString+='}';
+      return outputString;
+    }
+
+    alert(stringObj(obj));
+  }
+
+  async function fund(){
+      testnetFunded = await callMetaStellar('fund');
+      return testnetFunded;
+  }
 
   const getAddress = async function(){
     console.log("here2")
@@ -206,6 +254,90 @@ Ideally the flow would be.
   console.log(execButton);
   execButton.addEventListener('click', getAddress);
   
+
+
+
+  //methods 
+
+  //'getAccountInfo'
+
+  //fund
+
+  //displayAddress
+  //importAccount
+  //exportAccount
+  //transfer
+  let sendXLMButton = document.getElementById('sendXLMButton');
+  async function sendXLM(){
+    
+    console.log("connected is");
+    console.log(connected);
+    if(!connected){
+      connected = await callMetaStellar('connect');
+    }
+    if(!testnetFunded){
+      testnetFunded = await callMetaStellar('fund', {testnet:true})
+    }
+    const recipentAddress = await prompt("to (stellar Address): ");
+    let balance = await callMetaStellar('getBalance', {testnet:true})
+    console.log(`balance: ${balance}`);
+    let amount = NaN;
+    while(true){
+      amount = Number(await prompt(`amount of xlm to send?\nyou have ${balance}`));
+      console.log(amount);
+      if(amount){
+        break
+      }
+      if(amount === 0){
+        return
+      }
+      else{
+        alert(`${amount} is not a number`);
+      }
+    }
+    amount = String(amount);
+    
+    const result = await callMetaStellar('transfer', {to:recipentAddress, amount:amount, testnet:true});
+    console.log(result);
+
+  }
+  sendXLMButton.addEventListener('click', sendXLM);
+
+  //listAccounts
+  //showAddress
+  let showAddressButton = document.getElementById('showAddressbtn')
+  showAddressButton.addEventListener('click', ()=>callMetaStellar('showAddress'))
+
+
+  let getDataPacketbtn = document.getElementById('getDataPacketbtn');
+
+  async function getDataPacket(){
+    let dataPacket = await callMetaStellar('getDataPacket');
+    console.log(dataPacket);
+    alertObject(dataPacket);
+  }
+  getDataPacketbtn.addEventListener('click', getDataPacket);
+
+  let getAccountInfobtn = document.getElementById('getAccountInfobtn');
+  async function getAccountInfo(){
+   let result = await callMetaStellar('getAccountInfo', {testnet:true});
+   alertObject(result);
+  }
+  getAccountInfobtn.addEventListener('click', getAccountInfo);
+  
+
+  const getBalancebtn = document.getElementById('getBalanceButton');
+  getBalancebtn.addEventListener('click', async ()=>alert(`${await callMetaStellar('getBalance', {testnet:true})} testnet xlm`))
+
+  const createAccountButton = document.getElementById('createAccountButton');
+  async function createAccount(){
+    let name = await prompt("account name");
+    result = await callMetaStellar('createAccount', {name:name});
+    console.log(result);
+    alert(result);
+  }
+  
+  createAccountButton.addEventListener('click', )
 </script>
 
 # Stellar RPC Methods
@@ -250,6 +382,9 @@ requires account to be funded
     })
 ```
 
+<button id="getAccountInfobtn">getAccountInfo</button>
+
+
 ## 'getBalance'
 gets the XLM balance of a wallet, returns 0 in unfunded wallets
 
@@ -265,12 +400,16 @@ gets the XLM balance of a wallet, returns 0 in unfunded wallets
     })
 ```
 
+<button id="getBalanceButton">getBalance</button>
+
 ## 'transfer'
 this method is used to transfer xlm and requires a funded account.
 after being called the wallet will generate a transaction, then prompt a user to accept
 if the user accepts the transaction it will be signed and broadcast to the network.
 will return transaction infomation. And send a notification stating whether the transaction was
 successful.
+
+returns: StellarSDK.TransactionResult
 ```typescript
 const transactionInfomation = await ethereum.request({
         method: 'wallet_invokeSnap',
@@ -286,8 +425,10 @@ const transactionInfomation = await ethereum.request({
 
 ```
 
+<button id="sendXLMButton">send xlm</button>
+
 ## 'fund'
-this method funds the users wallet on the testnet
+this method funds the users wallet on the testnet,
 ```typescript
 const success = await ethereum.request({
     method: 'wallet_invokeSnap',
@@ -298,6 +439,7 @@ const success = await ethereum.request({
     }
     })
 ```
+
 ## 'signTransaction'
 This method signs an Arbitary Transaction
 ```typescript
@@ -336,7 +478,7 @@ This method signs an Arbitary Transaction
       console.log(response);
     }
 ```
-## getDataPacket
+## 'getDataPacket'
 
 retreves wallet info about the user, including names, addressess, and balances
 
@@ -350,20 +492,25 @@ returns <a href="/#/?id=datapacket">DataPacket</a>
         }}
     })
 ```
+<button id="getDataPacketbtn">get data packet</button>
 
 ## setCurrentAccount
 
 changes the connected account
 
 ```typescript
+  interface setCurrentAccountParams :{ 
+    address:string
+  }
+  const switchAccountParams:setCurrentAccountParams = {
+    address:`${WalletAddress}`
+  }
   const result = await ethereum.request({
     method: 'wallet_invokeSnap',
     params: {`npm:stellar-snap`, 
       request:{
-        method: `setCurrentAccount`,
-        params:{
-          address: `${WalletAddress}`
-        }
+        method: switchAccountParams,
+        params
       }
     }
   })
@@ -384,13 +531,18 @@ returns: boolean
         }
     })
 ```
+<button id="showAddressbtn">Show Address</button>
 
-## createAccount
+## 'createAccount'
 
 creates a new Account on the wallet
 
 ```typescript
-    const result = await ethereum.request({
+    interface createAccountParams{
+      name: string
+    }
+
+    const createAccountResult = await ethereum.request({
         method: 'wallet_invokeSnap',
         params: {`npm:stellar-snap`, 
         request: {
@@ -402,6 +554,8 @@ creates a new Account on the wallet
     })
     
 ```
+<button id="createAccountButton">CreateAccount</button>
+
 ## listAccounts
 
   returns a list of all stellar accounts in the wallet
@@ -467,23 +621,7 @@ creates a new Account on the wallet
     })
   ```
 
-## getBalance
 
-returns the XLM balance of the current Account
-
-```typescript
-const balanceXLM: number = await ethereum.request({
-    method: 'wallet_invokeSnap',
-    params: {
-    snapId:`npm:stellar-snap`, 
-    request:{
-        method: `getBalance`,
-        params:{
-          testnet: true
-        }
-    }}
-})
-```
 
 
 ## getAssets
