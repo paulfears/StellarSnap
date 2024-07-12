@@ -7,21 +7,51 @@
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-sdk/12.1.0/stellar-sdk.js"></script>
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: 'Metastellar FAQ',
+      name: '',
       repo: '',
       executeScript: true,
+      
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="./typescriptHighlight.js"></script>
+  <!-- docsify-plugin-runkit (latest v1.x.x) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-plugin-runkit@1"></script>
   <style>
 
+    .comment{
+      color: rgb(255, 251, 2);
+    }
 
+    .builtin{
+      color: #83C5DB;
+    }
+
+    .keywords{
+      color:  #006D77;
+    }
+
+    .interpolation{
+      color: #F4A261;
+    }
+
+    .function{
+      color: #83C5DB;
+    }
+    .class-name{
+      color: #CDB4DB;
+    }
+    .internalType{
+      color: #CDB4DB;
+      cursor:pointer;
+    }
 
     .spacer{
       display: flex;
@@ -43,11 +73,16 @@
       font-size: 16px;
 
     }
+    i{
+      color:#83C5DB;
+    }
+
     button:hover {
           transition: all .2s ease;
           background: #da4601;
       }
                 
   </style>
+  
 </body>
 </html>
