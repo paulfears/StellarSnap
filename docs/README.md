@@ -336,25 +336,70 @@ Ideally the flow would be.
     console.log(result);
     alert(result);
   }
-  
-  createAccountButton.addEventListener('click', )
+
+  createAccountButton.addEventListener('click', createAccount)
 </script>
 
-# Stellar RPC Methods
 
-## 📎  example method call
-```typescript 
-    const result = await ethereum.request({
-        method: 'wallet_invokeSnap',
-        params: {`npm:stellar-snap`, request:{
-            method: `${methodName}`,
-            params:{
-              paramName: `${paramValue}`
-            }
-        }}
-    })
+<div class='spacer'></div>
+<div class='spacer'></div>
+<div class='spacer'></div>
+<div class='spacer'></div>
+
+# Calling Stellar RPC Methods
+
+The easiest way to interact with the wallet is by coping the metastellar function
+
+
+
+## 📎  copy the callMetaStellar Function
+```javascript 
+
+  async function callMetaStellar(method, params){
+    if(method === 'connect'){ //method = 'connect' will connect the snap
+        return await ethereum.request({
+          method: 'wallet_requestSnaps',
+          params: {
+            ['npm:stellar-snap']: {}
+          },
+        });
+    }
+    
+    if(params === undefined){
+      params = {}
+    }
+    const rpcPacket = {
+      method: 'wallet_invokeSnap',
+      params:{
+        snapId:'npm:stellar-snap',
+        request: {'method':method, params:params}
+      }
+    }
+    console.log("in call Metastellar here");
+    return await ethereum.request(rpcPacket);
+  }
+```
+invoke the callMetaStellar function
+
+```typescript
+//connect:
+const connected:boolean = await callMetaStellar('connect');
+//getAddress:
+const address:string = await callMetaStellar('getAddress'); 
+//signTransaction:
+interface signTxnParams{
+  transaction:string //StellarSDK.TransactionXDR as String)
+  testnet:boolean
+}
+let params = {transaction:txn, testnet:true}
+const signedTxn:string = await callMetaStellar('signTransaction', params)
+//returns a signed stellar transaction in XDR as a string
 ```
 
+<div class='spacer'></div>
+<div class='spacer'></div>
+<div class='spacer'></div>
+<div class='spacer'></div>
 
 ## 'getAddress'
 returns the accounts address as a string
@@ -478,6 +523,14 @@ This method signs an Arbitary Transaction
       console.log(response);
     }
 ```
+
+## signAndSubmitTransaction
+      if(!wallet_funded){
+        await Screens.RequiresFundedWallet(request.method, wallet.address);
+      }
+      return await operations.signAndSubmitTransaction(params.transaction);
+
+
 ## 'getDataPacket'
 
 retreves wallet info about the user, including names, addressess, and balances
@@ -537,6 +590,12 @@ returns: boolean
 
 creates a new Account on the wallet
 
+parameters:
+{name:<i>string</i>}
+
+returns:
+<i>bool</i>
+
 ```typescript
     interface createAccountParams{
       name: string
@@ -569,6 +628,7 @@ creates a new Account on the wallet
         }}
     })
   ```
+
 ## renameAccount
 
   selects an account by address and changes its name
@@ -605,23 +665,6 @@ creates a new Account on the wallet
     })
   ```
 
-## fund
-
-  funds the current account with testnet stellar
-
-  ```typescript
-  const success:boolean = await ethereum.request({
-        method: 'wallet_invokeSnap',
-        params: {
-          snapId:`npm:stellar-snap`, 
-          request:{
-              method: `fund`
-          }
-        }
-    })
-  ```
-
-
 
 
 ## getAssets
@@ -655,15 +698,12 @@ sendAuthRequest is used to sign-in with
             method: `sendAuthRequest`,
             params:{
               url: `${endpoint}`,
-              data: 
+              data: Object(postData),
+              challenge: `${toBeSigned}`
             }
         }}
     })
 ```
-
-    case 'sendAuthRequest':
-      const auth_client = new Auth(wallet.keyPair);
-      return await auth_client.signOnPost(params.url, params.data, params.challenge)
 
 ## signStr
       const auth = new Auth(wallet.keyPair);
@@ -673,19 +713,6 @@ sendAuthRequest is used to sign-in with
       return await Screens.revealPrivateKey(wallet);
     // -------------------------------- Methods That Require a funded Account ------------------------------------------
 
-## getAccountInfo
-      if(!wallet_funded){
-        await Screens.RequiresFundedWallet(request.method, wallet.address);
-        throw new Error('Method Requires Account to be funded');
-      }
-      return await client.getAccount(wallet.address)
-## transfer
-      if(!wallet_funded){
-        await Screens.RequiresFundedWallet(request.method, wallet.address);
-        throw new Error('Method Requires Account to be funded');
-      }
-      return await operations.transfer(params.to, params.amount);
-
 ## sendAsset
       if(!wallet_funded){
         await Screens.RequiresFundedWallet(request.method, wallet.address);
@@ -693,19 +720,7 @@ sendAuthRequest is used to sign-in with
       }
       return await operations.transferAsset(params.to, params.amount, params.asset);
 
-## signTransaction
-      if(!wallet_funded){
-        await Screens.RequiresFundedWallet(request.method, wallet.address);
-        throw new Error('Method Requires Account to be funded');
-      }
-      const txn = await operations.signArbitaryTxn(params.transaction);
-      return txn.toXDR();
 
-## signAndSubmitTransaction
-      if(!wallet_funded){
-        await Screens.RequiresFundedWallet(request.method, wallet.address);
-      }
-      return await operations.signAndSubmitTransaction(params.transaction);
 
 ## createFederationAccount
       return await Screens.setUpFedAccount(wallet);
