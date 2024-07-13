@@ -24,7 +24,7 @@ Access-Control-Allow-Origin = "*"
           console.error(err);
         }
     });
-    await fs.cp('./faq', './site_dist/docs', { recursive: true }, (err) => {
+    await fs.cp('./faq', './site_dist/faq', { recursive: true }, (err) => {
         if (err) {
           console.error(err);
         }
