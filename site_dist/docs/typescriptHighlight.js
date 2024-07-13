@@ -1,5 +1,6 @@
-(function (Prism) {
-
+function initPrism(Prism) {
+	const playground = document.getElementById("playground");
+	console.log(playground);
 	Prism.languages.typescript = Prism.languages.extend('javascript', {
         'internalType': /walletAsset|NativeBalance|DataPacket|AssetBalance/,
 		'keywords': {
@@ -75,5 +76,43 @@
         }
     }());
 
-}(Prism));
 
+	
+	
+	
+	
+	
+
+	
+
+	// change theme
+	
+	//document.getElementById("theme1").href = `https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/${e.target.value}`;
+	
+	
+	// change font
+	function updateFont() {
+		let selectFont = document.getElementById("selectFont");
+		let fontName = selectFont.options[selectFont.selectedIndex].text;
+		let fontNameUrl = fontName.replace(" ", "+");
+		let inputFontSize = document.getElementById("inputFontSize");
+		document.getElementById("style2").textContent = `
+		@import url('https://fonts.googleapis.com/css2?&display=swap&family=${fontNameUrl}');
+		pre, code, textarea {
+			font-family: "${fontName}", monospace !important;
+			font-size: ${inputFontSize.value}pt !important;
+		}`;
+	}
+	
+	// change programming language
+	
+	
+	
+	
+
+	
+	
+
+
+}
+initPrism(Prism);
