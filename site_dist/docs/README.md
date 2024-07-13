@@ -313,7 +313,7 @@ async function callMetaStellar(method, params){
 
   if(method === 'connect'){
   //This will also install stellar if the user has metamask
-      return await ethereum.request({
+      return await window.ethereum.request({
         method: 'wallet_requestSnaps',
         params: {
           ['npm:stellar-snap']: {}
@@ -327,7 +327,7 @@ async function callMetaStellar(method, params){
       request: {'method':method, params:params}
     }
   }
-  return await ethereum.request(rpcPacket);
+  return await window.ethereum.request(rpcPacket);
 }
 
 
@@ -381,27 +381,40 @@ alert((await callMetaStellar('connect'))?'connected':'not connected');
   connectButton.addEventListener('click', async ()=>await connectSnap());
 
   async function callMetaStellar(method, params){
-    if(method === 'connect'){
-        return await ethereum.request({
-          method: 'wallet_requestSnaps',
-          params: {
-            ['npm:stellar-snap']: {}
-          },
-        });
-    }
-    if(params === undefined){
-      params = {}
-    }
-    const rpcPacket = {
-      method: 'wallet_invokeSnap',
-      params:{
-        snapId:'npm:stellar-snap',
-        request: {'method':method, params:params}
-      }
-    }
-    console.log("in call Metastellar here");
-    return await ethereum.request(rpcPacket);
+
+  //You Can Delete this section after offical launch
+  const isFlask = ( 
+    await window.ethereum?.request({ method: "web3_clientVersion" })
+  )?.includes("flask"); 
+  if(!isFlask){
+    alert("install Metamask Flask")
   }
+  // ------------------------------------------------
+
+  if(method === 'connect'){
+  //This will also install stellar if the user has metamask
+      return await window.ethereum.request({
+        method: 'wallet_requestSnaps',
+        params: {
+          ['npm:stellar-snap']: {}
+        },
+      });
+  }
+  const rpcPacket = {
+    method: 'wallet_invokeSnap',
+    params:{
+      snapId:'npm:stellar-snap',
+      request: {'method':method, params:params}
+    }
+  }
+  return await window.ethereum.request(rpcPacket);
+}
+
+
+
+
+
+
 
   function alertObject(obj){
     console.log(obj);
@@ -444,11 +457,11 @@ alert((await callMetaStellar('connect'))?'connected':'not connected');
         }
         
         console.log("request in memory")
-        let address = await ethereum.request(request);
+        let address = await window.ethereum.request(request);
         console.log("request complete");
         console.log(address)
         // gets the stellar address
-        address = await ethereum.request({
+        address = await window.ethereum.request({
             method: 'wallet_invokeSnap',
             params: 
               {
@@ -469,7 +482,7 @@ alert((await callMetaStellar('connect'))?'connected':'not connected');
   }
   let execButton = window.document.getElementById("execAddressButton");
   console.log(execButton);
-  execButton.addEventListener('click', getAddress);
+  execButton.addEventListener('click', getDataPacket);
   
 
 
@@ -628,7 +641,7 @@ Ideally the flow would be.
   
   /* //request connection */
   async function connect(){
-    const connected = await ethereum.request({
+    const connected = await window.ethereum.request({
       method: 'wallet_requestSnaps',
       params: {
         [`npm:stellar-snap`]: {}
@@ -646,33 +659,34 @@ Ideally the flow would be.
   ## ✨ Calling Stellar Methods
   After the snap is connected the <b>wallet_invokeSnap</b> method is used to call Stellar Methods
 
-  ### 🟠 get wallet address
+  ### 🟠 get wallet data
 ```typescript 
   
-      //evoke a stellar method
+      //invoke a stellar method without callMetaStellar()
       
       const request = {
           method: 'wallet_invokeSnap',
           params: {snapId:`npm:stellar-snap`, 
             request:{
-              method: `${'Stellar-Method-Name'}`
+              method: `${'getDataPacket'}`
             }
           }
       }
-      let address = await ethereum.request(request)
+      let address = (await window.ethereum.request(request)).currentAddress;
   
   
-      // gets the stellar address
-      address = await ethereum.request({
+      // retreives the stellar walletData
+      const walletData = await window.ethereum.request({
           method: 'wallet_invokeSnap',
           params: {snapId:`npm:stellar-snap`, request:{
-              method: `getAddress`,
+              method: `getDataPacket`,
           }}
       })
     
   ```
   
-  <button id="execAddressButton">get the users Address!</button>
+  <button id="execAddressButton">retreve standard wallet INFO!</button>
+  <a href="/?id=_39getdatapacket39">getDataPacket method</a>
   <span class="spacer"></span>
 
   ### 🌐 Specify a Network
@@ -683,7 +697,7 @@ Ideally the flow would be.
 
   example:
   ```typescript
-      const result = await ethereum.request({
+      const result = await window.ethereum.request({
           method: 'wallet_invokeSnap',
           params: {snapId:`npm:stellar-snap`, request:{
               method: `getBalance`,
@@ -694,40 +708,20 @@ Ideally the flow would be.
       })
   ```
 
-  ### 🔏 Sign a Transaction
-    
-  <b>Parameters are nested,</b> parameters inside parameters
+  ### 🔏 easily Signing a Transaction
+
+  use with the <a href="https://github.com/stellar/js-stellar-sdk" target="_blank">Stellar-js-sdk</a>
   
   ```typescript 
-      //evoke a stellar method with arguments
-      let stellarTransactionXDR = endTransaction.build().toXDR(); //transaction from the stellar-js-sdk
-      const args = {
-        transaction: String(stellarTransactionXDR),
-        network:'testnet'
-      }
-      const request = { 
-          method: 'wallet_invokeSnap', //constant across all method calls
-          params:{snapId:'npm:stellar-snap', request:{  //this too
-            method:`${'signTransaction'}`,
-            params:args
-          }
-          }
-      }
-      let SignedTransactionXDR = await ethereum.request(request)
-      
-      // example method call with parameters
-      SignedTransactionXDR = await ethereum.request({
-          method: 'wallet_invokeSnap',
-          params: {snapId:`npm:stellar-snap`, request:{
-              method: `signTransaction`,
-              params:{
-                transaction: stellarTransactionXDR
-                testnet:true
-              }
+        //invoke a stellar method with callMetaStellar
 
-          }}
-      })
+  let stellarTransactionXDR:string = endTransaction.build().toXDR();
+  
+  let signedTxnXDR:Promise<string> = callMetaStellar('signTransaction', {transaction : stellarTransactionXDR, testnet:true});
   ```
+  
+  
+
 
 <span class="spacer"></span>
 
@@ -747,30 +741,35 @@ The easiest way to interact with the wallet is by coping the metastellar functio
 
 ## 📎  copy the callMetaStellar Function
 ```javascript 
+async function callMetaStellar(method, params){
 
-  async function callMetaStellar(method, params){
-    if(method === 'connect'){ //method = 'connect' will connect the snap
-        return await ethereum.request({
-          method: 'wallet_requestSnaps',
-          params: {
-            ['npm:stellar-snap']: {}
-          },
-        });
-    }
-    
-    if(params === undefined){
-      params = {}
-    }
-    const rpcPacket = {
-      method: 'wallet_invokeSnap',
-      params:{
-        snapId:'npm:stellar-snap',
-        request: {'method':method, params:params}
-      }
-    }
-    console.log("in call Metastellar here");
-    return await ethereum.request(rpcPacket);
+  //You Can Delete this section after offical launch
+  const isFlask = ( 
+    await window.ethereum?.request({ method: "web3_clientVersion" })
+  )?.includes("flask"); 
+  if(!isFlask){
+    alert("install Metamask Flask")
   }
+  // ------------------------------------------------
+
+  if(method === 'connect'){
+  //This will also install stellar if the user has metamask
+      return await window.ethereum.request({
+        method: 'wallet_requestSnaps',
+        params: {
+          ['npm:stellar-snap']: {}
+        },
+      });
+  }
+  const rpcPacket = {
+    method: 'wallet_invokeSnap',
+    params:{
+      snapId:'npm:stellar-snap',
+      request: {'method':method, params:params}
+    }
+  }
+  return await window.ethereum.request(rpcPacket);
+}
 ```
 invoke the callMetaStellar function
 
@@ -797,7 +796,7 @@ const signedTxn:string = await callMetaStellar('signTransaction', params)
 ## 'getAddress'
 returns the accounts address as a string
 ```typescript
-    const address = await ethereum.request({
+    const address = await window.ethereum.request({
         method: 'wallet_invokeSnap',
         params: {snapId:`npm:stellar-snap`, request:{
             method: `getAddress`,
@@ -809,7 +808,7 @@ returns the accounts address as a string
 grabs infomation related to the account
 requires account to be funded
 ```typescript
-    const info = await ethereum.request({
+    const info = await window.ethereum.request({
         method: 'wallet_invokeSnap',
         params: {snapId:`npm:stellar-snap`, request:{
             method: `getAccountInfo`,
@@ -827,7 +826,7 @@ requires account to be funded
 gets the XLM balance of a wallet, returns 0 in unfunded wallets
 
 ```typescript
-    const balance = await ethereum.request({
+    const balance = await window.ethereum.request({
         method: 'wallet_invokeSnap',
         params: {snapId:`npm:stellar-snap`, request:{
             method: `getBalance`,
@@ -849,7 +848,7 @@ successful.
 
 returns: StellarSDK.TransactionResult
 ```typescript
-const transactionInfomation = await ethereum.request({
+const transactionInfomation = await window.ethereum.request({
         method: 'wallet_invokeSnap',
         params: {snapId:`npm:stellar-snap`, request:{
             method: `getBalance`,
@@ -868,7 +867,7 @@ const transactionInfomation = await ethereum.request({
 ## 'fund'
 this method funds the users wallet on the testnet,
 ```typescript
-const success = await ethereum.request({
+const success = await window.ethereum.request({
     method: 'wallet_invokeSnap',
     params: {snapId:`npm:stellar-snap`, 
         request:{
@@ -903,7 +902,7 @@ This method signs an Arbitary Transaction
       const endTransaction = await transaction.build();
       const xdrTransaction = endTransaction.toXDR();
       console.log(xdrTransaction);
-      const response = await ethereum.request({
+      const response = await window.ethereum.request({
         method: 'wallet_invokeSnap',
         params:{snapId:snapId, request:{
           method: 'signTransaction',
@@ -931,7 +930,7 @@ retreves wallet info about the user, including names, addressess, and balances
 returns <a href="/#/?id=datapacket">DataPacket</a>
 
 ```typescript
-    const walletInfo: DataPacket = await ethereum.request({
+    const walletInfo: DataPacket = await window.ethereum.request({
         method: 'wallet_invokeSnap',
         params: {`npm:stellar-snap`, request:{
             method: `getDataPacket`,
@@ -951,7 +950,7 @@ changes the connected account
   const switchAccountParams:setCurrentAccountParams = {
     address:`${WalletAddress}`
   }
-  const result = await ethereum.request({
+  const result = await window.ethereum.request({
     method: 'wallet_invokeSnap',
     params: {`npm:stellar-snap`, 
       request:{
@@ -968,7 +967,7 @@ displays the stellar address and a qr code in the extension
 
 returns: boolean
 ```typescript
-    const result = await ethereum.request({
+    const result = await window.ethereum.request({
         method: 'wallet_invokeSnap',
         params: {`npm:stellar-snap`, 
           request:{
@@ -994,7 +993,7 @@ returns:
       name: string
     }
 
-    const createAccountResult = await ethereum.request({
+    const createAccountResult = await window.ethereum.request({
         method: 'wallet_invokeSnap',
         params: {`npm:stellar-snap`, 
         request: {
@@ -1013,7 +1012,7 @@ returns:
   returns a list of all stellar accounts in the wallet
 
   ```typescript
-    const accountList = await ethereum.request({
+    const accountList = await window.ethereum.request({
         method: 'wallet_invokeSnap',
         params: {`npm:stellar-snap`, 
         request: {
@@ -1028,7 +1027,7 @@ returns:
 
   ```typescript
 
-    const result = await ethereum.request({
+    const result = await window.ethereum.request({
         method: 'wallet_invokeSnap',
         params: {`npm:stellar-snap`, 
         request:{
@@ -1048,7 +1047,7 @@ returns:
   throws on error
 
   ```typescript
-    const success:boolean = await ethereum.request({
+    const success:boolean = await window.ethereum.request({
         method: 'wallet_invokeSnap',
         params: {
         snapId:`npm:stellar-snap`, 
@@ -1067,7 +1066,7 @@ gets all assets for the current Wallet
 returns <a href="#/?id=wallet-asset">walletAsset[]</a>
 
 ```typescript
-  const assets: walletAsset[] = await ethereum.request({
+  const assets: walletAsset[] = await window.ethereum.request({
     method: 'wallet_invokeSnap',
     params: {
     snapId:`npm:stellar-snap`, 
@@ -1085,7 +1084,7 @@ returns <a href="#/?id=wallet-asset">walletAsset[]</a>
 sendAuthRequest is used to sign-in with 
 
 ```typescript
-    const result = await ethereum.request({
+    const result = await window.ethereum.request({
         method: 'wallet_invokeSnap',
         params: {`npm:stellar-snap`, request:{
             method: `sendAuthRequest`,
@@ -1125,7 +1124,7 @@ futurenet must be set to true on the params object.
 ```javascript
     async function callContract() {
       console.log("here in callContract");
-  const sourcePublicKey = await ethereum.request({
+  const sourcePublicKey = await window.ethereum.request({
           method: 'wallet_invokeSnap',
           params: {snapId:snapId, request:{
             method: 'getAddress',
@@ -1160,7 +1159,7 @@ futurenet must be set to true on the params object.
     console.log("prepairedTxn: ");
     console.log(preparedTransaction);
     const tx_XDR = preparedTransaction.toXDR();
-    const signedXDR = await ethereum.request(
+    const signedXDR = await window.ethereum.request(
       {method: 'wallet_invokeSnap',
           params: {
             snapId:snapId, 
