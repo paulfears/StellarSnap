@@ -1,6 +1,596 @@
-# Stellar Snap Documentation
 
-## Stellar on Metamask
+<script>
+  let connectButton = document.getElementById("connectButton");
+  let connected = false;
+  let testnet = true;
+  let testnetFunded = true;
+function bindCodeEditorShortcutKeys(textarea, highlighted) {
+    function updateCode(){
+      highlighted.textContent = textarea.value;
+      setTimeout(function(){ textarea.selectionStart = textarea.selectionEnd = textarea.value.length }, 0);
+      highlighted.scrollTop = textarea.scrollTop;
+      hljs.highlightElement(highlighted);
+    }
+
+    console.log("binding shortcuts")
+    console.log("to")
+    console.log(textarea)
+		// applying shortcut keys
+    textarea.addEventListener('scroll', function(e){
+      highlighted.scrollTop = textarea.scrollTop;
+    })
+    highlighted.addEventListener('scroll', function(e){
+      highlighted.scrollTop = textarea.scrollTop;
+    })
+		textarea.addEventListener('keydown', function (e) {
+      console.log("keypress");
+			// [Enter] key pressed detected
+			if (e.key === 'Enter') {
+	
+				// Prevent the default behavior (new line)
+				e.preventDefault();
+	
+				// Get the cursor position
+				var cursorPos = textarea.selectionStart;
+	
+				// Get the previous line
+				var prevLine = textarea.value.substring(0, cursorPos).split('\n').slice(-1)[0];
+	
+				// Get the indentation of the previous line
+				var indent = prevLine.match(/^\s*/)[0];
+	
+				// Add a new line with the same indentation
+				textarea.setRangeText('\n' + indent, cursorPos, cursorPos, 'end');
+	
+				// remove focus
+				textarea.blur();
+	
+				// regain focus (this is force the textarea scroll to caret position in case the caret falls out the textarea visible area)
+				textarea.focus();
+	      setTimeout(function(){textarea.selectionStart = textarea.selectionEnd = textarea.value.length}, 0);
+
+				// copy the code from textarea to code block      
+				updateCode();
+
+			}
+	
+			// [Tab] pressed, but no [Shift]
+			if (e.key === "Tab" && !e.shiftKey &&
+	
+				// and no highlight detected
+				textarea.selectionStart == textarea.selectionEnd) {
+	
+				// suspend default behaviour
+				e.preventDefault();
+	
+				// Get the current cursor position
+				let cursorPosition = textarea.selectionStart;
+	
+				// Insert 4 white spaces at the cursor position
+				let newValue = textarea.value.substring(0, cursorPosition) + "    " +
+					textarea.value.substring(cursorPosition);
+	
+				// Update the textarea value and cursor position
+				textarea.value = newValue;
+				textarea.selectionStart = textarea.selectionEnd = cursorPosition + 4;
+	
+				// copy the code from textarea to code block      
+				updateCode();
+				return;
+			}
+	
+			// [Tab] and [Shift] keypress presence
+			if (e.key === "Tab" && e.shiftKey &&
+	
+				// no highlight detected
+				textarea.selectionStart == textarea.selectionEnd) {
+	
+				// suspend default behaviour
+				e.preventDefault();
+	
+				// Get the current cursor position
+				let cursorPosition = textarea.selectionStart;
+	
+				// Check the previous characters for spaces
+				let leadingSpaces = 0;
+				for (let i = 0; i < 4; i++) {
+					if (textarea.value[cursorPosition - i - 1] === " ") {
+						leadingSpaces++;
+					} else {
+						break;
+					}
+				}
+	
+				if (leadingSpaces > 0) {
+					// Remove the spaces
+					let newValue = textarea.value.substring(0, cursorPosition - leadingSpaces) +
+						textarea.value.substring(cursorPosition);
+	
+					// Update the textarea value and cursor position
+					textarea.value = newValue;
+					textarea.selectionStart = textarea.selectionEnd = cursorPosition - leadingSpaces;
+				}
+	
+				// copy the code from textarea to code block
+				updateCode();
+				return;
+			}
+	
+			// [Tab] key pressed and range selection detected
+			if (e.key == 'Tab' & textarea.selectionStart != textarea.selectionEnd) {
+				e.preventDefault();
+	
+				// split the textarea content into lines
+				let lines = textarea.value.split('\n');
+	
+				// find the start/end lines
+				let startPos = textarea.value.substring(0, textarea.selectionStart).split('\n').length - 1;
+				let endPos = textarea.value.substring(0, textarea.selectionEnd).split('\n').length - 1;
+	
+				// calculating total removed white spaces
+				// these values will be used for adjusting new cursor position
+				let spacesRemovedFirstLine = 0;
+				let spacesRemoved = 0;
+	
+				// [Shift] key was pressed (this means we're un-indenting)
+				if (e.shiftKey) {
+	
+					// iterate over all lines
+					for (let i = startPos; i <= endPos; i++) {
+	
+						// /^ = from the start of the line,
+						// {1,4} = remove in between 1 to 4 white spaces that may existed
+						lines[i] = lines[i].replace(/^ {1,4}/, function (match) {
+	
+							// "match" is a string (white space) extracted
+	
+							// obtaining total white spaces removed
+	
+							// total white space removed at first line
+							if (i == startPos)
+								spacesRemovedFirstLine = match.length;
+	
+							// total white space removed overall
+							spacesRemoved += match.length;
+	
+							return '';
+						});
+					}
+				}
+	
+				// no shift key, so we're indenting
+				else {
+					// iterate over all lines
+					for (let i = startPos; i <= endPos; i++) {
+						// add a tab to the start of the line
+						lines[i] = '    ' + lines[i]; // four spaces
+					}
+				}
+	
+				// remember the cursor position
+				let start = textarea.selectionStart;
+				let end = textarea.selectionEnd;
+	
+				// put the modified lines back into the textarea
+				textarea.value = lines.join('\n');
+	
+				// adjust the position of cursor start selection
+				textarea.selectionStart = e.shiftKey ?
+					start - spacesRemovedFirstLine : start + 4;
+	
+				// adjust the position of cursor end selection
+				textarea.selectionEnd = e.shiftKey ?
+					end - spacesRemoved : end + 4 * (endPos - startPos + 1);
+	
+				// copy the code from textarea to code block      
+				updateCode();
+				return;
+			}
+      
+	
+			// [Shift] + [Del]/[Backspace] = Delete entire line(s)
+			if (e.shiftKey && (e.key === "Delete" || e.key === "Backspace")) {
+	
+				e.preventDefault();
+	
+				// find the start/end lines
+				let startPos = textarea.value.substring(0, textarea.selectionStart).split('\n').length - 1;
+				let endPos = textarea.value.substring(0, textarea.selectionEnd).split('\n').length - 1;
+	
+				// get the line and the position in that line where the cursor is
+				// pop() = take out the last line (which is the cursor selection start located)
+				let cursorLine = textarea.value.substring(0, textarea.selectionStart).split('\n').pop();
+	
+				// get the position of cursor within the last line
+				let cursorPosInLine = cursorLine.length;
+	
+				// calculating total lines to be removed
+				let totalLinesRemove = endPos - startPos + 1;
+	
+				// split the textarea content into lines
+				let lines = textarea.value.split('\n');
+	
+				// calculate new cursor position
+				let newStart = lines.slice(0, startPos).join('\n').length + (startPos > 0 ? 1 : 0);
+				// add 1 if startPos > 0 to account for '\n' character
+	
+				// remove the selected lines
+				lines.splice(startPos, totalLinesRemove);
+	
+				// get the new line where the cursor will be after deleting lines
+				// if lines[startPos] is not existed, then the new line will be an empty string
+				let newLine = lines[startPos] || '';
+	
+				// if the new line is shorter than the cursor position, put the cursor at the end of the line
+				if (newLine.length < cursorPosInLine) {
+					cursorPosInLine = newLine.length;
+				}
+	
+				// adjuct the cursor's position in the line to the new cursor position
+				newStart += cursorPosInLine;
+	
+				// put the modified lines back into the textarea
+				textarea.value = lines.join('\n');
+	
+				// set the new cursor position
+				// both cursor selection start and end will be at the same position
+				textarea.selectionStart = textarea.selectionEnd = newStart;
+	
+				// copy the code from textarea to code block      
+				updateCode();
+	
+				return;
+			}
+	
+			// Move cursor to the first non-white space character
+			if (e.key === "Home") {
+	
+				// get the line and the position in that line where the cursor is
+				// pop() = take out the last line (which is the cursor selection start located)
+				let line = textarea.value.substring(0, textarea.selectionStart).split('\n').pop();
+	
+				// get the position of cursor within the last line
+				let cursorPosInLine = line.length;
+	
+				// Find the start of the current line
+				let lineStartPos = textarea.value.substring(0, textarea.selectionStart).lastIndexOf('\n') + 1;
+	
+				// Find the first non-whitespace character on the line
+				let firstNonWhitespacePos = line.search(/\S/);
+	
+				// the cursor's position is already in front of first non-whitespace character,
+				// or it's position is before first none-whitespace character,
+				// move the cursor to the start of line
+				if (firstNonWhitespacePos >= cursorPosInLine) {
+					// do nothing, perform default behaviour, which is moving the cursor to beginning of the line
+					return true;
+				}
+				// If there's no non-whitespace character, this is an empty or whitespace-only line
+				else if (firstNonWhitespacePos === -1) {
+					// do nothing, perform default behaviour, which is moving the cursor to beginning of the line
+					return true;
+				}
+	
+				// Prevent the default Home key behavior
+				e.preventDefault();
+	
+				// Move the cursor to the position of the first non-whitespace character
+				setTimeout(function(){textarea.selectionStart = textarea.selectionEnd = lineStartPos + firstNonWhitespacePos}, 0);
+				return;
+			}
+	
+	
+		});
+	
+	}
+  function initEditor(){
+    console.log("dom content loaded");
+    const editor = document.getElementById('playground');
+    const highlighted = document.getElementById('codeBlock');
+
+    
+
+    editor.addEventListener('input', () => {
+      console.log("change playground");
+      const code = editor.value;
+        highlighted.textContent = code;
+        hljs.highlightElement(highlighted);
+      });
+      
+      
+      
+      editor.value = `
+async function callMetaStellar(method, params){
+
+  //You Can Delete this section after offical launch
+  const isFlask = ( 
+    await window.ethereum?.request({ method: "web3_clientVersion" })
+  )?.includes("flask"); 
+  if(!isFlask){
+    alert("install Metamask Flask")
+  }
+  // ------------------------------------------------
+
+  if(method === 'connect'){
+  //This will also install stellar if the user has metamask
+      return await ethereum.request({
+        method: 'wallet_requestSnaps',
+        params: {
+          ['npm:stellar-snap']: {}
+        },
+      });
+  }
+  const rpcPacket = {
+    method: 'wallet_invokeSnap',
+    params:{
+      snapId:'npm:stellar-snap',
+      request: {'method':method, params:params}
+    }
+  }
+  return await ethereum.request(rpcPacket);
+}
+
+
+alert((await callMetaStellar('connect'))?'connected':'not connected');
+
+//await callMetaStellar('showAddress');
+//await callMetaStellar('fund');
+//await callMetaStellar('getBalance', {testnet:true})
+`
+    highlighted.textContent = editor.value;  
+    hljs.highlightElement(highlighted);
+    bindCodeEditorShortcutKeys(editor, highlighted);
+    }
+  if (document.readyState === "loading") {
+    // Loading hasn't finished yet
+    document.addEventListener("DOMContentLoaded", initEditor);
+  } else {
+    // `DOMContentLoaded` has already fired
+    initEditor();
+  }
+
+  function runPlayground(){
+    let editor = document.getElementById('playground');
+    console.log(editor.value);
+    eval('(async ()=>{'+editor.value+'})()');
+  }
+  let runPlaygroundButton = document.getElementById('runplaygroundButton');
+  runPlaygroundButton.addEventListener('click', runPlayground);
+
+  
+
+  console.log(connectButton)
+
+  async function connectSnap(){
+    try{
+      console.log("here")
+      connected = await callMetaStellar('connect');
+      
+      
+      await fund();
+      await alert("💸testnet account funded💸");
+      console.log(connected)
+      
+    }catch(e){
+      if (e.toString() === "ReferenceError: ethereum is not defined"){
+         alert("Install metamask flask")
+      }
+      alert(e);
+    }
+  }
+  connectButton.addEventListener('click', async ()=>await connectSnap());
+
+  async function callMetaStellar(method, params){
+    if(method === 'connect'){
+        return await ethereum.request({
+          method: 'wallet_requestSnaps',
+          params: {
+            ['npm:stellar-snap']: {}
+          },
+        });
+    }
+    if(params === undefined){
+      params = {}
+    }
+    const rpcPacket = {
+      method: 'wallet_invokeSnap',
+      params:{
+        snapId:'npm:stellar-snap',
+        request: {'method':method, params:params}
+      }
+    }
+    console.log("in call Metastellar here");
+    return await ethereum.request(rpcPacket);
+  }
+
+  function alertObject(obj){
+    console.log(obj);
+    function stringObj(obj){
+      let outputString = '{';
+      let keys = Object.keys(obj);
+      for(let i = 0; i<keys.length; i++){
+        if(typeof obj[keys[i]] === 'object'){
+          obj[keys[i]] = JSON.stringify(obj[keys[i]]);
+        }
+        outputString+=`${keys[i]} : ${obj[keys[i]]},\n`
+      }
+      outputString+='}';
+      return outputString;
+    }
+
+    alert(stringObj(obj));
+  }
+
+  async function fund(){
+      testnetFunded = await callMetaStellar('fund');
+      return testnetFunded;
+  }
+
+  const getAddress = async function(){
+    console.log("here2")
+    try{
+        console.log("about to run request");
+        const request = {
+            method: 'wallet_invokeSnap',
+            params: 
+            
+              {
+                snapId:'npm:stellar-snap', 
+                request:{
+                  method: `${'getAddress'}`
+                }
+              }
+            
+        }
+        
+        console.log("request in memory")
+        let address = await ethereum.request(request);
+        console.log("request complete");
+        console.log(address)
+        // gets the stellar address
+        address = await ethereum.request({
+            method: 'wallet_invokeSnap',
+            params: 
+              {
+                snapId:'npm:stellar-snap', 
+                request:{
+                    method: 'getAddress',
+                }
+              }
+            
+        });
+        alert(address);
+    }
+    catch(e){
+      console.log("error");
+      console.log(e);
+      alert(e);
+    }
+  }
+  let execButton = window.document.getElementById("execAddressButton");
+  console.log(execButton);
+  execButton.addEventListener('click', getAddress);
+  
+
+
+
+  //methods 
+
+  //'getAccountInfo'
+
+  //fund
+
+  //displayAddress
+  //importAccount
+  //exportAccount
+  //transfer
+  let sendXLMButton = document.getElementById('sendXLMButton');
+  async function sendXLM(){
+    
+    console.log("connected is");
+    console.log(connected);
+    if(!connected){
+      connected = await callMetaStellar('connect');
+    }
+    if(!testnetFunded){
+      testnetFunded = await callMetaStellar('fund', {testnet:true})
+    }
+    const recipentAddress = await prompt("to (stellar Address): ");
+    let balance = await callMetaStellar('getBalance', {testnet:true})
+    console.log(`balance: ${balance}`);
+    let amount = NaN;
+    while(true){
+      amount = Number(await prompt(`amount of xlm to send?\nyou have ${balance}`));
+      console.log(amount);
+      if(amount){
+        break
+      }
+      if(amount === 0){
+        return
+      }
+      else{
+        alert(`${amount} is not a number`);
+      }
+    }
+    amount = String(amount);
+    
+    const result = await callMetaStellar('transfer', {to:recipentAddress, amount:amount, testnet:true});
+    console.log(result);
+
+  }
+  sendXLMButton.addEventListener('click', sendXLM);
+
+  //listAccounts
+  //showAddress
+  let showAddressButton = document.getElementById('showAddressbtn')
+  showAddressButton.addEventListener('click', ()=>callMetaStellar('showAddress'))
+
+
+  let getDataPacketbtn = document.getElementById('getDataPacketbtn');
+
+  async function getDataPacket(){
+    let dataPacket = await callMetaStellar('getDataPacket');
+    console.log(dataPacket);
+    alertObject(dataPacket);
+  }
+  getDataPacketbtn.addEventListener('click', getDataPacket);
+
+  let getAccountInfobtn = document.getElementById('getAccountInfobtn');
+  async function getAccountInfo(){
+   let result = await callMetaStellar('getAccountInfo', {testnet:true});
+   alertObject(result);
+  }
+  getAccountInfobtn.addEventListener('click', getAccountInfo);
+  
+
+  const getBalancebtn = document.getElementById('getBalanceButton');
+  getBalancebtn.addEventListener('click', async ()=>alert(`${await callMetaStellar('getBalance', {testnet:true})} testnet xlm`))
+
+  const createAccountButton = document.getElementById('createAccountButton');
+  async function createAccount(){
+    let name = await prompt("account name");
+    result = await callMetaStellar('createAccount', {name:name});
+    console.log(result);
+    alert(result);
+  }
+
+  createAccountButton.addEventListener('click', createAccount)
+
+
+
+
+
+
+
+
+
+
+
+</script>
+# Metastellar.io
+<hr/>
+<!-- Textarea, the code editor -->
+
+  <!-- Textarea, the code editor -->
+<div class="spacer"></div>
+  <h1 style="font-size: 48pt;">Add <b style="color: orange;">Metamask</b><br/> to your 🪐stellar<b style="font-weight: 200;">/soroban</b> application</h1>
+  <h2 style="margin-left:12pt;"><b style="font-weight: 200;">In one step</b> - copy📑 <b style="color:#00ff00; background-color:black;">callMetaStellar</b>(method, params)</h1>
+  <p>also install <a href="https://docs.metamask.io/snaps/get-started/install-flask">metamask flask</a> (until offical launch)</p>
+  
+  <div id="divCodeWrapper">
+      <pre v-pre id="preCode"><code id="codeBlock"  class="language-js"></code></pre>
+      <textarea id="playground" wrap="soft" spellcheck="false">
+
+  </textarea>
+  </div>
+
+  <button id="runplaygroundButton">Run💡</button>
+  <div class="spacer"></div>
+  <!-- End of the code editor -->
+
+<!-- End of the code editor -->
+
+
 The metastellar.io team manages and maintains the stellar wallet plugin for metamask. If implemented correctly, <b>the end user should be aware they are using the stellar chain, but the experence should never
 feel like they are using a 'plug-in'</b> hince the term <b>snap</b>.
 
@@ -138,207 +728,7 @@ Ideally the flow would be.
 
 <span class="spacer"></span>
 
-<script>
-  let connectButton = document.getElementById("connectButton");
-  let connected = false;
-  let testnet = true;
-  let testnetFunded = true;
-  console.log(connectButton)
 
-  async function connectSnap(){
-    try{
-      console.log("here")
-      connected = await callMetaStellar('connect');
-      
-      
-      await fund();
-      await alert("💸testnet account funded💸");
-      console.log(connected)
-      
-    }catch(e){
-      if (e.toString() === "ReferenceError: ethereum is not defined"){
-         alert("Install metamask flask")
-      }
-      alert(e);
-    }
-  }
-  connectButton.addEventListener('click', async ()=>await connectSnap());
-
-  async function callMetaStellar(method, params){
-    if(method === 'connect'){
-        return await ethereum.request({
-          method: 'wallet_requestSnaps',
-          params: {
-            ['npm:stellar-snap']: {}
-          },
-        });
-    }
-    if(params === undefined){
-      params = {}
-    }
-    const rpcPacket = {
-      method: 'wallet_invokeSnap',
-      params:{
-        snapId:'npm:stellar-snap',
-        request: {'method':method, params:params}
-      }
-    }
-    console.log("in call Metastellar here");
-    return await ethereum.request(rpcPacket);
-  }
-
-  function alertObject(obj){
-    console.log(obj);
-    function stringObj(obj){
-      let outputString = '{';
-      let keys = Object.keys(obj);
-      for(let i = 0; i<keys.length; i++){
-        if(typeof obj[keys[i]] === 'object'){
-          obj[keys[i]] = JSON.stringify(obj[keys[i]]);
-        }
-        outputString+=`${keys[i]} : ${obj[keys[i]]},\n`
-      }
-      outputString+='}';
-      return outputString;
-    }
-
-    alert(stringObj(obj));
-  }
-
-  async function fund(){
-      testnetFunded = await callMetaStellar('fund');
-      return testnetFunded;
-  }
-
-  const getAddress = async function(){
-    console.log("here2")
-    try{
-        console.log("about to run request");
-        const request = {
-            method: 'wallet_invokeSnap',
-            params: 
-            
-              {
-                snapId:'npm:stellar-snap', 
-                request:{
-                  method: `${'getAddress'}`
-                }
-              }
-            
-        }
-        console.log("request in memory")
-        let address = await ethereum.request(request);
-        console.log("request complete");
-        console.log(address)
-        // gets the stellar address
-        address = await ethereum.request({
-            method: 'wallet_invokeSnap',
-            params: 
-              {
-                snapId:'npm:stellar-snap', 
-                request:{
-                    method: 'getAddress',
-                }
-              }
-            
-        });
-        alert(address);
-    }
-    catch(e){
-      console.log("error");
-      console.log(e);
-      alert(e);
-    }
-  }
-  let execButton = window.document.getElementById("execAddressButton");
-  console.log(execButton);
-  execButton.addEventListener('click', getAddress);
-  
-
-
-
-  //methods 
-
-  //'getAccountInfo'
-
-  //fund
-
-  //displayAddress
-  //importAccount
-  //exportAccount
-  //transfer
-  let sendXLMButton = document.getElementById('sendXLMButton');
-  async function sendXLM(){
-    
-    console.log("connected is");
-    console.log(connected);
-    if(!connected){
-      connected = await callMetaStellar('connect');
-    }
-    if(!testnetFunded){
-      testnetFunded = await callMetaStellar('fund', {testnet:true})
-    }
-    const recipentAddress = await prompt("to (stellar Address): ");
-    let balance = await callMetaStellar('getBalance', {testnet:true})
-    console.log(`balance: ${balance}`);
-    let amount = NaN;
-    while(true){
-      amount = Number(await prompt(`amount of xlm to send?\nyou have ${balance}`));
-      console.log(amount);
-      if(amount){
-        break
-      }
-      if(amount === 0){
-        return
-      }
-      else{
-        alert(`${amount} is not a number`);
-      }
-    }
-    amount = String(amount);
-    
-    const result = await callMetaStellar('transfer', {to:recipentAddress, amount:amount, testnet:true});
-    console.log(result);
-
-  }
-  sendXLMButton.addEventListener('click', sendXLM);
-
-  //listAccounts
-  //showAddress
-  let showAddressButton = document.getElementById('showAddressbtn')
-  showAddressButton.addEventListener('click', ()=>callMetaStellar('showAddress'))
-
-
-  let getDataPacketbtn = document.getElementById('getDataPacketbtn');
-
-  async function getDataPacket(){
-    let dataPacket = await callMetaStellar('getDataPacket');
-    console.log(dataPacket);
-    alertObject(dataPacket);
-  }
-  getDataPacketbtn.addEventListener('click', getDataPacket);
-
-  let getAccountInfobtn = document.getElementById('getAccountInfobtn');
-  async function getAccountInfo(){
-   let result = await callMetaStellar('getAccountInfo', {testnet:true});
-   alertObject(result);
-  }
-  getAccountInfobtn.addEventListener('click', getAccountInfo);
-  
-
-  const getBalancebtn = document.getElementById('getBalanceButton');
-  getBalancebtn.addEventListener('click', async ()=>alert(`${await callMetaStellar('getBalance', {testnet:true})} testnet xlm`))
-
-  const createAccountButton = document.getElementById('createAccountButton');
-  async function createAccount(){
-    let name = await prompt("account name");
-    result = await callMetaStellar('createAccount', {name:name});
-    console.log(result);
-    alert(result);
-  }
-
-  createAccountButton.addEventListener('click', createAccount)
-</script>
 
 
 <div class='spacer'></div>
@@ -898,3 +1288,4 @@ by metamask.
 ## Account Recovery
 Because keys are handled in this way, when a user recovers their metamask account, they will also recover their stellar
 account, which means that there isn't another mnemonic to save. 
+
