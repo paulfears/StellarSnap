@@ -586,6 +586,9 @@ alert((await callMetaStellar('connect'))?'connected':'not connected');
 
   <button id="runplaygroundButton">Run💡</button>
   <div class="spacer"></div>
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+  <div class="spacer"></div>
   <!-- End of the code editor -->
 
 <!-- End of the code editor -->
