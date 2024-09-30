@@ -1,8 +1,7 @@
 
 const isDev = import.meta.env.DEV
-let snapId = "npm:stellar-snap"
+let snap_Id = "npm:stellar-snap"
 if(isDev){
-    snapId = "local:http://localhost:8080/"
+    snap_Id = "local:http://localhost:8080/"
 }
-
-module.exports = {snapId};
+export const snapId = snap_Id;
