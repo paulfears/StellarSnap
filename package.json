@@ -1,6 +1,6 @@
 {
   "name": "stellar-snap",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A non custodial Stellar Wallet built for metamask",
   "repository": {
     "type": "git",
