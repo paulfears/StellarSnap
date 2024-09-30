@@ -180,6 +180,17 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     case 'createFederationAccount':
       return await Screens.setUpFedAccount(wallet);
 
+
+    case 'sendXLMDialog':
+      /**Your code goes here
+       * 
+       * Example:
+       * await xlmDialog(wallet, client, operations);
+       * pass in the wallet opject, client object and operations object
+       * they are intialized at the top of the onRpcRequest function
+       */
+      return null;
+
     default:
       throw new Error('Method not found.');
   }

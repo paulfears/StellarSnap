@@ -1,4 +1,4 @@
-import { Box, Text, Bold, Copyable, Heading, Card} from '@metamask/snaps-sdk/jsx';
+import { Box, Text, Bold, Copyable, Heading,} from '@metamask/snaps-sdk/jsx';
 import { Wallet } from '../Wallet';
 import { Client } from '../Client';
 import {getDataPacket} from '../assets';
