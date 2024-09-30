@@ -1,5 +1,6 @@
 import { OnRpcRequestHandler } from '@metamask/snap-types';
 import type { OnInstallHandler } from '@metamask/snaps-sdk';
+import type { OnHomePageHandler } from "@metamask/snaps-sdk";
 import { Wallet, ImportAccountUI, showQrCode} from './Wallet';
 import { fund, Client } from './Client';
 import { TxnBuilder } from './TxnBuilder';
@@ -13,8 +14,8 @@ import { parseRawSimulation } from './sorobanTxn';
 import Utils from './Utils';
 import { StateManager } from './stateManager';
 import {getAssets, getDataPacket} from './assets';
-import { Asset } from 'stellar-base';
 import { Auth } from './Auth';
+import HomeScreen from './screens/home.tsx';
 
 export const onCronjob: OnCronjobHandler = async ({ request }) => {
   const wallet = await Wallet.getCurrentWallet();
@@ -182,4 +183,11 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     default:
       throw new Error('Method not found.');
   }
+};
+
+
+export const onHomePage: OnHomePageHandler = async () => {
+  return {
+    content: HomeScreen(),
+  };
 };

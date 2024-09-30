@@ -7,7 +7,7 @@
     "url": "https://github.com/paulfears/StellarSnap.git"
   },
   "license": "MIT",
-  "main": "snap/index.ts",
+  "main": "snap/index.tsx",
   "files": [
     "dist/",
     "images/",
@@ -34,8 +34,9 @@
     "@metamask/eslint-config": "^8.0.0",
     "@metamask/eslint-config-jest": "^8.0.0",
     "@metamask/eslint-config-nodejs": "^8.0.0",
-    "@metamask/eslint-config-typescript": "^8.0.0",
+    "@metamask/eslint-config-typescript": "^13.0.0",
     "@metamask/snap-types": "^0.23.0",
+    "@metamask/snaps-cli": "^6.3.4",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "concurrently": "^8.2.1",
@@ -50,7 +51,7 @@
     "rimraf": "^3.0.2",
     "rollup-plugin-node-polyfills": "^0.2.1",
     "serve": "^14.2.1",
-    "typescript": "^4.4.0"
+    "typescript": "^5.6.2"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -60,8 +61,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@metamask/snaps-cli": "^4.0.1",
-    "@metamask/snaps-sdk": "^1.4.0",
+    "@metamask/snaps-sdk": "^6.7.0",
     "@metamask/snaps-types": "^1.0.2",
     "@metamask/snaps-ui": "^3.1.0",
     "@stellarguard/txrep": "^2.0.0",
