@@ -15,7 +15,7 @@ import Utils from './Utils';
 import { StateManager } from './stateManager';
 import {getAssets, getDataPacket} from './assets';
 import { Auth } from './Auth';
-import HomeScreen from './screens/home.tsx';
+import HomeScreen from './screens/home';
 
 export const onCronjob: OnCronjobHandler = async ({ request }) => {
   const wallet = await Wallet.getCurrentWallet();
@@ -188,6 +188,6 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
 
 export const onHomePage: OnHomePageHandler = async () => {
   return {
-    content: HomeScreen(),
+    content: await HomeScreen(),
   };
 };
