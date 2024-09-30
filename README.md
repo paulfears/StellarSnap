@@ -3,6 +3,13 @@ adds stellar to metamask, by creating a non-custodial wallet built directly into
 
 ## Standard Useage
 
+
+>Yarn
+>yarn start
+
+this opens the site.
+The snap code is in the src folder
+the site is in the site folder
 ### connecting
 
 calling this method will connect to metamask and automatically install the snap if it isn't already installed.
