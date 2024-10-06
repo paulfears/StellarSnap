@@ -37,6 +37,82 @@
 		transfer,
 		WalletAsset
 	} from '$lib/code-snippets/docs';
+	import { browser } from '$app/environment';
+	let connected = false;
+	let testnet = true;
+	let testnetFunded = true;
+	const btn_connectSnap = async () => {
+		if (browser) {
+			try {
+				connected = await btn_callMetaStellar('connect', { testnet });
+				// await fund();
+				await alert('💸testnet account funded💸');
+				console.log(connected);
+			} catch (e) {
+				if (e.toString() === 'ReferenceError: ethereum is not defined') {
+					alert('Install metamask flask');
+				}
+				alert(e);
+			}
+		}
+	};
+	const btn_callMetaStellar = async (method, params) => {
+		if (browser) {
+			const isFlask = (await window?.ethereum?.request({ method: 'web3_clientVersion' }))?.includes(
+				'flask'
+			);
+			if (!isFlask) {
+				alert('install Metamask Flask');
+			}
+			if (method === 'connect') {
+				return await window?.ethereum?.request({
+					method: 'wallet_requestSnaps',
+					params: { ['npm:stellar-snap']: {} }
+				});
+			}
+			const rpcPacket = {
+				method: 'wallet_invokeSnap',
+				params: {
+					snapId: 'npm:stellar-snap',
+					request: { method: method, params: params }
+				}
+			};
+			return await window?.ethereum?.request(rpcPacket);
+		}
+	};
+
+	const btn_getDataPacket = async () => {
+		if (browser) {
+			let result = await btn_callMetaStellar('getDataPacket', { testnet });
+			console.log(result);
+			alert(result);
+		}
+	};
+
+	const btn_getAccountInfo = async () => {
+		if (browser) {
+			let result = await btn_callMetaStellar('getAccountInfo', { testnet });
+			console.log(result);
+			alert(result);
+		}
+	};
+
+	const btn_getBalance = async () => {
+		if (browser) {
+			let result = await btn_callMetaStellar('getBalance', { testnet });
+			console.log(result);
+			alert(result);
+		}
+	};
+
+	const btn_createAccount = async () => {
+		if (browser) {
+			let name = await prompt('account name');
+			let result = await btn_callMetaStellar('createAccount', { name });
+			console.log(result);
+			alert(result);
+		}
+	};
 </script>
 
 <svelte:head>
@@ -73,7 +149,13 @@
 				<LineNumbers {highlighted} wrapLines --padding-left="1em" --padding-right="1em" />
 			</Highlight>
 		</div>
-		<button type="button" class="btn"> Run💡 </button>
+		<button
+			type="button"
+			on:click|preventDefault={() => (btn_callMetaStellar('connect', { testnet }))}
+			class="btn"
+		>
+			Run💡
+		</button>
 		<p>
 			The metastellar.io team manages and maintains the stellar wallet plugin for metamask. If
 			implemented correctly, <b
@@ -184,7 +266,9 @@
 					<LineNumbers {highlighted} wrapLines --padding-left="1em" --padding-right="1em" />
 				</Highlight>
 			</div>
-			<button type="button" class="btn"> Exec Connect() </button>
+			<button type="button" class="btn" on:click|preventDefault={() => (btn_connectSnap)}>
+				Exec Connect()
+			</button>
 		</div>
 	</div>
 	<!-- calling stellar methods -->
@@ -202,7 +286,9 @@
 					<LineNumbers {highlighted} wrapLines --padding-left="1em" --padding-right="1em" />
 				</Highlight>
 			</div>
-			<button type="button" class="btn"> Retreve Standard Wallet INFO! </button>
+			<button type="button" class="btn" on:click|preventDefault={() => (btn_getDataPacket)}>
+				Retreve Standard Wallet INFO!
+			</button>
 			<a href="#getDataPacket-method" class="link">getDataPacket method</a>
 		</div>
 	</div>
@@ -222,23 +308,6 @@
 				<Highlight code={specify_a_network} language={typescript} let:highlighted>
 					<LineNumbers {highlighted} wrapLines --padding-left="1em" --padding-right="1em" />
 				</Highlight>
-
-				<template>
-					<pre><code>
-                          {`const result = await window.ethereum.request({
-                              method: 'wallet_invokeSnap',
-                              params: {
-                                  snapId: 'npm:stellar-snap',
-                                  request: {
-                                      method: 'getBalance',
-                                      params: {
-                                          testnet: true
-                                      }
-                                  }
-                              }
-                          })`}
-                        </code></pre>
-				</template>
 			</div>
 		</div>
 	</div>
@@ -301,7 +370,9 @@
 						<LineNumbers {highlighted} wrapLines --padding-left="1em" --padding-right="1em" />
 					</Highlight>
 				</div>
-				<button type="button" class="btn">Get Account Info</button>
+				<button type="button" class="btn" on:click|preventDefault={() => (btn_getAccountInfo)}
+					>Get Account Info</button
+				>
 			</div>
 
 			<!-- getBalance -->
@@ -313,7 +384,9 @@
 						<LineNumbers {highlighted} wrapLines --padding-left="1em" --padding-right="1em" />
 					</Highlight>
 				</div>
-				<button type="button" class="btn">Get Balance</button>
+				<button type="button" class="btn" on:click|preventDefault={() => (btn_getBalance)}
+					>Get Balance</button
+				>
 			</div>
 
 			<!-- transfer -->
@@ -376,7 +449,9 @@
 						<LineNumbers {highlighted} wrapLines --padding-left="1em" --padding-right="1em" />
 					</Highlight>
 				</div>
-				<button type="button" class="btn">Get Data Packet</button>
+				<button type="button" class="btn" on:click|preventDefault={() => (btn_getDataPacket)}
+					>Get Data Packet</button
+				>
 			</div>
 
 			<!-- setCurrentAccount -->
@@ -416,7 +491,9 @@
 						<LineNumbers {highlighted} wrapLines --padding-left="1em" --padding-right="1em" />
 					</Highlight>
 				</div>
-				<button type="button" class="btn">Create Account</button>
+				<button type="button" class="btn" on:click|preventDefault={() => (btn_createAccount)}
+					>Create Account</button
+				>
 			</div>
 
 			<!-- listAccounts -->
@@ -610,4 +687,3 @@
 		</div>
 	</div>
 </div>
-
