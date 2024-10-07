@@ -18,7 +18,10 @@ export class WalletFuncs{
         this.analizer = new TransactionAnalizer(this.client);
     }
 
-    async transfer(to:string, amount:string){
+    async transfer(to:string, amount:string, confirmation?:Boolean){
+        if(confirmation === undefined){
+            confirmation = true;
+        }
         const account_exists = await this.client.checkAccountExists(to);
         let txn:Transaction;
         if(account_exists){
@@ -27,7 +30,7 @@ export class WalletFuncs{
         else{
             txn = this.builder.createAccountTxn(to, amount);
         }
-        return this.signAndSubmitTransaction(txn.toXDR() as unknown as xdr.Transaction);
+        return this.signAndSubmitTransaction(txn.toXDR() as unknown as xdr.Transaction, confirmation);
         /*
         txn.sign(this.keyPair);
         const response = await this.client.submitTransaction(txn);
@@ -57,17 +60,26 @@ export class WalletFuncs{
         }
     }
 
-    async signArbitaryTxn(xdrTransaction): Promise<Transaction<Memo<MemoType>, Operation[]> | FeeBumpTransaction>{
+    async signArbitaryTxn(xdrTransaction:xdr.Transaction | string, includeConfirm?:Boolean): Promise<Transaction<Memo<MemoType>, Operation[]> | FeeBumpTransaction>{
         
         let txn = TransactionBuilder.fromXDR(xdrTransaction, this.client.currentPassphrase);
         let analizerTxn_ref:Transaction;
+        if(includeConfirm === undefined){
+            includeConfirm = true;
+        }
         if('innerTransaction' in txn){
             analizerTxn_ref = txn.innerTransaction;
         }
         else{
             analizerTxn_ref = txn;
         }
-        const confirm = await this.analizer.analizeTransaction(analizerTxn_ref);
+        let confirm;
+        if(includeConfirm !== false){
+            confirm = await this.analizer.analizeTransaction(analizerTxn_ref);
+        }
+        else{
+            confirm = true;
+        }
         if(!confirm){
             throw new Error("user rejected request");
         }
@@ -78,9 +90,12 @@ export class WalletFuncs{
         return txn;
     }
 
-    async signAndSubmitTransaction(xdrTransaction: xdr.Transaction){
+    async signAndSubmitTransaction(xdrTransaction: xdr.Transaction, confirmation?:Boolean){
+        if(confirmation === undefined){
+            confirmation = true;
+        }
         console.log("inHere")
-        const signedTxn = await this.signArbitaryTxn(xdrTransaction);
+        const signedTxn = await this.signArbitaryTxn(xdrTransaction, confirmation);
         console.log("next");
         const response = await this.client.submitTransaction(signedTxn);
         console.log("response got");

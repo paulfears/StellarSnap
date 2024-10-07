@@ -109,6 +109,9 @@
       <TabItem open>
         <span slot="title">Query Stellar</span>
         <div  class="grid-container">
+          <FunctionContainer code={genreateCode("sendXLMDialog", {testnet:$testnet})} testnet={$testnet} method="sendXLMDialog">
+            <p slot="title">open an XLM send Dialog</p>
+          </FunctionContainer>
           <FunctionContainer code={genreateCode("getAddress", {testnet:$testnet})} testnet={$testnet} method="getAddress">
             <p slot="title">Get Address of Wallet</p>
           </FunctionContainer>

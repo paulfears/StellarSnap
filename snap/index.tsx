@@ -1,6 +1,6 @@
-import { OnRpcRequestHandler } from '@metamask/snap-types';
-import type { OnInstallHandler } from '@metamask/snaps-sdk';
-import type { OnHomePageHandler } from "@metamask/snaps-sdk";
+//import { OnRpcRequestHandler } from '@metamask/snap-types';
+import type { OnInstallHandler, OnUserInputHandler,  OnRpcRequestHandler, OnHomePageHandler} from '@metamask/snaps-sdk';
+
 import { Wallet, ImportAccountUI, showQrCode} from './Wallet';
 import { fund, Client } from './Client';
 import { TxnBuilder } from './TxnBuilder';
@@ -16,6 +16,7 @@ import { StateManager } from './stateManager';
 import {getAssets, getDataPacket} from './assets';
 import { Auth } from './Auth';
 import HomeScreen from './screens/home';
+import { SendXLM } from './screens/sendXLM';
 
 export const onCronjob: OnCronjobHandler = async ({ request }) => {
   const wallet = await Wallet.getCurrentWallet();
@@ -52,7 +53,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
   const params = request.params as any;
   let wallet_funded = false;
   let baseAccount;
-
+  let testnet = false;
   const keyPair = wallet.keyPair;
   console.log("about to init client");
   const client = new Client();
@@ -65,6 +66,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
   if(params?.testnet){
     console.log("testnet is true");
     client.setNetwork('testnet');
+    testnet = true;
   }
   else if(params?.futurenet){
     console.log("futurenet is true");
@@ -83,11 +85,14 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     console.log("Account not funded yet")
   }
   let txnBuilder: TxnBuilder;
-  let operations: WalletFuncs;
-  if(wallet_funded){
+  let operations: WalletFuncs | null;
+  if(wallet_funded && baseAccount !== undefined){
     console.log("wallet funded");
     txnBuilder = new TxnBuilder(baseAccount, client);
     operations = new WalletFuncs(baseAccount, keyPair, txnBuilder, client);
+  }
+  else{
+    operations = null;
   }
   
   switch (request.method) {
@@ -149,28 +154,35 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
         await Screens.RequiresFundedWallet(request.method, wallet.address);
         throw new Error('Method Requires Account to be funded');
       }
-      return await operations.transfer(params.to, params.amount);
-
+      if(operations !== null){
+        return await operations.transfer(params.to, params.amount);
+      }
     case 'sendAsset':
       if(!wallet_funded){
         await Screens.RequiresFundedWallet(request.method, wallet.address);
         throw new Error('Method Requires Account to be funded');
       }
-      return await operations.transferAsset(params.to, params.amount, params.asset);
+      if(operations !== null){
+        return await operations.transferAsset(params.to, params.amount, params.asset);
+      }
 
     case 'signTransaction':
       if(!wallet_funded){
         await Screens.RequiresFundedWallet(request.method, wallet.address);
         throw new Error('Method Requires Account to be funded');
       }
-      const txn = await operations.signArbitaryTxn(params.transaction);
-      return txn.toXDR();
+      if(operations !== null){
+        const txn = await operations.signArbitaryTxn(params.transaction);
+        return txn.toXDR();
+      }
 
     case 'signAndSubmitTransaction':
       if(!wallet_funded){
         await Screens.RequiresFundedWallet(request.method, wallet.address);
       }
-      return await operations.signAndSubmitTransaction(params.transaction);
+      if(operations !== null){
+        return await operations.signAndSubmitTransaction(params.transaction);
+      }
 
     case 'callContract':
       //params.params
@@ -189,6 +201,11 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
        * pass in the wallet opject, client object and operations object
        * they are intialized at the top of the onRpcRequest function
        */
+      let dataPacket = await getDataPacket(wallet, client);
+      if(operations !== null){
+        let result = await SendXLM(dataPacket, wallet, operations, testnet);
+        return result;
+      }
       return null;
 
     default:
@@ -202,3 +219,20 @@ export const onHomePage: OnHomePageHandler = async () => {
     content: await HomeScreen(),
   };
 };
+
+
+import { InteractionHandler } from './screens/InteractionHandler';
+
+export const onUserInput: OnUserInputHandler = async ({id, event}) => { 
+ 
+  console.log(id);
+  console.log(event);
+  console.log("interacton table is: ");
+  console.log(InteractionHandler.interactionTable);
+  if(event.name){
+
+
+    InteractionHandler.handleCall(id, event.name);
+    
+  }
+}; 
