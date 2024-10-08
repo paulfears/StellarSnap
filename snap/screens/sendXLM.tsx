@@ -7,8 +7,9 @@ import type {DataPacket} from '../assets';
 import type { WalletFuncs } from 'WalletFuncs';
 import { InteractionHandler } from './InteractionHandler';
 
-
-export const SendXLM = async (dataPacket:DataPacket, wallet:Wallet, operations:WalletFuncs, testnet:boolean)=>{
+type interfaceId = string;
+export const SendXLM = async (dataPacket:DataPacket, wallet:Wallet, operations:WalletFuncs, testnet:boolean):Promise<interfaceId> => 
+{
     console.log("getting wallet");
     console.log("got wallet");
     console.log(wallet);
@@ -74,12 +75,6 @@ export const SendXLM = async (dataPacket:DataPacket, wallet:Wallet, operations:W
     const interfaceId = await InteractionHandler.createInterface(ui);
     InteractionHandler.registerButton(interfaceId, "sendForm", sendCallback, [operations]);
     InteractionHandler.registerInput(interfaceId, "sendXLMAddress", addressCallback, [dataPacket]);
-    await snap.request({
-        method: "snap_dialog",
-        params: {
-          type: "alert",
-          id: interfaceId
-        }
-    });
+    return interfaceId;
     
 };

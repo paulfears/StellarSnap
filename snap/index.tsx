@@ -203,7 +203,8 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
        */
       let dataPacket = await getDataPacket(wallet, client);
       if(operations !== null){
-        let result = await SendXLM(dataPacket, wallet, operations, testnet);
+        let interfaceId = await SendXLM(dataPacket, wallet, operations, testnet);
+        let result = await Utils.openDialog(interfaceId);
         return result;
       }
       return null;

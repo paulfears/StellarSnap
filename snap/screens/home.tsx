@@ -1,8 +1,12 @@
-import { Box, Text, Bold, Copyable, Heading,} from '@metamask/snaps-sdk/jsx';
+import { Box, Text, Bold, Copyable, Heading, Button} from '@metamask/snaps-sdk/jsx';
 import { Wallet } from '../Wallet';
 import { Client } from '../Client';
 import {getDataPacket} from '../assets';
 import type {DataPacket} from '../assets';
+import { InteractionHandler } from './InteractionHandler';
+import {showQrCode} from './ReceiveXLM';
+import {SendXLM} from './sendXLM';
+
 const HomeScreen = async ()=>{
     console.log("getting wallet");
     const wallet = await Wallet.getCurrentWallet();
@@ -18,7 +22,9 @@ const HomeScreen = async ()=>{
 
     const walletData = await getDataPacket(wallet, client);
     console.log(walletData);
-    return (
+    const openReceive = async ()=>{ showQrCode(wallet); }
+    //const openSend = async ()=>{ SendXLM(walletData, wallet, client, false); }
+    let screenUI = (
         <Box>
             <Heading>
                 {walletData.name} - {walletData.mainnetXLMBalance} XLM
@@ -26,6 +32,9 @@ const HomeScreen = async ()=>{
            <Copyable value={walletData.currentAddress}/>
         </Box>
     );
+    let interfaceId = await InteractionHandler.createInterface(screenUI);
+    InteractionHandler.registerButton(interfaceId, "receive", openReceive, []);
+    //InteractionHandler.registerButton(interfaceId, "send", openSend, []);
 
 };
 
