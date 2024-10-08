@@ -25,7 +25,11 @@ export const SendXLM = async (dataPacket:DataPacket, wallet:Wallet, operations:W
             <Spinner/>
         </Box>);
         await InteractionHandler.updateInterface(interfaceId, loadingUI);
-        let result = await operations.transfer(address, amount, false);
+        let memoString = state.sendForm.Memo;
+        if(memoString === ""){
+            memoString = null;
+        }
+        let result = await operations.transfer(address, amount, false, memoString);
         await InteractionHandler.updateInterface(interfaceId, <Text>{JSON.stringify(result)}</Text>);
 
     };
@@ -45,6 +49,7 @@ export const SendXLM = async (dataPacket:DataPacket, wallet:Wallet, operations:W
                 <Input name="sendXLMAddress" placeholder="Recipient Address"/>
                 <Input name="XLMAmmount" placeholder="Amount"/>
                 <Text>{address}</Text>
+                <Input name="Memo" placeholder="Memo"/>
                 <Button name="sendXLM">Send</Button>
             </Form>
         </Box>
@@ -60,6 +65,7 @@ export const SendXLM = async (dataPacket:DataPacket, wallet:Wallet, operations:W
             <Form name="sendForm">
                 <Input name="sendXLMAddress" placeholder="Recipient Address"/>
                 <Input name="XLMAmmount" placeholder="Amount"/>
+                <Input name="Memo" placeholder="Memo"/>
                 <Button name="sendXLM">Send</Button>
             </Form>
         </Box>

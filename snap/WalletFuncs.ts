@@ -1,4 +1,6 @@
-import { Account, Transaction, Keypair, xdr, Memo, MemoType, FeeBumpTransaction, Operation, TransactionBuilder} from "stellar-base";
+import { Account, Transaction, Keypair, xdr, MemoType, FeeBumpTransaction, Operation, TransactionBuilder} from "stellar-base";
+import { Memo, } from "@stellar/stellar-sdk";
+
 import { Client } from "./Client";
 import { TxnBuilder } from "./TxnBuilder";
 import Utils from "./Utils";
@@ -18,18 +20,31 @@ export class WalletFuncs{
         this.analizer = new TransactionAnalizer(this.client);
     }
 
-    async transfer(to:string, amount:string, confirmation?:Boolean){
+    async transfer(to:string, amount:string, confirmation?:Boolean, memo?:string|null){
+        let memo_type:MemoType = "none";
+        if(memo !== undefined){
+            if(Number.isNaN(Number(memo))){
+                memo_type = "text";
+            }
+            else{
+                memo_type = "id";
+            }
+        }
+        if(memo === undefined){
+            memo = null;
+        }
         if(confirmation === undefined){
             confirmation = true;
         }
         const account_exists = await this.client.checkAccountExists(to);
         let txn:Transaction;
         if(account_exists){
-        txn = this.builder.buildPaymentTxn(to, amount);
+        txn = this.builder.buildPaymentTxn(to, amount, undefined, new Memo(memo_type, memo));
         }
         else{
-            txn = this.builder.createAccountTxn(to, amount);
+            txn = this.builder.createAccountTxn(to, amount, undefined, new Memo(memo_type, memo));
         }
+       
         return this.signAndSubmitTransaction(txn.toXDR() as unknown as xdr.Transaction, confirmation);
         /*
         txn.sign(this.keyPair);

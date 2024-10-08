@@ -64,6 +64,7 @@
     "@metamask/snaps-sdk": "^6.7.0",
     "@metamask/snaps-types": "^1.0.2",
     "@metamask/snaps-ui": "^3.1.0",
+    "@stellar/stellar-sdk": "^12.3.0",
     "@stellarguard/txrep": "^2.0.0",
     "buffer": "^6.0.3",
     "crc": "^4.3.2",

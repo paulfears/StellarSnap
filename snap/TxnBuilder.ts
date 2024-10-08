@@ -7,7 +7,8 @@ import {
   xdr,
   Networks,
   Asset,
-  nativeToScVal
+  nativeToScVal,
+  Memo
 } from "stellar-base";
 import { Client } from "./Client";
 import type { json_Asset } from "./types";
@@ -29,7 +30,7 @@ export class TxnBuilder{
     }
   }
 
-  createAccountTxn(destination: string, amount: string, fee?:string): Transaction{
+  createAccountTxn(destination: string, amount: string, fee?:string, memo?:Memo): Transaction{
     if(!fee){
       console.log("no fee provided")
       fee = "1000"
@@ -45,13 +46,16 @@ export class TxnBuilder{
     })) // <- funds and creates destinationA
     .setTimeout(30)
     console.log(transactionBuilder);
+    if(memo !== undefined){
+      transactionBuilder.addMemo(memo);
+    }
     const transaction = transactionBuilder.build();
     console.log(transaction);
     console.log(transaction.toXDR());
     return transaction;
   }
 
-  buildCreateTxn(destination: string, amount: string, fee?:string): Transaction{
+  buildCreateTxn(destination: string, amount: string, fee?:string, memo?:Memo): Transaction{
     if(!fee){
       console.log("no Fee provided");
       fee = "1000"
@@ -74,13 +78,17 @@ export class TxnBuilder{
     ) // <- sends 100 XLM to destinationB
     .setTimeout(30)
     console.log(transactionBuilder);
+    if(memo !== undefined){
+      transactionBuilder.addMemo(memo);
+    }
     const transaction = transactionBuilder.build();
+
     console.log(transaction);
     console.log(transaction.toXDR());
     return transaction;
   }
 
-  buildPaymentTxn(destination: string, amount: string, fee?:string): Transaction{
+  buildPaymentTxn(destination: string, amount: string, fee?:string, memo?:memo): Transaction{
     if(!fee){
       console.log("no fee provided")
       fee = "1000"
@@ -103,6 +111,9 @@ export class TxnBuilder{
     })) // <- sends 100 XLM to destinationB
     .setTimeout(30)
     console.log(transactionBuilder);
+    if(memo !== undefined){
+      transactionBuilder.addMemo(memo);
+    }
     const transaction = transactionBuilder.build();
     console.log(transaction);
     console.log(transaction.toXDR());
@@ -120,7 +131,7 @@ export class TxnBuilder{
     */
   }
 
-  buildAssetTxn(destination: string, amount: string, asset:json_Asset, fee?:string): Transaction{
+  buildAssetTxn(destination: string, amount: string, asset:json_Asset, fee?:string, memo?:Memo): Transaction{
     if(!fee){
       console.log("no fee provided")
       fee = "1000"
@@ -143,6 +154,9 @@ export class TxnBuilder{
         asset: stellarAsset
     })) // <- sends 100 XLM to destinationB
     .setTimeout(30)
+    if(memo !== undefined){
+      transactionBuilder.addMemo(memo);
+    }
     console.log(transactionBuilder);
     const transaction = transactionBuilder.build();
     console.log(transaction);
