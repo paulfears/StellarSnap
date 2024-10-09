@@ -1,0 +1,417 @@
+{
+  ".svelte-kit/generated/server/internal.js": {
+    "file": "internal.js",
+    "name": "internal",
+    "src": ".svelte-kit/generated/server/internal.js",
+    "isEntry": true,
+    "imports": [
+      "_internal.js"
+    ]
+  },
+  "_ArrowUp.svelte_svelte_type_style_lang.js": {
+    "file": "chunks/ArrowUp.svelte_svelte_type_style_lang.js",
+    "name": "ArrowUp.svelte_svelte_type_style_lang",
+    "css": [
+      "_app/immutable/assets/ArrowUp.DpIXxWAS.css"
+    ]
+  },
+  "_Button.js": {
+    "file": "chunks/Button.js",
+    "name": "Button",
+    "imports": [
+      "_ssr.js",
+      "_names.js"
+    ]
+  },
+  "_ConnectDisp.js": {
+    "file": "chunks/ConnectDisp.js",
+    "name": "ConnectDisp",
+    "imports": [
+      "_ssr.js",
+      "_index2.js",
+      "_Button.js",
+      "_P.js",
+      "_index.svelte_svelte_type_style_lang2.js",
+      "_wallet-store.js"
+    ]
+  },
+  "_JSEditor.js": {
+    "file": "chunks/JSEditor.js",
+    "name": "JSEditor",
+    "imports": [
+      "_ssr.js",
+      "_index.svelte_svelte_type_style_lang2.js",
+      "_Button.js",
+      "_P.js"
+    ],
+    "css": [
+      "_app/immutable/assets/JSEditor.C1oq5Dtg.css"
+    ]
+  },
+  "_Label.js": {
+    "file": "chunks/Label.js",
+    "name": "Label",
+    "imports": [
+      "_ssr.js",
+      "_names.js"
+    ]
+  },
+  "_P.js": {
+    "file": "chunks/P.js",
+    "name": "P",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_Toaster.svelte_svelte_type_style_lang.js": {
+    "file": "chunks/Toaster.svelte_svelte_type_style_lang.js",
+    "name": "Toaster.svelte_svelte_type_style_lang",
+    "imports": [
+      "_ssr.js",
+      "_index2.js"
+    ],
+    "css": [
+      "_app/immutable/assets/Toaster.CDv3jphE.css"
+    ]
+  },
+  "_client.js": {
+    "file": "chunks/client.js",
+    "name": "client",
+    "imports": [
+      "_exports.js"
+    ]
+  },
+  "_exports.js": {
+    "file": "chunks/exports.js",
+    "name": "exports"
+  },
+  "_index.js": {
+    "file": "chunks/index.js",
+    "name": "index"
+  },
+  "_index.svelte_svelte_type_style_lang.js": {
+    "file": "_app/immutable/assets/index.CXhFIqPa.css",
+    "src": "_index.svelte_svelte_type_style_lang.js"
+  },
+  "_index.svelte_svelte_type_style_lang2.js": {
+    "file": "chunks/index.svelte_svelte_type_style_lang2.js",
+    "name": "index.svelte_svelte_type_style_lang",
+    "imports": [
+      "_ssr.js",
+      "_names.js"
+    ],
+    "css": [
+      "_app/immutable/assets/index.AdsqkxDK.css"
+    ]
+  },
+  "_index2.js": {
+    "file": "chunks/index2.js",
+    "name": "index",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_index3.js": {
+    "file": "chunks/index3.js",
+    "name": "index",
+    "imports": [
+      "_prod-ssr.js"
+    ]
+  },
+  "_internal.js": {
+    "file": "chunks/internal.js",
+    "name": "internal",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_names.js": {
+    "file": "chunks/names.js",
+    "name": "names"
+  },
+  "_prod-ssr.js": {
+    "file": "chunks/prod-ssr.js",
+    "name": "prod-ssr"
+  },
+  "_ssr.js": {
+    "file": "chunks/ssr.js",
+    "name": "ssr"
+  },
+  "_wallet-store.js": {
+    "file": "chunks/wallet-store.js",
+    "name": "wallet-store",
+    "imports": [
+      "_index2.js"
+    ]
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-all-400-normal.woff": {
+    "file": "_app/immutable/assets/fira-mono-all-400-normal.B2mvLtSD.woff",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-all-400-normal.woff"
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-cyrillic-400-normal.woff2": {
+    "file": "_app/immutable/assets/fira-mono-cyrillic-400-normal.36-45Uyg.woff2",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-cyrillic-400-normal.woff2"
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-cyrillic-ext-400-normal.woff2": {
+    "file": "_app/immutable/assets/fira-mono-cyrillic-ext-400-normal.B04YIrm4.woff2",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-cyrillic-ext-400-normal.woff2"
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-greek-400-normal.woff2": {
+    "file": "_app/immutable/assets/fira-mono-greek-400-normal.C3zng6O6.woff2",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-greek-400-normal.woff2"
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-greek-ext-400-normal.woff2": {
+    "file": "_app/immutable/assets/fira-mono-greek-ext-400-normal.CsqI23CO.woff2",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-greek-ext-400-normal.woff2"
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-latin-400-normal.woff2": {
+    "file": "_app/immutable/assets/fira-mono-latin-400-normal.DKjLVgQi.woff2",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-latin-400-normal.woff2"
+  },
+  "node_modules/@fontsource/fira-mono/files/fira-mono-latin-ext-400-normal.woff2": {
+    "file": "_app/immutable/assets/fira-mono-latin-ext-400-normal.D6XfiR-_.woff2",
+    "src": "node_modules/@fontsource/fira-mono/files/fira-mono-latin-ext-400-normal.woff2"
+  },
+  "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
+    "file": "entries/fallbacks/error.svelte.js",
+    "name": "entries/fallbacks/error.svelte",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/error.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_client.js"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
+    "file": "index.js",
+    "name": "index",
+    "src": "node_modules/@sveltejs/kit/src/runtime/server/index.js",
+    "isEntry": true,
+    "imports": [
+      "_prod-ssr.js",
+      "_internal.js",
+      "_index.js",
+      "_exports.js",
+      "_index2.js"
+    ]
+  },
+  "src/lib/images/Connect.gif": {
+    "file": "_app/immutable/assets/Connect.Bk3XjaqP.gif",
+    "src": "src/lib/images/Connect.gif"
+  },
+  "src/lib/images/girl.jpg": {
+    "file": "_app/immutable/assets/girl.CvzhMAHx.jpg",
+    "src": "src/lib/images/girl.jpg"
+  },
+  "src/lib/images/wallet.webp": {
+    "file": "_app/immutable/assets/wallet.BQ5VUrYU.webp",
+    "src": "src/lib/images/wallet.webp"
+  },
+  "src/lib/video/metastellar.mp4": {
+    "file": "_app/immutable/assets/metastellar.CjUCdFRF.mp4",
+    "src": "src/lib/video/metastellar.mp4"
+  },
+  "src/lib/video/metastellar_Logo.svg": {
+    "file": "_app/immutable/assets/metastellar_Logo.C-bnaBLI.svg",
+    "src": "src/lib/video/metastellar_Logo.svg"
+  },
+  "src/routes/+layout.svelte": {
+    "file": "entries/pages/_layout.svelte.js",
+    "name": "entries/pages/_layout.svelte",
+    "src": "src/routes/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Toaster.svelte_svelte_type_style_lang.js",
+      "_ArrowUp.svelte_svelte_type_style_lang.js",
+      "_Button.js",
+      "_Label.js",
+      "_wallet-store.js",
+      "_index.svelte_svelte_type_style_lang2.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_layout.fjYUrNQI.css",
+      "_app/immutable/assets/index.CXhFIqPa.css"
+    ],
+    "assets": [
+      "_app/immutable/assets/metastellar_Logo.C-bnaBLI.svg",
+      "_app/immutable/assets/Connect.Bk3XjaqP.gif",
+      "_app/immutable/assets/metastellar.KSuh_pz3.png",
+      "_app/immutable/assets/ring.B9DW7jKF.png",
+      "_app/immutable/assets/ring_foreground.DCLrqf89.png",
+      "_app/immutable/assets/fira-mono-cyrillic-ext-400-normal.B04YIrm4.woff2",
+      "_app/immutable/assets/fira-mono-all-400-normal.B2mvLtSD.woff",
+      "_app/immutable/assets/fira-mono-cyrillic-400-normal.36-45Uyg.woff2",
+      "_app/immutable/assets/fira-mono-greek-ext-400-normal.CsqI23CO.woff2",
+      "_app/immutable/assets/fira-mono-greek-400-normal.C3zng6O6.woff2",
+      "_app/immutable/assets/fira-mono-latin-ext-400-normal.D6XfiR-_.woff2",
+      "_app/immutable/assets/fira-mono-latin-400-normal.DKjLVgQi.woff2"
+    ]
+  },
+  "src/routes/+page.svelte": {
+    "file": "entries/pages/_page.svelte.js",
+    "name": "entries/pages/_page.svelte",
+    "src": "src/routes/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_index.svelte_svelte_type_style_lang2.js",
+      "_ArrowUp.svelte_svelte_type_style_lang.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.BMuNLF2q.css",
+      "_app/immutable/assets/index.CXhFIqPa.css"
+    ]
+  },
+  "src/routes/+page.ts": {
+    "file": "entries/pages/_page.ts.js",
+    "name": "entries/pages/_page.ts",
+    "src": "src/routes/+page.ts",
+    "isEntry": true
+  },
+  "src/routes/API/+server.ts": {
+    "file": "entries/endpoints/API/_server.ts.js",
+    "name": "entries/endpoints/API/_server.ts",
+    "src": "src/routes/API/+server.ts",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ]
+  },
+  "src/routes/about/+page.svelte": {
+    "file": "entries/pages/about/_page.svelte.js",
+    "name": "entries/pages/about/_page.svelte",
+    "src": "src/routes/about/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "src/routes/about/+page.ts": {
+    "file": "entries/pages/about/_page.ts.js",
+    "name": "entries/pages/about/_page.ts",
+    "src": "src/routes/about/+page.ts",
+    "isEntry": true,
+    "imports": [
+      "_index3.js"
+    ]
+  },
+  "src/routes/components/Chat/images/metastellar.png": {
+    "file": "_app/immutable/assets/metastellar.KSuh_pz3.png",
+    "src": "src/routes/components/Chat/images/metastellar.png"
+  },
+  "src/routes/components/Chat/images/ring.png": {
+    "file": "_app/immutable/assets/ring.B9DW7jKF.png",
+    "src": "src/routes/components/Chat/images/ring.png"
+  },
+  "src/routes/components/Chat/images/ring_foreground.png": {
+    "file": "_app/immutable/assets/ring_foreground.DCLrqf89.png",
+    "src": "src/routes/components/Chat/images/ring_foreground.png"
+  },
+  "src/routes/docs/+page.svelte": {
+    "file": "entries/pages/docs/_page.svelte.js",
+    "name": "entries/pages/docs/_page.svelte",
+    "src": "src/routes/docs/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_wallet-store.js",
+      "_JSEditor.js",
+      "_index.svelte_svelte_type_style_lang2.js",
+      "_Toaster.svelte_svelte_type_style_lang.js",
+      "_Button.js",
+      "_P.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.C0gW6rBC.css"
+    ]
+  },
+  "src/routes/faq/+page.svelte": {
+    "file": "entries/pages/faq/_page.svelte.js",
+    "name": "entries/pages/faq/_page.svelte",
+    "src": "src/routes/faq/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Button.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.Scf4nZwi.css"
+    ]
+  },
+  "src/routes/sverdle/+page.server.ts": {
+    "file": "entries/pages/sverdle/_page.server.ts.js",
+    "name": "entries/pages/sverdle/_page.server.ts",
+    "src": "src/routes/sverdle/+page.server.ts",
+    "isEntry": true,
+    "imports": [
+      "_index.js"
+    ]
+  },
+  "src/routes/sverdle/+page.svelte": {
+    "file": "entries/pages/sverdle/_page.svelte.js",
+    "name": "entries/pages/sverdle/_page.svelte",
+    "src": "src/routes/sverdle/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_client.js",
+      "_index2.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.DOkkq0IA.css"
+    ]
+  },
+  "src/routes/sverdle/how-to-play/+page.svelte": {
+    "file": "entries/pages/sverdle/how-to-play/_page.svelte.js",
+    "name": "entries/pages/sverdle/how-to-play/_page.svelte",
+    "src": "src/routes/sverdle/how-to-play/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.CU6psp88.css"
+    ]
+  },
+  "src/routes/sverdle/how-to-play/+page.ts": {
+    "file": "entries/pages/sverdle/how-to-play/_page.ts.js",
+    "name": "entries/pages/sverdle/how-to-play/_page.ts",
+    "src": "src/routes/sverdle/how-to-play/+page.ts",
+    "isEntry": true,
+    "imports": [
+      "_index3.js"
+    ]
+  },
+  "src/routes/transactionBuilder/+page.svelte": {
+    "file": "entries/pages/transactionBuilder/_page.svelte.js",
+    "name": "entries/pages/transactionBuilder/_page.svelte",
+    "src": "src/routes/transactionBuilder/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_Button.js",
+      "_Label.js",
+      "_P.js",
+      "_names.js",
+      "_wallet-store.js",
+      "_ConnectDisp.js",
+      "_JSEditor.js"
+    ]
+  },
+  "src/routes/wallet/+page.svelte": {
+    "file": "entries/pages/wallet/_page.svelte.js",
+    "name": "entries/pages/wallet/_page.svelte",
+    "src": "src/routes/wallet/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_ConnectDisp.js",
+      "_index.svelte_svelte_type_style_lang2.js",
+      "_ArrowUp.svelte_svelte_type_style_lang.js",
+      "_wallet-store.js",
+      "_Toaster.svelte_svelte_type_style_lang.js",
+      "_Button.js"
+    ]
+  }
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="Description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+
+      <style type="text/css">
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
+        .example::-webkit-scrollbar {
+          display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .example {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+        }
+
+        #divCodeWrapper {
+            height: calc(100vh - 200px);
+            max-height: 600px;
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid #050505;
+            position: relative;
+        }
+
+        #preCode {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            background: #222;
+        }
+
+            #preCode code {
+                padding: 15px;
+                height: calc(100% - 30px);
+                width: calc(100% - 30px);
+                font-family: "Roboto Mono", monospace;
+                background-color: #222;
+                font-weight: 400;
+                font-size: 10pt;
+                line-height: 150%;
+                overflow-y: scroll;
+                overflow-x: auto;
+            }
+
+        textarea {
+            font-family: "Roboto Mono", monospace;
+            font-weight: 400;
+            font-size: 10pt;
+            line-height: 150%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: calc(100% - 30px);
+            width: calc(100% - 30px);
+            padding: 15px;
+            z-index: 2;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            white-space: nowrap;
+            background-color: rgba(0,0,0,0);
+            color: rgba(0,0,0,0);
+            caret-color: white;
+            resize: none;
+            
+        }
+    </style>
+
+    <style id="style2" type="text/css"></style>
+
+    <link id="theme1" href="./darkvioletTheme.css" rel="stylesheet" />
+
+
+    
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    window.$docsify = {
+      name: '',
+      repo: '',
+      executeScript: true,
+      
+    }
+  </script>
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  
+  <!-- docsify-plugin-runkit (latest v1.x.x) -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-plugin-runkit@1"></script>
+  <script src="./typescriptHighlight.js"></script>
+  <style>
+
+    .comment{
+      color: rgb(255, 251, 2);
+    }
+
+    .builtin{
+      color: #83C5DB;
+    }
+
+    .keywords{
+      color:  #006D77;
+    }
+
+    .interpolation{
+      color: #F4A261;
+    }
+
+    .function{
+      color: #83C5DB;
+    }
+    .class-name{
+      color: #CDB4DB;
+    }
+    .internalType{
+      color: #CDB4DB;
+      cursor:pointer;
+    }
+
+    .spacer{
+      display: flex;
+      height: 15vh;
+      width:100%;
+    }
+
+    button{
+      display: inline-block;
+      outline: none;
+      cursor: pointer;
+      font-weight: 600;
+      border-radius: 3px;
+      padding: 12px 24px;
+      border: 0;
+      color: #fff;
+      background: #ff5000;
+      line-height: 1.15;
+      font-size: 16px;
+
+    }
+    i{
+      color:#83C5DB;
+    }
+
+    button:hover {
+          transition: all .2s ease;
+          background: #da4601;
+      }
+                
+  </style>
+  
+</body>
+</html>

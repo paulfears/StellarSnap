@@ -1,7 +1,8 @@
+// export const snapId = import.meta.env.DEV
+//   ? "local:http://localhost:8080/"
+//   : "npm:stellar-snap";
+export const snapId = "npm:stellar-snap";
 
-const isDev = import.meta.env.DEV
-let snap_Id = "npm:stellar-snap"
-if(isDev){
-    snap_Id = "local:http://localhost:8080/"
-}
-export const snapId = snap_Id;
+export const VITE_STELLAR_RPC_ENDPOINT = import.meta.env.DEV
+  ? "https://horizon-testnet.stellar.org/"
+  : "https://horizon.stellar.org/";

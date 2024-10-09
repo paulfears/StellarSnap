@@ -1,25 +1,16 @@
-import { defineConfig } from 'vite'
-import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
 
-import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
-import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill'
-import rollupNodePolyFill from 'rollup-plugin-node-polyfills'
-import { resolve } from "path";
-rollupNodePolyFill()
 export default defineConfig({
-    plugins: [svelte()],
-    optimizeDeps: {
-        esbuildOptions: {
-            define: {
-                global: "globalThis",
-            },
-            plugins: [
-              NodeGlobalsPolyfillPlugin({
-                process: true,
-                buffer: true
-              }),
-              NodeModulesPolyfillPlugin()
-            ],
-        },
-    },
+	plugins: [sveltekit()],
+	server: {
+		fs: {
+		  allow: [
+			// search up for workspace root
+			process.cwd(),
+			// your custom rules
+			'/static/',
+		  ],
+		},
+	  },
 });
