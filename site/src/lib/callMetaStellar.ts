@@ -1,4 +1,11 @@
 export const env = import.meta.env
+
+declare global {
+  interface Window {
+    ethereum: any;
+  }
+}
+
 export async function callMetaStellar(method:string, params:any){
     if (typeof window !== 'undefined' && typeof window.ethereum !== undefined) {
     //You Can Delete this section after offical launch
@@ -15,7 +22,7 @@ export async function callMetaStellar(method:string, params:any){
         return await window.ethereum.request({
           method: 'wallet_requestSnaps',
           params: {
-            [('npm:stellar-snap')]: {}
+            [(env.DEV?"local:http://localhost:8080":'npm:stellar-snap')]: {}
           },
         });
     }
