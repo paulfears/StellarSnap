@@ -5,7 +5,7 @@ declare global {
     ethereum: any;
   }
 }
-
+const snapId = (env.DEV?"local:http://localhost:8080":'npm:stellar-snap')
 export async function callMetaStellar(method:string, params:any){
     if (typeof window !== 'undefined' && typeof window.ethereum !== undefined) {
     //You Can Delete this section after offical launch
@@ -22,14 +22,14 @@ export async function callMetaStellar(method:string, params:any){
         return await window.ethereum.request({
           method: 'wallet_requestSnaps',
           params: {
-            [(env.DEV?"local:http://localhost:8080":'npm:stellar-snap')]: {}
+            [snapId]: {}
           },
         });
     }
     const rpcPacket = {
       method: 'wallet_invokeSnap',
       params:{
-        snapId:'npm:stellar-snap',
+        snapId: snapId,
         request: {'method':method, params:params}
       }
     }

@@ -41,6 +41,10 @@
         return iconCanvas.toDataURL();
     }
 
+    function openSendXLM(){
+        callMetaStellar('openSendXLM', {testnet:$isTestnet});
+    }
+
     function quickCopy(text:string){
         copy(text);
         Toast({type:'success', desc:"Address copied"});
@@ -80,6 +84,7 @@
             <Button color='light' size={'sm'} on:click={()=>{quickCopy($dataPacket.currentAddress)}}><svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 -960 960 960" width="15px" fill="#5f6368"><path d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"/></svg></Button>
         </div>
         <Button on:click={showAddress} color="light">recieve</Button>
+        <Button on:click={openSendXLM} color="light">send</Button>
         <p>{balance} XLM</p>
     </div>
 </Card>

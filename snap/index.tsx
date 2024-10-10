@@ -193,7 +193,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       return await Screens.setUpFedAccount(wallet);
 
 
-    case 'sendXLMDialog':
+    case 'openSendXLM':
       /**Your code goes here
        * 
        * Example:
