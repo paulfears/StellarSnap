@@ -1,6 +1,6 @@
 <script lang='ts'>
 	import svgLogo from '$lib/video/metastellar_Logo.svg';
-	import ConnectButton from '../components/connectButton.svelte';
+	import ConnectButton from '$lib/components/connectButton.svelte';
 	import {connected} from '$lib/wallet-store';
     import {Button} from 'flowbite-svelte';
 

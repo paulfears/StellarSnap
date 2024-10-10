@@ -18,7 +18,7 @@
     import { onMount } from 'svelte';
     import { cubicOut } from 'svelte/easing';
     import InternalWallet from './InternalWallet.svelte';
-    import ConnectButton from '../../../components/connectButton.svelte';
+    import ConnectButton from '$lib/components/connectButton.svelte';
 
 	let visible = true;
     export let chatLoading = true;

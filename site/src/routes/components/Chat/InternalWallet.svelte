@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { testnet } from './../../../store.ts';
     import type { DataPacket } from '$lib/wallet-store.ts';
     import { Tabs, TabItem, Button, Popover, Spinner} from 'flowbite-svelte';
     import { Checkbox, Badge } from 'flowbite-svelte';
