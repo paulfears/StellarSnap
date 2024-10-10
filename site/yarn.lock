@@ -4813,7 +4813,7 @@ stellar-sdk@^12.2.0:
     urijs "^1.19.1"
 
 "stellar-snap@file:..":
-  version "1.0.2"
+  version "1.0.3"
   resolved "file:.."
   dependencies:
     "@metamask/snaps-sdk" "^6.7.0"
