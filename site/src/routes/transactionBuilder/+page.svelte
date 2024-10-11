@@ -4,11 +4,10 @@
     import ConnectDisp from "$lib/components/connectDisp/ConnectDisp.svelte";
     import {dataPacket, isTestnet} from "$lib/wallet-store";
     import {P, Tabs, TabItem} from 'flowbite-svelte';
-    import Editor from "$lib/components/Editor/Editor.svelte";
-    import JSEditor from "$lib/components/Editor/Editor.svelte";
+  
     import {Button} from 'flowbite-svelte';
     import {callMetaStellar} from '$lib/callMetaStellar';
-    import JsEditor from "$lib/components/JSEditor/JSEditor.svelte";
+    import JsEditor from "$lib/components/MetaStellarEditor/MetaStellarEditor.svelte";
     import {OperationParams} from './operations';
 
     let transactionCode = "";

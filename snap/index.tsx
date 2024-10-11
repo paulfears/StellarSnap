@@ -120,7 +120,7 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     case 'fund':
       console.log("fund called");
       return await fund(wallet);
-    case 'getWalletName':
+    case 'getFederationName':
       const res = await lookupAddress(wallet.address);
       return res.stellar_address;
     case 'lookUpFedAccountByAddress':
