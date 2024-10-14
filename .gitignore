@@ -2,6 +2,7 @@
 dist/
 coverage/
 public/
+site/.yarn/*
 
 # Logs
 logs
@@ -35,6 +36,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+site/node_modules/
 
 # TypeScript cache
 *.tsbuildinfo
