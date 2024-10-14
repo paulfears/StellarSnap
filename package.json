@@ -37,6 +37,7 @@
     "@metamask/eslint-config-typescript": "^13.0.0",
     "@metamask/snap-types": "^0.23.0",
     "@metamask/snaps-cli": "^6.3.4",
+    "@sveltejs/adapter-vercel": "^5.4.5",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "concurrently": "^8.2.1",
