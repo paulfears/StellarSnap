@@ -66,7 +66,7 @@
                 
                 <img style="padding:5px;" on:click={()=>quickCopy($dataPacket.currentAddress)} alt={"addressIcon"} width="35" height="35" src={iconSRC}/>
                 <Tooltip>icon provided by lobstr.co</Tooltip>
-                <P size="2xl">{$dataPacket.name}{#if $dataPacket.fedName}{ - $dataPacket.fedName}{/if}</P>
+                <P size="2xl">{$dataPacket.name}{#if $dataPacket.fedName} - {$dataPacket.fedName}{/if}</P>
             </div>
             <Button on:click={flipNetwork} color="light" class="relative" size="sm">
                 {$isTestnet?"testnet":"mainnet"}

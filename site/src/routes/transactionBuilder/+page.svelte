@@ -55,6 +55,10 @@ async function callMetaStellar(method, params){
 
     `
 
+    interface paramsTypes{
+        [key:string]:string
+    }
+
     async function signAndSubmitXDR(){
         let result = await callMetaStellar('signAndSubmitTransaction', {transaction:transactionXDR, testnet:$isTestnet});
         transactionResult = JSON.stringify(result);
@@ -78,7 +82,7 @@ async function callMetaStellar(method, params){
         let i = 0;
         for(const operation of operations){
             console.log(operation);
-            let paramsTypes:Object = OperationParams[operation.type].params;
+            let paramsTypes:paramsTypes = OperationParams[operation.type].params;
             console.log("param types is:");
             console.log(paramsTypes);
             let argString = '{'
