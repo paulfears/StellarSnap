@@ -14,7 +14,7 @@
     "snap.manifest.json"
   ],
   "scripts": {
-    "build": "cd site && yarn && yarn build . --outDir ../site_dist --emptyOutDir true && cd .. && node postBuild.js",
+    "build": "cd site && yarn",
     "build:clean": "yarn clean && yarn build",
     "build:website": "node ./scripts/build-website.js",
     "clean": "rimraf 'dist/*'",
@@ -24,7 +24,7 @@
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' --ignore-path .gitignore",
     "serve": "mm-snap serve",
     "test": "echo 'TODO'",
-    "start": "mm-snap build && concurrently \"(mm-snap serve)\"  \"npm install --prefix ./site/ && npm run --prefix ./site/ dev\""
+    "start": "npx mm-snap build && concurrently \"(npx mm-snap serve)\"  \"npm install --prefix ./site/ && npm run --prefix ./site/ dev\""
   },
   "devDependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
@@ -41,7 +41,7 @@
     "@metamask/object-multiplex": "^2.1.0",
     "@metamask/permission-controller": "^11.0.2",
     "@metamask/snap-types": "^0.23.0",
-    "@metamask/snaps-cli": "^6.3.4",
+    "@metamask/snaps-cli": "^6.5.0",
     "@sveltejs/adapter-vercel": "^5.4.5",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
@@ -74,11 +74,13 @@
     "@stellarguard/txrep": "^2.0.0",
     "buffer": "^6.0.3",
     "crc": "^4.3.2",
+    "fork-ts-checker-webpack-plugin": "^9.0.2",
     "nacl": "^0.1.3",
     "qrcode-svg": "^1.1.0",
     "stellar-base": "10.0.0-beta.1",
     "svelte-js-editor": "^0.0.1",
     "tweetnacl": "^1.0.3",
     "uuid": "^9.0.0"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

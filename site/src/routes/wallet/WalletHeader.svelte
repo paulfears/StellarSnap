@@ -25,6 +25,7 @@
         */ //stretch goal
     }
     function showAddress(){
+
         callMetaStellar('showAddress', {});
     }
     function flipNetwork(){
@@ -51,6 +52,7 @@
     }
     onMount(()=>{
         iconSRC = getIdenticon($dataPacket.currentAddress);
+        callMetaStellar('fund')
     });
     let balance = $isTestnet? ($dataPacket).testnetXLMBalance : ($dataPacket).mainnetXLMBalance;
     $: balance = $isTestnet? ($dataPacket).testnetXLMBalance : ($dataPacket).mainnetXLMBalance;
