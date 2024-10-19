@@ -1,7 +1,7 @@
 
 # Stellar Wallet Integration with MetaMask Snaps
 
-This guide provides detailed instructions on integrating Stellar wallet functionalities into MetaMask Snaps, enabling seamless interaction with Stellar applications without requiring extensive code audits. This integration aims to create a universal standard for integrating Stellar wallet functionalities across different applications.
+This guide provides detailed instructions on integrating Stellar wallet functionalities into MetaMask Snaps, enabling seamless interaction with Stellar applications. This integration aims to create a universal standard for integrating Stellar wallet functionalities across different applications.
 
 ## Table of Contents
 - [Quick Start](#quick-start)
@@ -16,7 +16,7 @@ This guide provides detailed instructions on integrating Stellar wallet function
 
 ## Quick Start
 
-Follow these steps to get started with integrating Stellar wallet functionalities into your MetaMask Snaps.
+Follow these steps to get started with integrating Stellar-Wallet functionalities into your MetaMask Snaps.
 
 ### ✨ Connect and Install
 
@@ -71,7 +71,7 @@ const result = await ethereum.request({
 
 
 ### Calling Stellar Wallet Functions from Other MetaMask Snaps
-To call Stellar wallet functions from other MetaMask snaps, you need to ensure that the Snap containing the Stellar wallet is installed and running. You can then use the wallet_invokeSnap method to access its functions.
+To call Stellar-Wallet functions from other MetaMask snaps, you need to ensure that the Snap containing the Stellar wallet is installed and running. You can then use the wallet_invokeSnap method to access its functions.
 
 **Example**
 Assuming you have another Snap that needs to call the getBalance method from Stellar Snap, you can do this:
