@@ -65,11 +65,13 @@
                     <span>Send XLM</span>
                 </Card>
             </button>
+            
             <button on:click={()=>{setView('viewNFT')}}>
                 <Card class="py-4 lg:px-12 min-h-[80px] justify-center" shadow >
                     NFT
                 </Card>
               </button>
+            <!--
             <button on:click={()=>{setView('token')}}>
                 <Card class="py-4 lg:px-12  min-h-[80px] justify-center"  shadow>
                     Token
@@ -80,6 +82,7 @@
                     AirDrop
                 </Card>
             </button>
+            -->
         </div>
         
         <div class="mt-2">
@@ -88,9 +91,9 @@
             {:else if currentView == 'viewNFT'}
                 <NftView/>
             {:else if currentView == 'token'}
-                <Token/>
+                <!--<Token/>-->
             {:else if currentView == 'airDrop'}
-                <AirDrop />
+                <!--<AirDrop />-->
             {/if}
         </div>
         

@@ -52,7 +52,7 @@
     }
     onMount(()=>{
         iconSRC = getIdenticon($dataPacket.currentAddress);
-        callMetaStellar('fund')
+        callMetaStellar('fund', {})
     });
     let balance = $isTestnet? ($dataPacket).testnetXLMBalance : ($dataPacket).mainnetXLMBalance;
     $: balance = $isTestnet? ($dataPacket).testnetXLMBalance : ($dataPacket).mainnetXLMBalance;

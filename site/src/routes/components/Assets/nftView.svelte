@@ -278,6 +278,7 @@
         </div>
       {/if}
     </TabItem>
+    <!--
     <TabItem  title="Mint">
       <div class="flex flex-col gap-4">
         <div>
@@ -308,5 +309,7 @@
         {/if}
       </div>
     </TabItem>
+    -->
   </Tabs>
+  
 </Card>
