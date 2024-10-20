@@ -29,8 +29,6 @@ let injected = ""
 
 
     <Editor code={starterCode}/>
-    <br/>
-    <br/>
     <p>console - <i>errors involving stellarSDK are in browser dev tools!</i></p>
     <div style="padding:5px; border-radius:10px; background-color:#f2f2f2; white-space: pre-line">
         <p>{injected}</p>
