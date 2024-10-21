@@ -1,5 +1,5 @@
 import { Box, Text, Bold, Copyable, Heading, Button, Input, Form, Spinner, Divider, Image} from '@metamask/snaps-sdk/jsx';
-import { InteractionHandler } from './InteractionHandler';
+import { InteractionHandler } from '../InteractionHandler';
 import { lookupAddress } from '../federation';
 import type {Wallet} from '../Wallet';
 import QRcode from "qrcode-svg";

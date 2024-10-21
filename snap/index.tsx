@@ -18,6 +18,8 @@ import { Auth } from './Auth';
 import HomeScreen from './screens/home';
 import { SendXLM } from './screens/sendXLM';
 
+import { InteractionHandler } from './InteractionHandler';
+
 export const onCronjob: OnCronjobHandler = async ({ request }) => {
   const wallet = await Wallet.getCurrentWallet();
   const mainnet_client = new Client("mainnet");
@@ -39,6 +41,7 @@ export const onInstall: OnInstallHandler = async () => {
 };
 
 export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => {
+  InteractionHandler.setRequestOrigin(origin);
   if(request.method === "clearState"){
     console.log("clearing state");
     let confirm = await Screens.clearStateConfirmation();
@@ -222,7 +225,7 @@ export const onHomePage: OnHomePageHandler = async () => {
 };
 
 
-import { InteractionHandler } from './screens/InteractionHandler';
+
 
 export const onUserInput: OnUserInputHandler = async ({id, event}) => { 
  

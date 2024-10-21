@@ -8,6 +8,7 @@ wallet is a global in the metamask context
 import { DialogResult } from '@metamask/snaps-sdk';
 import { panel, text, heading, divider, copyable, Panel } from '@metamask/snaps-ui';
 type interfaceId = string;
+import { InteractionHandler } from './InteractionHandler';
 export default class Utils {
     
     static throwError(code, msg){
@@ -61,6 +62,8 @@ export default class Utils {
         params: {
             type: 'confirmation',
             content: panel([
+            text(`request origin: ${InteractionHandler.requestOrigin}`),
+            divider(),
             heading(prompt),
             divider(),
             text(description),
@@ -79,6 +82,8 @@ export default class Utils {
             params:{
                 type: 'alert',
                 content: panel([
+                    text(`request origin: ${InteractionHandler.requestOrigin}`),
+                    divider(),
                     heading(title),
                     divider(),
                     text(info)
@@ -99,12 +104,16 @@ export default class Utils {
         return alert;
     }
 
-    static async displayPanel(panel: Panel, type:"confirmation" | "alert" | "prompt" = "confirmation"): Promise<DialogResult>{
+    static async displayPanel(disppanel: Panel, type:"confirmation" | "alert" | "prompt" = "confirmation"): Promise<DialogResult>{
         const disp = await snap.request({
             method: 'snap_dialog',
             params:{
                 type: type,
-                content: panel
+                content: panel([
+                    text(`request origin: ${InteractionHandler.requestOrigin}`),
+                    divider(),
+                    disppanel
+                ])
             }
         })
         return disp

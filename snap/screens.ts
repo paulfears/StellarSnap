@@ -5,6 +5,7 @@ import { Wallet } from './Wallet';
 import { createFederationAccount, lookupFedAccount, lookupAddress } from './federation';
 import { StateManager } from './stateManager';
 import IMG from './SVG';
+
 export class Screens{
 
     static async RequiresFundedWallet(method:string, address:string):Promise<boolean>{

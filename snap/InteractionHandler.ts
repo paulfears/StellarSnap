@@ -13,7 +13,15 @@ interface InteractionTable{
 type InterfaceId = string;
 export class InteractionHandler{
     static interactionTable:InteractionTable = {};
-    
+    static requestOrigin:string = "snap";
+
+    static setRequestOrigin(origin:string){
+        InteractionHandler.requestOrigin = origin;
+    }
+
+    static getRequestOrigin(){
+        return InteractionHandler.requestOrigin;
+    }
 
     static registerButton(interfaceId:string, name:string, callback:(interfaceId:string, ...args:any[])=>any, args:any[]){
         if(!InteractionHandler.interactionTable[interfaceId]){

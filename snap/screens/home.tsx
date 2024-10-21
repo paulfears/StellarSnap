@@ -3,7 +3,7 @@ import { Wallet } from '../Wallet';
 import { Client } from '../Client';
 import {getDataPacket} from '../assets';
 import type {DataPacket} from '../assets';
-import { InteractionHandler } from './InteractionHandler';
+import { InteractionHandler } from '../InteractionHandler';
 import {showQrCode} from './ReceiveXLM';
 import {SendXLM} from './sendXLM';
 
