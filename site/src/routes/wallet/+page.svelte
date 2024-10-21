@@ -7,7 +7,7 @@
     
     import {connected, dataPacket, isTestnet} from '$lib/wallet-store';
     import type {DataPacket} from '$lib/wallet-store';
-
+    import {onMount} from 'svelte';
     import {FileCopyAltOutline} from 'flowbite-svelte-icons';
     
     import { env } from "$lib/env";
@@ -45,14 +45,16 @@
     }
 
     //Fund the testnet Account if not Funded
-    if($dataPacket.testnetXLMBalance === "0"){
-        
-        callMetaStellar('fund', {testnet:true}).then(
-            ()=>{
-                callMetaStellar('getDataPacket', {}).then((dp:DataPacket)=>{$dataPacket = dp});
-            }
-        );
-    }
+    onMount(()=>{
+        if($dataPacket.testnetXLMBalance === "0"){
+            
+            callMetaStellar('fund', {testnet:true}).then(
+                ()=>{
+                    callMetaStellar('getDataPacket', {}).then((dp:DataPacket)=>{$dataPacket = dp});
+                }
+            );
+        }
+    });
 </script>
 {#if $connected}
 <div>

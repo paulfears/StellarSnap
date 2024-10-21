@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+  </head>
+    <title>Hello, Snaps!</title>
+    <link rel="icon" type="image/svg" href="./images/icon.svg"/>
+    <script src="./functions.js"></script>
+  </head>
+
+  <body>
+    <h1>Hello, Snaps!</h1>
+    <details>
+      <summary>Instructions</summary>
+      <ul>
+        <li>First, click "Connect". Then, try out the other buttons!</li>
+        <li>Please note that:</li>
+        <ul>
+          <li>
+            The <code>snap.manifest.json</code> and <code>package.json</code> must be located in the server root directory...
+          </li>
+          <li>
+            The Snap bundle must be hosted at the location specified by the <code>location</code> field of <code>snap.manifest.json</code>.
+          </li>
+        </ul>
+      </ul>
+    </details>
+    <br/>
+
+    <button class="connect">Connect</button>
+    
+  </body>
+
+  <script>
+    const snapId = `local:${window.location.href}`;
+
+    
+
+  async function callMetaStellar(method, params){
+      if (typeof window !== 'undefined' && typeof window.ethereum !== undefined) {
+          //You Can Delete this section after offical launch
+          const isFlask = ( 
+          await window.ethereum?.request({ method: "web3_clientVersion" })
+          )?.includes("flask"); 
+          if(!isFlask){
+          alert("install Metamask Flask")
+          }
+          // ------------------------------------------------
+          try{
+              if(method === 'connect'){
+              //This will also install stellar if the user has metamask
+                  return await window.ethereum.request({
+                  method: 'wallet_requestSnaps',
+                  params: {
+                      ['npm:stellar-snap']: {}
+                  },
+                  });
+              }
+              const rpcPacket = {
+                  method: 'wallet_invokeSnap',
+                  params:{
+                      snapId:'npm:stellar-snap',
+                      request: {'method':method, params:params}
+                  }
+              }
+              return await window.ethereum.request(rpcPacket);
+          }
+          catch(e){
+              alert(e.message);
+          }
+      }
+  }
+
+    
+
+    const connectButton = document.querySelector('button.connect')
+   
+
+    connectButton.addEventListener('click', connect)
+    
+
+    // here we get permissions to interact with and install the snap
+    async function connect () {
+      await callMetaStellar('connect');
+    }
+
+    function createTest(FunctionItem){
+      const test = document.createElement('div');
+      test.style = `display: flex; flex-direction: column; margin:50px;`;
+      test.innerHTML = FunctionItem.name;
+      let description = document.createElement('p');
+      description.innerHTML = FunctionItem.desc;
+      test.appendChild(description);
+      for(let i = 0; i < Object.keys(FunctionItem.params).length; i++){
+        let key = Object.keys(FunctionItem.params)[i];
+        let value = Object.values(FunctionItem.params)[i];
+        let input = document.createElement('input');
+        if(value === "string"){
+          const input = document.createElement('input');
+          input.id = FunctionItem.name+"-"+key;
+          input.placeholder = key;
+        }
+        if(value === "boolean"){
+          const input = document.createElement('input');
+          input.id = FunctionItem.name+"-"+key;
+          input.type = "checkbox";
+          input.checked = true;
+        }
+        test.appendChild(input);
+      }
+      buildRunFunction = (FunctionItem)=>{
+        return ()=>{
+        let params = {};
+        for(let i = 0; i < Object.keys(FunctionItem.params).length; i++){
+          let key = Object.keys(FunctionItem.params)[i];
+          let value = Object.values(FunctionItem.params)[i];
+          if(value === "string"){
+            params[key] = document.getElementById(FunctionItem.name+"-"+key).value;
+          }
+          if(value === "boolean"){
+            params[key] = document.getElementById(FunctionItem.name+"-"+key).checked;
+          }
+        }
+        callMetaStellar(FunctionItem.name, params).then(console.log);
+        }
+      };
+      const button = document.createElement('button');
+      button.innerHTML = "Run";
+      button.addEventListener('click', buildRunFunction(FunctionItem));
+      test.appendChild(button);
+      document.body.appendChild(test);
+    }
+
+    for(let i = 0; i<supportedFunctions.length; i++){
+      createTest(supportedFunctions[i]);
+    }
+   
+    
+  </script>
+</html>
