@@ -4,7 +4,6 @@ import Utils from './Utils';
 import { Wallet } from './Wallet';
 import { createFederationAccount, lookupFedAccount, lookupAddress } from './federation';
 import { StateManager } from './stateManager';
-import IMG from './SVG';
 
 export class Screens{
 
@@ -140,7 +139,8 @@ export class Screens{
         }
         const greeting = panel([
             heading("WELCOME TO STELLAR 🪐"),
-            IMG
+            divider(),
+            text("What is a good name for your wallet?")
         ])
         const walletName = await Utils.displayPanel(greeting, 'prompt');
         if(walletName === null){

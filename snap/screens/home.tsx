@@ -34,7 +34,9 @@ const HomeScreen = async ()=>{
     );
     let interfaceId = await InteractionHandler.createInterface(screenUI);
     InteractionHandler.registerButton(interfaceId, "receive", openReceive, []);
+    
     //InteractionHandler.registerButton(interfaceId, "send", openSend, []);
+    return screenUI;
 
 };
 
