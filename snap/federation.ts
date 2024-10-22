@@ -1,5 +1,7 @@
 import { Account, Address, Keypair } from "stellar-base"
 import {Auth} from './Auth'
+
+import Utils from "./Utils";
 interface fedResponse{
     stellar_address:string | null,
     account_id:string | null,
@@ -16,7 +18,7 @@ interface createFedResponse{
 export async function createFederationAccount(account:Keypair, username:string): Promise<createFedResponse>{
     
     const preflightRun = await lookupAddress(account.publicKey());
-    const preflightRun2 = await lookupFedAccount(username+"*metastellar.io");
+    const preflightRun2 = (await lookupFedAccount(username+"*metastellar.io")) as fedResponse;
 
     if(preflightRun.error !== "not found"){
         return {"error": "address already has an account", 'success':false}
@@ -68,7 +70,7 @@ export async function createFederationAccount(account:Keypair, username:string):
     */
 }
 
-export async function lookupFedAccount(name:string):Promise<fedResponse>{
+export async function lookupFedAccount(name:string):Promise<fedResponse | undefined>{
     try{
         const res = await fetch(`https://stellarid.io/federation/?q=${name}&type=name`, {
             method: "GET",
@@ -85,12 +87,12 @@ export async function lookupFedAccount(name:string):Promise<fedResponse>{
         }
         const output = await res.json();
         console.log(output);
-        return output;
+        return output as fedResponse;
     }
     catch(e){
         console.log("there was an error");
         console.log(e);
-        return e;
+        Utils.throwError(400, String(e));
     }
 }
 

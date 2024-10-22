@@ -73,6 +73,7 @@ async function callMetaStellar(method, params){
         const address = \`\${'${$dataPacket.currentAddress}'}\`
 
         async function CreateTransaction(network, address){
+            
             const passpharase = network === 'testnet'? StellarSdk.Networks.TESTNET : StellarSdk.Networks.PUBLIC
 
             const server = new StellarSdk.Horizon.Server(network === 'testnet'?'https://horizon-testnet.stellar.org':'https://horizon.stellar.org');
@@ -114,6 +115,7 @@ async function callMetaStellar(method, params){
         CreateTransaction(network, address)
         .then(
             async (txnXDR) => {
+                await callMetaStellar('connect');
                 alert( 
                     JSON.stringify(
                         await callMetaStellar('signAndSubmitTransaction', 

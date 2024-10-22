@@ -142,7 +142,7 @@ export class Screens{
             divider(),
             text("What is a good name for your wallet?")
         ])
-        const walletName = await Utils.displayPanel(greeting, 'prompt');
+        const walletName = await Utils.displayPanel(greeting, 'prompt') as string | null;
         if(walletName === null){
             //if the user presses cancel on the name just keep the default name
             return;
