@@ -23,7 +23,7 @@
     "lint:fix": "yarn lint:eslint --fix && yarn lint:misc --write",
     "lint:misc": "prettier '**/*.json' '**/*.md' '!CHANGELOG.md' --ignore-path .gitignore",
     "serve": "mm-snap serve",
-    "test": "mm-snap build && concurrently \"(mm-snap serve)\"  \"http-server ./test\"",
+    "test": "mm-snap build && concurrently \"(mm-snap serve)\"  \"http-server -p 3000 ./test\"",
     "start": "npx mm-snap build && concurrently \"(npx mm-snap serve)\"  \"npm install --prefix ./site/ && npm run --prefix ./site/ dev\""
   },
   "devDependencies": {

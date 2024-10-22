@@ -92,3 +92,8 @@ export interface DataPacket{
     testnetXLMBalance: string,
     fedName: string | null
 }
+
+export interface SimpleAccount{
+    name:string,
+    address:string
+}

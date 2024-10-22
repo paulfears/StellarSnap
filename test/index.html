@@ -1,13 +1,13 @@
 <!doctype html>
 <html>
   </head>
-    <title>Hello, Snaps!</title>
+    <title>Stellar-Snap Testing Enviroment</title>
     <link rel="icon" type="image/svg" href="./images/icon.svg"/>
     <script src="./functions.js"></script>
   </head>
 
   <body>
-    <h1>Hello, Snaps!</h1>
+    <h1>Stellar Snaps Tests</h1>
     <details>
       <summary>Instructions</summary>
       <ul>
@@ -30,7 +30,7 @@
   </body>
 
   <script>
-    const snapId = `local:${window.location.href}`;
+    const snapId = `local:http://localhost:8080`;
 
     
 
@@ -50,14 +50,14 @@
                   return await window.ethereum.request({
                   method: 'wallet_requestSnaps',
                   params: {
-                      ['npm:stellar-snap']: {}
+                      [snapId]: {}
                   },
                   });
               }
               const rpcPacket = {
                   method: 'wallet_invokeSnap',
                   params:{
-                      snapId:'npm:stellar-snap',
+                      snapId:snapId,
                       request: {'method':method, params:params}
                   }
               }
@@ -93,13 +93,12 @@
         let key = Object.keys(FunctionItem.params)[i];
         let value = Object.values(FunctionItem.params)[i];
         let input = document.createElement('input');
+        console.log(value);
         if(value === "string"){
-          const input = document.createElement('input');
           input.id = FunctionItem.name+"-"+key;
           input.placeholder = key;
         }
         if(value === "boolean"){
-          const input = document.createElement('input');
           input.id = FunctionItem.name+"-"+key;
           input.type = "checkbox";
           input.checked = true;

@@ -7,7 +7,10 @@ import Utils from './Utils';
 import { panel, text, heading, image, copyable, divider} from '@metamask/snaps-ui';
 import QRcode from "qrcode-svg";
 import { lookupAddress } from './federation';
+import {CreateNewAccountConfimation} from './screens/newAccount';
+import { switchAccountDialog } from './screens/switchAccount';
 
+import type { SimpleAccount } from 'types';
 
 export class Wallet{
     keyPair: Keypair;
@@ -59,7 +62,29 @@ export class Wallet{
         return Uint8Array.from(hexString.match(/.{1,2}/g).map((byte) => parseInt(byte, 16)))
     }
 
-    static async createNewAccount(name:string, currentState?:State, setState?:boolean):Promise<Wallet>{
+    static async CreateNewAccountDialog(name:string, switchAccount?:boolean):Promise<SimpleAccount|void>{
+        
+        if(switchAccount === undefined){
+            switchAccount = true;
+        }
+        const confirm = await CreateNewAccountConfimation(name);
+        let output = null;
+        
+        if(confirm){
+            
+            const createdWallet = await Wallet.createNewAccount(name, undefined, true);
+            if(switchAccount){
+                await Wallet.setCurrentWallet((createdWallet as SimpleAccount).address);
+            }
+            return createdWallet;
+        }
+        else{
+            return Utils.throwError(400, "user rejected request");
+        }
+        
+    }
+
+    static async createNewAccount(name:string, currentState?:State, setState?:boolean):Promise<SimpleAccount|void>{
         if(currentState === undefined){
             currentState = await StateManager.getState();
         }
@@ -77,15 +102,23 @@ export class Wallet{
         console.log("salt is: "+salt);
         let tempAccount = await Wallet.getTempAccountFromSalt(salt);
         tempAccount.name = name;
+
+        //make sure name dosn't already exist
+        for(let account of Object.values(currentState.accounts)){
+            if(account.name === name){
+                return Utils.throwError(400, "account name already exists");
+            }
+        }
+
         currentState.accounts[tempAccount.address] = tempAccount;
-        if(currentState.currentAccount === null || numAccounts === 0){
+
+        if(currentState.currentAccount === null){
             currentState.currentAccount = tempAccount.address;
         }
         if(setState){
             await StateManager.setState(currentState);
         }
-        
-        return new Wallet(tempAccount, currentState);
+        return {address:tempAccount.address, name:tempAccount.name};
     }
 
     static async renameWallet(address:string, name:string, currentState?:State):Promise<boolean>{
@@ -113,17 +146,22 @@ export class Wallet{
         let walletAccount:walletAccount;
         if(currentState.currentAccount === null){
             console.log("current State is null");
-            return await Wallet.createNewAccount('Account 1', currentState, setState);
+            
+            let success = await Wallet.createNewAccount('Account 1', currentState, setState);
+            if(!success){
+                Utils.throwError(400, "account failed to create");
+            }
         }
         else{
             console.log("wallet Account found")
-            walletAccount = currentState.accounts[currentState.currentAccount]
         }
+        walletAccount = currentState.accounts[currentState.currentAccount as string] as walletAccount;
+        
         return new Wallet(walletAccount, currentState);
         
     }
 
-    static async setCurrentWallet(address:string, origin:string, currentState?:State){
+    static async setCurrentWallet(address:string, currentState?:State):Promise<SimpleAccount>{
         let valid = StrKey.isValidEd25519PublicKey(address);
         if(!valid){
             Utils.throwError("404", "invalid address");
@@ -131,9 +169,12 @@ export class Wallet{
         if(currentState === undefined){
             currentState = await StateManager.getState();
         }
-        const name = currentState.accounts[address].name
+
+        let name;
         if(currentState.accounts[address]){
-            const confirm = await Screens.confirmAccountChange(origin, name, address);
+            name = (currentState.accounts[address] as walletAccount).name;
+            address = address;
+            const confirm = await switchAccountDialog(address);
             if(confirm){
                 currentState.currentAccount = address;
                 await StateManager.setState(currentState);
@@ -146,7 +187,7 @@ export class Wallet{
         else{
             Utils.throwError("404", "account not found");
         }
-        return {address, name};
+        return {name:name as string, address: address};
     }
 
     static async getSeedFromSalt(salt){
@@ -208,7 +249,24 @@ export class Wallet{
         return currentState;
     }
 
-    static async listAccounts(currentState?:State){
+    static async getAccount(address:string, currentState?:State):Promise<SimpleAccount | void>{
+        if(currentState === undefined){
+            currentState = await StateManager.getState();
+        }
+        let account = currentState.accounts[address];
+        if(!account){
+            return Utils.throwError(404, "account not found");
+        }
+        else{
+            return {
+                name: account.name,
+                address: account.address
+            }
+        }
+        
+    }
+
+    static async listAccounts(currentState?:State):Promise<SimpleAccount[]>{
         console.log("list accounts");
         if(currentState === undefined){
             console.log("currentState is undefined")
@@ -216,7 +274,7 @@ export class Wallet{
             console.log(currentState);
         }
         console.log(currentState.accounts);
-        let output:Array<{"name":String, "address":String}> = []
+        let output:Array<{"name":string, "address":string}> = []
         console.log(currentState.accounts);
         for(let account of Object.values(currentState.accounts)){
             console.log(account);

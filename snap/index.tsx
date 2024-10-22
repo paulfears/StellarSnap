@@ -14,8 +14,8 @@ import { StateManager } from './stateManager';
 import {getAssets, getDataPacket} from './assets';
 import { Auth } from './Auth';
 import HomeScreen from './screens/home';
-import { SendXLM } from './screens/sendXLM';
-
+import { sendXLM } from './screens/sendXLM';
+import { renameAccountDialog } from './screens/renameAccount';
 import { InteractionHandler } from './InteractionHandler';
 
 export const onCronjob: OnCronjobHandler = async ({ request }) => {
@@ -105,16 +105,15 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
     case 'getDataPacket':
       return await getDataPacket(wallet, client);
     case 'setCurrentAccount':
-      return await Wallet.setCurrentWallet(params.address, origin, wallet.currentState);
+      return await Wallet.setCurrentWallet(params.address, wallet.currentState);
     case 'showAddress':
       return await showQrCode(wallet);
     case 'createAccount':
-      await Wallet.createNewAccount(params.name, wallet.currentState);
-      return true;
+      return await Wallet.CreateNewAccountDialog(params.name); //returns simpleAccount object {name:string, address:string} also sets the current account to the created account
     case 'listAccounts':
       return await Wallet.listAccounts();
     case 'renameAccount':
-      return await Wallet.renameWallet(params.address, params.name, wallet.currentState)
+      return await renameAccountDialog(params.address);
     case 'importAccount':
       await ImportAccountUI(wallet.currentState);
       return true;
@@ -190,20 +189,16 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
 
 
     case 'openSendXLM':
-      /**Your code goes here
-       * 
-       * Example:
-       * await xlmDialog(wallet, client, operations);
-       * pass in the wallet opject, client object and operations object
-       * they are intialized at the top of the onRpcRequest function
+      /**
+       * Mainly a test for future expansion shouldn't be used often, not really insured to work, but it should be safe
        */
       let dataPacket = await getDataPacket(wallet, client);
-      if(operations !== null){
-        let interfaceId = await SendXLM(dataPacket, wallet, operations, testnet);
-        let result = await Utils.openDialog(interfaceId);
-        return result;
-      }
-      return null;
+      console.log(operations);
+      
+      let interfaceId = await sendXLM(dataPacket, wallet, operations, testnet);
+      let result = await Utils.openDialog(interfaceId);
+      return result;
+  
 
     default:
       throw new Error('Method not found.');

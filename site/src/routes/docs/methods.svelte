@@ -84,6 +84,31 @@ let openSendXLM = `callMetaStellar('openSendXLM');`;
 
 
 <Heading>getDataPacket</Heading>
+<!--
+<div>
+    <P>Grabs Useful infomation About the users Stellar Wallet</P>
+    <P>Returns:</P>
+    <div id="datapacketType">
+        <p>this is the type returned from the getDataPacket method</p>
+        <code>
+            <pre>
+                {`
+                
+                interface DataPacket{
+                    name:string,
+                    currentAddress:string,
+                    mainnetAssets?:`} <a>walletAsset[],</a>
+                    {`testnetAssets?: `} <a>walletAsset[],</a>
+                    {`accounts: Array< {name:string, address:string}  >
+                    mainnetXLMBalance: string,
+                    testnetXLMBalance: string,
+                    fedName: string | null
+                }`}
+            </pre>
+        </code>
+    </div>
+</div>
+-->
 <h2>callMetaStellar('getDataPacket')</h2>
 <Editor code={getDataPacket}/>
 

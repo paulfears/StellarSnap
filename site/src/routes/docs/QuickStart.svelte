@@ -154,7 +154,7 @@ async function callMetaStellar(method, params){
 <TypescriptContainer code={MetaStellar_String} desc={callMetastellarDesc}/>
 <br/>
 <br/>
-<div class="uk-container justify-center" shadow>
+<div class="uk-container justify-center" >
     <div>
     The callMetaStellar Function is a one stop soultion to accessing a users stellar-metamask wallet.
     Simply run <b>callMetaStellar('connect')</b> to connect and install stellar onto a users Metamask!

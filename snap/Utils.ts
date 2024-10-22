@@ -5,10 +5,12 @@ Class for utility functions
 
 wallet is a global in the metamask context
 */
-import { DialogResult } from '@metamask/snaps-sdk';
+import { ComponentOrElement, DialogResult } from '@metamask/snaps-sdk';
 import { panel, text, heading, divider, copyable, Panel } from '@metamask/snaps-ui';
 type interfaceId = string;
 import { InteractionHandler } from './InteractionHandler';
+import { SnapComponent } from '@metamask/snaps-sdk/jsx';
+import type { SnapElement } from '@metamask/snaps-sdk/jsx';
 export default class Utils {
     
     static throwError(code, msg){
@@ -103,6 +105,18 @@ export default class Utils {
         })
         return alert;
     }
+
+    static async openDialogWithContent(content:ComponentOrElement, type:'confirmation' | "alert" | 'prompt'): Promise<DialogResult>{
+        const disp = await snap.request({
+            method: 'snap_dialog',
+            params:{
+                type: type,
+                content:content
+            }
+        })
+        return disp
+    }
+    
 
     static async displayPanel(disppanel: Panel, type:"confirmation" | "alert" | "prompt" = "confirmation"): Promise<DialogResult>{
         const disp = await snap.request({

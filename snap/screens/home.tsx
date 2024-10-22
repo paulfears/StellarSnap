@@ -4,8 +4,8 @@ import { Client } from '../Client';
 import {getDataPacket} from '../assets';
 import type {DataPacket} from '../assets';
 import { InteractionHandler } from '../InteractionHandler';
-import {showQrCode} from './ReceiveXLM';
-import {SendXLM} from './sendXLM';
+import {showQrCode} from './receiveXLM';
+import {sendXLM} from './sendXLM';
 
 const HomeScreen = async ()=>{
     console.log("getting wallet");
@@ -30,6 +30,7 @@ const HomeScreen = async ()=>{
                 {walletData.name} - {walletData.mainnetXLMBalance} XLM
             </Heading>
            <Copyable value={walletData.currentAddress}/>
+            <Button name="receive">Receive</Button>
         </Box>
     );
     let interfaceId = await InteractionHandler.createInterface(screenUI);

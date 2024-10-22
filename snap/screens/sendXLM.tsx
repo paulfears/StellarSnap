@@ -1,4 +1,4 @@
-import { Box, Text, Bold, Copyable, Heading, Button, Input, Form, Spinner} from '@metamask/snaps-sdk/jsx';
+import { Box, Text, Bold, Copyable, Heading, Button, Input, Form, Spinner, Divider} from '@metamask/snaps-sdk/jsx';
 
 import type {Wallet} from '../Wallet';
 import type { Client } from '../Client';
@@ -6,16 +6,27 @@ import {getDataPacket} from '../assets';
 import type {DataPacket} from '../assets';
 import type { WalletFuncs } from 'WalletFuncs';
 import { InteractionHandler } from '../InteractionHandler';
-
+import Utils from '../Utils';
 type interfaceId = string;
-export const SendXLM = async (dataPacket:DataPacket, wallet:Wallet, operations:WalletFuncs, testnet:boolean):Promise<interfaceId> => 
+export const sendXLM = async (dataPacket:DataPacket, wallet:Wallet, operations:WalletFuncs|null, testnet:boolean):Promise<interfaceId> => 
 {
     console.log("getting wallet");
     console.log("got wallet");
     console.log(wallet);
     let balance = testnet? dataPacket.testnetXLMBalance: dataPacket.mainnetXLMBalance;
     
-    const sendCallback = async (interfaceId:string, operations:WalletFuncs)=>{
+    const sendCallback = async (interfaceId:string, operations:WalletFuncs|null)=>{
+        if(operations === null){
+            let errorUI = (
+                <Box>
+                    <Heading>Sending Funds Requires a Funded Account</Heading>
+                    <Divider/>
+                    <Text>You Need To Add XLM to your Account Before You Can Send Funds</Text>
+                </Box>
+            );
+            await InteractionHandler.updateInterface(interfaceId, errorUI);
+            return Utils.throwError(400, "Account Not Funded");
+        }
         console.log("send callback");
         let state = await InteractionHandler.getState(interfaceId);
         let address = state.sendForm.sendXLMAddress;
