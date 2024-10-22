@@ -68,7 +68,7 @@ export async function createFederationAccount(account:Keypair, username:string):
     */
 }
 
-export async function lookupFedAccount(name):Promise<fedResponse>{
+export async function lookupFedAccount(name:string):Promise<fedResponse>{
     try{
         const res = await fetch(`https://stellarid.io/federation/?q=${name}&type=name`, {
             method: "GET",
@@ -117,6 +117,6 @@ export async function lookupAddress(address:string):Promise<fedResponse>{
     catch(e){
         console.log("there was an error");
         console.log(e);
-        return {"stellar_address":null, account_id:null, "error":e};
+        return {"stellar_address":null, account_id:null, "error":String(e)};
     }
 }

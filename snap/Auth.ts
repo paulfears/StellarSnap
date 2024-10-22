@@ -15,7 +15,7 @@ interface auth{
 export class Auth{
     keypair:Keypair;
     
-    constructor(keypair){
+    constructor(keypair:Keypair){
 
         this.keypair = keypair;
     }
@@ -33,7 +33,7 @@ export class Auth{
         console.log(prepaired);
         return prepaired;
     }
-    async signData(data: string):string{
+    async signData(data: string):Promise<string>{
         let displayPanel = panel([
             heading('Sign Text?'),
             divider(),
@@ -67,7 +67,7 @@ export class Auth{
         }
     }
 
-    async signOnGet(url, testKey){
+    async signOnGet(url:string, testKey:string){
         const auth = await this.getAuthObject(testKey);
         const outAuth = JSON.stringify({auth:auth})
         const response = await fetch(url, 
@@ -82,7 +82,7 @@ export class Auth{
         return await response.json();
     }
 
-    async signOnPost(url, jsonData, testKey){
+    async signOnPost(url:string, jsonData:any, testKey:string){
         const auth = await this.getAuthObject(testKey);
         console.log("sign on post");
         jsonData.auth = auth;

@@ -59,7 +59,7 @@ export class Wallet{
         return Uint8Array.from(hexString.match(/.{1,2}/g).map((byte) => parseInt(byte, 16)))
     }
 
-    static async createNewAccount(name, currentState?:State, setState?:boolean):Promise<Wallet>{
+    static async createNewAccount(name:string, currentState?:State, setState?:boolean):Promise<Wallet>{
         if(currentState === undefined){
             currentState = await StateManager.getState();
         }
@@ -88,7 +88,7 @@ export class Wallet{
         return new Wallet(tempAccount, currentState);
     }
 
-    static async renameWallet(address, name, currentState?:State):Promise<boolean>{
+    static async renameWallet(address:string, name:string, currentState?:State):Promise<boolean>{
         if(!currentState){
             currentState = await StateManager.getState();
         }

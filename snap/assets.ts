@@ -71,20 +71,20 @@ export async function getAssets(wallet:Wallet, client:Client):Promise<Array<Asse
 export async function getDataPacket(wallet:Wallet, client:Client):Promise<DataPacket>{
     const currentAddress = wallet.currentState.currentAccount;
     const accounts = await Wallet.listAccounts(wallet.currentState);
-    const name = wallet.currentState.accounts[currentAddress].name;
+    const name = wallet.currentState.accounts[String(currentAddress)]?.name ?? "Unknown";
     const startingNetwork = client.network;
     client.setNetwork('mainnet');
     const mainnetAssets = await getAssets(wallet, client);
     client.setNetwork('testnet');
     const testnetAssets = await getAssets(wallet, client);
-    const mainnetXLMBalance = mainnetAssets[mainnetAssets.length-1].balance; //xlm is always the last asset
-    const testnetXLMBalance = testnetAssets[testnetAssets.length-1].balance;
-    const fedName = (await lookupAddress(currentAddress)).stellar_address;
+    const mainnetXLMBalance = mainnetAssets[mainnetAssets.length-1]?.balance ?? "0"; //xlm is always the last asset
+    const testnetXLMBalance = testnetAssets[testnetAssets.length-1]?.balance ?? "0";
+    const fedName = (await lookupAddress(currentAddress as string)).stellar_address;
     client.setNetwork(startingNetwork);
     return {
         name,
         accounts,
-        currentAddress,
+        currentAddress: currentAddress as string,
         mainnetAssets,
         testnetAssets,
         mainnetXLMBalance,

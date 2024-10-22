@@ -1,6 +1,7 @@
 import { FeeBumpTransaction, Transaction } from "stellar-base";
 import { SorobanRpc } from "./soroban_rpc";
 import { Wallet } from "./Wallet";
+import { Url } from "url";
 
 const testNetURL = "https://horizon-testnet.stellar.org"
 const mainNetURL = "https://horizon.stellar.org"
@@ -34,18 +35,21 @@ export async function fund(wallet:Wallet){
 
 
 export class Client{
-    endPoint:string
-    testNet: boolean
-    testNetURL: string
-    mainNetURL: string
+    endPoint = mainNetURL
     MainnetPassphrase = 'Public Global Stellar Network ; September 2015'
     TestnetPassphrase = 'Test SDF Network ; September 2015'
     FuturenetPassphrase = 'Test SDF Future Network ; October 2022'
     currentPassphrase: string;
-    network: 'mainnet' | 'testnet' | 'futurenet'
+    network: 'mainnet' | 'testnet' | 'futurenet' = 'mainnet';
 
     constructor(network?:'mainnet'|'testnet'|'futurenet'){
-        this.setNetwork(network);
+        this.currentPassphrase = this.MainnetPassphrase;
+        if(network){
+            this.setNetwork(network);
+        }
+        else{
+            this.setNetwork('mainnet');
+        }
     }
 
     setNetworkPassphrase(networkPasspharse: string):void{
@@ -67,14 +71,14 @@ export class Client{
         }
     }
 
-    async get(path){
+    async get(path:string){
         console.log("here")
         console.log(this.endPoint)
         const response = await fetch(this.endPoint+'/'+path)
         const json = await response.json()
         return json
     }
-    async post(path){
+    async post(path:string){
         console.log("here")
         const response = await fetch(this.endPoint+'/'+path, {
             method: "POST",
@@ -86,9 +90,7 @@ export class Client{
         return json
     }
 
-    async postData(path, data){
-        
-    }
+   
 
     async getAccount(address: string){
         console.log("getAccount");
@@ -153,7 +155,7 @@ export class Client{
         if(this.network === 'mainnet'){
             sorobanRPC = soroban_main_rpc;
         }
-        const result = await fetch(sorobanRPC, {
+        const result = await fetch(sorobanRPC as string, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

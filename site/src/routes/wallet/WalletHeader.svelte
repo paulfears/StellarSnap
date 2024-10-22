@@ -65,12 +65,16 @@
     <div>
         <div style="display:flex; flex-direction:row; justify-content:space-between;">
             <div style="display:flex; flex-gap:3;">
-                
-                <img style="padding:5px;" on:click={()=>quickCopy($dataPacket.currentAddress)} alt={"addressIcon"} width="35" height="35" src={iconSRC}/>
+                <div style="padding:10px;">
+                    <img style="padding:5px;" on:click={()=>quickCopy($dataPacket.currentAddress)} alt={"addressIcon"} width="35" height="35" src={iconSRC}/>
+                </div>
                 <Tooltip>icon provided by lobstr.co</Tooltip>
-                <P size="2xl">{$dataPacket.name}{#if $dataPacket.fedName} - {$dataPacket.fedName}{/if}</P>
+                <div style="display:flex; flex-direction:column;">
+                    <P size="2xl" style="margin:0px;">{$dataPacket.name}</P>
+                    {#if $dataPacket.fedName} <P size="sm">{$dataPacket.fedName}</P>{/if}
+                </div>
             </div>
-            <Button on:click={flipNetwork} color="light" class="relative" size="sm">
+            <Button on:click={flipNetwork} color="light" class="relative" size="sm" style="height:40px;">
                 {$isTestnet?"testnet":"mainnet"}
                 <span class="sr-only">Network Indicator</span>
                 {#if $isTestnet}

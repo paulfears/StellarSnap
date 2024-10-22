@@ -62,7 +62,7 @@ export class Screens{
         return await Utils.displayPanel(disp, 'prompt');
     }
 
-    static async SameNameWarning(name){
+    static async SameNameWarning(name:string){
         const disp = panel([
             heading(`${name} is already taken`),
             divider(),
@@ -115,7 +115,7 @@ export class Screens{
             result = await createFederationAccount(wallet.keyPair, name as string);
             if(result.error){
               if(result.error === "username is already in use"){
-                await Screens.SameNameWarning(name);
+                await Screens.SameNameWarning(name as string);
                 continue;
               }
               if(result.error === "address already has an account"){
@@ -165,7 +165,7 @@ export class Screens{
         }
     }
 
-    static async confirmAccountChange(origin, accountName, accountAddress):Promise<boolean>{
+    static async confirmAccountChange(origin:string, accountName:string, accountAddress:string):Promise<boolean>{
         const disp = panel([
             heading('Switch Account?'),
             divider(),
@@ -176,10 +176,6 @@ export class Screens{
             ]),
         ]);
         return (await Utils.displayPanel(disp, 'confirmation')) as boolean;
-    }
-
-    static async homeScreen(wallet){
-
     }
 
     static async clearStateConfirmation():Promise<boolean>{

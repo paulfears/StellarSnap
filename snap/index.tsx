@@ -6,11 +6,9 @@ import { fund, Client } from './Client';
 import { TxnBuilder } from './TxnBuilder';
 import { WalletFuncs } from './WalletFuncs';
 import { Screens } from './screens';
-import {createFederationAccount, lookupAddress, lookupFedAccount} from './federation'
+import {lookupAddress, lookupFedAccount} from './federation'
 import { NotificationEngine } from './notificationEngine';
-
 import { OnCronjobHandler } from '@metamask/snaps-types';
-import { parseRawSimulation } from './sorobanTxn';
 import Utils from './Utils';
 import { StateManager } from './stateManager';
 import {getAssets, getDataPacket} from './assets';
@@ -186,11 +184,6 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       if(operations !== null){
         return await operations.signAndSubmitTransaction(params.transaction);
       }
-
-    case 'callContract':
-      //params.params
-      //params.address
-      return "null"
 
     case 'createFederationAccount':
       return await Screens.setUpFedAccount(wallet);

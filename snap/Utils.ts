@@ -110,9 +110,9 @@ export default class Utils {
             params:{
                 type: type,
                 content: panel([
-                    text(`request origin: ${InteractionHandler.requestOrigin}`),
+                    disppanel,
                     divider(),
-                    disppanel
+                    text(`request origin: ${InteractionHandler.requestOrigin}`), //this is a global variable for the request origin
                 ])
             }
         })
