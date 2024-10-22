@@ -4,7 +4,7 @@
 	
     import Editor from '$lib/components/MetaStellarEditor/MetaStellarEditor.svelte';
     import TypescriptContainer from "$lib/components/TypescriptContainer/TypescriptContainer.svelte";
-    import {Card} from '@metastellar/ui-library';
+    
     import {P, Heading,} from 'flowbite-svelte';
     
     let MetaStellar_String = //This is the callMetaStellar function that should also be prepended to any executed code
@@ -154,14 +154,14 @@ async function callMetaStellar(method, params){
 <TypescriptContainer code={MetaStellar_String} desc={callMetastellarDesc}/>
 <br/>
 <br/>
-<Card class="uk-container justify-center" shadow>
+<div class="uk-container justify-center" shadow>
     <div>
     The callMetaStellar Function is a one stop soultion to accessing a users stellar-metamask wallet.
     Simply run <b>callMetaStellar('connect')</b> to connect and install stellar onto a users Metamask!
     From there you can interact with the stellar wallet by calling <code>{`callMetaStellar('functionName-as-string', {"params":"in-key-value format"});`}</code>
     We beleave the best thing to do is to copy the callMetaStellar Function into a utils folder on your application. 
     </div>
-</Card>
+</div>
 <br/>
 <br/>
 <!--Connect Editor-->

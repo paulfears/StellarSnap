@@ -1,6 +1,6 @@
 <script>
 	
-	import { Card } from '@metastellar/ui-library';
+	
 	
     import {Tabs, TabItem, P} from 'flowbite-svelte';
     import QuickStart from './QuickStart.svelte';
@@ -12,10 +12,10 @@
 </script>
 <div class="uk-container justify-center">
     <br/><br/>
-    <Card shadow>
+    <div >
         <P size="4xl">MetaStellar.io/Docs</P>
         Metamask Wallet Support For your Stellar Application
-    </Card>
+    </div>
     <br/><br/>
     <Tabs>
         <TabItem title='quickStart' open>
