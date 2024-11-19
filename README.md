@@ -122,7 +122,7 @@ console.log(`Current Address: ${address}`);
 
 Set the network environment for transactions, ensuring users connect to the appropriate Stellar network (Mainnet or Testnet).
 this can be done by passing a boolean into the testnet parameter to any call. This is optional, and method calls will be treated
-as mainnet if this parameter is omited. If the testnet parameter is not relevant to a method call it is simply ignored
+as mainnet if this parameter is omitted. If the testnet parameter is not relevant to a method call it is simply ignored
 
 ```javascript
 const balance = await ethereum.request({
