@@ -27,7 +27,7 @@ Follow these steps to get started with integrating Stellar-Wallet functionalitie
 
 1. **Set Up MetaMask Flask**: Ensure you have MetaMask Flask installed, which is a version tailored for developers to create and integrate Snaps.
   
-2. **Install Metastellar Snap**: Follow the installation instructions provided in the [Metastellar Documentation](#) to connect your MetaMask to the Stellar network.
+2. **Install Metastellar Snap**: Follow the installation instructions provided in the [Full Documentation](https://stellar-wallet-demo.vercel.app/docs) to connect your MetaMask to the Stellar network.
 
 3. **Create Your Snap**: Use the MetaMask Snaps CLI to initialize a new Snap project. Refer to the MetaMask Snaps documentation for detailed guidance on setting up your environment.
 Installation
