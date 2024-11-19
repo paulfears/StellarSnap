@@ -6,7 +6,7 @@ This guide provides detailed instructions on integrating Stellar wallet function
 ---
 ## full documentation
 
-[full documentation](https://stellar-snap-paulfears-projects.vercel.app/docs)
+[full documentation](https://stellar-wallet-demo.vercel.app/docs)
 
 ## Table of Contents
 - [Quick Start](#quick-start)
