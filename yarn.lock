@@ -1630,9 +1630,9 @@
     superstruct "^0.16.7"
 
 "@metamask/snaps-cli@^6.5.0":
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/@metamask/snaps-cli/-/snaps-cli-6.5.2.tgz#9eb008273d54428b1e767b5d253bdf2fe3c1b15f"
-  integrity sha512-UXjcWLNenI62+l75cj8ypID3TRQYcAwGZ4KEnK2V9HV5rAsxZpLYHhu7zxf0WTmURF96LfAIeMN/t+eJFHB8AQ==
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/@metamask/snaps-cli/-/snaps-cli-6.5.3.tgz#7e3b8a889e1a89f2ef2ee3964d45044eac9ae285"
+  integrity sha512-cKIhMGygN1/YgTSfITQjM1ghiDaqw0mKEy7/QEcpX/RPLGft0jth4BxRvj4chBUqjgtztN2iGkS4Vlgo5Bm0sA==
   dependencies:
     "@babel/core" "^7.23.2"
     "@babel/plugin-transform-class-properties" "^7.22.5"
@@ -1642,8 +1642,8 @@
     "@babel/plugin-transform-runtime" "^7.13.2"
     "@babel/preset-env" "^7.23.2"
     "@babel/preset-typescript" "^7.23.2"
-    "@metamask/snaps-sdk" "^6.10.0"
-    "@metamask/snaps-utils" "^8.5.0"
+    "@metamask/snaps-sdk" "^6.11.0"
+    "@metamask/snaps-utils" "^8.6.0"
     "@metamask/snaps-webpack-plugin" "^4.1.2"
     "@metamask/superstruct" "^3.1.0"
     "@metamask/utils" "^10.0.0"
@@ -1718,10 +1718,10 @@
     "@noble/hashes" "^1.3.1"
     superstruct "^1.0.3"
 
-"@metamask/snaps-sdk@^6.10.0", "@metamask/snaps-sdk@^6.5.0", "@metamask/snaps-sdk@^6.7.0":
-  version "6.10.0"
-  resolved "https://registry.yarnpkg.com/@metamask/snaps-sdk/-/snaps-sdk-6.10.0.tgz#682b17678129d16c51375ec28f76e1fa502506a6"
-  integrity sha512-qKIkOmrK+cOPzy2WY3rSoEWEFz3TrJo3IdeNj9UTMCKWrNi16mS5hznhn3mRhH/k46TtOEVcrq+QfPKnNb+pIw==
+"@metamask/snaps-sdk@^6.11.0", "@metamask/snaps-sdk@^6.5.0", "@metamask/snaps-sdk@^6.7.0":
+  version "6.11.0"
+  resolved "https://registry.yarnpkg.com/@metamask/snaps-sdk/-/snaps-sdk-6.11.0.tgz#302a8f9c04567d913c5f50b9d065edaec7ffcf52"
+  integrity sha512-NvU5cskgaQvd10i2cNEajmmWENvEYOq7yJ4NbHOZ+iPI+nuM7HF3Zi6ls5vL4JshVsF4/+2lNLwF0TAwtPEl3g==
   dependencies:
     "@metamask/key-tree" "^9.1.2"
     "@metamask/providers" "^18.1.1"
@@ -1775,10 +1775,10 @@
     superstruct "^1.0.3"
     validate-npm-package-name "^5.0.0"
 
-"@metamask/snaps-utils@^8.1.1", "@metamask/snaps-utils@^8.5.0":
-  version "8.5.1"
-  resolved "https://registry.yarnpkg.com/@metamask/snaps-utils/-/snaps-utils-8.5.1.tgz#12a62e0f6f670843f953a13a5581c0ea60145548"
-  integrity sha512-tk4wRwwequfkhc7zNWR04/iaQWjSMUILiIWkP6KTUGOqbDAMrfNzml2rRP34dKJRiwzFwJdq71ZvxjGWKIweTg==
+"@metamask/snaps-utils@^8.1.1", "@metamask/snaps-utils@^8.6.0":
+  version "8.6.0"
+  resolved "https://registry.yarnpkg.com/@metamask/snaps-utils/-/snaps-utils-8.6.0.tgz#96e4b3fbca8109d5335502ad1d71e8b6ec06765a"
+  integrity sha512-Q+CmJ5pbSj3USeDTsPnJBJ27qSWAYGlYAC6M2NTe/0OmGUFPx4V54kT2HCc/97AOG6fChSeLqfF3KpTtFuaiAQ==
   dependencies:
     "@babel/core" "^7.23.2"
     "@babel/types" "^7.23.0"
@@ -1788,7 +1788,7 @@
     "@metamask/rpc-errors" "^7.0.1"
     "@metamask/slip44" "^4.0.0"
     "@metamask/snaps-registry" "^3.2.2"
-    "@metamask/snaps-sdk" "^6.10.0"
+    "@metamask/snaps-sdk" "^6.11.0"
     "@metamask/superstruct" "^3.1.0"
     "@metamask/utils" "^10.0.0"
     "@noble/hashes" "^1.3.1"
