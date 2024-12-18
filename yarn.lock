@@ -1443,7 +1443,18 @@
     "@metamask/utils" "^10.0.0"
     readable-stream "^3.6.2"
 
-"@metamask/key-tree@^9.0.0", "@metamask/key-tree@^9.1.2":
+"@metamask/key-tree@^10.0.1":
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/@metamask/key-tree/-/key-tree-10.0.2.tgz#d6fe993cdae423adc5a755a14a19b4a951416f56"
+  integrity sha512-GFCPZfiiaJAjAXthdvgxa4/ZD41IOZyCVc5MjgWnzj6Euur5URPqhMuefak6hBtY/Hz50gbDwLn8ODj4hbFF3A==
+  dependencies:
+    "@metamask/scure-bip39" "^2.1.1"
+    "@metamask/utils" "^11.0.1"
+    "@noble/curves" "^1.2.0"
+    "@noble/hashes" "^1.3.2"
+    "@scure/base" "^1.0.0"
+
+"@metamask/key-tree@^9.0.0":
   version "9.1.2"
   resolved "https://registry.yarnpkg.com/@metamask/key-tree/-/key-tree-9.1.2.tgz#3f89fc7990c395be3aa9c3e6e045d3d28768149b"
   integrity sha512-oznbIDlIn7bQsyf/RVhuVX9TsK+QUlTDeksUjBjTPKhGkFHAgn9duBHPE8P30VcCdWlt/oYSqfJVC5WK1/OXKw==
@@ -1630,9 +1641,9 @@
     superstruct "^0.16.7"
 
 "@metamask/snaps-cli@^6.5.0":
-  version "6.5.2"
-  resolved "https://registry.yarnpkg.com/@metamask/snaps-cli/-/snaps-cli-6.5.2.tgz#9eb008273d54428b1e767b5d253bdf2fe3c1b15f"
-  integrity sha512-UXjcWLNenI62+l75cj8ypID3TRQYcAwGZ4KEnK2V9HV5rAsxZpLYHhu7zxf0WTmURF96LfAIeMN/t+eJFHB8AQ==
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/@metamask/snaps-cli/-/snaps-cli-6.6.0.tgz#b22131a362669796ccbd74268f8043dbe38d9ff3"
+  integrity sha512-bj4xXu8st9Tej1sDDcTTd6p5XN+WhTE3D+K/SHA6c+luYU3+RCmWH/OVJaF8ifbWpKTT82TYioBHzYu/jGddAw==
   dependencies:
     "@babel/core" "^7.23.2"
     "@babel/plugin-transform-class-properties" "^7.22.5"
@@ -1642,9 +1653,9 @@
     "@babel/plugin-transform-runtime" "^7.13.2"
     "@babel/preset-env" "^7.23.2"
     "@babel/preset-typescript" "^7.23.2"
-    "@metamask/snaps-sdk" "^6.10.0"
-    "@metamask/snaps-utils" "^8.5.0"
-    "@metamask/snaps-webpack-plugin" "^4.1.2"
+    "@metamask/snaps-sdk" "^6.14.0"
+    "@metamask/snaps-utils" "^8.7.0"
+    "@metamask/snaps-webpack-plugin" "^4.2.0"
     "@metamask/superstruct" "^3.1.0"
     "@metamask/utils" "^10.0.0"
     "@swc/core" "1.3.78"
@@ -1718,12 +1729,12 @@
     "@noble/hashes" "^1.3.1"
     superstruct "^1.0.3"
 
-"@metamask/snaps-sdk@^6.10.0", "@metamask/snaps-sdk@^6.5.0", "@metamask/snaps-sdk@^6.7.0":
-  version "6.10.0"
-  resolved "https://registry.yarnpkg.com/@metamask/snaps-sdk/-/snaps-sdk-6.10.0.tgz#682b17678129d16c51375ec28f76e1fa502506a6"
-  integrity sha512-qKIkOmrK+cOPzy2WY3rSoEWEFz3TrJo3IdeNj9UTMCKWrNi16mS5hznhn3mRhH/k46TtOEVcrq+QfPKnNb+pIw==
+"@metamask/snaps-sdk@^6.14.0", "@metamask/snaps-sdk@^6.7.0":
+  version "6.14.0"
+  resolved "https://registry.yarnpkg.com/@metamask/snaps-sdk/-/snaps-sdk-6.14.0.tgz#2b9b9c3d83c8f44de5def7b46fc1e4738e24c44e"
+  integrity sha512-vlb6N1xvWgXQyWXzWAuo5QGUuJ9EsJmLxrtS+fl0+Vdr09WqCPcu20EJu0pFwsde/8crbKaonq8n5TOisz5Utg==
   dependencies:
-    "@metamask/key-tree" "^9.1.2"
+    "@metamask/key-tree" "^10.0.1"
     "@metamask/providers" "^18.1.1"
     "@metamask/rpc-errors" "^7.0.1"
     "@metamask/superstruct" "^3.1.0"
@@ -1775,20 +1786,20 @@
     superstruct "^1.0.3"
     validate-npm-package-name "^5.0.0"
 
-"@metamask/snaps-utils@^8.1.1", "@metamask/snaps-utils@^8.5.0":
-  version "8.5.1"
-  resolved "https://registry.yarnpkg.com/@metamask/snaps-utils/-/snaps-utils-8.5.1.tgz#12a62e0f6f670843f953a13a5581c0ea60145548"
-  integrity sha512-tk4wRwwequfkhc7zNWR04/iaQWjSMUILiIWkP6KTUGOqbDAMrfNzml2rRP34dKJRiwzFwJdq71ZvxjGWKIweTg==
+"@metamask/snaps-utils@^8.7.0":
+  version "8.7.0"
+  resolved "https://registry.yarnpkg.com/@metamask/snaps-utils/-/snaps-utils-8.7.0.tgz#3e1d714a1afe7c4ac49c8f67dbe07684c3763e42"
+  integrity sha512-8aGpnahx8pQdFDDaC5FJ4jQGotO8yxjWNmQMe4QDAH6NW7Z6XBHHuVDkbhJH2b8v8NLw/8vx3n7ZKrM13d0BMw==
   dependencies:
     "@babel/core" "^7.23.2"
     "@babel/types" "^7.23.0"
     "@metamask/base-controller" "^7.0.2"
-    "@metamask/key-tree" "^9.1.2"
+    "@metamask/key-tree" "^10.0.1"
     "@metamask/permission-controller" "^11.0.3"
     "@metamask/rpc-errors" "^7.0.1"
     "@metamask/slip44" "^4.0.0"
     "@metamask/snaps-registry" "^3.2.2"
-    "@metamask/snaps-sdk" "^6.10.0"
+    "@metamask/snaps-sdk" "^6.14.0"
     "@metamask/superstruct" "^3.1.0"
     "@metamask/utils" "^10.0.0"
     "@noble/hashes" "^1.3.1"
@@ -1804,14 +1815,15 @@
     ses "^1.1.0"
     validate-npm-package-name "^5.0.0"
 
-"@metamask/snaps-webpack-plugin@^4.1.2":
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/@metamask/snaps-webpack-plugin/-/snaps-webpack-plugin-4.1.2.tgz#b7b9f715b050c876f11d1bf0424ea51596fb4451"
-  integrity sha512-oFWsIWNVuZbeEL9CLZoDTdppj1ohSkcslsH/A6JAsbBKiFCPXMaxK6HmTIR6ZXdt871AnS7aN+qRpmrw0uoMiw==
+"@metamask/snaps-webpack-plugin@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@metamask/snaps-webpack-plugin/-/snaps-webpack-plugin-4.2.0.tgz#afd42ed73cf2a80d473499d6f7af3c4f317f673b"
+  integrity sha512-AqO2P8ptX5v7u1V5Ov+4x7dE7BXpguNLZEcZhPKCZgVwc5SZgh87ZBlGADY7kK7dxtnL23IZw/+GSo/imqTEBQ==
   dependencies:
-    "@metamask/snaps-sdk" "^6.5.0"
-    "@metamask/snaps-utils" "^8.1.1"
-    "@metamask/utils" "^9.2.1"
+    "@metamask/snaps-sdk" "^6.14.0"
+    "@metamask/snaps-utils" "^8.7.0"
+    "@metamask/utils" "^10.0.0"
+    prettier "^2.8.8"
     webpack-sources "^3.2.3"
 
 "@metamask/superstruct@^3.0.0", "@metamask/superstruct@^3.1.0":
@@ -1828,6 +1840,21 @@
   version "10.0.1"
   resolved "https://registry.yarnpkg.com/@metamask/utils/-/utils-10.0.1.tgz#a765f96c20e35fc51c068fb9f88a3332b40b215e"
   integrity sha512-zHgAitJtRwviVVFnRUA2PLRMaAwatr3jiHgiH7mPicJaeSK4ma01aGR4fHy0iy5tlVo1ZiioTmJ1Hbp8FZ6pSg==
+  dependencies:
+    "@ethereumjs/tx" "^4.2.0"
+    "@metamask/superstruct" "^3.1.0"
+    "@noble/hashes" "^1.3.1"
+    "@scure/base" "^1.1.3"
+    "@types/debug" "^4.1.7"
+    debug "^4.3.4"
+    pony-cause "^2.1.10"
+    semver "^7.5.4"
+    uuid "^9.0.1"
+
+"@metamask/utils@^11.0.1":
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/@metamask/utils/-/utils-11.0.1.tgz#16c4135489204fefe128b5e6c2b92c014453e1d5"
+  integrity sha512-tZlBvEJ6VhhfEiMV+Ad8rWRMjHKpbMogG01YU22JlsIeJptgIdZX1G8jJzhZH0Gxrixa2BeARh7m9lZWQo6rMg==
   dependencies:
     "@ethereumjs/tx" "^4.2.0"
     "@metamask/superstruct" "^3.1.0"
@@ -1864,7 +1891,7 @@
     semver "^7.5.4"
     uuid "^9.0.1"
 
-"@metamask/utils@^9.0.0", "@metamask/utils@^9.2.1":
+"@metamask/utils@^9.0.0":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@metamask/utils/-/utils-9.3.0.tgz#4726bd7f5d6a43ea8425b6d663ab9207f617c2d1"
   integrity sha512-w8CVbdkDrVXFJbfBSlDfafDR6BAkpDmv1bC1UJVCoVny5tW2RKAdn9i68Xf7asYT4TnUhl/hN4zfUiKQq9II4g==
@@ -6512,7 +6539,7 @@ prettier-plugin-packagejson@^2.2.11:
     sort-package-json "2.10.1"
     synckit "0.9.2"
 
-prettier@^2.3.2:
+prettier@^2.3.2, prettier@^2.8.8:
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
