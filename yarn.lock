@@ -1325,9 +1325,9 @@
     immer "^9.0.6"
 
 "@metamask/base-controller@^7.0.1", "@metamask/base-controller@^7.0.2":
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/@metamask/base-controller/-/base-controller-7.0.2.tgz#bf908858215cd4f7d072b3b0f7f0946cf886ee49"
-  integrity sha512-zeZ5QPKedGT/r2M1NsT4lE7z4u9ciSNcOXG2vUdmfA+QT9YLwIm5+t56UGku3ZTjKGxDn9Ukca3BEkRc57Gt0A==
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@metamask/base-controller/-/base-controller-7.1.0.tgz#b0dba552cb72a27fb5ac0b801458006a4ab04c42"
+  integrity sha512-qUZXuyjy51o73QpkfgwvFiyahi0MRE0u33DGnC6eS34eww7JWwzwA+jbPFSWYj2nVGlR/ZQ1uZR7r1yCxcpzvg==
   dependencies:
     "@metamask/utils" "^10.0.0"
     immer "^9.0.6"
