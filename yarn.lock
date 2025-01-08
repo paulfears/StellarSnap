@@ -1339,10 +1339,10 @@
   dependencies:
     "@metamask/utils" "^9.0.0"
 
-"@metamask/controller-utils@^11.4.1":
-  version "11.4.2"
-  resolved "https://registry.yarnpkg.com/@metamask/controller-utils/-/controller-utils-11.4.2.tgz#0186c62c841ec94f60a67d0764dc7ab59c176c51"
-  integrity sha512-4zGfTTpjDgvRxo/tb3v1NBu0V/b2bqaDpSQC0noi5A4sm1yiZhyzqBY9+Zg11s8G/imp7+jvYRP1QM6OjFgIjQ==
+"@metamask/controller-utils@^11.4.4":
+  version "11.4.4"
+  resolved "https://registry.yarnpkg.com/@metamask/controller-utils/-/controller-utils-11.4.4.tgz#6e43e4cf53d34dad225bab8aaf4e7efcb1fe7623"
+  integrity sha512-0/gKC6jxlj8KRzi0RjGDQnml6l4b46Da/AIqnGJMOC59zl4qD5UN1GM+mq7L5duw/m8sSHa7VbL1hL0l7Cw1pg==
   dependencies:
     "@ethereumjs/util" "^8.1.0"
     "@metamask/eth-query" "^4.0.0"
@@ -1480,12 +1480,12 @@
     readable-stream "^3.6.2"
 
 "@metamask/permission-controller@^11.0.2", "@metamask/permission-controller@^11.0.3":
-  version "11.0.3"
-  resolved "https://registry.yarnpkg.com/@metamask/permission-controller/-/permission-controller-11.0.3.tgz#1d232ad892f9e097e281ddd7425370d3a6641344"
-  integrity sha512-u+btKRYRdJ+dBZP3nw1pmpo9bO4ehK6Lh0Veo0/Cx4ETvSN6JbP/L86aPRr/r8PAxXNrfSqv7YOgTfspw7cgCQ==
+  version "11.0.4"
+  resolved "https://registry.yarnpkg.com/@metamask/permission-controller/-/permission-controller-11.0.4.tgz#86d0218119c44895e004b8570379e5fc7f2e7efa"
+  integrity sha512-afBLuXR4BAH5rFjjex1kgogLjDnObfWsADOoME51HdJ4uERH89tadJUtFRR7QsYMpDUUHHtqputoCELmxCtl4g==
   dependencies:
     "@metamask/base-controller" "^7.0.2"
-    "@metamask/controller-utils" "^11.4.1"
+    "@metamask/controller-utils" "^11.4.4"
     "@metamask/json-rpc-engine" "^10.0.1"
     "@metamask/rpc-errors" "^7.0.1"
     "@metamask/utils" "^10.0.0"
