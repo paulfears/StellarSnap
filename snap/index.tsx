@@ -80,30 +80,32 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
   let baseAccount;
   let testnet = false;
   const keyPair = wallet.keyPair;
-  console.log("about to init client");
+  console.log("initalizing client");
   const client = new Client();
-  console.log("client init");
+  console.log("request:");
   console.log(request);
+  console.log("parameters:");
   console.log(params);
   if(params?.testnet && params?.futurenet){
     throw new Error("cannot use testnet and futurenet at the same time");
   }
   if(params?.testnet){
-    console.log("testnet is true");
+    console.log("is testnet request");
     client.setNetwork('testnet');
     testnet = true;
   }
   else if(params?.futurenet){
-    console.log("futurenet is true");
+    console.log("is futurenet request");
     client.setNetwork('futurenet');
   }
   else{
-    console.log("network is mainnet");
+    console.log("is mainnet request");
     client.setNetwork('mainnet');
   }
   try{
     console.log("attempting to get base account");
     baseAccount = await wallet.getBaseAccount(client);
+    console.log('done...')
     wallet_funded = true;
   }
   catch(e){
@@ -152,7 +154,6 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
       await ImportAccountUI(wallet.currentState);
       return true;
     case 'fund':
-      console.log("fund called");
       return await fund(wallet);
     case 'getFederationName':
       const res = await lookupAddress(wallet.address);

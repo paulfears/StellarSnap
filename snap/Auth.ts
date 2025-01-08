@@ -45,8 +45,6 @@ export class Auth{
             return "not signed"
         }
         const prepairedData = this.prepairTest(data);
-        console.log("prepaired data is");
-        console.log(prepairedData)
         const proof = this.keypair.sign(prepairedData).toString('hex');
         return proof;
     }
@@ -78,7 +76,6 @@ export class Auth{
 
     async signOnPost(url:string, jsonData:any, testKey:string){
         const auth = await this.getAuthObject(testKey);
-        console.log("sign on post");
         jsonData.auth = auth;
         const outAuth = JSON.stringify(jsonData);
         const response = await fetch(url, 

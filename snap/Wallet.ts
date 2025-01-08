@@ -26,7 +26,7 @@ export class Wallet{
         this.walletName = account.name;
         if(account.type === "generated"){
             //this.keyPair = nacl.sign.keyPair.fromSeed(seed);
-            console.log("seeding");
+            console.log("seeding wallet");
             const seed = account.seed;
             let bufferSeed = new Uint8Array(32);
             for(let i = 0; i<32; i++){
@@ -38,7 +38,6 @@ export class Wallet{
             this.address = this.keyPair.publicKey();
             //this.publicKey = this.keyPair.publicKey
             this.publicKey = this.keyPair.rawPublicKey();
-            console.log(this.publicKey);
         }
         if(account.type === "imported"){
             
@@ -265,7 +264,6 @@ export class Wallet{
     }
 
     static async listAccounts(currentState?:State):Promise<SimpleAccount[]>{
-        console.log("list accounts");
         if(currentState === undefined){
             console.log("currentState is undefined")
             currentState = await StateManager.getState();

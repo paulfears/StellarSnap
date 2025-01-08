@@ -38,20 +38,16 @@ export class TxnBuilder{
     
     const transactionBuilder = new TransactionBuilder(this.account, {fee, networkPassphrase: this.network })
     console.log("transaction initialized");
-    console.log(transactionBuilder);
     transactionBuilder
     .addOperation(Operation.createAccount({
         destination: destination,
         startingBalance: amount
     })) // <- funds and creates destinationA
     .setTimeout(30)
-    console.log(transactionBuilder);
     if(memo !== undefined){
       transactionBuilder.addMemo(memo);
     }
     const transaction = transactionBuilder.build();
-    console.log(transaction);
-    console.log(transaction.toXDR());
     return transaction;
   }
 
@@ -62,7 +58,6 @@ export class TxnBuilder{
     }
     const transactionBuilder = new TransactionBuilder(this.account, {fee, networkPassphrase: this.network })
     console.log("transaction initialized");
-    console.log(transactionBuilder);
     transactionBuilder
     /*
     .addOperation(Operation.createAccount({
@@ -77,14 +72,11 @@ export class TxnBuilder{
       }),
     ) // <- sends 100 XLM to destinationB
     .setTimeout(30)
-    console.log(transactionBuilder);
+    
     if(memo !== undefined){
       transactionBuilder.addMemo(memo);
     }
     const transaction = transactionBuilder.build();
-
-    console.log(transaction);
-    console.log(transaction.toXDR());
     return transaction;
   }
 
@@ -96,7 +88,6 @@ export class TxnBuilder{
     
     const transactionBuilder = new TransactionBuilder(this.account, {fee, networkPassphrase: this.network })
     console.log("transaction initialized");
-    console.log(transactionBuilder);
     transactionBuilder
     /*
     .addOperation(Operation.createAccount({
@@ -110,13 +101,10 @@ export class TxnBuilder{
         asset: Asset.native()
     })) // <- sends 100 XLM to destinationB
     .setTimeout(30)
-    console.log(transactionBuilder);
     if(memo !== undefined){
       transactionBuilder.addMemo(memo);
     }
     const transaction = transactionBuilder.build();
-    console.log(transaction);
-    console.log(transaction.toXDR());
     return transaction;
   }
 
@@ -139,7 +127,6 @@ export class TxnBuilder{
     
     const transactionBuilder = new TransactionBuilder(this.account, {fee, networkPassphrase: this.network })
     console.log("transaction initialized");
-    console.log(transactionBuilder);
     const stellarAsset = new Asset(asset.code, asset.issuer); 
     transactionBuilder
     /*
@@ -157,10 +144,7 @@ export class TxnBuilder{
     if(memo !== undefined){
       transactionBuilder.addMemo(memo);
     }
-    console.log(transactionBuilder);
     const transaction = transactionBuilder.build();
-    console.log(transaction);
-    console.log(transaction.toXDR());
     return transaction;
   }
 

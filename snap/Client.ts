@@ -13,16 +13,12 @@ const soroban_main_rpc = "https://autumn-proportionate-breeze.stellar-mainnet.qu
 
 export async function fund(wallet:Wallet){
     console.log("funding account");
-    console.log("wallet Address is: ");
-    console.log(wallet.address);
     const response = await fetch(
         `https://friendbot.stellar.org?addr=${encodeURIComponent(
           wallet.address,
         )}`,
       );
-      console.log(response);
       const responseJSON = await response.json();
-      console.log(responseJSON);
     const response2 = await fetch(
         `https://friendbot-futurenet.stellar.org?addr=${encodeURIComponent(
           wallet.address,
@@ -72,14 +68,11 @@ export class Client{
     }
 
     async get(path:string){
-        console.log("here")
-        console.log(this.endPoint)
         const response = await fetch(this.endPoint+'/'+path)
         const json = await response.json()
         return json
     }
     async post(path:string){
-        console.log("here")
         const response = await fetch(this.endPoint+'/'+path, {
             method: "POST",
             headers: { 
@@ -93,8 +86,6 @@ export class Client{
    
 
     async getAccount(address: string){
-        console.log("getAccount");
-        console.log(address);
         const data = await this.get(`accounts/${address}`);
         return data
     }
@@ -132,8 +123,6 @@ export class Client{
         return info.balances;
     }
     async getSequence(address: string){
-        console.log("getSequence");
-        console.log(address);
         const info = await this.getAccount(address)
         return info.sequence
     }
@@ -171,7 +160,6 @@ export class Client{
               })
         });
         const output = await result.json() as SorobanRpc.SimulateTransactionResponse;
-        console.log(output);
         return output;
     }
 }

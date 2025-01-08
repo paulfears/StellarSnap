@@ -85,12 +85,7 @@ async function getAssetInfo(client:Client, asset:Asset){
         }
         const res = await fetch(`https://api.stellar.expert/explorer/${network}/asset/?search=${asset.code+"-"+asset.issuer}/&limit=1`)
         let output = await res.json();
-        console.log("getAssetInfo is: ");
-        console.log(output);
-        console.log("getAddressInfo");
         const issuerInfo = await getAddressInfo([asset.issuer]);
-        console.log(issuerInfo);
-        console.log(output._embedded.records);
         return output;
     }
     catch(e){
@@ -101,10 +96,8 @@ async function getAssetInfo(client:Client, asset:Asset){
 
 async function getAssetRating(client:Client, asset:Asset){
     let network;
-    //reme,ber this is here
-    console.log("client is: ");
-    console.log(client);
-    console.log(await getAssetInfo(client, asset));
+    //remember this is here
+    await getAssetInfo(client, asset);
     try{
         if(asset.issuer === '0'){
             return `stellarexpert rating: 10`;
@@ -207,9 +200,6 @@ export class TransactionAnalizer{
         infoList.push(divider());
         console.log("build operation UI")
         for(let key in operation){
-            console.log("key");
-            console.log(key);
-            console.log(operation[key]);
             let value = operation[key];
             if(key === 'type'){
                 continue;
@@ -262,16 +252,10 @@ export class TransactionAnalizer{
             }
             
         }
-        console.log("final InfoList is");
-        for(let item of infoList){
-            console.log(item);
-        }
         return infoList
     }
 
     async _parseOperation(operation, currentValue): Promise<{uiList:Array<any>, currentValue:object}>{
-            console.log("operation is: ");
-            console.log(operation);
             const uiList = [];
             if(operation.type === 'payment'){
                 uiList.push(heading('payment'))
@@ -286,21 +270,11 @@ export class TransactionAnalizer{
                 uiList.push(text(`destination:`))
                 uiList.push(await this.buildAddressBlock(operation.destination));
                 uiList.push(text(`balance: ${operation.startingBalance}`));
-                console.log("operation value is: ");
-
-                for(let key in operation){
-                    console.log(key);
-                    console.log(operation[key]);
-                }
             }
             else if(operation.type === 'invokeHostFunction'){
                 uiList.push(heading('smartcontract call'));
-                console.log("funcVal is: ");
                 const funcVal = scValToNative(operation.func);
-                console.log(funcVal);
-                console.log("contract method name is: ");
                 const contractAddress = Address.fromScAddress(funcVal._attributes.contractAddress).toString();
-                console.log(contractAddress);
                 
                 uiList.push(
                     text("Contract Address"),
@@ -312,7 +286,7 @@ export class TransactionAnalizer{
                 for(let i = 0; i<methodName.length; i++){
                     methodString += String.fromCharCode(Number(methodName[i]));
                 }
-                console.log(methodString);
+                
                 uiList.push(text('Method Name'));
                 uiList.push(text(methodString));
                 const args = Array.from(Array.from(funcVal._attributes.args).map(scValToNative));
@@ -325,9 +299,7 @@ export class TransactionAnalizer{
                         uiList.push(text("non native arg"));
                     }
                 }
-                console.log(args);
-
-                console.log(operation);
+                
             }
             else{
                 uiList.push(... await this._buildOperationUI(operation));
@@ -336,9 +308,7 @@ export class TransactionAnalizer{
     }
 
     async decodeXDRTransaction(xdrTransaction): Promise<Transaction>{
-        console.log(xdrTransaction);
         let txn = TransactionBuilder.fromXDR(xdrTransaction, this.client.currentPassphrase);
-        console.log(txn);
         if('innerTransaction' in txn){
             txn = txn.innerTransaction;
         }
@@ -356,19 +326,14 @@ export class TransactionAnalizer{
             dispArray.push(text('operations'));
             dispArray.push(divider());
             let operations = decodedTransaction._operations
-            console.log(operations);
 
             for(const operation of operations){
                 let output = await this._parseOperation(operation, value);
-                console.log(output);
-                console.log("made it past parseOperation");
                 dispArray.push(...output.uiList);
                 dispArray.push(text("ㅤ"));
                 value = output.currentValue;
             }
-            for(let item of dispArray){
-                console.log(item);
-            }
+            
 
             const confirmation = await Utils.displayPanel(panel(dispArray), "confirmation");
 

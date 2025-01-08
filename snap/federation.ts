@@ -34,7 +34,6 @@ export async function createFederationAccount(account:Keypair, username:string):
     const url = "https://regal-sfogliatella-fe7d58.netlify.app/.netlify/functions/createaccount"
     const address = account.publicKey();
     const response = await authenticator.signOnPost(url, {address:address, username:username}, 'createaccount');
-    console.log(response);
     return response;
     /*
     try{
@@ -79,14 +78,10 @@ export async function lookupFedAccount(name:string):Promise<fedResponse | undefi
                 'Accept': 'application/json'
             },
         });
-        console.log("response is");
-        console.log(res);
-        console.log(res.status);
         if(res.status === 404){
             return {"error":"not found", 'stellar_address':null, 'account_id':null}
         }
         const output = await res.json();
-        console.log(output);
         return output as fedResponse;
     }
     catch(e){
@@ -105,8 +100,6 @@ export async function lookupAddress(address:string):Promise<fedResponse>{
                 'Accept': 'application/json'
             },
         });
-        console.log("response is");
-        console.log(res);
         if(res.status === 404){
             console.log("not found");
             return {'error':"not found", 'stellar_address':null, 'account_id':null}
