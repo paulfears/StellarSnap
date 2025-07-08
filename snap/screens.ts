@@ -51,7 +51,7 @@ export class Screens{
 
     static async FedAccountName(wallet:Wallet){
         const disp = panel([
-            heading('EnterS a Federation Name For'),
+            heading('Enter a Federation Name For'),
             heading(wallet.walletName),
             copyable(wallet.address),
             divider(),
@@ -147,6 +147,7 @@ export class Screens{
         }
         await Wallet.renameWallet(wallet.address, walletName);
         wallet.walletName = walletName as string;
+        /*This works we no longer have this domain :(
         if((await lookupAddress(wallet.address)).account_id === null){
             const setUpAccount = panel([
                 heading("Would you like to set up a MetaStellar Account"),
@@ -161,6 +162,7 @@ export class Screens{
                 await Screens.setUpFedAccount(wallet);
             }
         }
+        */
     }
 
     static async confirmAccountChange(origin:string, accountName:string, accountAddress:string):Promise<boolean>{

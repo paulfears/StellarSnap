@@ -5005,9 +5005,11 @@ stellar-sdk@^12.2.0:
   version "1.0.7"
   resolved "file:.."
   dependencies:
+    "@metamask/snaps-cli" "^8.1.0"
     "@metamask/snaps-sdk" "^6.7.0"
     "@metamask/snaps-types" "^3.1.0"
     "@metamask/snaps-ui" "^3.1.0"
+    "@metamask/snaps-webpack-plugin" "^5.0.0"
     "@stellar/stellar-sdk" "^12.3.0"
     "@stellarguard/txrep" "^2.0.0"
     buffer "^6.0.3"

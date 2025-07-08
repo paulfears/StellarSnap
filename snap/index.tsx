@@ -39,12 +39,24 @@ import { renameAccountDialog } from './screens/renameAccount';
 import { InteractionHandler } from './InteractionHandler';
 
 export const onCronjob: OnCronjobHandler = async ({ request }) => {
+
+
+  //Will only show notifications when wallet is unlocked
+  //This is a fix for Using manageState will fail in cronJob when the extension is locked #87
+  //Ideally this will be updated to use unecrypted-storeage, but that requires changes to multiple files
+    const { locked } = await snap.request({
+      method: "snap_getClientStatus",
+    })
+    if(locked){
+      return;
+    }
+  //END FIX_________________________
+  
   const wallet = await Wallet.getCurrentWallet();
   const mainnet_client = new Client("mainnet");
   const engine = new NotificationEngine(mainnet_client, wallet);
   switch (request.method) {
     case 'NotificationEngine':{
-      console.log("notification check");
       await engine.checkForNotifications();
       return null;
     }
@@ -64,7 +76,6 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
   //This promotes the origin variable to a global scope, and can be accessed from dialog generators
 
   if(request.method === "clearState"){
-    console.log("clearing state");
     //KYR-01-006 (State clearing confirmation) fixed by confimation dialog
     let confirm = await Screens.clearStateConfirmation();
     if(confirm){
@@ -80,32 +91,22 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
   let baseAccount;
   let testnet = false;
   const keyPair = wallet.keyPair;
-  console.log("initalizing client");
   const client = new Client();
-  console.log("request:");
-  console.log(request);
-  console.log("parameters:");
-  console.log(params);
   if(params?.testnet && params?.futurenet){
     throw new Error("cannot use testnet and futurenet at the same time");
   }
   if(params?.testnet){
-    console.log("is testnet request");
     client.setNetwork('testnet');
     testnet = true;
   }
   else if(params?.futurenet){
-    console.log("is futurenet request");
     client.setNetwork('futurenet');
   }
   else{
-    console.log("is mainnet request");
     client.setNetwork('mainnet');
   }
   try{
-    console.log("attempting to get base account");
     baseAccount = await wallet.getBaseAccount(client);
-    console.log('done...')
     wallet_funded = true;
   }
   catch(e){
@@ -114,7 +115,6 @@ export const onRpcRequest: OnRpcRequestHandler = async ({ origin, request }) => 
   let txnBuilder: TxnBuilder;
   let operations: WalletFuncs | null;
   if(wallet_funded && baseAccount !== undefined){
-    console.log("wallet funded");
     txnBuilder = new TxnBuilder(baseAccount, client);
     operations = new WalletFuncs(baseAccount, keyPair, txnBuilder, client);
   }

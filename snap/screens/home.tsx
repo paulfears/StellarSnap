@@ -10,8 +10,6 @@ import {sendXLM} from './sendXLM';
 const HomeScreen = async ()=>{
     console.log("getting wallet");
     const wallet = await Wallet.getCurrentWallet();
-    console.log("got wallet");
-    console.log(wallet);
     let wallet_funded = false;
     let baseAccount;
     

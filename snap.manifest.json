@@ -7,7 +7,7 @@
     "url": "https://github.com/paulfears/StellarSnap.git"
   },
   "source": {
-    "shasum": "vy9G77WBo78r4V0xTQyUD9AWX77ncfZeIMKzn7gJr24=",
+    "shasum": "gURn2yiVmnsmXjGenhefTp74yI+zN5T2Dglia46nAwM=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",
@@ -40,5 +40,6 @@
       ]
     }
   },
+  "platformVersion": "6.10.0",
   "manifestVersion": "0.1"
 }
