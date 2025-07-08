@@ -1,0 +1,3978 @@
+{
+  "ConsoleLog": [
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 94
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 103
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 88
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 89
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 104
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 111
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 112
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/index.tsx",
+        "lineNum": 113
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 135
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens/home.tsx",
+        "lineNum": 11
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens/home.tsx",
+        "lineNum": 14
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens/home.tsx",
+        "lineNum": 18
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens/sendXLM.tsx",
+        "lineNum": 13
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens/sendXLM.tsx",
+        "lineNum": 14
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens/sendXLM.tsx",
+        "lineNum": 15
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens/sendXLM.tsx",
+        "lineNum": 30
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens/sendXLM.tsx",
+        "lineNum": 50
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens/sendXLM.tsx",
+        "lineNum": 53
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 92
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 119
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 180
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 201
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 343
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 38
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 43
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 59
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 63
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 82
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 87
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 106
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 111
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 23
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 43
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 102
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ConsoleLog",
+      "description": "Presence of console log function detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 103
+      },
+      "riskRating": 1
+    }
+  ],
+  "ESLinting": [
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 4
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `liquidity_pool_id` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 6
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `buying_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 8
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `selling_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 9
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `last_modified_ledger` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 11
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_authorized` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 12
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_authorized_to_maintain_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 13
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_clawback_enabled` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 14
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_type` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 15
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_issuer` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 16
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_code` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 17
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 20
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `liquidity_pool_id` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 22
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `buying_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 24
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `selling_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 25
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `last_modified_ledger` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 27
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_authorized` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 28
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_authorized_to_maintain_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 29
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_clawback_enabled` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 30
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_type` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 31
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_code` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 32
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_issuer` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 33
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Alias name `walletAsset` must match one of the following formats: PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 36
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `buying_liabilites` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 41
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `selling_liabilites` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 42
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `last_modified_ledger` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 43
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `is_authorized` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 44
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `is_authorized_to_maintain_liabilites` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 45
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `is_clawback_enabled` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 46
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `asset_type` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 47
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `asset_issuer` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 48
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `asset_code` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 49
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 52
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 57
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 68
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Array type using 'Array<T>' is forbidden. Use 'T[]' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 68
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/assets.ts",
+        "lineNum": 76
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Auth.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Import name `Utils` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Auth.ts",
+        "lineNum": 3
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'displayPanel' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Auth.ts",
+        "lineNum": 26
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Auth.ts",
+        "lineNum": 41
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Auth.ts",
+        "lineNum": 52
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Auth.ts",
+        "lineNum": 67
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 2
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 3
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Variable name `soroban_future_RPC` must match one of the following formats: camelCase, UPPER_CASE, PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 8
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Variable name `soroban_test_RPC` must match one of the following formats: camelCase, UPPER_CASE, PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 9
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Variable name `soroban_main_rpc` must match one of the following formats: camelCase, UPPER_CASE, PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 10
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 13
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 13
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Class Property name `MainnetPassphrase` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 33
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Class Property name `TestnetPassphrase` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 34
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Class Property name `FuturenetPassphrase` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 35
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 68
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 73
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 86
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 106
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 114
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'info' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 115
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 123
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 127
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Import name `Utils` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 4
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Interface name `fedResponse` must match one of the following formats: PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `stellar_address` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 6
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `account_id` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 7
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 11
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Interface name `createFedResponse` must match one of the following formats: PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 11
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 18
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 72
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `stellar_address` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 82
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `account_id` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 82
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 94
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `stellar_address` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 105
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `account_id` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 105
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `stellar_address` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 113
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `account_id` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 113
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/InteractionHandler.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/InteractionHandler.ts",
+        "lineNum": 3
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/InteractionHandler.ts",
+        "lineNum": 17
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/InteractionHandler.ts",
+        "lineNum": 21
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/InteractionHandler.ts",
+        "lineNum": 25
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/InteractionHandler.ts",
+        "lineNum": 26
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/InteractionHandler.ts",
+        "lineNum": 32
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/InteractionHandler.ts",
+        "lineNum": 33
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'args' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/InteractionHandler.ts",
+        "lineNum": 63
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'Asset' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 2
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 3
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Imports \"State\" are only used as type.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 4
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Import name `Utils` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 15
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'testNetBalances' is assigned a value but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 18
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'currentState' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 20
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'currentBalances' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 22
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 27
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'outputItems' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 28
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 29
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 29
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'prevAssets' is already declared in the upper scope on line 27 column 36.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 29
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'currentAssets' is already declared in the upper scope on line 27 column 48.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 29
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Expected a `for-of` loop instead of a `for` loop with this simple iteration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 67
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'itemInfo' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 68
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'Panel' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 2
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Import name `Utils` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 3
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'lookupFedAccount' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'lookupAddress' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'StateManager' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 6
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Class Method name `RequiresFundedWallet` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 10
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 33
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 42
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 52
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Class Method name `FedAccountName` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 52
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 63
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Class Method name `SameNameWarning` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 63
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 72
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Class Method name `AlreadyExistsError` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 72
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 82
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 105
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 128
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 132
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "This assertion is unnecessary since it does not change the type of the expression.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 149
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'@namespace' is redundant outside of ambient (`declare`/`.d.ts`) contexts when using a type system.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 7
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "ES2015 module syntax is preferred over namespaces.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 9
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 10
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_type` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 11
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_code` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 12
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_issuer` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 13
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 18
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 23
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 27
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 36
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 43
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 51
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Enum Member name `NOT_FOUND` must match one of the following formats: PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 59
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 62
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 75
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 79
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 88
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 101
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 120
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 126
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 140
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 146
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `transaction_id` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 147
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 156
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 165
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 170
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 182
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 189
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Imports \"FeeBumpTransaction\" and \"Transaction\" are only used as type.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 10
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Expected only 0 line after block description",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 13
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "There must be no indentation.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 17
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Expected no lines between tags",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 19
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Invalid JSDoc tag name \"note\".",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 24
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Switch is not exhaustive. Cases not matched: \"createAccount\" | \"payment\" | \"pathPaymentStrictReceive\" | \"pathPaymentStrictSend\" | \"createPassiveSellOffer\" | \"manageSellOffer\" | \"manageBuyOffer\" | \"setOptions\" | \"changeTrust\" | \"allowTrust\" | \"accountMerge\" | \"inflation\" | \"manageData\" | \"bumpSequence\" | \"createClaimableBalance\" | \"claimClaimableBalance\" | \"beginSponsoringFutureReserves\" | \"endSponsoringFutureReserves\" | \"revokeSponsorship\" | \"clawback\" | \"clawbackClaimableBalance\" | \"setTrustLineFlags\" | \"liquidityPoolDeposit\" | \"liquidityPoolWithdraw\" | \"bumpFootprintExpiration\" | \"restoreFootprint\"",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 77
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 102
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Switch is not exhaustive. Cases not matched: \"createAccount\" | \"payment\" | \"pathPaymentStrictReceive\" | \"pathPaymentStrictSend\" | \"createPassiveSellOffer\" | \"manageSellOffer\" | \"manageBuyOffer\" | \"setOptions\" | \"changeTrust\" | \"allowTrust\" | \"accountMerge\" | \"inflation\" | \"manageData\" | \"bumpSequence\" | \"createClaimableBalance\" | \"claimClaimableBalance\" | \"beginSponsoringFutureReserves\" | \"endSponsoringFutureReserves\" | \"revokeSponsorship\" | \"clawback\" | \"clawbackClaimableBalance\" | \"setTrustLineFlags\" | \"liquidityPoolDeposit\" | \"liquidityPoolWithdraw\"",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 107
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc @param \"sim\" declaration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 118
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Expected only 0 line after block description",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 120
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Expected @param names to be \"sim\". Got \"raw\".",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 122
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "There must be no indentation.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 123
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Expected no lines between tags",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 123
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 163
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/stateManager.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Interface name `walletAccount` must match one of the following formats: PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/stateManager.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/stateManager.ts",
+        "lineNum": 13
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/stateManager.ts",
+        "lineNum": 49
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/stateManager.ts",
+        "lineNum": 57
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Import name `Utils` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 2
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Imports \"Panel\" are only used as type.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 3
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Imports \"Transaction\" and \"Operation\" are only used as type.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'FeeBumpTransaction' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'xdr' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 6
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'isSorobanTransaction' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 7
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'assembleTransaction' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 7
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'TxnBuilder' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 8
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 45
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 45
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'possibleTags' is assigned a value but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 46
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'address' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 62
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 71
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 71
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'output' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 87
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'issuerInfo' is assigned a value but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 88
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 97
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 97
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'output' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 115
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Array type using 'Array<any>' is forbidden. Use 'any[]' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 197
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'infoList' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 198
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'key' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 202
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'outputBits' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 219
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'param' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 242
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'subValue' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 243
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Array type using 'Array<any>' is forbidden. Use 'any[]' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 258
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Expected a `for-of` loop instead of a `for` loop with this simple iteration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 286
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'args' is assigned a value but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 292
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Expected a `for-of` loop instead of a `for` loop with this simple iteration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 294
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'e' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 298
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 318
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'fee' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 324
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'operations' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 328
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'output' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 331
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "This assertion is unnecessary since it does not change the type of the expression.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 348
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Imports \"Account\", \"Transaction\" and \"Memo\" are only used as type.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'FeeBumpTransaction' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 3
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'xdr' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 7
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'nativeToScVal' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 10
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 13
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `liquidity_pool_id` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 3
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `buying_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `selling_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 6
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `last_modified_ledger` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 8
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_authorized` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 9
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_authorized_to_maintain_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 10
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_clawback_enabled` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 11
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_type` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 12
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_issuer` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 13
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 16
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `liquidity_pool_id` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 18
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `buying_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 20
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `selling_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 21
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `last_modified_ledger` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 23
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_authorized` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 24
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_authorized_to_maintain_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 25
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_clawback_enabled` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 26
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_type` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 27
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_code` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 28
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_issuer` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 29
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Alias name `json_Asset` must match one of the following formats: PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 32
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 37
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `liquidity_pool_id` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 39
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `buying_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 41
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `selling_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 42
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `last_modified_ledger` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 44
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_authorized` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 45
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_authorized_to_maintain_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 46
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_clawback_enabled` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 47
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_type` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 48
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_issuer` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 49
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_code` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 50
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 53
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `liquidity_pool_id` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 55
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `buying_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 57
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `selling_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 58
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `last_modified_ledger` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 60
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_authorized` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 61
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_authorized_to_maintain_liabilites` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 62
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `is_clawback_enabled` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 63
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_type` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 64
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_code` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 65
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Property name `asset_issuer` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 66
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Alias name `walletAsset` must match one of the following formats: PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 69
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'emptyNativeBalance' is assigned a value but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 71
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `buying_liabilites` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 74
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `selling_liabilites` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 75
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `last_modified_ledger` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 76
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `is_authorized` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 77
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `is_authorized_to_maintain_liabilites` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 78
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `is_clawback_enabled` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 79
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `asset_type` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 80
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `asset_issuer` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 81
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Object Literal Property name `asset_code` must match one of the following formats: camelCase, PascalCase, UPPER_CASE",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 82
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 85
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Array type using 'Array<T>' is forbidden. Use 'T[]' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 90
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using the primitive `string` as a type name, rather than the upper-cased `String`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 90
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using the primitive `string` as a type name, rather than the upper-cased `String`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 90
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Use a `type` instead of an `interface`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/types.ts",
+        "lineNum": 96
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 8
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Imports \"Panel\" are only used as type.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 9
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'copyable' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 9
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Type Alias name `interfaceId` must match one of the following formats: PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 10
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'SnapComponent' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 12
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'SnapElement' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 13
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 16
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 28
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'result' is assigned a value but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 33
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc @param \"prompt\" declaration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 57
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc @param \"description\" declaration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 57
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc @param \"textAreaContent\" declaration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 57
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc @returns declaration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 57
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc @param \"title\" declaration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 83
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc @param \"info\" declaration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 83
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc @returns declaration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 83
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'alert' is assigned a value but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 88
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc @param \"disppanel\" declaration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 126
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc @param \"type\" declaration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 126
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc @returns declaration.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 126
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "A `require()` style import is forbidden.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 3
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Imports \"walletAccount\" and \"State\" are only used as type.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 4
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Import name `Utils` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 6
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Import name `QRcode` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 8
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'bufferSeed' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 30
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 56
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Class Method name `CreateNewAccountDialog` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 60
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 62
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'output' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 68
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'output' is assigned a value but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 68
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 85
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 88
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'tempAccount' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 100
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'account' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 104
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 112
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 122
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'wallet' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 125
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 137
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'currentState' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 140
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'walletAccount' is already declared in the upper scope on line 4 column 24.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 142
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'success' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 146
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'walletAccount' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 151
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'valid' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 158
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 162
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 186
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'keyPair' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 200
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Class Method name `import_account` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 218
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using the primitive `boolean` as a type name, rather than the upper-cased `Boolean`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 218
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 219
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 222
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 245
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'account' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 248
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 262
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'output' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 267
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Array type using 'Array<T>' is forbidden. Use 'T[]' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 267
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'account' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 269
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 284
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 284
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'svg' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 287
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'img' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 288
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 290
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'output' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 293
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing JSDoc comment.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 303
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Function name `ImportAccountUI` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 303
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 305
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'e' is defined but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Wallet.ts",
+        "lineNum": 312
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Imports \"Account\", \"Transaction\", \"Keypair\", \"xdr\", \"MemoType\", \"FeeBumpTransaction\" and \"Operation\" are only used as type.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 4
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Import name `Utils` must match one of the following formats: camelCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 6
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "All imports in the declaration are only used as types. Use `import type`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 8
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 24
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using the primitive `boolean` as a type name, rather than the upper-cased `Boolean`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 24
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Variable name `memo_type` must match one of the following formats: camelCase, UPPER_CASE, PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 25
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 37
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Variable name `account_exists` must match one of the following formats: camelCase, UPPER_CASE, PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 40
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Functions that return promises must be async.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 53
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 53
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 59
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using the primitive `boolean` as a type name, rather than the upper-cased `Boolean`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 68
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "This is the default value for this type parameter, so it can be omitted.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 68
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "'txn' is never reassigned. Use 'const' instead.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 70
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Variable name `analizerTxn_ref` must match one of the following formats: camelCase, UPPER_CASE, PascalCase",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 71
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 72
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Missing return type on function.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 95
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using the primitive `boolean` as a type name, rather than the upper-cased `Boolean`.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 95
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "ESLinting",
+      "description": "Prefer using nullish coalescing operator (`??=`) instead of an assignment expression, as it is simpler to read.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 96
+      },
+      "riskRating": 1
+    }
+  ],
+  "ExcessiveComments": [
+    {
+      "type": "ExcessiveComments",
+      "description": "Large section of commented-out code detected (38-68).",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 1168
+      },
+      "riskRating": 2
+    },
+    {
+      "type": "ExcessiveComments",
+      "description": "Large section of commented-out code detected (41-46).",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/index.tsx",
+        "lineNum": 2032
+      },
+      "riskRating": 2
+    },
+    {
+      "type": "ExcessiveComments",
+      "description": "Large section of commented-out code detected (12-20).",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/index.tsx",
+        "lineNum": 311
+      },
+      "riskRating": 2
+    },
+    {
+      "type": "ExcessiveComments",
+      "description": "Large section of commented-out code detected (182-187).",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 6044
+      },
+      "riskRating": 2
+    },
+    {
+      "type": "ExcessiveComments",
+      "description": "Large section of commented-out code detected (150-167).",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 4891
+      },
+      "riskRating": 2
+    },
+    {
+      "type": "ExcessiveComments",
+      "description": "Large section of commented-out code detected (4-9).",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens/newAccount.tsx",
+        "lineNum": 225
+      },
+      "riskRating": 2
+    },
+    {
+      "type": "ExcessiveComments",
+      "description": "Large section of commented-out code detected (17-22).",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens/ReceiveXLM.tsx",
+        "lineNum": 509
+      },
+      "riskRating": 2
+    },
+    {
+      "type": "ExcessiveComments",
+      "description": "Large section of commented-out code detected (7-12).",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens/renameAccount.tsx",
+        "lineNum": 396
+      },
+      "riskRating": 2
+    },
+    {
+      "type": "ExcessiveComments",
+      "description": "Large section of commented-out code detected (62-70).",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 2108
+      },
+      "riskRating": 2
+    },
+    {
+      "type": "ExcessiveComments",
+      "description": "Large section of commented-out code detected (71-72).",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 2698
+      },
+      "riskRating": 2
+    },
+    {
+      "type": "ExcessiveComments",
+      "description": "Large section of commented-out code detected (87-92).",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 3334
+      },
+      "riskRating": 2
+    },
+    {
+      "type": "ExcessiveComments",
+      "description": "Large section of commented-out code detected (23-30).",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/stateManager.ts",
+        "lineNum": 444
+      },
+      "riskRating": 2
+    }
+  ],
+  "HardcodedSecrets": [
+    {
+      "type": "HardcodedSecrets",
+      "description": "Potential hardcoded secret detected: \"application/json\"",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Auth.ts",
+        "lineNum": 59
+      },
+      "riskRating": 3
+    },
+    {
+      "type": "HardcodedSecrets",
+      "description": "Potential hardcoded secret detected: \"application/json\"",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Auth.ts",
+        "lineNum": 75
+      },
+      "riskRating": 3
+    },
+    {
+      "type": "HardcodedSecrets",
+      "description": "Potential hardcoded secret detected: \"application/json\"",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 77
+      },
+      "riskRating": 3
+    },
+    {
+      "type": "HardcodedSecrets",
+      "description": "Potential hardcoded secret detected: \"application/json\"",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 148
+      },
+      "riskRating": 3
+    },
+    {
+      "type": "HardcodedSecrets",
+      "description": "Potential hardcoded secret detected: \"application/json\"",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Client.ts",
+        "lineNum": 149
+      },
+      "riskRating": 3
+    },
+    {
+      "type": "HardcodedSecrets",
+      "description": "Potential hardcoded secret detected: \"application/json\"",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 78
+      },
+      "riskRating": 3
+    },
+    {
+      "type": "HardcodedSecrets",
+      "description": "Potential hardcoded secret detected: \"application/json\"",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/federation.ts",
+        "lineNum": 100
+      },
+      "riskRating": 3
+    },
+    {
+      "type": "HardcodedSecrets",
+      "description": "Potential hardcoded secret detected: \"innerTransaction\"",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 38
+      },
+      "riskRating": 3
+    },
+    {
+      "type": "HardcodedSecrets",
+      "description": "Potential hardcoded secret detected: \"restoreFootprint\"",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 110
+      },
+      "riskRating": 3
+    },
+    {
+      "type": "HardcodedSecrets",
+      "description": "Potential hardcoded secret detected: \"innerTransaction\"",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 312
+      },
+      "riskRating": 3
+    },
+    {
+      "type": "HardcodedSecrets",
+      "description": "Potential hardcoded secret detected: \"innerTransaction\"",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/WalletFuncs.ts",
+        "lineNum": 75
+      },
+      "riskRating": 3
+    }
+  ],
+  "ImproperTypeUsage": [
+    {
+      "type": "ImproperTypeUsage",
+      "description": "Variable 'diffAssets' uses 'any' type, which reduces type safety.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 2377
+      },
+      "riskRating": 2
+    }
+  ],
+  "LeftoverTODOs": [
+    {
+      "type": "LeftoverTODOs",
+      "description": "Leftover TODO comment detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/soroban_rpc.ts",
+        "lineNum": 3
+      },
+      "riskRating": 2
+    },
+    {
+      "type": "LeftoverTODOs",
+      "description": "Leftover TODO comment detected.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/sorobanTxn.ts",
+        "lineNum": 39
+      },
+      "riskRating": 2
+    }
+  ],
+  "UnhandledPromiseRejection": [
+    {
+      "type": "UnhandledPromiseRejection",
+      "description": "Empty or ineffective catch block detected, which can lead to unhandled promise rejections.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/index.tsx",
+        "lineNum": 4258
+      },
+      "riskRating": 3
+    }
+  ],
+  "UnusedImports": [
+    {
+      "type": "UnusedImports",
+      "description": "Import 'Asset' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/notificationEngine.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'Panel' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 2
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'lookupFedAccount' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'lookupAddress' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'StateManager' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/screens.ts",
+        "lineNum": 6
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'FeeBumpTransaction' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'xdr' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 5
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'isSorobanTransaction' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 7
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'assembleTransaction' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 7
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'TxnBuilder' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TransactionAnalizer.ts",
+        "lineNum": 8
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'FeeBumpTransaction' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'xdr' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'nativeToScVal' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/TxnBuilder.ts",
+        "lineNum": 1
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'copyable' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 9
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'SnapComponent' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 12
+      },
+      "riskRating": 1
+    },
+    {
+      "type": "UnusedImports",
+      "description": "Import 'SnapElement' is declared but never used.",
+      "position": {
+        "filePath": "C:/Users/paulr/Desktop/Snapper/StellarSnap/snap/Utils.ts",
+        "lineNum": 13
+      },
+      "riskRating": 1
+    }
+  ]
+}

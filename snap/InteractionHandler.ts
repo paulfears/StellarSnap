@@ -1,5 +1,4 @@
 import { ComponentOrElement } from "@metamask/snaps-sdk";
-import { SnapComponent } from "@metamask/snaps-sdk/jsx";
 
 interface InteractionTable{
     [interfaceId:string]:{ //interface id returned from snap_createInterface

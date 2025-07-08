@@ -1,4 +1,4 @@
-import { Account, Address, Keypair } from "stellar-base"
+import { Keypair } from "stellar-base"
 import {Auth} from './Auth'
 
 import Utils from "./Utils";

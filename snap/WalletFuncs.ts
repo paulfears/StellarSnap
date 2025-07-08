@@ -5,6 +5,7 @@ import { Client } from "./Client";
 import { TxnBuilder } from "./TxnBuilder";
 import Utils from "./Utils";
 import { TransactionAnalizer } from "./TransactionAnalizer";
+import { json_Asset } from "types";
 
 export class WalletFuncs{
     account: Account
@@ -46,21 +47,10 @@ export class WalletFuncs{
         }
        
         return this.signAndSubmitTransaction(txn.toXDR() as unknown as xdr.Transaction, confirmation);
-        /*
-        txn.sign(this.keyPair);
-        const response = await this.client.submitTransaction(txn);
-        console.log(response);
-        if(response.successful){
-            await Utils.notify("Transaction Successful")
-        }
-        else{
-            await Utils.notify("Transaction Failed")
-        }
-        return response;
-        */
+       
     }
     
-    transferAsset(to, amount, asset){
+    transferAsset(to:string, amount:string, asset:json_Asset){
         const txn = this.builder.buildAssetTxn(to, amount, asset);
         return this.signAndSubmitTransaction(txn.toXDR() as unknown as xdr.Transaction);
 
@@ -77,7 +67,7 @@ export class WalletFuncs{
 
     async signArbitaryTxn(xdrTransaction:xdr.Transaction | string, includeConfirm?:Boolean): Promise<Transaction<Memo<MemoType>, Operation[]> | FeeBumpTransaction>{
         
-        let txn = TransactionBuilder.fromXDR(xdrTransaction, this.client.currentPassphrase);
+        let txn = TransactionBuilder.fromXDR(xdrTransaction as any, this.client.currentPassphrase);
         let analizerTxn_ref:Transaction;
         if(includeConfirm === undefined){
             includeConfirm = true;

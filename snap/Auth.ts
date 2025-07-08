@@ -1,18 +1,8 @@
 import { Keypair } from "stellar-base";
-import { Wallet } from "./Wallet";
 import {panel, text, heading, divider, copyable} from '@metamask/snaps-ui';
 import Utils from "./Utils";
 import { InteractionHandler } from "./InteractionHandler";
-const proof = {};
-interface AuthRequest{
-    [key: number]:any,
-    auth:auth
-}
-interface auth{
-    pk:string, //hexString
-    address:string, //stellar address
-    proof:string //signed item 
-}
+
 export class Auth{
     keypair:Keypair;
     
@@ -20,7 +10,7 @@ export class Auth{
 
         this.keypair = keypair;
     }
-    async getTestKey(url: string){
+    async getTestKey(url: string):Promise<any>{
         const res = await fetch(url);
         const key = await res.json();
         return key.key;

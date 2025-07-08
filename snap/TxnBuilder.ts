@@ -22,11 +22,14 @@ export class TxnBuilder{
     if(this.client.network === 'mainnet'){
       this.network = Networks.PUBLIC
     }
-    if(this.client.network === 'testnet'){
+    else if(this.client.network === 'testnet'){
       this.network = Networks.TESTNET
     }
-    if(this.client.network === 'futurenet'){
+    else if(this.client.network === 'futurenet'){
       this.network = Networks.FUTURENET
+    }
+    else{
+      this.network = Networks.PUBLIC
     }
   }
 
@@ -59,12 +62,6 @@ export class TxnBuilder{
     const transactionBuilder = new TransactionBuilder(this.account, {fee, networkPassphrase: this.network })
     console.log("transaction initialized");
     transactionBuilder
-    /*
-    .addOperation(Operation.createAccount({
-        destination: destinationA,
-        startingBalance: "20"
-    })) // <- funds and creates destinationA
-    */
     .addOperation(
       Operation.createAccount({
         destination: destination,
@@ -80,7 +77,7 @@ export class TxnBuilder{
     return transaction;
   }
 
-  buildPaymentTxn(destination: string, amount: string, fee?:string, memo?:memo): Transaction{
+  buildPaymentTxn(destination: string, amount: string, fee?:string, memo?:Memo): Transaction{
     if(!fee){
       console.log("no fee provided")
       fee = "1000"
@@ -89,12 +86,6 @@ export class TxnBuilder{
     const transactionBuilder = new TransactionBuilder(this.account, {fee, networkPassphrase: this.network })
     console.log("transaction initialized");
     transactionBuilder
-    /*
-    .addOperation(Operation.createAccount({
-        destination: destinationA,
-        startingBalance: "20"
-    })) // <- funds and creates destinationA
-    */
     .addOperation(Operation.payment({
         destination: destination,
         amount: amount,
@@ -108,16 +99,7 @@ export class TxnBuilder{
     return transaction;
   }
 
-  buildSorobanCall(address, method, params:Array<any>){
-    /* To DO
-    let scParams = [];
-    for(let param of params){
-      scParams.push(nativeToScVal(param))
-    }	
-    let opts = {contract:address, function:method, params:scParams}
-    Operation.invokeContractFunction(opts)
-    */
-  }
+
 
   buildAssetTxn(destination: string, amount: string, asset:json_Asset, fee?:string, memo?:Memo): Transaction{
     if(!fee){
@@ -129,12 +111,6 @@ export class TxnBuilder{
     console.log("transaction initialized");
     const stellarAsset = new Asset(asset.code, asset.issuer); 
     transactionBuilder
-    /*
-    .addOperation(Operation.createAccount({
-        destination: destinationA,
-        startingBalance: "20"
-    })) // <- funds and creates destinationA
-    */
     .addOperation(Operation.payment({
         destination: destination,
         amount: amount,

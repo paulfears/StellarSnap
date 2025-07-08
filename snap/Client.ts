@@ -1,7 +1,6 @@
 import { FeeBumpTransaction, Transaction } from "stellar-base";
 import { SorobanRpc } from "./soroban_rpc";
 import { Wallet } from "./Wallet";
-import { Url } from "url";
 
 const testNetURL = "https://horizon-testnet.stellar.org"
 const mainNetURL = "https://horizon.stellar.org"

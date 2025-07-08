@@ -1,4 +1,4 @@
-import { Client } from "./Client";
+import type { Client } from "./Client";
 import { Wallet } from "./Wallet";
 import { lookupAddress } from "./federation";
 export interface NativeBalance{
@@ -49,12 +49,17 @@ const emptyNativeBalance:NativeBalance = {
     asset_code: "XLM"
 }
 
+export interface SimpleAccount{
+    name:string,
+    address:string
+}
+
 export interface DataPacket{
     name:string,
     currentAddress:string,
     mainnetAssets?: walletAsset[],
     testnetAssets?: walletAsset[],
-    accounts: Array<{name:String, address:String}>
+    accounts: SimpleAccount[],
     mainnetXLMBalance: string,
     testnetXLMBalance: string,
     fedName: string | null

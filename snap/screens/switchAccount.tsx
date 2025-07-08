@@ -1,4 +1,4 @@
-import { Heading, Text, Divider, Box, Copyable,  } from "@metamask/snaps-sdk/jsx";
+import { Heading, Text, Divider, Box, Copyable } from "@metamask/snaps-sdk/jsx";
 import { InteractionHandler } from "../InteractionHandler";
 import Utils from "../Utils";
 import { Wallet } from "../Wallet";

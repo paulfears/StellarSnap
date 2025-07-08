@@ -1,8 +1,6 @@
-import { Box, Text, Bold, Copyable, Heading, Button, Input, Form, Spinner, Divider} from '@metamask/snaps-sdk/jsx';
+import { Box, Text, Heading, Button, Input, Form, Spinner, Divider} from '@metamask/snaps-sdk/jsx';
 
 import type {Wallet} from '../Wallet';
-import type { Client } from '../Client';
-import {getDataPacket} from '../assets';
 import type {DataPacket} from '../assets';
 import type { WalletFuncs } from 'WalletFuncs';
 import { InteractionHandler } from '../InteractionHandler';

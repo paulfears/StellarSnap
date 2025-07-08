@@ -1,5 +1,5 @@
 {
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Soroban enabled Stellar Wallet (XLM)",
   "proposedName": "Stellar",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/paulfears/StellarSnap.git"
   },
   "source": {
-    "shasum": "+Jg7YCw4wDo4D/DBkRqpaVvtDb1MDtItB4OQFJa+Pf0=",
+    "shasum": "ZBO5amqeB4r5rjui+CDr3mpSE33h9KmOvkav6GM9w+k=",
     "location": {
       "npm": {
         "filePath": "dist/bundle.js",

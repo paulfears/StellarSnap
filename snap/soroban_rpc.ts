@@ -59,6 +59,26 @@ export namespace SorobanRpc {
     NOT_FOUND = "NOT_FOUND",
     FAILED = "FAILED"
   }
+  export interface GetSuccessfulTransactionResponse extends GetAnyTransactionResponse {
+    status: GetTransactionStatus.SUCCESS;
+
+    ledger: number;
+    createdAt: number;
+    applicationOrder: number;
+    feeBump: boolean;
+    envelopeXdr: xdr.TransactionEnvelope;
+    resultXdr: xdr.TransactionResult;
+    resultMetaXdr: xdr.TransactionMeta;
+
+    returnValue?: xdr.ScVal;  // present iff resultMeta is a v3
+  }
+  export interface GetFailedTransactionResponse extends GetAnyTransactionResponse {
+    status: GetTransactionStatus.FAILED;
+  }
+
+  export interface GetMissingTransactionResponse extends GetAnyTransactionResponse {
+    status: GetTransactionStatus.NOT_FOUND;
+  }
 
   export type GetTransactionResponse =
     | GetSuccessfulTransactionResponse
@@ -73,27 +93,10 @@ export namespace SorobanRpc {
     oldestLedgerCloseTime: number;
   }
 
-  export interface GetMissingTransactionResponse extends GetAnyTransactionResponse {
-    status: GetTransactionStatus.NOT_FOUND;
-  }
 
-  export interface GetFailedTransactionResponse extends GetAnyTransactionResponse {
-    status: GetTransactionStatus.FAILED;
-  }
 
-  export interface GetSuccessfulTransactionResponse extends GetAnyTransactionResponse {
-    status: GetTransactionStatus.SUCCESS;
 
-    ledger: number;
-    createdAt: number;
-    applicationOrder: number;
-    feeBump: boolean;
-    envelopeXdr: xdr.TransactionEnvelope;
-    resultXdr: xdr.TransactionResult;
-    resultMetaXdr: xdr.TransactionMeta;
 
-    returnValue?: xdr.ScVal;  // present iff resultMeta is a v3
-  }
 
   export interface RawGetTransactionResponse {
     status: GetTransactionStatus;
@@ -120,10 +123,6 @@ export namespace SorobanRpc {
     topics?: string[][];
   }
 
-  export interface GetEventsResponse {
-    events?: EventResponse[];
-  }
-
   export interface EventResponse {
     type: EventType;
     ledger: string;
@@ -137,6 +136,12 @@ export namespace SorobanRpc {
       xdr: string;
     };
   }
+
+  export interface GetEventsResponse {
+    events?: EventResponse[];
+  }
+
+
 
   export interface RequestAirdropResponse {
     transaction_id: string;

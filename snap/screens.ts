@@ -148,6 +148,9 @@ export class Screens{
         await Wallet.renameWallet(wallet.address, walletName);
         wallet.walletName = walletName as string;
         /*This works we no longer have this domain :(
+
+
+        
         if((await lookupAddress(wallet.address)).account_id === null){
             const setUpAccount = panel([
                 heading("Would you like to set up a MetaStellar Account"),

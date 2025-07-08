@@ -1,20 +1,16 @@
-import { Box, Text, Bold, Copyable, Heading, Button} from '@metamask/snaps-sdk/jsx';
+import { Box, Copyable, Heading, Button} from '@metamask/snaps-sdk/jsx';
 import { Wallet } from '../Wallet';
 import { Client } from '../Client';
 import {getDataPacket} from '../assets';
-import type {DataPacket} from '../assets';
+
 import { InteractionHandler } from '../InteractionHandler';
-import {showQrCode} from './receiveXLM';
-import {sendXLM} from './sendXLM';
+import {showQrCode} from './ReceiveXLM';
+
 
 const HomeScreen = async ()=>{
     console.log("getting wallet");
     const wallet = await Wallet.getCurrentWallet();
-    let wallet_funded = false;
-    let baseAccount;
-    
-  
-    const keyPair = wallet.keyPair;
+
     console.log("about to init client");
     const client = new Client();
 
