@@ -12,7 +12,6 @@ const soroban_main_rpc = "https://autumn-proportionate-breeze.stellar-mainnet.qu
 
 
 export async function fund(wallet:Wallet){
-    console.log("funding account");
     const response = await fetch(
         `https://friendbot.stellar.org?addr=${encodeURIComponent(
           wallet.address,

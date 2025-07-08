@@ -26,13 +26,11 @@ export class Wallet{
         this.walletName = account.name;
         if(account.type === "generated"){
             //this.keyPair = nacl.sign.keyPair.fromSeed(seed);
-            console.log("seeding wallet");
             const seed = account.seed;
             let bufferSeed = new Uint8Array(32);
             for(let i = 0; i<32; i++){
                 bufferSeed[i] = seed[i];
             }
-            console.log("about to make keyPair");
             this.keyPair = Keypair.fromRawEd25519Seed(bufferSeed as Buffer);
             //this.address = StrKey.encodeEd25519PublicKey(this.keyPair.publicKey.buffer);
             this.address = this.keyPair.publicKey();
@@ -150,9 +148,6 @@ export class Wallet{
                 Utils.throwError(400, "account failed to create");
             }
         }
-        else{
-            console.log("wallet Account found")
-        }
         walletAccount = currentState.accounts[currentState.currentAccount as string] as walletAccount;
         
         return new Wallet(walletAccount, currentState);
@@ -265,7 +260,6 @@ export class Wallet{
 
     static async listAccounts(currentState?:State):Promise<SimpleAccount[]>{
         if(currentState === undefined){
-            console.log("currentState is undefined")
             currentState = await StateManager.getState();
             
         }
